@@ -4,7 +4,7 @@ import Button from "./Button";
 function Hero() {
   return (
     <>
-      <div className="hero bg-hero-bg w-full h-screen">
+      <div className="hero bg-hero-bg w-full h-screen bg-cover bg-center">
         <div className="content text-white">
           <h1 className=" text-white font-bold text-5xl">
             Build up your mentoring with us.

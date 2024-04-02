@@ -16,3 +16,12 @@ body {
 .content button {
   background-color: #ff985a;
 }
+
+.testimoni {
+  background: #e4e3ce;
+}
+
+.card {
+  height: 25rem;
+  width: 21rem;
+}
