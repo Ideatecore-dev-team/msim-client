@@ -13,7 +13,7 @@ body {
   height: 21.222rem;
 }
 
-.content button {
+button {
   background-color: #ff985a;
 }
 
@@ -22,6 +22,26 @@ body {
 }
 
 .card {
-  height: 25rem;
-  width: 21rem;
+  height: 28.125rem;
+  width: 25rem;
+}
+
+.card-art {
+  height: 28.125rem;
+  border: 1px solid #000;
+}
+
+.card-img {
+  width: 25rem;
+  height: 12.5rem;
+  background: #d9d9d9;
+}
+
+.card-content {
+  width: 25rem;
+  height: 10.125rem;
+}
+
+p {
+  line-height: 150%;
 }
