@@ -45,3 +45,18 @@ button {
 p {
   line-height: 150%;
 }
+
+h1 {
+  font-size: 40px;
+  line-height: 150%;
+}
+
+.partner {
+  gap: 3.75rem;
+}
+
+.card-partner {
+  background: #d9d9d9;
+  height: 6.25rem;
+  width: 13.75rem;
+}
