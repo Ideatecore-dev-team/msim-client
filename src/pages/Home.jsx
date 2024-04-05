@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Testimoni from "../components/Testimoni";
 import HomeArticle from "../components/HomeArticle";
 import Partner from "../components/Partner";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
         <Testimoni />
         <HomeArticle />
         <Partner />
+        <Footer />
       </div>
     </>
   );

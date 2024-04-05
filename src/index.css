@@ -60,3 +60,32 @@ h1 {
   height: 6.25rem;
   width: 13.75rem;
 }
+
+.footer {
+  background: #ffa34e;
+}
+
+.footer-content {
+  gap: 7.5rem;
+}
+
+.footer-profile {
+  width: 25rem;
+}
+
+.footer-link {
+  gap: 7.5rem;
+}
+
+.comp-name {
+  height: 6.125rem;
+}
+
+.logo {
+  /* padding-right: 12.188rem; */
+  height: 3.75rem;
+}
+
+.logo-box {
+  background: #343434;
+}
