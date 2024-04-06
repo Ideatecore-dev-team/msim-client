@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.content {
+  padding-top: 21.25rem;
+  padding-left: 5rem;
+  width: 37.509rem;
+  height: 21.222rem;
+}
+
+button {
+  background-color: #ff985a;
+}
+
+.testimoni {
+  background: #e4e3ce;
+}
+
+.card {
+  height: 28.125rem;
+  width: 25rem;
+}
+
+.card-art {
+  height: 28.125rem;
+  border: 1px solid #000;
+}
+
+.card-img {
+  width: 25rem;
+  height: 12.5rem;
+  background: #d9d9d9;
+}
+
+.card-content {
+  width: 25rem;
+  height: 10.125rem;
+}
+
+p {
+  line-height: 150%;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 150%;
+}
+
+.partner {
+  gap: 3.75rem;
+}
+
+.card-partner {
+  background: #d9d9d9;
+  height: 6.25rem;
+  width: 13.75rem;
+}
+
+.footer {
+  background: #ffa34e;
+}
+
+.footer-content {
+  gap: 7.5rem;
+}
+
+.footer-profile {
+  width: 25rem;
+}
+
+.footer-link {
+  gap: 7.5rem;
+}
+
+.comp-name {
+  height: 6.125rem;
+}
+
+.logo {
+  /* padding-right: 12.188rem; */
+  height: 3.75rem;
+}
+
+.logo-box {
+  background: #343434;
+}
