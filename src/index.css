@@ -7,10 +7,22 @@ body {
 }
 
 .content {
-  padding-top: 21.25rem;
-  padding-left: 5rem;
-  width: 37.509rem;
-  height: 21.222rem;
+  margin-top: 23.75rem;
+  margin-right: 47.5rem;
+}
+
+.tagline h1 {
+  font-size: 4rem;
+  width: 36.875rem;
+  height: 12.125rem;
+}
+
+.tagline p {
+  width: 37.5rem;
+}
+
+.content button {
+  width: 17.25rem;
 }
 
 button {
