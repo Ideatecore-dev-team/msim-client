@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "./Button";
+import Logo from "../../public/images/MSiM.png"
 
 function Navbar(){
     return (
@@ -8,11 +9,11 @@ function Navbar(){
         <div className=" bg-gray-300 w-10/12 h-24 rounded-full absolute mt-10 flex items-center justify-around">
         <div className=" flex gap-4 items-center">
             <div className="bg-gray-400 rounded-full w-16 h-16 -ml-16">
-            <img src="" alt="logo" />
+            <img className=" rounded-full" src={Logo} alt="logo" />
             </div>
             <div className="">
-            <h1 className=" uppercase font-bold">mentoring</h1>
-            <h1 className=" uppercase font-bold">consulting</h1>
+            <h1 className="text-2xl uppercase font-bold">mentoring</h1>
+            <h1 className="text-2xl uppercase font-bold">consulting</h1>
             </div>
         </div>
         <div className="flex gap-10 -mr-40">
