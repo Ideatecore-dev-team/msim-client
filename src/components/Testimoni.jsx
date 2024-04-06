@@ -1,4 +1,7 @@
 import React from "react";
+import Profile from "../../public/images/profile2.jpeg"
+import Profile1 from "../../public/images/profile3.jpeg"
+import Profile3 from "../../public/images/profile3.jpeg"
 
 function Testimoni() {
   return (
@@ -13,7 +16,7 @@ function Testimoni() {
               <div className="pic-profile w-14 h-14 rounded-full overflow-hidden flex items-center justify-center">
                 <div>
                   <img
-                    src="../../public/images/profile1.jpeg"
+                    src={Profile3}
                     className="w-full h-full object-cover"
                     alt=""
                   />
@@ -36,7 +39,7 @@ function Testimoni() {
               <div className="pic-profile w-14 h-14 rounded-full overflow-hidden flex items-center justify-center">
                 <div>
                   <img
-                    src="../../public/images/profile2.jpeg"
+                    src={Profile}
                     className="w-full h-full object-cover"
                     alt=""
                   />
@@ -62,7 +65,7 @@ function Testimoni() {
               <div className="pic-profile w-14 h-14 rounded-full overflow-hidden flex items-center justify-center">
                 <div>
                   <img
-                    src="../../public/images/profile3.jpeg"
+                    src={Profile1}
                     className="w-full h-full object-cover"
                     alt=""
                   />
