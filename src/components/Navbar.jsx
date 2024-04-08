@@ -12,8 +12,8 @@ function Navbar(){
             <img className=" rounded-full" src={Logo} alt="logo" />
             </div>
             <div className="">
-            <h1 className="text-2xl uppercase font-bold">mentoring</h1>
-            <h1 className="text-2xl uppercase font-bold">consulting</h1>
+            <h1 className="text-orange-500 text-2xl uppercase font-bold">mentoring</h1>
+            <h1 className="text-blue-500 text-2xl uppercase font-bold">consulting</h1>
             </div>
         </div>
         <div className="flex gap-10 -mr-40">
