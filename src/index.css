@@ -25,8 +25,19 @@ body {
   width: 17.25rem;
 }
 
+.nav {
+  width: 1152px;
+  padding: 16px 32px;
+}
+
 button {
-  background-color: #ff985a;
+  background-color: #FEA02F;
+  border-radius: 8px;
+  display: flex;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .testimoni {
@@ -101,3 +112,89 @@ h1 {
 .logo-box {
   background: #343434;
 }
+
+.headline-1 {
+  font-family: "Plus Jakarta Sans";
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+}
+.headline-2 {
+  /* H2 */
+  font-family: "Plus Jakarta Sans";
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 51px */
+}
+.headline-3 {
+  /* H3 */
+  font-family: "Plus Jakarta Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 30px */
+}
+.headline-4 {
+  /* H4 */
+  font-family: "Plus Jakarta Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 27px */
+}
+.paragraph {
+  /* Paragraph */
+  font-family: "Plus Jakarta Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+}
+
+.alternative-paragraph {
+  /* Alt Paragraph */
+  font-family: "Plus Jakarta Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* CSS */
+/* CSS */
+.Our-program p:hover + .arrow svg {
+  transform: rotate(180deg);
+  transition: transform 0.5s ease;
+}
+
+.arrow svg {
+  transition: transform 0.5s ease;
+}
+
+.drop {
+  height: 8rem;
+  width: 11rem;
+  margin-top: 13.5rem;
+  margin-left: 5.5rem;
+  transition: 0.5s;
+  transform: scaley(0);
+  transform-origin: top;
+  
+  
+}
+
+.down:hover + .drop {
+  height: 8rem;
+  width: 11rem;
+  margin-top: 13.5rem;
+  margin-left: 5.5rem;
+  transform: scaleY(1);
+}
+
+

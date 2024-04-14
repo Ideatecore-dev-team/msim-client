@@ -5,6 +5,7 @@ function App() {
   return (
     <>
       <Home />
+      <script src="./index.js"></script>;
     </>
   );
 }

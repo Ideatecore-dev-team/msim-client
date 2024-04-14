@@ -6,6 +6,23 @@ export default {
         "hero-bg":
           "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)) ,url('/images/herobg.jpeg')",
       },
+      colors: {
+        'primary-1':'#FEA02F',
+        'primary-2':'#FEB359',
+        'primary-3':'#FEC682',
+        'primary-4':'#FFD9AC',
+        'secondary-1' :'#34BCEE',
+        'secondary-2' :'#FEB359',
+        'secondary-3' :'#FEC682',
+        'secondary-4' :'#FFD9AC',
+        'neutral-1' :'#001125',
+        'neutral-2' :'#334151',
+        'neutral-3' :'#66707C',
+        'neutral-4' :'#99A0A8',
+        'neutral-5' :'#CCCFD3',
+        'neutral-white' :'#FFFFFF',
+        'background' : '#EFEFEF'
+      },
     },
   },
   plugins: [],
