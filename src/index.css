@@ -31,7 +31,7 @@ body {
 }
 
 button {
-  background-color: #FEA02F;
+  background-color: #fea02f;
   border-radius: 8px;
   display: flex;
   padding: 16px 20px;
@@ -42,6 +42,7 @@ button {
 
 .testimoni {
   background: #e4e3ce;
+  height: 586px;
 }
 
 .card {
@@ -185,8 +186,6 @@ h1 {
   transition: 0.5s;
   transform: scaley(0);
   transform-origin: top;
-  
-  
 }
 
 .down:hover + .drop {
@@ -197,4 +196,7 @@ h1 {
   transform: scaleY(1);
 }
 
-
+.mascot {
+  width: 200px;
+  height: 200px;
+}

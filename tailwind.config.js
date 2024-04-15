@@ -4,7 +4,7 @@ export default {
     extend: {
       backgroundImage: {
         "hero-bg":
-          "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)) ,url('/images/herobg.jpeg')",
+          "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)) ,url('/images/StudEx2.png')",
       },
       colors: {
         'primary-1':'#FEA02F',

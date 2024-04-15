@@ -198,11 +198,11 @@ function Navbar() {
             </div>
             {/* ini adalah menu dropdown */}
             <div className=" absolute drop bg-neutral-white w-44">
-              <div className=" w-full h-1/2 border-gray-400 border-y">
-                <p>hsjsksk</p>
+              <div className=" w-full flex justify-center items-center h-1/2 border-gray-400 border-y">
+                <p className="">Skyshare Academy</p>
               </div>
-              <div className=" w-full h-1/2 border-gray-300 border-y">
-                <p>jhdhdj</p>
+              <div className=" w-full h-1/2 flex justify-center items-center border-gray-300 border-y">
+                <p>Mentor Academy</p>
               </div>
             </div>
             {/* end dropdown */}
