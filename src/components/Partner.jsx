@@ -3,9 +3,9 @@ import React from "react";
 function Partner() {
   return (
     <>
-      <div className="partner flex flex-col max-w-3xl mx-auto pb-16">
+      <div className="partner flex flex-col mx-auto pb-16">
         <h1 className=" font-bold text-center">🤗 Our Partner</h1>
-        <div className="partner-list flex items-center gap-10 flex-wrap justify-center">
+        <div className="partner-list  flex items-center gap-10 flex-wrap justify-center">
           <div className="card-partner overflow-hidden rounded-2xl flex justify-center items-center h-full">
             <svg
               width="32"

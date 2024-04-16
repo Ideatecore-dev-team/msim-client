@@ -1,7 +1,4 @@
 import React from "react";
-import Profile1 from "../../public/images/profile1.jpeg";
-import Profile2 from "../../public/images/profile2.jpeg";
-import Profile3 from "../../public/images/profile3.jpeg";
 import Mascot1 from "../../public/images/mascot-icons/pose=4.png";
 
 function Testimoni() {
