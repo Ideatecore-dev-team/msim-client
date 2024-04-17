@@ -50,8 +50,11 @@ button {
 }
 
 .testimoni {
-  background: #e4e3ce;
+  background: #fec682;
   height: 586px;
+}
+.bg-testimoni {
+  background: #fec682;
 }
 
 .card {
@@ -140,6 +143,15 @@ h1 {
   font-style: normal;
   font-weight: 700;
   line-height: 150%; /* 51px */
+}
+
+.card-size {
+  width: 294px;
+  height: 360px;
+}
+.cover-size {
+  width: 760px;
+  height: 394px;
 }
 .headline-3 {
   /* H3 */

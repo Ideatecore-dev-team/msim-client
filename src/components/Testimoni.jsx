@@ -6,8 +6,8 @@ function Testimoni() {
   return (
     <>
       <div className="testimoni flex">
-        <div className="flex w-2/4 border-r-2 border-black bg-orange-200 items-center">
-          <div className="w-96 ml-32">
+        <div className="flex h-3/4 mt-24 w-2/5 border-r-2 border-black items-center">
+          <div className="w-96 -mt-20 ml-32">
             <img className="mascot" src={Mascot1} alt="mascot" />
             <h1 className="headline-2">🔥 Apa Kata Mereka?</h1>
             <p className="paragraph mt-4">
@@ -16,10 +16,10 @@ function Testimoni() {
             </p>
           </div>
         </div>
-        <div className=" w-3/6 bg-orange-200">
+        <div className="  w-3/5">
           <Carousel />
         </div>
-        <div className="bg-orange-200 w-1/5 border-l-2 border-black"></div>
+        <div className=" w-1/12 h-3/4 border-l-2 bg-testimoni border-black mt-24 -ml-20  z-10"></div>
       </div>
     </>
   );
