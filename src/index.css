@@ -70,12 +70,23 @@ button {
 .card-img {
   width: 25rem;
   height: 12.5rem;
-  background: #d9d9d9;
 }
 
 .card-content {
   width: 25rem;
   height: 10.125rem;
+}
+
+.category {
+  background: #ff8d8d;
+}
+
+.category-2 {
+  background: #85d7f5;
+}
+
+.link-txt {
+  color: #fea02f;
 }
 
 p {
@@ -96,13 +107,38 @@ h1 {
   background: #efefef;
 }
 
-.card-partner {
-  background: #d9d9d9;
-  height: 6.25rem;
-  width: 13.75rem;
-}
 .footer-content {
   width: 72.816rem;
+}
+
+.partner3 {
+  padding: 0px 22px 0.55px 23px;
+}
+
+.partner3 img {
+  width: 125px;
+  height: 59.45px;
+  flex-shrink: 0;
+}
+
+.partner2 {
+  padding: 10.533px 12px;
+}
+
+.partner3 img {
+  width: 146px;
+  height: 38.933px;
+  flex-shrink: 0;
+}
+
+.partner1 {
+  padding: 5px 37px 4.525px 37px;
+}
+
+.partner3 img {
+  width: 96px;
+  height: 50.475px;
+  flex-shrink: 0;
 }
 
 .footer-container {
