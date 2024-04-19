@@ -6,31 +6,55 @@ body {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
+.hero {
+  height: 55rem;
+}
+
 .content {
-  margin-top: 23.75rem;
-  margin-right: 47.5rem;
+  height: 31.25rem;
+  gap: 0.625rem;
+  width: 72rem;
+}
+
+.tagline {
+  width: 29.188rem;
 }
 
 .tagline h1 {
-  font-size: 4rem;
-  width: 36.875rem;
-  height: 12.125rem;
+  font-size: 3.125rem;
+  line-height: 150%;
 }
 
 .tagline p {
-  width: 37.5rem;
+  line-height: 150%;
+  font-size: 1rem;
 }
 
 .content button {
   width: 17.25rem;
 }
 
+.nav {
+  width: 1152px;
+  padding: 16px 32px;
+}
+
 button {
-  background-color: #ff985a;
+  background-color: #fea02f;
+  border-radius: 8px;
+  display: flex;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .testimoni {
-  background: #e4e3ce;
+  background: #fec682;
+  height: 586px;
+}
+.bg-testimoni {
+  background: #fec682;
 }
 
 .card {
@@ -46,12 +70,23 @@ button {
 .card-img {
   width: 25rem;
   height: 12.5rem;
-  background: #d9d9d9;
 }
 
 .card-content {
   width: 25rem;
   height: 10.125rem;
+}
+
+.category {
+  background: #ff8d8d;
+}
+
+.category-2 {
+  background: #85d7f5;
+}
+
+.link-txt {
+  color: #fea02f;
 }
 
 p {
@@ -63,30 +98,58 @@ h1 {
   line-height: 150%;
 }
 
+.home-art {
+  background-color: #efefef;
+}
+
 .partner {
   gap: 3.75rem;
-}
-
-.card-partner {
-  background: #d9d9d9;
-  height: 6.25rem;
-  width: 13.75rem;
-}
-
-.footer {
-  background: #ffa34e;
+  background: #efefef;
 }
 
 .footer-content {
-  gap: 7.5rem;
+  width: 72.816rem;
+}
+
+.partner3 {
+  padding: 0px 22px 0.55px 23px;
+}
+
+.partner3 img {
+  width: 125px;
+  height: 59.45px;
+  flex-shrink: 0;
+}
+
+.partner2 {
+  padding: 10.533px 12px;
+}
+
+.partner3 img {
+  width: 146px;
+  height: 38.933px;
+  flex-shrink: 0;
+}
+
+.partner1 {
+  padding: 5px 37px 4.525px 37px;
+}
+
+.partner3 img {
+  width: 96px;
+  height: 50.475px;
+  flex-shrink: 0;
+}
+
+.footer-container {
+  flex: 1 0 0;
 }
 
 .footer-profile {
-  width: 25rem;
+  width: 16.625rem;
 }
 
-.footer-link {
-  gap: 7.5rem;
+.footer-profile h4 {
 }
 
 .comp-name {
@@ -100,4 +163,112 @@ h1 {
 
 .logo-box {
   background: #343434;
+}
+
+.headline-1 {
+  font-family: "Plus Jakarta Sans";
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+}
+.headline-2 {
+  /* H2 */
+  font-family: "Plus Jakarta Sans";
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 51px */
+}
+
+.card-size {
+  width: 294px;
+  height: 360px;
+}
+.cover-size {
+  width: 760px;
+  height: 394px;
+}
+.headline-3 {
+  /* H3 */
+  font-family: "Plus Jakarta Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 30px */
+}
+.headline-4 {
+  /* H4 */
+  font-family: "Plus Jakarta Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 27px */
+}
+.paragraph {
+  /* Paragraph */
+  font-family: "Plus Jakarta Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+}
+
+.alternative-paragraph {
+  /* Alt Paragraph */
+  font-family: "Plus Jakarta Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
+}
+
+.drop:hover .arrow svg {
+  transform: rotate(180deg);
+  transition: transform 0.5s ease;
+}
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* CSS */
+/* CSS */
+.Our-program p:hover + .arrow svg {
+  transform: rotate(180deg);
+  transition: transform 0.5s ease;
+}
+
+.arrow svg {
+  transition: transform 0.5s ease;
+}
+
+.drop {
+  height: 8rem;
+  width: 11rem;
+  margin-top: 13.5rem;
+  margin-left: 5.5rem;
+  transition: 0.5s;
+  transform: scaley(0);
+  transform-origin: top;
+}
+
+.down:hover + .drop {
+  height: 8rem;
+  width: 11rem;
+  margin-top: 13.5rem;
+  margin-left: 5.5rem;
+  transform: scaleY(1);
+}
+
+.drop:hover {
+  transform: scaleY(1);
+}
+.drop:hover + .arrow svg {
+  transform: rotate(180deg);
+  transition: transform 0.5s ease;
+}
+
+.mascot {
+  width: 200px;
+  height: 200px;
 }
