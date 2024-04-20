@@ -1,0 +1,47 @@
+.art-header {
+  gap: 17.25rem;
+}
+
+.blankspace {
+  height: 1.659rem;
+  width: 10.653rem;
+}
+.card {
+  height: 28.125rem;
+  width: 25rem;
+}
+
+.card-art {
+  width: 23rem;
+  height: 30rem;
+  border: 1px solid var(--Neutral-1, #001125);
+  box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.card-img {
+  height: 12.5rem;
+}
+
+.card-content {
+  height: 10.125rem;
+}
+
+.category {
+  background: #ff8d8d;
+}
+
+.category-2 {
+  background: #85d7f5;
+}
+
+.link-txt {
+  color: #fea02f;
+}
+
+.link-txt:hover {
+  color: #ffd9ac;
+}
+
+.link-txt:hover svg path {
+  fill: #ffd9ac;
+}
