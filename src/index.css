@@ -109,9 +109,6 @@ h1 {
   width: 16.625rem;
 }
 
-.footer-profile h4 {
-}
-
 .comp-name {
   height: 6.125rem;
 }
@@ -191,9 +188,12 @@ h1 {
   transform: rotate(180deg);
 }
 
-/* CSS */
-/* CSS */
-.Our-program p:hover + .arrow svg {
+
+.Our-program:hover  .arrow svg {
+  transform: rotate(180deg);
+  transition: transform 0.5s ease;
+}
+.Our-program .drop:hover > .arrow svg {
   transform: rotate(180deg);
   transition: transform 0.5s ease;
 }
@@ -203,20 +203,16 @@ h1 {
 }
 
 .drop {
-  height: 8rem;
+  height: 9rem;
   width: 11rem;
-  margin-top: 13.5rem;
-  margin-left: 5.5rem;
+  margin-top: 1.4rem;
+  margin-left: -1.4rem;
   transition: 0.5s;
   transform: scaley(0);
   transform-origin: top;
 }
 
-.down:hover + .drop {
-  height: 8rem;
-  width: 11rem;
-  margin-top: 13.5rem;
-  margin-left: 5.5rem;
+.down:hover .drop {
   transform: scaleY(1);
 }
 
@@ -232,3 +228,37 @@ h1 {
   width: 200px;
   height: 200px;
 }
+.slash {
+  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+  transform: rotate(170deg);
+}
+.slash1 {
+  transform: rotate(170deg);
+  margin-top: -1.1rem;
+}
+.slash2 {
+  transform: rotate(187deg);
+  margin-right: 0.7rem;
+  margin-top: 0.4rem;
+}
+.slash3 {
+  transform: rotate(187deg);
+  margin-left: 0.2rem;
+  margin-top: 0.6rem;
+}
+.slash4 {
+  transform: rotate(174deg);
+  margin-right: 0.8rem;
+  margin-top: -1rem;
+}
+.width {
+  width: 45.5rem;
+  margin-top: 6.7rem;
+}
+.width2 {
+  width: 45.5rem;
+  margin-top: 3.8rem;
+}
+
+
