@@ -2,7 +2,7 @@ import React from "react";
 import logoPlaceholder from "../../public/images/logo placeholder.png";
 import Mascot from "../../public/images/mascot-icons/pose=9.png";
 import SecondaryButton from "./SecondayButton";
-
+// test conflict
 function Footer() {
   return (
     <>
