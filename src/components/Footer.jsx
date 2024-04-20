@@ -1,4 +1,5 @@
 import React from "react";
+import logoPlaceholder from "../../public/images/logo placeholder.png";
 
 function Footer() {
   return (
@@ -9,7 +10,7 @@ function Footer() {
             <div className="logo flex flex-col items-start">
               <div className="logo-placeholder w-44 h-14">
                 <img
-                  src="../../public/images/logo placeholder.png"
+                  src={logoPlaceholder}
                   alt="logo"
                 />
               </div>
