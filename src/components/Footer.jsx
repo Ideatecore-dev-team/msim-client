@@ -1,5 +1,6 @@
 import React from "react";
 import logoPlaceholder from "../../public/images/logo placeholder.png";
+import Mascot from "../../public/images/mascot-icons/pose=9.png";
 
 function Footer() {
   return (
@@ -81,7 +82,7 @@ function Footer() {
           <div className="footer-mascot flex flex-col items-start gap-4 w-72">
             <div className="mascot-footer flex size-64 mx-auto content-center items-center">
               <img
-                src="../../public/images/mascot-icons/pose=9.png"
+                src={Mascot}
                 alt="mascot"
               />
             </div>
