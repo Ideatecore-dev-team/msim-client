@@ -6,47 +6,39 @@ body {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-.hero {
-  height: 55rem;
-}
-
-.content {
-  height: 31.25rem;
-  gap: 0.625rem;
-  width: 72rem;
-}
-
-.tagline {
-  width: 29.188rem;
-}
-
-.tagline h1 {
-  font-size: 3.125rem;
-  line-height: 150%;
-}
-
-.tagline p {
-  line-height: 150%;
-  font-size: 1rem;
-}
-
-.content button {
-  width: 17.25rem;
-}
-
 .nav {
   width: 1152px;
   padding: 16px 32px;
 }
 
-button {
-  background-color: #fea02f;
+.button {
+  background: #fea02f;
   border-radius: 8px;
   display: flex;
-  padding: 16px 20px;
   justify-content: center;
   align-items: center;
   gap: 8px;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.25);
+}
+
+.button:hover {
+  background: #feb359;
+}
+
+.sec-btn {
+  border-radius: 16px;
+  border: 1px solid black;
+  background: white;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.25);
+}
+
+.sec-btn:hover {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  color: #66707c;
+}
+
+.btn-txt {
+  transform: rotate(0.148deg);
 }
 
 .testimoni {
@@ -55,38 +47,6 @@ button {
 }
 .bg-testimoni {
   background: #fec682;
-}
-
-.card {
-  height: 28.125rem;
-  width: 25rem;
-}
-
-.card-art {
-  height: 28.125rem;
-  border: 1px solid #000;
-}
-
-.card-img {
-  width: 25rem;
-  height: 12.5rem;
-}
-
-.card-content {
-  width: 25rem;
-  height: 10.125rem;
-}
-
-.category {
-  background: #ff8d8d;
-}
-
-.category-2 {
-  background: #85d7f5;
-}
-
-.link-txt {
-  color: #fea02f;
 }
 
 p {
@@ -147,9 +107,6 @@ h1 {
 
 .footer-profile {
   width: 16.625rem;
-}
-
-.footer-profile h4 {
 }
 
 .comp-name {
@@ -231,9 +188,12 @@ h1 {
   transform: rotate(180deg);
 }
 
-/* CSS */
-/* CSS */
-.Our-program p:hover + .arrow svg {
+
+.Our-program:hover  .arrow svg {
+  transform: rotate(180deg);
+  transition: transform 0.5s ease;
+}
+.Our-program .drop:hover > .arrow svg {
   transform: rotate(180deg);
   transition: transform 0.5s ease;
 }
@@ -243,20 +203,16 @@ h1 {
 }
 
 .drop {
-  height: 8rem;
+  height: 9rem;
   width: 11rem;
-  margin-top: 13.5rem;
-  margin-left: 5.5rem;
+  margin-top: 1.4rem;
+  margin-left: -1.4rem;
   transition: 0.5s;
   transform: scaley(0);
   transform-origin: top;
 }
 
-.down:hover + .drop {
-  height: 8rem;
-  width: 11rem;
-  margin-top: 13.5rem;
-  margin-left: 5.5rem;
+.down:hover .drop {
   transform: scaleY(1);
 }
 
@@ -272,3 +228,37 @@ h1 {
   width: 200px;
   height: 200px;
 }
+.slash {
+  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+  transform: rotate(170deg);
+}
+.slash1 {
+  transform: rotate(170deg);
+  margin-top: -1.1rem;
+}
+.slash2 {
+  transform: rotate(187deg);
+  margin-right: 0.7rem;
+  margin-top: 0.4rem;
+}
+.slash3 {
+  transform: rotate(187deg);
+  margin-left: 0.2rem;
+  margin-top: 0.6rem;
+}
+.slash4 {
+  transform: rotate(174deg);
+  margin-right: 0.8rem;
+  margin-top: -1rem;
+}
+.width {
+  width: 45.5rem;
+  margin-top: 6.7rem;
+}
+.width2 {
+  width: 45.5rem;
+  margin-top: 3.8rem;
+}
+
+

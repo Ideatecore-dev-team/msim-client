@@ -1,17 +1,49 @@
 import React from "react";
-// import Button from "./Button";
+import "./HomeArticle.css";
+import Button from "./Button";
 
 function HomeArticle() {
   return (
     <>
-      <div className="home-art">
-        <h2 className="text-center pt-20 font-bold text-3xl w-full pb-20">
-          🗞️ Artikel Terbaru
-        </h2>
-        <div className="article flex justify-center  mx-auto flex-wrap gap-10 pb-20">
-          <div className="card-art bg-white rounded-2xl pb-16 gap-6 flex flex-col overflow-hidden">
+      <div className="home-art ">
+        <div className="art-header pb-12 pt-20 flex max-w-6xl mx-auto content-center items-center">
+          <div className="blankspace"></div>
+          <h2 className="text-center font-bold text-3xl">🗞️ Artikel Terbaru</h2>
+          <Button onClick={() => console.log("Button clicked")} className="">
+            View More
+            <svg
+              width="24"
+              height="25"
+              viewBox="0 0 24 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className=" inline ml-2"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M20.749 13.3037L3.24926 13.3037L3.24926 11.8037L20.749 11.8037L20.749 13.3037Z"
+                fill="white"
+              />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M19.9994 11.8037C16.4718 11.8037 13.5894 14.9059 13.5894 18.2138L13.5894 18.9638L15.0894 18.9638L15.0894 18.2138C15.0894 15.7022 17.332 13.3037 19.9994 13.3037L20.7494 13.3037L20.7494 11.8037L19.9994 11.8037Z"
+                fill="white"
+              />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M19.9994 13.3037C16.4718 13.3037 13.5894 10.2016 13.5894 6.89366L13.5894 6.14366L15.0894 6.14366L15.0894 6.89366C15.0894 9.40524 17.332 11.8037 19.9994 11.8037L20.7494 11.8037L20.7494 13.3037L19.9994 13.3037Z"
+                fill="white"
+              />
+            </svg>
+          </Button>
+        </div>
+        <div className="article max-w-6xl flex justify-center mx-auto flex-wrap gap-6 pb-20">
+          <div className="card-art bg-white rounded-2xl pb-8 gap-6 flex flex-col overflow-hidden">
             <div className="card-img bg-card-bg-1 bg-cover"></div>
-            <div className="card-content  flex py-6 flex-col gap-4 px-6">
+            <div className="card-content flex px-6 flex-col gap-4">
               <p className=" font-bold text-base ">
                 Bagaimana Mentorship Membakar Inovasi
               </p>
@@ -23,8 +55,8 @@ function HomeArticle() {
                 <div className="text-white category flex px-4 py-1 content-center items-center gap-3 rounded-3xl">
                   <p className=" font-normal text-xs">Mentorship</p>
                 </div>
-                <a href="/article" className="flex items-start gap-1">
-                  <span className="link-txt text-base">Baca Selengkapnya</span>
+                <a href="/article" className="link-txt flex items-start gap-1">
+                  <span className="text-base">Baca Selengkapnya</span>
                   <svg
                     className=" size-6"
                     width="25"
@@ -56,9 +88,9 @@ function HomeArticle() {
               </div>
             </div>
           </div>
-          <div className="card-art bg-white rounded-2xl pb-16 gap-6 flex flex-col overflow-hidden">
+          <div className="card-art bg-white rounded-2xl pb-8 gap-6 flex flex-col overflow-hidden">
             <div className="card-img bg-card-bg-2 bg-cover"></div>
-            <div className="card-content flex py-6 flex-col gap-4 px-6">
+            <div className="card-content flex px-6 flex-col gap-4">
               <p className=" font-bold text-base ">
                 Mentoring untuk Kewirausahaan Perempuan
               </p>
@@ -70,8 +102,8 @@ function HomeArticle() {
                 <div className="text-white category flex px-4 py-1 content-center items-center gap-3 rounded-3xl">
                   <p className=" font-normal text-xs">Mentorship</p>
                 </div>
-                <a href="/article" className="flex items-start gap-1">
-                  <span className="link-txt text-base">Baca Selengkapnya</span>
+                <a href="/article" className="link-txt flex items-start gap-1">
+                  <span className="text-base">Baca Selengkapnya</span>
                   <svg
                     className=" size-6"
                     width="25"
@@ -103,9 +135,9 @@ function HomeArticle() {
               </div>
             </div>
           </div>
-          <div className="card-art bg-white rounded-2xl pb-16 gap-6 flex flex-col overflow-hidden">
+          <div className="card-art bg-white rounded-2xl pb-8 gap-6 flex flex-col overflow-hidden">
             <div className="card-img bg-card-bg-3 bg-cover"></div>
-            <div className="card-content flex py-6 flex-col gap-4 px-6">
+            <div className="card-content flex px-6 flex-col gap-4">
               <p className=" font-bold text-base ">
                 Program Mentorship Siswa Sukses
               </p>
@@ -118,8 +150,8 @@ function HomeArticle() {
                 <div className="text-white category-2 flex px-4 py-1 content-center items-center gap-3 rounded-3xl">
                   <p className=" font-normal text-xs">Pelajar</p>
                 </div>
-                <a href="/article" className="flex items-start gap-1">
-                  <span className="link-txt text-base">Baca Selengkapnya</span>
+                <a href="/article" className="link-txt flex items-start gap-1">
+                  <span className="text-base">Baca Selengkapnya</span>
                   <svg
                     className=" size-6"
                     width="25"
@@ -152,24 +184,6 @@ function HomeArticle() {
             </div>
           </div>
         </div>
-        {/* <Button onClick={() => console.log("Button clicked")} className="">
-          View More
-          <svg
-            className=" inline align-middle pb-1 ml-1"
-            id="Arrow - Right"
-            width="24"
-            height="24"
-            viewBox="0 0 26 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M13.4885 4.56152L12.0775 5.97852L17.1205 10.9995H3.5415V12.9995H17.1195L12.0775 18.0215L13.4885 19.4385L20.9585 11.9995L13.4885 4.56152Z"
-              fill="white"
-            />
-          </svg>
-        </Button> */}
       </div>
     </>
   );

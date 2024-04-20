@@ -1,18 +1,17 @@
 import React from "react";
 import logoPlaceholder from "../../public/images/logo placeholder.png";
-
+import Mascot from "../../public/images/mascot-icons/pose=9.png";
+import SecondaryButton from "./SecondayButton";
+// test conflict
 function Footer() {
   return (
     <>
-      <div className="footer bottom-0 left-0 w-full py-24 flex flex-col text-xl font-normal mx-auto items-center">
+      <div className="footer max-w-6xl bottom-0 left-0 w-full py-24 flex flex-col text-xl font-normal mx-auto items-center">
         <div className="footer-content flex items-end content-between">
           <div className="footer-container flex flex-col items-start gap-16">
             <div className="logo flex flex-col items-start">
               <div className="logo-placeholder w-44 h-14">
-                <img
-                  src={logoPlaceholder}
-                  alt="logo"
-                />
+                <img src={logoPlaceholder} alt="logo" />
               </div>
               <p className="text-sm font-medium	">
                 Build up your mentoring with us.
@@ -33,11 +32,15 @@ function Footer() {
               </div>
               <div className="footer-link flex flex-col gap-6">
                 <p className="font-bold">Company</p>
-                <a href="#">About</a>
-                <a href="#">Our Program</a>
+                <SecondaryButton to="/aboutus">About Us</SecondaryButton>
+                <SecondaryButton to="/article">Article</SecondaryButton>
+                <SecondaryButton to="/ourprogram">Our Program</SecondaryButton>
+                <SecondaryButton to="/contactus">Contact Us</SecondaryButton>
+
+                {/* <a href="#">Our Program</a>
                 <a href="#">Article</a>
                 <a href="#">Contact Us</a>
-                <a href="#">Join</a>
+                <a href="#">Join</a> */}
               </div>
               <div className="footer-social flex flex-col items-start gap-6">
                 <p className="font-bold">Social Media</p>
@@ -80,10 +83,7 @@ function Footer() {
           </div>
           <div className="footer-mascot flex flex-col items-start gap-4 w-72">
             <div className="mascot-footer flex size-64 mx-auto content-center items-center">
-              <img
-                src="../../public/images/mascot-icons/pose=9.png"
-                alt="mascot"
-              />
+              <img src={Mascot} alt="mascot" />
             </div>
             <p className=" text-base font-normal text-center self-stretch">
               😴 Berkembang seorang diri itu melelahkan.
