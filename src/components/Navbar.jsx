@@ -172,7 +172,7 @@ function Navbar() {
                 href="#"
               >
                 <p>Our Program</p>
-                <div className=" arrow transform rotate-180 duration-500">
+                <div className=" arrow duration-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"
