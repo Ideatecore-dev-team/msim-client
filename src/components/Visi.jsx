@@ -5,7 +5,7 @@ function Visi() {
     <>
       <div className="hero bg-gray-200 flex flex-col items-center self-stretch">
         <div className="content h-1/3 flex justify-center flex-wrap">
-          <div className="w-2/3 h-2/3 mt-20 bg-slate-200">
+          <div className="w-full h-2/3 mt-20 bg-slate-200">
             <h1 className="healine1 text-center text-black font-bold mb-10">
               ⭐ Visi
             </h1>
