@@ -163,7 +163,7 @@ function Navbar() {
             </a>
           </div>
           <div className="flex items-center gap-10 -mr-40">
-            <a className="text-slate-500 hover:text-black" href="#">
+            <a className="text-slate-500 hover:text-black" href="/aboutus">
               About us
             </a>
             <div className="flex down  gap-2 Our-program">
