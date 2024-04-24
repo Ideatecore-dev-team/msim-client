@@ -169,7 +169,7 @@ function Navbar() {
             <div className="flex down  gap-2 Our-program">
               <a
                 className=" text-slate-500 hover:text-black  flex gap-2 "
-                href="#"
+                href="/ourprogram"
               >
                 <p>Our Program</p>
                 <div className=" arrow duration-500">
@@ -205,7 +205,10 @@ function Navbar() {
               <div className=" absolute drop bg-neutral-white w-44">
                 <div className=" w-full flex justify-center items-center h-1/5 "></div>
                 <div className=" w-full flex mt-1 justify-center items-center h-14 border-gray-400 border-t">
-                  <a className="text-slate-500 hover:text-black" href="">
+                  <a
+                    className="text-slate-500 hover:text-black"
+                    href="/ourprogram/skyshare"
+                  >
                     <p className="">Skyshare Academy</p>
                   </a>
                 </div>

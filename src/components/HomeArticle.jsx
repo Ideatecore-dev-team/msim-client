@@ -55,7 +55,7 @@ function HomeArticle() {
                 <div className="text-white category flex px-4 py-1 content-center items-center gap-3 rounded-3xl">
                   <p className=" font-normal text-xs">Mentorship</p>
                 </div>
-                <a href="/article" className="link-txt flex items-start gap-1">
+                <a href="#" className="link-txt flex items-start gap-1">
                   <span className="text-base">Baca Selengkapnya</span>
                   <svg
                     className=" size-6"
@@ -102,7 +102,7 @@ function HomeArticle() {
                 <div className="text-white category flex px-4 py-1 content-center items-center gap-3 rounded-3xl">
                   <p className=" font-normal text-xs">Mentorship</p>
                 </div>
-                <a href="/article" className="link-txt flex items-start gap-1">
+                <a href="#" className="link-txt flex items-start gap-1">
                   <span className="text-base">Baca Selengkapnya</span>
                   <svg
                     className=" size-6"
@@ -150,7 +150,7 @@ function HomeArticle() {
                 <div className="text-white category-2 flex px-4 py-1 content-center items-center gap-3 rounded-3xl">
                   <p className=" font-normal text-xs">Pelajar</p>
                 </div>
-                <a href="/article" className="link-txt flex items-start gap-1">
+                <a href="#" className="link-txt flex items-start gap-1">
                   <span className="text-base">Baca Selengkapnya</span>
                   <svg
                     className=" size-6"
