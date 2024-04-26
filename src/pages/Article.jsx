@@ -5,7 +5,7 @@ import SearchbarArticle from "../components/SearcbarArticle";
 function Article() {
     return (
     <>
-        <div className="Article">
+        <div className="home">
             <SearchbarArticle />
         </div>
     </>

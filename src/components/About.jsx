@@ -8,7 +8,7 @@ function About() {
         <div className="content h-full flex justify-center flex-wrap">
           <div className=" w-full">
             <h1 className="healine1 text-center text-black font-bold mb-10">
-              🧑‍🚀 About
+              About
             </h1>
             <div className=" flex gap-4">
               <div className=" w-2/3">

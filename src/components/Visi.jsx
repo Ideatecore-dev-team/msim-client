@@ -7,7 +7,7 @@ function Visi() {
         <div className="content h-1/3 flex justify-center flex-wrap">
           <div className="w-full h-2/3 mt-20 bg-slate-200">
             <h1 className="healine1 text-center text-black font-bold mb-10">
-              ⭐ Visi
+              Visi
             </h1>
             <p className="paragraph text-center">
               Kami memiliki visi untuk menjadi pusat unggulan dalam pembinaan

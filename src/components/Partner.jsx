@@ -8,7 +8,7 @@ function Partner() {
     <>
       <div className="partner flex flex-col mx-auto pb-24">
         <div className="partner-container flex flex-col items-center gap-12">
-          <h2 className=" font-bold text-3xl text-center">🤗 Our Partner</h2>
+          <h2 className=" font-bold text-3xl text-center">Our Partner</h2>
           <div className="partner-list flex items-start gap-6">
             <div className="partner1 flex w-44 h-16 content-center items-center">
               <img src={Partner1} alt="partnerlogo" />

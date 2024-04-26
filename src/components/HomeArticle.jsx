@@ -23,7 +23,7 @@ function HomeArticle() {
       <div className="home-art ">
         <div className="art-header pb-12 pt-20 flex max-w-6xl mx-auto content-center items-center">
           <div className="blankspace"></div>
-          <h2 className="text-center font-bold text-3xl">🗞️ Artikel Terbaru</h2>
+          <h2 className="text-center font-bold text-3xl">Artikel Terbaru</h2>
           <Button onClick={() => console.log("Button clicked")} className="">
             View More
             <svg

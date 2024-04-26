@@ -221,7 +221,7 @@ function Navbar() {
               {/* end dropdown */}
             </div>
 
-            <a className="text-slate-500 hover:text-black" href="#">
+            <a className="text-slate-500 hover:text-black" href="/article">
               Article
             </a>
             <Button onClick={() => console.log("JOIN #SEASON6 clicked")}>

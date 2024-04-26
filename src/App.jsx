@@ -21,7 +21,7 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/ourprogram" element={<OurProgram />} />
         <Route path="/ourprogram/skyshare" element={<Skyshare />} />
-        <Route path="/Article" element={<Article />} />
+        <Route path="/article" element={<Article />} />
         {/* Tambahkan rute-rute tambahan di sini */}
       </Routes>
       <Footer />
