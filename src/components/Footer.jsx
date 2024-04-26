@@ -86,7 +86,7 @@ function Footer() {
               <img src={Mascot} alt="mascot" />
             </div>
             <p className=" text-base font-normal text-center self-stretch">
-              😴 Berkembang seorang diri itu melelahkan.
+              Berkembang seorang diri itu melelahkan.
             </p>
           </div>
         </div>
