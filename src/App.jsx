@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import OurProgram from "./pages/OurProgram";
 import Skyshare from "./pages/Skyshare";
+import Mentor from "./pages/Mentor";
 import Article from "./pages/Article";
 import { Helmet } from "react-helmet";
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/ourprogram" element={<OurProgram />} />
         <Route path="/ourprogram/skyshare" element={<Skyshare />} />
+        <Route path="/ourprogram/mentor" element={<Mentor />} />
         <Route path="/article" element={<Article />} />
         {/* Tambahkan rute-rute tambahan di sini */}
       </Routes>

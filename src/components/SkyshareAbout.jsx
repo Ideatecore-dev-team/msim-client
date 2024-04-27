@@ -3,7 +3,7 @@ import React from "react";
 function Skyshareabout() {
   return (
     <>
-      <div className="hero bg-gray-200 flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
+      <div className="hero bg-background flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
         <div className="content h-56 flex justify-center items-end">
           <div className="w-2/3 h-full text-center">
             <h2 className="headline-2 mb-6">About</h2>
