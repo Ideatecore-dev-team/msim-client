@@ -20,10 +20,11 @@ function HomeArticle() {
   const sortArticles = [...articles].sort((a, b) => b.id - a.id);
   return (
     <>
-      <div className="home-art ">
+      <div className="home-art">
         <div className="art-header pb-12 pt-20 flex max-w-6xl mx-auto content-center items-center">
           <div className="blankspace"></div>
           <h2 className="text-center font-bold text-3xl">Artikel Terbaru</h2>
+            <a href="/article">
           <Button onClick={() => console.log("Button clicked")} className="">
             View More
             <svg
@@ -33,27 +34,28 @@ function HomeArticle() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className=" inline ml-2"
-            >
+              >
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M20.749 13.3037L3.24926 13.3037L3.24926 11.8037L20.749 11.8037L20.749 13.3037Z"
                 fill="white"
-              />
+                />
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M19.9994 11.8037C16.4718 11.8037 13.5894 14.9059 13.5894 18.2138L13.5894 18.9638L15.0894 18.9638L15.0894 18.2138C15.0894 15.7022 17.332 13.3037 19.9994 13.3037L20.7494 13.3037L20.7494 11.8037L19.9994 11.8037Z"
                 fill="white"
-              />
+                />
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M19.9994 13.3037C16.4718 13.3037 13.5894 10.2016 13.5894 6.89366L13.5894 6.14366L15.0894 6.14366L15.0894 6.89366C15.0894 9.40524 17.332 11.8037 19.9994 11.8037L20.7494 11.8037L20.7494 13.3037L19.9994 13.3037Z"
                 fill="white"
-              />
+                />
             </svg>
           </Button>
+          </a>
         </div>
         <div className="article max-w-6xl flex justify-center mx-auto flex-wrap gap-6 pb-20">
           {sortArticles.slice(0, 3).map((article) => {

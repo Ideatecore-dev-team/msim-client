@@ -10,7 +10,7 @@ function OurProgramHero() {
             <div className="flex justify-center">
               <img className="w-56" src={SkyshareLogo} alt="" />
             </div>
-            <h1 className="headline-1 text-center mb-4">Skyshare Academy</h1>
+            <h1 className=" text-white headline-1 text-center mb-4">Skyshare Academy</h1>
             <p className="paragraph text-center mb-3">
               Skyshare Academy merupakan program ekskul kelas karakter minat dan
               bakat

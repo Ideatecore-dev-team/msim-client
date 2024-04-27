@@ -6,11 +6,11 @@ import Icon3 from "../../public/images/mascot-icons/circle.png";
 function Misi() {
   return (
     <>
-      <div className="hero flex bg-gray-200 flex-col items-center self-stretch">
+      <div className="hero flex background flex-col items-center self-stretch">
         <div className="content h-full flex justify-center flex-wrap">
           <div className="w-full mt-24 pb-10 ">
             <h1 className="healine1 text-center text-black font-bold mb-10">
-              🚀 Misi
+              Misi
             </h1>
             <div className=" w-full flex gap-4 mb-10">
               <img className=" w-16 h-16" src={Icon3} alt="icon" />

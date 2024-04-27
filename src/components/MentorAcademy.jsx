@@ -11,7 +11,7 @@ function MentorAcademy() {
             <div className="flex justify-center">
               <img className="w-56" src={MentorLogo} alt="" />
             </div>
-            <h1 className="headline-1 text-center mb-4">Mentor Academy</h1>
+            <h1 className=" text-white headline-1 text-center mb-4">Mentor Academy</h1>
             <p className="paragraph text-center mb-3">
               Mentor Academy merupakan program lanjutan dari Skyshare Academy
             </p>

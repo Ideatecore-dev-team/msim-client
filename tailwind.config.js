@@ -29,7 +29,7 @@ export default {
         "neutral-4": "#99A0A8",
         "neutral-5": "#CCCFD3",
         "neutral-white": "#FFFFFF",
-        background: "#EFEFEF",
+        // "background": "#EFEFEF",
       },
     },
   },

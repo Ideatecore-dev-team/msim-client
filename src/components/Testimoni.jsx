@@ -14,7 +14,7 @@ function Testimoni() {
                 src={Mascot1}
                 alt="mascot"
               />
-              <h1 className="headline-2">🔥 Apa Kata Mereka?</h1>
+              <h1 className="headline-2">Apa Kata Mereka?</h1>
               <p className="paragraph mt-4">
                 Simakk Yukk apa kata para alumni & orang tua pelajar tentang
                 program dari MSiM!
