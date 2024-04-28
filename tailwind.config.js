@@ -15,6 +15,8 @@ export default {
           "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/cardbg3.jpeg')",
         "orange-bg":
           "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/background/Benefit Section.png')",
+        "blue-bg":
+          "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/background/Biru Benefit Section.png')",
       },
       colors: {
         "primary-1": "#FEA02F",

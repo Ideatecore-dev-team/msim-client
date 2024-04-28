@@ -5,6 +5,7 @@ import BenefitSkyshare from "../components/BenefitSkyshare";
 import AlurAcara from "../components/AlurAcara";
 import TimelineSkyshare from "../components/TimelineSkyshare";
 import CurrentGroupSkyshare from "../components/CurrentGroupSkyshare";
+import AllActivitiesSkyShare from "../components/AllActivitiesSkyShare";
 
 function Skyshare() {
   return (
@@ -16,6 +17,7 @@ function Skyshare() {
         <AlurAcara />
         <TimelineSkyshare />
         <CurrentGroupSkyshare />
+        <AllActivitiesSkyShare />
       </div>
     </>
   );
