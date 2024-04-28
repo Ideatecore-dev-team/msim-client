@@ -12,7 +12,7 @@ function Carousel() {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2.3,
+    slidesToShow: 2.2,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 1500,
@@ -32,7 +32,11 @@ function Carousel() {
             <div className=" m-auto mt-40 ">
               <div className="bg-white rounded-xl card-size border-gray-900 border-2 shadow-md">
                 <div className="rounded-full w-16 h-16 -mt-9 ml-5">
-                  <img className="w-16 h-16" src={Mascot2} alt="" />
+                  <img
+                    className="w-16 h-16 border-2 border-black rounded-full"
+                    src={Mascot2}
+                    alt=""
+                  />
                 </div>
                 <div className="">
                   <h4 className="headline-4 ml-6 mt-3">
@@ -41,7 +45,7 @@ function Carousel() {
                   <p className="paragraph mx-6 pb-4 border-b border-black">
                     Member group of New Orbit
                   </p>
-                  <p className="paragraph ml-6">
+                  <p className="paragraph mx-5">
                     “Aku sangat senang, seru banget bisa kenal sama kakak-kakak
                     di Skyshare Academy dan dapet mentor yang alhamdulillah
                     cocok dan bisa main bareng teman-teman sefrekuensi, nambah
@@ -53,7 +57,11 @@ function Carousel() {
             <div className="m-auto mt-40">
               <div className="bg-white card-size rounded-xl border-gray-900 border-2 shadow-md">
                 <div className="rounded-full w-16 h-16 -mt-9 ml-5">
-                  <img className="w-16 h-16" src={Mascot4} alt="" />
+                  <img
+                    className="w-16 h-16 border-2 border-black rounded-full"
+                    src={Mascot4}
+                    alt=""
+                  />
                 </div>
                 <div className="">
                   <h4 className="headline-4 ml-6 mt-3">
@@ -62,7 +70,7 @@ function Carousel() {
                   <p className="paragraph mx-6 pb-4 border-b border-black">
                     Orang tua dari Ananda Mecca
                   </p>
-                  <p className="paragraph ml-6">
+                  <p className="paragraph text-justify mx-5">
                     ”Percaya banget deh pokoknya sama Skyshare Academy”
                   </p>
                 </div>
@@ -71,7 +79,11 @@ function Carousel() {
             <div className="m-auto mt-40">
               <div className="bg-white card-size rounded-xl border-gray-900 border-2 shadow-md">
                 <div className="rounded-full w-16 h-16 -mt-9 ml-5">
-                  <img className="w-16 h-16" src={Mascot3} alt="" />
+                  <img
+                    className="w-16 h-16 border-2 border-black rounded-full"
+                    src={Mascot3}
+                    alt=""
+                  />
                 </div>
                 <div className="">
                   <h4 className="headline-4 ml-6 mt-3">
@@ -80,12 +92,12 @@ function Carousel() {
                   <p className="paragraph mx-6 pb-4 border-b border-black">
                     Member group of Legacy
                   </p>
-                  <p className="paragraph ml-6">
+                  <p className="paragraph text-left mx-5">
                     “Setelah mengikuti MSIM Mentoring Consulting terutama
                     program Skyshare Academy saya merasa memiliki teman yang
                     satu frekuensi. Teman-teman di group bukan hanya menjadi
                     partner untuk saling berbagi cerita namun juga sebagai
-                    penjaga keimanan serta kesadaran saya sebagai manusia. ”
+                    penjaga keimanan serta kesadaran saya sebagai manusia.”
                   </p>
                 </div>
               </div>

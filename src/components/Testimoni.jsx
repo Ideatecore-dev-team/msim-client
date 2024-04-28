@@ -5,7 +5,7 @@ import Carousel from "./Carousel";
 function Testimoni() {
   return (
     <>
-      <div className="testimoni flex justify-center">
+      <div className="testimoni bg-orange-bg bg-cover border-y-2 border-black flex justify-center">
         <div className="flex max-w-6xl">
           <div className="flex  h-3/4 mt-24 w-2/5 border-r-2 border-black items-center">
             <div className="w-96 -mt-20">
@@ -24,7 +24,7 @@ function Testimoni() {
           <div className="   w-3/5">
             <Carousel />
           </div>
-          <div className=" w-1/12 h-3/4 border-l-2 bg-testimoni border-black mt-24 ml-1  z-10"></div>
+          <div className=" w-1/12 h-3/4 border-l-2 border-black mt-24 ml-1  z-10"></div>
         </div>
       </div>
     </>

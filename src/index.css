@@ -42,7 +42,6 @@ body {
 }
 
 .testimoni {
-  background: #fec682;
   height: 586px;
 }
 .bg-testimoni {
@@ -62,7 +61,7 @@ h1 {
   background-color: #efefef;
 }
 
-.background{
+.background {
   background-color: #efefef;
 }
 .partner {
@@ -143,7 +142,7 @@ h1 {
 
 .card-size {
   width: 294px;
-  height: 360px;
+  height: 380px;
 }
 .cover-size {
   width: 760px;
@@ -191,8 +190,7 @@ h1 {
   transform: rotate(180deg);
 }
 
-
-.Our-program:hover  .arrow svg {
+.Our-program:hover .arrow svg {
   transform: rotate(180deg);
   transition: transform 0.5s ease;
 }
@@ -263,5 +261,3 @@ h1 {
   width: 45.5rem;
   margin-top: 3.8rem;
 }
-
-

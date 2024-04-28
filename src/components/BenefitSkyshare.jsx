@@ -5,7 +5,7 @@ import Icon1 from "../../public/images/mascot-icons/circle.png";
 function BenefitSkyshare() {
   return (
     <>
-      <div className="hero bg-orange-300 border-t border-black flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
+      <div className="hero bg-orange-bg bg-cover border-t-2 border-black flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
         <div className="content -mt-10">
           <div className="flex justify-center">
             <div className=" h-14 gap-3 flex items-center">
@@ -14,7 +14,7 @@ function BenefitSkyshare() {
             </div>
           </div>
           <div className=" w-full h-auto">
-            <div className="flex justify-around mt-16">
+            <div className="flex justify-center gap-6 mt-16">
               <div className=" w-80 h-96 rounded-xl border-black border-2 shadow-md bg-white">
                 <div className="flex justify-center">
                   <img className=" w-16 -mt-8" src={Icon1} alt="" />
