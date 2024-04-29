@@ -142,7 +142,12 @@ h1 {
 
 .card-size {
   width: 294px;
-  height: 400px;
+  height: 380px;
+}
+
+.card-size1 {
+  width: 294px;
+  height: 395px;
 }
 .cover-size {
   width: 760px;
@@ -255,9 +260,9 @@ h1 {
 }
 .width {
   width: 45.5rem;
-  margin-top: 6.7rem;
+  margin-top: 7.5rem;
 }
 .width2 {
   width: 45.5rem;
-  margin-top: 3.8rem;
+  margin-top: 4.7rem;
 }

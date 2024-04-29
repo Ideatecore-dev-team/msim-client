@@ -41,12 +41,13 @@ function BenefitMentor() {
                   <img className=" w-16 -mt-8" src={Icon1} alt="" />
                 </div>
                 <div className="flex mt-5 justify-center">
-                  <div className="border-b-2 pb-4 border-black px-4">
+                  <div className=" pb-4 px-4">
                     <h4 className="headline-4">
                       Specialized Skill Development
                     </h4>
                   </div>
                 </div>
+                <div className=" w-56 ml-11 bg-orange-400 border-t-2 border-black "></div>
                 <div className="flex justify-center mt-4">
                   <div className=" w-72">
                     <p className="paragraph text-center">

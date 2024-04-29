@@ -2,7 +2,7 @@ import React from "react";
 import TimeIcon from "../../public/images/mascot-icons/Time Circle.png";
 import TimelineImage from "../../public/images/Timeline Ex.png";
 
-function TimelineSkyshare() {
+function TimelineMentorAcademy() {
   return (
     <>
       <div className="hero bg-background flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
@@ -26,4 +26,4 @@ function TimelineSkyshare() {
   );
 }
 
-export default TimelineSkyshare;
+export default TimelineMentorAcademy;

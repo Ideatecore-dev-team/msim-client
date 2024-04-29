@@ -18,7 +18,7 @@ const CurrentGroupSkyshare = () => {
           </div>
           <div className="flex w-full h-5/6 justify-center gap-6 mt-7">
             {/* card1 */}
-            <div className="card-size rounded-xl border-2 mt-4 border-black bg-white">
+            <div className="card-size1 rounded-xl border-2 mt-4 border-black bg-white">
               <iframe
                 title="Google Maps"
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15864.334623707073!2d106.718817!3d-6.252708!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fa7997b41e33%3A0x45c21b25aefd63b6!2sSIT%20Cordova%201%20Pondok%20Aren!5e0!3m2!1sid!2sid!4v1714293035287!5m2!1sid!2sid"
@@ -68,7 +68,7 @@ const CurrentGroupSkyshare = () => {
             {/* card1 */}
 
             {/* card2 */}
-            <div className="card-size rounded-xl border-2 mt-4 border-black bg-white">
+            <div className="card-size1 rounded-xl border-2 mt-4 border-black bg-white">
               <iframe
                 title="Google Maps"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.068902535852!2d106.72045187533308!3d-6.254652961239223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fa785c5556b5%3A0x943177de79825c3f!2sSMPIT%20AL-IZZAH!5e0!3m2!1sid!2sid!4v1714293141406!5m2!1sid!2sid"
@@ -118,7 +118,7 @@ const CurrentGroupSkyshare = () => {
             {/* card2 */}
 
             {/* card3 */}
-            <div className="card-size rounded-xl border-2 mt-4 border-black bg-white">
+            <div className="card-size1 rounded-xl border-2 mt-4 border-black bg-white">
               <iframe
                 title="Google Maps"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6197699153263!2d106.71407467533372!3d-6.3135771617850365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e55a184cee4d%3A0xc038909b2253775e!2sSMA%20Negeri%209%20Kota%20Tangerang%20Selatan!5e0!3m2!1sid!2sid!4v1714293197913!5m2!1sid!2sid"

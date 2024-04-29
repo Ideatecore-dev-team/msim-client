@@ -22,7 +22,7 @@ function Carousel() {
   };
   return (
     <div className="h-full">
-      <div className="flex absolute width z-40  width2 -ml-3 justify-between">
+      <div className="flex absolute width z-40 width2 -ml-3 justify-between">
         <h1 className=" font-thin slash3">/</h1>
         <h1 className=" font-thin slash4">\</h1>
       </div>
