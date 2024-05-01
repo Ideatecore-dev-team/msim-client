@@ -9,6 +9,7 @@ import Skyshare from "./pages/Skyshare";
 import Mentor from "./pages/Mentor";
 import Article from "./pages/Article";
 import SkyshareActivity from "./pages/SkyshareActivity";
+import MentorActivity from "./pages/MentorActivity";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -24,7 +25,14 @@ function App() {
         <Route path="/ourprogram" element={<OurProgram />} />
         <Route path="/ourprogram/skyshare" element={<Skyshare />} />
         <Route path="/ourprogram/mentor" element={<Mentor />} />
-        <Route path="/ourprogram/activities" element={<SkyshareActivity />} />
+        <Route
+          path="/ourprogram/skyshare/activities"
+          element={<SkyshareActivity />}
+        />
+        <Route
+          path="/ourprogram/mentor/activities"
+          element={<MentorActivity />}
+        />
         <Route path="/article" element={<Article />} />
         {/* Tambahkan rute-rute tambahan di sini */}
       </Routes>
