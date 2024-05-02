@@ -266,3 +266,16 @@ h1 {
   width: 45.5rem;
   margin-top: 4.7rem;
 }
+
+.input:hover + .arrow {
+  rotate: 180deg;
+  transition: 500ms ease-in-out;
+}
+
+.arrow{
+  transition: 500ms ease;
+}
+
+.durasi{
+  transition: 500ms;
+}
