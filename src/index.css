@@ -153,6 +153,12 @@ h1 {
   width: 100rem;
   height: 394px;
 }
+
+.cover-size1 {
+  width: 43.5rem;
+  height: 394px;
+}
+
 .headline-3 {
   /* H3 */
   font-family: "Plus Jakarta Sans";
@@ -260,7 +266,7 @@ h1 {
 }
 .width {
   width: 45.5rem;
-  margin-top: 7.5rem;
+  margin-top: 10.4rem;
 }
 .width2 {
   width: 45.5rem;

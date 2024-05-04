@@ -21,10 +21,10 @@ function Testimoni() {
               </p>
             </div>
           </div>
-          <div className="   w-3/5">
+          <div className=" w-3/4">
             <Carousel />
           </div>
-          <div className=" w-1/12 h-3/4 border-l-2 border-black mt-28 ml-1  z-10"></div>
+          <div className="w-full h-3/4 border-l-2 border-black bg-black mt-28  z-10"></div>
         </div>
       </div>
     </>
