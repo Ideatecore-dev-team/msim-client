@@ -13,6 +13,10 @@ export default {
           "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/cardbg2.jpeg')",
         "card-bg-3":
           "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/cardbg3.jpeg')",
+        "orange-bg":
+          "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/background/Benefit Section.png')",
+        "blue-bg":
+          "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/background/Biru Benefit Section.png')",
       },
       colors: {
         "primary-1": "#FEA02F",
@@ -29,7 +33,8 @@ export default {
         "neutral-4": "#99A0A8",
         "neutral-5": "#CCCFD3",
         "neutral-white": "#FFFFFF",
-        background: "#EFEFEF",
+        "benefitMentor": "#85D7F5",
+        "background" : "#EFEFEF",
       },
     },
   },

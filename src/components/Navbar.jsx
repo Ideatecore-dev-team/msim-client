@@ -213,7 +213,7 @@ function Navbar() {
                   </a>
                 </div>
                 <div className=" w-full h-14 flex justify-center items-center border-gray-400 border-t">
-                  <a className="text-slate-500 hover:text-black" href="">
+                  <a className="text-slate-500 hover:text-black" href="/ourprogram/mentor">
                     <p>Mentor Academy</p>
                   </a>
                 </div>

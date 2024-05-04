@@ -42,8 +42,7 @@ body {
 }
 
 .testimoni {
-  background: #fec682;
-  height: 586px;
+  height: 648px;
 }
 .bg-testimoni {
   background: #fec682;
@@ -62,6 +61,9 @@ h1 {
   background-color: #efefef;
 }
 
+.background {
+  background-color: #efefef;
+}
 .partner {
   gap: 3.75rem;
   background: #efefef;
@@ -140,10 +142,15 @@ h1 {
 
 .card-size {
   width: 294px;
-  height: 360px;
+  height: 380px;
+}
+
+.card-size1 {
+  width: 294px;
+  height: 395px;
 }
 .cover-size {
-  width: 760px;
+  width: 100rem;
   height: 394px;
 }
 .headline-3 {
@@ -188,8 +195,7 @@ h1 {
   transform: rotate(180deg);
 }
 
-
-.Our-program:hover  .arrow svg {
+.Our-program:hover .arrow svg {
   transform: rotate(180deg);
   transition: transform 0.5s ease;
 }
@@ -254,11 +260,22 @@ h1 {
 }
 .width {
   width: 45.5rem;
-  margin-top: 6.7rem;
+  margin-top: 7.5rem;
 }
 .width2 {
   width: 45.5rem;
-  margin-top: 3.8rem;
+  margin-top: 4.7rem;
 }
 
+.input:hover + .arrow {
+  rotate: 180deg;
+  transition: 500ms ease-in-out;
+}
 
+.arrow{
+  transition: 500ms ease;
+}
+
+.durasi{
+  transition: 500ms;
+}

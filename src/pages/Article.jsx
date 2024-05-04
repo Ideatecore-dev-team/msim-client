@@ -1,15 +1,16 @@
 import React from "react";
-import SearchbarArticle from "../components/SearcbarArticle";
-
+import ArticleHero from "../components/ArticleHero";
+import ArticleList from "../components/ArticleList";
 
 function Article() {
-    return (
+  return (
     <>
-        <div className="home">
-            <SearchbarArticle />
-        </div>
+      <div className="home">
+        <ArticleHero />
+        <ArticleList />
+      </div>
     </>
-    );
+  );
 }
 
 export default Article;
