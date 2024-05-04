@@ -1,13 +1,16 @@
 import React from "react";
 import Button from "./Button";
+import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="flex justify-center">
         <div className="nav bg-neutral-white rounded-full absolute mt-5 flex items-center justify-around">
           <div className="-ml-44">
-            <a href="/">
+            <Link to="/">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="172"
@@ -160,16 +163,16 @@ function Navbar() {
                   fill="#34BCEE"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
           <div className="flex items-center gap-10 -mr-40">
-            <a className="text-slate-500 hover:text-black" href="/aboutus">
+            <Link className="text-slate-500 hover:text-black" to="/aboutus">
               About us
-            </a>
+            </Link>
             <div className="flex down  gap-2 Our-program">
-              <a
+              <Link
                 className=" text-slate-500 hover:text-black  flex gap-2 "
-                href="/ourprogram"
+                to="/ourprogram"
               >
                 <p>Our Program</p>
                 <div className=" arrow duration-500">
@@ -200,31 +203,34 @@ function Navbar() {
                     />
                   </svg>
                 </div>
-              </a>
+              </Link>
               {/* ini adalah menu dropdown */}
               <div className=" absolute drop bg-neutral-white w-44">
                 <div className=" w-full flex justify-center items-center h-1/5 "></div>
                 <div className=" w-full flex mt-1 justify-center items-center h-14 border-gray-400 border-t">
-                  <a
+                  <Link
                     className="text-slate-500 hover:text-black"
-                    href="/ourprogram/skyshare"
+                    to="/ourprogram/skyshare"
                   >
                     <p className="">Skyshare Academy</p>
-                  </a>
+                  </Link>
                 </div>
                 <div className=" w-full h-14 flex justify-center items-center border-gray-400 border-t">
-                  <a className="text-slate-500 hover:text-black" href="/ourprogram/mentor">
+                  <Link
+                    className="text-slate-500 hover:text-black"
+                    to="/ourprogram/mentor"
+                  >
                     <p>Mentor Academy</p>
-                  </a>
+                  </Link>
                 </div>
               </div>
               {/* end dropdown */}
             </div>
 
-            <a className="text-slate-500 hover:text-black" href="/article">
+            <Link className="text-slate-500 hover:text-black" to="/article">
               Article
-            </a>
-            <Button onClick={() => console.log("JOIN #SEASON6 clicked")}>
+            </Link>
+            <Button onClick={() => navigate("/contactus")}>
               <div className="flex gap-2">
                 <p className="font-bold text-neutral-white">Contact Us</p>
                 <svg

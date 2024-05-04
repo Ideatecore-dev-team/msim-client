@@ -1,5 +1,6 @@
 import React from "react";
 import SkyshareLogo from "../../public/images/Skyshare-Logo.png";
+import { Link } from "react-router-dom";
 
 function SkyshareCta() {
   return (
@@ -18,9 +19,9 @@ function SkyshareCta() {
             </p>
             <div className="flex justify-center">
               <div className=" w-1/2 flex justify-center">
-                <a
+                <Link
                   className=" bg-primary-1 hover:bg-primary-2 px-6 rounded-xl py-5 flex items-center"
-                  href=""
+                  to=""
                 >
                   <h3 className="headline-3">Join #Season6</h3>
                   <svg
@@ -50,7 +51,7 @@ function SkyshareCta() {
                       fill="white"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

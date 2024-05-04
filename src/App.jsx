@@ -10,6 +10,7 @@ import Mentor from "./pages/Mentor";
 import Article from "./pages/Article";
 import SkyshareActivity from "./pages/SkyshareActivity";
 import MentorActivity from "./pages/MentorActivity";
+import ContactUs from "./pages/ContactUs";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           element={<MentorActivity />}
         />
         <Route path="/article" element={<Article />} />
+        <Route path="/contactus" element={<ContactUs />} />
         {/* Tambahkan rute-rute tambahan di sini */}
       </Routes>
       <Footer />

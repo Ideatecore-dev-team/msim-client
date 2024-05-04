@@ -1,6 +1,7 @@
 import React from "react";
 import ArrowRight from "../../public/images/mascot-icons/Arrow - Right 3.png";
 import ArrowDown from "../../public/images/mascot-icons/Arrow - Down 3.png";
+import { Link } from "react-router-dom";
 
 function AllActivitiesSkyShare() {
   return (
@@ -17,24 +18,24 @@ function AllActivitiesSkyShare() {
             </p>
           </div>
           <div className="flex justify-center mt-3">
-            <a
+            <Link
               className="flex px-3 py-2 rounded-full border-black border-2 hover:bg-slate-100 bg-white"
-              href="/ourprogram/skyshare/activities"
+              to="/ourprogram/skyshare/activities"
             >
               <p className="paragraph">Seluruh Kegiatan</p>
               <img className="w-5 ml-1" src={ArrowRight} alt="" />
-            </a>
+            </Link>
           </div>
           <div className="flex justify-center mt-24">
-            <a
+            <Link
               className="flex px-5 py-4 bg-primary-1 shadow-lg rounded-xl hover:bg-primary-2"
-              href="#"
+              to="#"
             >
               <h4 className="headline-4 text-white font-bold">
                 Join Skyshare Academy #Season6
               </h4>
               <img className="w-8 -rotate-90 ml-3" src={ArrowDown} alt="" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
