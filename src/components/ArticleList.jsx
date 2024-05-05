@@ -1,6 +1,7 @@
 import React from "react";
 import image1 from "../../public/images/cardbg1.jpeg";
 import ArrowOrange from "../../public/images/mascot-icons/arrow-orange.png";
+import { Link } from "react-router-dom";
 
 function ArticleList() {
   return (
@@ -50,12 +51,12 @@ function ArticleList() {
                 <p className="ml-5 mt-3 px-2 py-1 text-white bg-red-300 w-28 text-center rounded-full">
                   Mentorship
                 </p>
-                <a
-                  href="#"
+                <Link
+                  to="/article/openned"
                   className="paragraph ml-3 underline text-primary-1 mt-4"
                 >
                   Baca Selengkapnya
-                </a>
+                </Link>
                 <img className=" w-10 mt-2" src={ArrowOrange} alt="" />
               </div>
             </div>

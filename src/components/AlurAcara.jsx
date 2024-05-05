@@ -2,7 +2,8 @@ import React from "react";
 import WorkIcon from "../../public/images/mascot-icons/Work.png";
 import AlurImage from "../../public/images/Alur Acara Ex.png";
 
-function AlurAcara() {
+function AlurAcara({ skyshare }) {
+  const data = skyshare && skyshare.length > 0 ? skyshare[0] : null;
   return (
     <>
       <div className="hero bg-background border-t-2 border-slate-800 flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
@@ -13,9 +14,15 @@ function AlurAcara() {
               <h2 className="headline-2 font-bold">Alur Acara</h2>
             </div>
           </div>
-          <div className="flex w-full h-96 mt-10">
-            <img className=" w-full h-full" src={AlurImage} alt="alur image" />
-          </div>
+          {data && (
+            <div className="flex w-full h-96 mt-10">
+              <img
+                className=" w-full h-full"
+                src={data.gambar_alur_acara}
+                alt="alur image"
+              />
+            </div>
+          )}
         </div>
       </div>
     </>

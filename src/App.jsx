@@ -11,6 +11,7 @@ import Article from "./pages/Article";
 import SkyshareActivity from "./pages/SkyshareActivity";
 import MentorActivity from "./pages/MentorActivity";
 import ContactUs from "./pages/ContactUs";
+import ArticleOpennedPage from "./pages/ArticleOpennedPage";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/ourprogram" element={<OurProgram />} />
         <Route path="/ourprogram/skyshare" element={<Skyshare />} />
         <Route path="/ourprogram/mentor" element={<Mentor />} />
+        <Route path="/article/openned" element={<ArticleOpennedPage />} />
         <Route
           path="/ourprogram/skyshare/activities"
           element={<SkyshareActivity />}
