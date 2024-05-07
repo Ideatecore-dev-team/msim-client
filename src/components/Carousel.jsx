@@ -21,13 +21,13 @@ function Carousel() {
     pauseOnHover: false,
   };
   return (
-    <div className="h-full ">
+    <div className="h-full -mt-20 ">
       <div className="flex  absolute width z-50 width2 -ml-3 justify-between">
         <h1 className=" font-thin slash3">/</h1>
         <h1 className=" font-thin slash4">\</h1>
       </div>
       <div className="  h-full -z-10 -mt-50">
-        <div className=" cover-size1 ">
+        <div className=" lg:w-cover-size1 w-cover-size1">
           <Slider {...settings}>
             <div className=" m-auto mt-40 ">
               <div className="bg-white rounded-xl card-size border-gray-900 border-2 shadow-md">
@@ -104,7 +104,7 @@ function Carousel() {
             </div>
           </Slider>
         </div>
-        <div className="flex absolute width z-40 -ml-3 justify-between">
+        <div className="flex mt-5 absolute width z-40 -ml-3 justify-between">
           <h1 className=" font-thin slash1">\</h1>
           <h1 className=" font-thin slash2">/</h1>
         </div>

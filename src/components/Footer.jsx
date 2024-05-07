@@ -6,8 +6,8 @@ import SecondaryButton from "./SecondayButton";
 function Footer() {
   return (
     <>
-      <div className="neutral-white max-w-6xl bottom-0 left-0 w-full py-24 flex flex-col text-xl font-normal mx-auto items-center">
-        <div className="footer-content flex items-end content-between">
+      <div className=" neutral-white max-w-6xl bottom-0 left-0 w-full py-24 flex flex-col text-xl font-normal mx-auto items-center">
+        <div className=" lg:w-footer-content w-4/5 flex items-end  flex-wrap content-between">
           <div className="footer-container flex flex-col items-start gap-16">
             <div className="logo flex flex-col items-start">
               <div className="logo-placeholder w-44 h-14">
@@ -17,7 +17,7 @@ function Footer() {
                 Build up your mentoring with us.
               </p>
             </div>
-            <div className="footer-info flex items-start gap-8 self-stretch">
+            <div className="footer-info w-1/2 lg:w-full  lg:flex-nowrap flex items-start flex-wrap gap-8 self-stretch">
               <div className="footer-profile flex flex-col items-start gap-6">
                 <h4 className=" text-lg font-bold">About</h4>
                 <p className=" text-base font-normal">
@@ -81,7 +81,7 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div className="footer-mascot flex flex-col items-start gap-4 w-72">
+          <div className="footer-mascot ml-44  lg:ml-0 flex flex-col items-start gap-4 w-72">
             <div className="mascot-footer flex size-64 mx-auto content-center items-center">
               <img src={Mascot} alt="mascot" />
             </div>

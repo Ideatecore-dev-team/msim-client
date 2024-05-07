@@ -6,8 +6,8 @@ function Hero() {
   return (
     <>
       <div className="hero bg-hero-bg bg-cover bg-center flex flex-col pb-24 pt-48 items-center self-stretch h-auto">
-        <div className="content text-white flex flex-row content-end items-start flex-wrap">
-          <div className="tagline flex flex-col content-end items-start gap-4">
+        <div className=" lg:w-tagline w-5/6  text-white flex justify-start lg:justify-start lg:flex-row lg:content-end lg:items-start flex-wrap">
+          <div className=" w-96 mt-48  flex flex-col content-end items-start gap-4">
             <h1 className=" text-white font-bold">
               Build up your mentoring with us.
             </h1>

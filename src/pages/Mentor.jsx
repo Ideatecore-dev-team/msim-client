@@ -14,7 +14,7 @@ function Mentor() {
   useEffect(() => {
     const GetDataMentor = async function () {
       try {
-        const response = await axios.get("http://localhost:80/api/mentor");
+        const response = await axios.get("https://api.julio.my.id/mentor");
         setMentor(response.data.data);
       } catch (error) {
         console.log(error);

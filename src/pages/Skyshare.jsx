@@ -15,7 +15,7 @@ function Skyshare() {
   useEffect(() => {
     const getDataSkyshare = async function () {
       try {
-        const response = await axios.get("http://localhost:80/api/skyshare");
+        const response = await axios.get("https://api.julio.my.id/skyshare");
         setSkyshare(response.data.data);
       } catch (error) {}
       console.log(error);
