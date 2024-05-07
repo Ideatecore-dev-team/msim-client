@@ -4,8 +4,19 @@ import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../public/images/logo placeholder.png";
 import Hamburger from "../../public/images/Hamburger Icon.png";
-import ArrowLeft from "../../public/images/mascot-icons/Arrow - Right 3.png";
+import XCircle from "../../public/images/mascot-icons/Close Square.svg";
 function Navbar() {
+  function dropNavbar() {
+    const drop = document.querySelector("#drop");
+    const icon = document.querySelector("#icon");
+    const hamburger = document.querySelector("#hamburger");
+    icon.classList.toggle("flex");
+    icon.classList.toggle("hidden");
+    hamburger.classList.toggle("opacity-0");
+    hamburger.classList.toggle("opacity-1");
+    drop.classList.toggle("scale-y-0");
+    drop.classList.toggle("scale-y-1");
+  }
   const navigate = useNavigate();
   return (
     <>
@@ -114,12 +125,28 @@ function Navbar() {
               </div>
             </Button>
           </div>
-          <button className="flex bg-primary-1 px-1 py-1 rounded-md hover:bg-primary-2 lg:hidden">
-            <img className="w-14" src={Hamburger} alt="" />
-            <img className="w-14 absolute" src={Hamburger} alt="" />
+          <button
+            onClick={dropNavbar}
+            className="flex bg-primary-1 px-1 py-1 rounded-md hover:bg-primary-2 lg:hidden"
+          >
+            <img
+              id="hamburger"
+              className="w-14 opacity-1"
+              src={Hamburger}
+              alt=""
+            />
+            <img
+              id="icon"
+              className="w-14 absolute hidden"
+              src={XCircle}
+              alt=""
+            />
           </button>
         </div>
-        <div className="block absolute bg-white mt-24 rounded-lg padding pt-20 items-center gap-10 w-10/12 lg:hidden">
+        <div
+          id="drop"
+          className="block duration-500 origin-top scale-y-0 absolute bg-white mt-24 rounded-lg padding pt-20 items-center gap-10 w-10/12 lg:hidden"
+        >
           <div className=" px-16 mt-5">
             <Link className="text-slate-500 hover:text-black" to="/aboutus">
               <p className="text-xl">About Us</p>
