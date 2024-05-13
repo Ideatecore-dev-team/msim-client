@@ -21,13 +21,17 @@ function Navbar() {
   return (
     <>
       <div className="flex justify-center bg-slate-600">
-        <div className=" w-10/12 lg:w-nav lg:py-4 px-8 py-8 justify-around gap-56 lg:gap-0 shadow-lg bg-neutral-white rounded-full absolute mt-5 flex items-center lg:flex-wrap lg:justify-around z-10">
-          <div className=" flex lg:-ml-44">
+        <div className="sm:w-10/12 w-10/12 lg:w-nav lg:py-4 sm:px-8 sm:py-12 px-8 py-8 justify-around gap-56 lg:gap-0 shadow-lg bg-neutral-white rounded-full absolute mt-5 flex items-center lg:flex-wrap lg:justify-around z-10">
+          <div className=" lg:w-logo-msim w-logo-msim xs:bg-black flex lg:-ml-44">
             <Link to="/">
-              <img className="w-48" src={Logo} alt="" />
+              <img
+                className=" absolute lg:ml-0  w-32 lg:-mt-7 -mt-5 sm:w-44 sm:-mt-7 sm:-ml-44 -ml-20"
+                src={Logo}
+                alt=""
+              />
             </Link>
           </div>
-          <div className="lg:flex md:flex items-center gap-10 -mr-40 hidden">
+          <div className="lg:flex items-center gap-10 -mr-40 md:hidden hidden">
             <Link className="text-slate-500 hover:text-black" to="/aboutus">
               About us
             </Link>
@@ -127,17 +131,17 @@ function Navbar() {
           </div>
           <button
             onClick={dropNavbar}
-            className="flex bg-primary-1 px-1 py-1 rounded-md hover:bg-primary-2 lg:hidden"
+            className="flex justify-around bg-primary-1 px-1 py-1 rounded-md absolute ml-72 sm:-mr-40 hover:bg-primary-2 lg:hidden"
           >
             <img
               id="hamburger"
-              className="w-14 opacity-1"
+              className="sm:w-14 w-8 opacity-1"
               src={Hamburger}
               alt=""
             />
             <img
               id="icon"
-              className="w-14 absolute hidden"
+              className="sm:w-14 w-8 absolute hidden"
               src={XCircle}
               alt=""
             />

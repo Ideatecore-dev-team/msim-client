@@ -73,6 +73,7 @@ h1 {
  padding-bottom: 3rem;
 }
 
+
 .footer-content {
   width: 72.816rem;
 }
@@ -288,4 +289,16 @@ h1 {
 
 .durasi {
   transition: 500ms;
+}
+
+.slider-container {
+  width: 100%;
+}
+
+/* Tampilan mobile */
+@media screen and (max-width: 458px) {
+  .slider-container {
+    width: 90%;
+    margin: 0 auto;
+  }
 }

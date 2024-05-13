@@ -21,7 +21,7 @@ function Mentor() {
       }
     };
     GetDataMentor();
-  }, []);
+  });
   return (
     <>
       <div className="home">

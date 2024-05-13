@@ -21,7 +21,7 @@ function Skyshare() {
       console.log(error);
     };
     getDataSkyshare();
-  }, []);
+  });
   return (
     <>
       <div className="home">

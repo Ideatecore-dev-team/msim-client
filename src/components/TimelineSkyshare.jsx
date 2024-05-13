@@ -7,7 +7,7 @@ function TimelineSkyshare({ skyshare }) {
   return (
     <>
       <div className="hero bg-background flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
-        <div className="content -mt-10">
+        <div className="content w-11/12 -mt-10">
           <div className="flex justify-center">
             <div className=" h-14 mt-5 gap-3 flex items-center">
               <img className="w-12 h-12" src={TimeIcon} alt="starts" />
@@ -15,9 +15,9 @@ function TimelineSkyshare({ skyshare }) {
             </div>
           </div>
           {data && (
-            <div className="flex w-full h-96 mt-10">
+            <div className="flex lg:justify-normal justify-center w-full h-96 mt-10">
               <img
-                className=" w-full h-full"
+                className=" lg:w-full w-full h-64 lg:h-full"
                 src={data.gambar_timeline}
                 alt="alur image"
               />

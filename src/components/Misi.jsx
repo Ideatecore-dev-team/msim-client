@@ -8,7 +8,7 @@ function Misi() {
     <>
       <div className="hero flex background flex-col items-center self-stretch">
         <div className="content h-full flex justify-center flex-wrap">
-          <div className="w-full mt-24 pb-10 ">
+          <div className=" w-1/2 lg:w-full mt-24 pb-10 ">
             <h1 className="healine1 text-center text-black font-bold mb-10">
               Misi
             </h1>
