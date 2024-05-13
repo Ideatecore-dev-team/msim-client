@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SkyshareLogo from "../../public/images/Skyshare-Logo.png";
 
 function OurProgramHero() {
@@ -10,16 +11,18 @@ function OurProgramHero() {
             <div className="flex justify-center">
               <img className="w-56" src={SkyshareLogo} alt="" />
             </div>
-            <h1 className=" text-white headline-1 text-center mb-4">Skyshare Academy</h1>
+            <h1 className=" text-white headline-1 text-center mb-4">
+              Skyshare Academy
+            </h1>
             <p className="paragraph text-center mb-3">
               Skyshare Academy merupakan program ekskul kelas karakter minat dan
               bakat
             </p>
             <div className="flex justify-center">
               <div className=" w-1/2 flex justify-center">
-                <a
+                <Link
                   className=" bg-primary-1 hover:bg-primary-2 px-6 rounded-xl py-5 flex items-center"
-                  href="/ourprogram/skyshare"
+                  to="/ourprogram/skyshare"
                 >
                   <h3 className="headline-3">Learn more</h3>
                   <svg
@@ -49,7 +52,7 @@ function OurProgramHero() {
                       fill="white"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

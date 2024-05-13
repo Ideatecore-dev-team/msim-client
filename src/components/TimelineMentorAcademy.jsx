@@ -2,7 +2,8 @@ import React from "react";
 import TimeIcon from "../../public/images/mascot-icons/Time Circle.png";
 import TimelineImage from "../../public/images/Timeline Ex.png";
 
-function TimelineMentorAcademy() {
+function TimelineMentorAcademy({ mentor }) {
+  const data = mentor && mentor.length > 0 ? mentor[0] : null;
   return (
     <>
       <div className="hero bg-background flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
@@ -13,13 +14,15 @@ function TimelineMentorAcademy() {
               <h2 className="headline-2 font-bold">Timeline</h2>
             </div>
           </div>
-          <div className="flex w-full h-96 mt-10">
-            <img
-              className=" w-full h-full"
-              src={TimelineImage}
-              alt="alur image"
-            />
-          </div>
+          {data && (
+            <div className="flex w-full h-96 mt-10">
+              <img
+                className=" w-full h-full"
+                src={data.gambar_timeline}
+                alt="alur image"
+              />
+            </div>
+          )}
         </div>
       </div>
     </>

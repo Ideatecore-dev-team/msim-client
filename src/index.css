@@ -69,6 +69,10 @@ h1 {
   background: #efefef;
 }
 
+.padding {
+ padding-bottom: 3rem;
+}
+
 .footer-content {
   width: 72.816rem;
 }
@@ -153,6 +157,12 @@ h1 {
   width: 100rem;
   height: 394px;
 }
+
+.cover-size1 {
+  width: 43.5rem;
+  height: 394px;
+}
+
 .headline-3 {
   /* H3 */
   font-family: "Plus Jakarta Sans";
@@ -241,26 +251,26 @@ h1 {
 }
 .slash1 {
   transform: rotate(170deg);
-  margin-top: -1.1rem;
+  margin-top: -1.6rem;
+  margin-left: 0.2rem;
 }
 .slash2 {
   transform: rotate(187deg);
-  margin-right: 0.7rem;
-  margin-top: 0.4rem;
+  margin-right: 0.6rem;
+  margin-top: -2rem;
 }
 .slash3 {
   transform: rotate(187deg);
-  margin-left: 0.2rem;
-  margin-top: 0.6rem;
+  margin-left: 0.3rem;
+  margin-top: -4.1rem;
 }
 .slash4 {
   transform: rotate(174deg);
-  margin-right: 0.8rem;
-  margin-top: -1rem;
+  margin-right: 0.6rem;
+  margin-top: -1.3rem;
 }
 .width {
   width: 45.5rem;
-  margin-top: 7.5rem;
 }
 .width2 {
   width: 45.5rem;
@@ -272,10 +282,10 @@ h1 {
   transition: 500ms ease-in-out;
 }
 
-.arrow{
+.arrow {
   transition: 500ms ease;
 }
 
-.durasi{
+.durasi {
   transition: 500ms;
 }

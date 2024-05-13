@@ -1,5 +1,5 @@
 import React from "react";
-import SkyshareLogo from "../../public/images/Skyshare-Logo.png";
+import { Link } from "react-router-dom";
 import MentorLogo from "../../public/images/Mentor-logo.png";
 
 function MentorAcademy() {
@@ -11,15 +11,17 @@ function MentorAcademy() {
             <div className="flex justify-center">
               <img className="w-56" src={MentorLogo} alt="" />
             </div>
-            <h1 className=" text-white headline-1 text-center mb-4">Mentor Academy</h1>
+            <h1 className=" text-white headline-1 text-center mb-4">
+              Mentor Academy
+            </h1>
             <p className="paragraph text-center mb-3">
               Mentor Academy merupakan program lanjutan dari Skyshare Academy
             </p>
             <div className="flex justify-center">
               <div className=" w-1/2 flex justify-center">
-                <a
+                <Link
                   className=" bg-primary-1 hover:bg-primary-2 px-6 rounded-xl py-5 flex items-center"
-                  href="/ourprogram/mentor"
+                  to="/ourprogram/mentor"
                 >
                   <h3 className="headline-3">Learn more</h3>
                   <svg
@@ -49,7 +51,7 @@ function MentorAcademy() {
                       fill="white"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

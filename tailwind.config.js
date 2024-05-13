@@ -1,3 +1,5 @@
+import { MdHeight } from "react-icons/md";
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -14,9 +16,9 @@ export default {
         "card-bg-3":
           "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/cardbg3.jpeg')",
         "orange-bg":
-          "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/background/Benefit Section.png')",
+          "url('/images/background/Benefit Section.png')",
         "blue-bg":
-          "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/background/Biru Benefit Section.png')",
+          "url('/images/background/Biru Benefit Section.png')",
       },
       colors: {
         "primary-1": "#FEA02F",
@@ -36,6 +38,16 @@ export default {
         "benefitMentor": "#85D7F5",
         "background" : "#EFEFEF",
       },
+      width: {
+        "nav" : "1152px;",
+        "tagline" : "72rem;",
+        "cover-size1": "43.5rem",
+        "cover-size2": "40.5rem",
+        "footer-content" : "72.816rem"
+      },
+      height: {
+          "testimoni" : "648px"
+      }
     },
   },
   plugins: [],
