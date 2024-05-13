@@ -3,7 +3,6 @@ import SkyshareLogo from "../../public/images/Skyshare-Logo.png";
 
 function SkyshareCta({ skyshare }) {
   const data = skyshare && skyshare.length > 0 ? skyshare[0] : null;
-  console.log(data);
   return (
     <>
       <div className="hero bg-hero-bg bg-cover bg-center flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
