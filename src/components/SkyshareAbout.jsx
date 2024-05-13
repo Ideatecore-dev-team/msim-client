@@ -5,7 +5,7 @@ function Skyshareabout() {
     <>
       <div className="hero bg-background flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
         <div className="content h-56 flex justify-center items-end">
-          <div className="w-2/3 h-full text-center">
+          <div className=" w-1/2 lg:w-2/3 h-full text-center">
             <h2 className="headline-2 mb-6">About</h2>
             <h4 className="headline-4 mt-12">
               Jadi apa sih Skyshare Academy itu?

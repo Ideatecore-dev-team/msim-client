@@ -6,13 +6,14 @@ import Mascot2 from "../../public/images/mascot-icons/Char-1.png";
 import Mascot3 from "../../public/images/mascot-icons/Char-2.png";
 import Mascot4 from "../../public/images/mascot-icons/Char-3.png";
 import Mascot5 from "../../public/images/mascot-icons/Char-4.png";
-
+import { useMediaQuery } from "react-responsive";
 function Carousel() {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   var settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2.1,
+    slidesToShow: isMobile ? 1.3 : 2.1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 1500,
@@ -21,15 +22,15 @@ function Carousel() {
     pauseOnHover: false,
   };
   return (
-    <div className="h-full -mt-20 ">
-      <div className="flex  absolute width z-50 width2 -ml-3 justify-between">
+    <div className="h-full -mt-20">
+      <div className="flex  absolute z-50 lg:w-slash-w mt-slash-top w-slash-sm -ml-3 justify-between">
         <h1 className=" font-thin slash3">/</h1>
         <h1 className=" font-thin slash4">\</h1>
       </div>
-      <div className="  h-full -z-10 -mt-50">
-        <div className=" lg:w-cover-size1 w-cover-size1">
+      <div className="  h-full -z-10 -mt-50 ">
+        <div className=" lg:w-cover-size1 w-cover-size3">
           <Slider {...settings}>
-            <div className=" m-auto mt-40 ">
+            <div className=" m-auto ml-28 mt-40 ">
               <div className="bg-white rounded-xl card-size border-gray-900 border-2 shadow-md">
                 <div className="rounded-full w-16 h-16 -mt-9 ml-5">
                   <img
@@ -54,7 +55,7 @@ function Carousel() {
                 </div>
               </div>
             </div>
-            <div className="m-auto mt-40">
+            <div className="m-auto ml-28 mt-40">
               <div className="bg-white card-size rounded-xl border-gray-900 border-2 shadow-md">
                 <div className="rounded-full w-16 h-16 -mt-9 ml-5">
                   <img
@@ -76,7 +77,7 @@ function Carousel() {
                 </div>
               </div>
             </div>
-            <div className="m-auto mt-40">
+            <div className="m-auto ml-28 mt-40">
               <div className="bg-white card-size rounded-xl border-gray-900 border-2 shadow-md">
                 <div className="rounded-full w-16 h-16 -mt-9 ml-5">
                   <img
@@ -104,7 +105,7 @@ function Carousel() {
             </div>
           </Slider>
         </div>
-        <div className="flex mt-5 absolute width z-40 -ml-3 justify-between">
+        <div className="flex mt-5 absolute lg:w-slash-w mt-slash w-slash-sm z-40 -ml-3 justify-between">
           <h1 className=" font-thin slash1">\</h1>
           <h1 className=" font-thin slash2">/</h1>
         </div>

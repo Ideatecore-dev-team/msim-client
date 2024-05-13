@@ -10,10 +10,12 @@ function About() {
             <h1 className="healine1 text-center text-black font-bold mb-10">
               About
             </h1>
-            <div className=" flex gap-4">
+            <div className=" flex flex-wrap lg:flex-nowrap ml-72 lg:ml-0 gap-4">
               <div className=" w-2/3">
-                <h4 className="headline-4 mb-4">Apa sih MSiM itu?</h4>
-                <p>
+                <h4 className="headline-4 mb-4 text-center lg:text-left">
+                  Apa sih MSiM itu?
+                </h4>
+                <p className=" text-center lg:text-left">
                   MSiM (More Stylish in Mentoring) menyediakan dua program
                   unggulan: SkyShare Academy dan Mentor Academy, yang
                   masing-masing menawarkan pembinaan personal dan profesional.
@@ -22,9 +24,9 @@ function About() {
                   mendukung dan menginspirasi para pelajar.
                 </p>
               </div>
-              <div className=" w-1/2 flex justify-end">
+              <div className=" ml-16 lg:ml-0 w-1/2 flex justify-end">
                 <img
-                  className="absolute w-52 mr-72 mt-28"
+                  className="absolute w-52 mr-72 mt-28 "
                   src={Mascot1}
                   alt="mascot1"
                 />

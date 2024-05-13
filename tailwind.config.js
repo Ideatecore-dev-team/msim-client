@@ -3,6 +3,12 @@ import { MdHeight } from "react-icons/md";
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    theme: {
+      screens: {
+        "xs": "475px",
+        // ...defaultTheme.screens,
+      }
+    },
     extend: {
       backgroundImage: {
         "hero-bg":
@@ -43,10 +49,18 @@ export default {
         "tagline" : "72rem;",
         "cover-size1": "43.5rem",
         "cover-size2": "40.5rem",
-        "footer-content" : "72.816rem"
+        "cover-size3": "26rem",
+        "footer-content" : "72.816rem",
+        "logo-msim" : "192px",
+        "slash-w" : "45.5rem;",
+        "slash-sm" : "28rem"
+
       },
       height: {
           "testimoni" : "648px"
+      },
+      margin : {
+          "slash-top" : "4.7rem"
       }
     },
   },
