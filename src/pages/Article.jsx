@@ -8,7 +8,7 @@ function Article() {
   useEffect(() => {
     const getAllArticle = async function () {
       try {
-        const response = await axios.get("https://api.julio.my.id/article");
+        const response = await axios.get("https://api.skyshareacademy.com/article");
         setArticle(response.data.data);
         console.log(data);
       } catch (error) {
