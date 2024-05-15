@@ -6,7 +6,7 @@ import SecondaryButton from "./SecondayButton";
 function Footer() {
   return (
     <>
-      <div className=" neutral-white max-w-6xl bottom-0 left-0 w-full py-24 flex flex-col text-xl font-normal mx-auto items-center">
+      <div className=" neutral-white max-w-6xl bottom-0 left-0 w-full lg:py-24 xs:py-14 flex flex-col text-xl font-normal mx-auto items-center">
         <div className=" lg:w-footer-content w-4/5 flex items-end  flex-wrap content-between">
           <div className="footer-container flex flex-col items-start gap-16">
             <div className="logo flex flex-col items-start">
