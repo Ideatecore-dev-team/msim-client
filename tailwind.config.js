@@ -3,28 +3,22 @@ import { MdHeight } from "react-icons/md";
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    theme: {
-      screens: {
-        "xs": "475px",
-        // ...defaultTheme.screens,
-      }
-    },
     extend: {
+      screens: {
+        xs: { max: "639px" },
+      },
       backgroundImage: {
         "hero-bg":
           "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)) ,url('/images/bg.jpeg')",
-        "hero":
-          "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)) ,url('/images/Upme.jpg')",
+        hero: "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)) ,url('/images/Upme.jpg')",
         "card-bg-1":
           "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/cardbg1.jpeg')",
         "card-bg-2":
           "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/cardbg2.jpeg')",
         "card-bg-3":
           "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/cardbg3.jpeg')",
-        "orange-bg":
-          "url('/images/background/Benefit Section.png')",
-        "blue-bg":
-          "url('/images/background/Biru Benefit Section.png')",
+        "orange-bg": "url('/images/background/Benefit Section.png')",
+        "blue-bg": "url('/images/background/Biru Benefit Section.png')",
       },
       colors: {
         "primary-1": "#FEA02F",
@@ -41,27 +35,26 @@ export default {
         "neutral-4": "#99A0A8",
         "neutral-5": "#CCCFD3",
         "neutral-white": "#FFFFFF",
-        "benefitMentor": "#85D7F5",
-        "background" : "#EFEFEF",
+        benefitMentor: "#85D7F5",
+        background: "#EFEFEF",
       },
       width: {
-        "nav" : "1152px;",
-        "tagline" : "72rem;",
+        nav: "1152px;",
+        tagline: "72rem;",
         "cover-size1": "43.5rem",
         "cover-size2": "40.5rem",
+        "footer-content": "72.816rem",
         "cover-size3": "26rem",
-        "footer-content" : "72.816rem",
-        "logo-msim" : "192px",
-        "slash-w" : "45.5rem;",
-        "slash-sm" : "28rem"
-
+        "logo-msim": "192px",
+        "slash-w": "45.5rem;",
+        "slash-sm": "28rem",
       },
       height: {
-          "testimoni" : "648px"
+        testimoni: "648px",
       },
-      margin : {
-          "slash-top" : "4.7rem"
-      }
+      margin: {
+        "slash-top": "4.7rem",
+      },
     },
   },
   plugins: [],
