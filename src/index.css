@@ -70,12 +70,15 @@ h1 {
 }
 
 .padding {
- padding-bottom: 3rem;
+  padding-bottom: 3rem;
 }
-
 
 .footer-content {
   width: 72.816rem;
+}
+
+.test {
+  flex: 1 0 0;
 }
 
 .partner3 {

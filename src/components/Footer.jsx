@@ -7,31 +7,35 @@ function Footer() {
   return (
     <>
       <div className=" neutral-white max-w-6xl bottom-0 left-0 w-full lg:py-24 xs:py-14 flex flex-col text-xl font-normal mx-auto items-center">
-        <div className=" lg:w-footer-content w-4/5 flex items-end  flex-wrap content-between">
-          <div className="footer-container flex flex-col items-start gap-16">
+        <div className=" lg:w-footer-content w-4/5 flex items-end flex-wrap content-between">
+          <div className="footer-container flex flex-col items-start lg:gap-16 xs:gap-8">
             <div className="logo flex flex-col items-start">
-              <div className="logo-placeholder w-44 h-14">
+              <div className="logo-placeholder lg:w-44 lg:h-14 xs:w-24 xs:h-6 xs:mb-3">
                 <img src={logoPlaceholder} alt="logo" />
               </div>
-              <p className="text-sm font-medium	">
+              <p className="lg:text-sm xs:text-xs font-medium	">
                 Build up your mentoring with us.
               </p>
             </div>
-            <div className="footer-info w-1/2 lg:w-full  lg:flex-nowrap flex items-start flex-wrap gap-8 self-stretch">
-              <div className="footer-profile flex flex-col items-start gap-6">
-                <h4 className=" text-lg font-bold">About</h4>
-                <p className=" text-base font-normal">
+            <div className="footer-info w-1/2 lg:w-full lg:flex-nowrap flex items-start flex-wrap gap-8 self-stretch">
+              <div className="footer-profile flex flex-col items-start lg:gap-6 xs:gap-4 xs:min-w-64 xs:max-w-64">
+                <h4 className="lg:text-lg xs:text-base font-bold">About</h4>
+                <p className="lg:text-base xs:text-sm font-normal">
                   Komplek Taman Mangu Indah B14/12 Pondok Aren, Tangerang
                   Selatan 15224
                 </p>
-                <p className=" text-base font-normal">(+62) 856-8043-529</p>
-                <p className=" text-base font-normal">msimbusiness@org.com</p>
-                <p className=" text-base font-normal">
+                <p className="lg:text-base xs:text-sm font-normal">
+                  (+62) 856-8043-529
+                </p>
+                <p className="lg:text-base xs:text-sm font-normal">
+                  msimbusiness@org.com
+                </p>
+                <p className="lg:text-base xs:text-sm font-normal">
                   Copyright © 2024-2025 MSIM in Collaboration with Ideatecore{" "}
                 </p>
               </div>
-              <div className="footer-link flex flex-col gap-6">
-                <p className="font-bold">Company</p>
+              <div className="footer-link flex flex-col lg:gap-6 xs:gap-4">
+                <p className="lg:text-lg xs:text-base font-bold">Company</p>
                 <SecondaryButton to="/aboutus">About Us</SecondaryButton>
                 <SecondaryButton to="/article">Article</SecondaryButton>
                 <SecondaryButton to="/ourprogram">Our Program</SecondaryButton>
@@ -43,13 +47,14 @@ function Footer() {
                 <a href="#">Join</a> */}
               </div>
               <div className="footer-social flex flex-col items-start gap-6">
-                <p className="font-bold">Social Media</p>
+                <h4 className="lg:text-lg xs:text-base font-bold">
+                  Social Media
+                </h4>
                 <div className="flex items-start gap-4">
-                  <div className="logo-box flex items-center justify-center w-16 h-16 rounded-full">
+                  <div className="logo-box flex items-center justify-center lg:size-16 xs:size-14 rounded-full">
                     {/* SVG diletakkan di dalam logo-box */}
                     <svg
-                      width="33"
-                      height="32"
+                      className="lg:size-7 xs:size-6"
                       viewBox="0 0 33 32"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -60,11 +65,10 @@ function Footer() {
                       />
                     </svg>
                   </div>
-                  <div className="logo-box flex items-center justify-center w-16 h-16 rounded-full">
+                  <div className="logo-box flex items-center justify-center lg:size-16 xs:size-14 rounded-full">
                     {/* SVG diletakkan di dalam logo-box */}
                     <svg
-                      width="32"
-                      height="32"
+                      className="lg:size-7 xs:size-6"
                       viewBox="0 0 32 32"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -81,11 +85,11 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div className="footer-mascot ml-44  lg:ml-0 flex flex-col items-start gap-4 w-72">
-            <div className="mascot-footer flex size-64 mx-auto content-center items-center">
-              <img src={Mascot} alt="mascot" />
+          <div className="footer-mascot flex flex-col items-center lg:ml-44 lg:items-start lg:mt-0 xs:mt-8 gap-4 lg:w-72 xs:w-full">
+            <div className="mascot-footer flex justify-center items-center lg:w-full xs:w-2/5">
+              <img src={Mascot} alt="mascot" className="mx-auto" />
             </div>
-            <p className=" text-base font-normal text-center self-stretch">
+            <p className="lg:text-base xs:text-sm font-normal text-center w-full">
               Berkembang seorang diri itu melelahkan.
             </p>
           </div>
