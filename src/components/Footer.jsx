@@ -10,7 +10,7 @@ function Footer() {
         <div className=" lg:w-footer-content w-4/5 flex items-end flex-wrap content-between">
           <div className="footer-container flex flex-col items-start lg:gap-16 xs:gap-8">
             <div className="logo flex flex-col items-start">
-              <div className="logo-placeholder lg:w-44 lg:h-14 xs:w-24 xs:h-6 xs:mb-3">
+              <div className="logo-placeholder lg:w-44 lg:h-14 xs:w-28 xs:h-6 xs:mb-4">
                 <img src={logoPlaceholder} alt="logo" />
               </div>
               <p className="lg:text-sm xs:text-xs font-medium	">
@@ -46,15 +46,15 @@ function Footer() {
                 <a href="#">Contact Us</a>
                 <a href="#">Join</a> */}
               </div>
-              <div className="footer-social flex flex-col items-start gap-6">
+              <div className="footer-social flex flex-col items-start lg:gap-6 xs:gap-4">
                 <h4 className="lg:text-lg xs:text-base font-bold">
                   Social Media
                 </h4>
-                <div className="flex items-start gap-4">
-                  <div className="logo-box flex items-center justify-center lg:size-16 xs:size-14 rounded-full">
+                <div className="flex items-start lg:gap-4 xs:gap-2">
+                  <div className="logo-box flex items-center justify-center lg:size-16 xs:size-10 rounded-full">
                     {/* SVG diletakkan di dalam logo-box */}
                     <svg
-                      className="lg:size-7 xs:size-6"
+                      className="lg:size-7 xs:size-5"
                       viewBox="0 0 33 32"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -65,10 +65,10 @@ function Footer() {
                       />
                     </svg>
                   </div>
-                  <div className="logo-box flex items-center justify-center lg:size-16 xs:size-14 rounded-full">
+                  <div className="logo-box flex items-center justify-center lg:size-16 xs:size-10 rounded-full">
                     {/* SVG diletakkan di dalam logo-box */}
                     <svg
-                      className="lg:size-7 xs:size-6"
+                      className="lg:size-7 xs:size-5"
                       viewBox="0 0 32 32"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"

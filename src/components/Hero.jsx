@@ -6,12 +6,12 @@ function Hero() {
   return (
     <>
       <div className="hero bg-hero-bg bg-cover bg-center flex flex-col pb-24 pt-48 items-center self-stretch h-auto">
-        <div className=" lg:w-tagline w-5/6  text-white flex justify-start lg:justify-start lg:flex-row lg:content-end lg:items-start flex-wrap">
-          <div className=" w-96 mt-48  flex flex-col content-end items-start gap-4">
+        <div className="content text-white flex flex-row content-end items-start flex-wrap">
+          <div className="tagline flex flex-col content-end items-start lg:gap-4 xs:gap-2">
             <h1 className=" text-white font-bold">
               Build up your mentoring with us.
             </h1>
-            <p className="text-white text-xl font-normal">
+            <p className="text-white lg:text-xl xs:text-sm font-normal">
               Katanya mau berkembang? daripada berkembang seorang diri, Yukk
               maksimalkan potensi kamu dengan adanya mentorship!
             </p>

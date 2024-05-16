@@ -7,7 +7,7 @@ function Testimoni() {
     <>
       <div className="lg:h-testimoni w-full bg-orange-bg bg-cover border-y-2 border-black flex justify-center">
         <div className="flex h-full justify-center  max-w-6xl lg:flex-nowrap flex-wrap">
-          <div className="flex  lg:h-3/4 mt-28 lg:w-2/5 items-center">
+          <div className="flex lg:h-3/4 mt-28 lg:w-2/5 items-center">
             <div className="w-96 -mt-20">
               <img
                 className="mascot ml-24 lg:ml-0 mb-4 border-b-2 border-black"
