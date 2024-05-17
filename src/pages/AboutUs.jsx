@@ -7,7 +7,7 @@ import About from "../components/About";
 function AboutUs() {
   return (
     <>
-      <div className="home">
+      <div className="aboutus background">
         <TagLine />
         <About />
         <Visi />
