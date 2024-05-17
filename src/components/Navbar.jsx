@@ -78,7 +78,7 @@ function Navbar() {
                     className="text-slate-500 hover:text-black"
                     to="/ourprogram/skyshare"
                   >
-                    <p className="">Skyshare Academy</p>
+                    <p>Skyshare Academy</p>
                   </Link>
                 </div>
                 <div className=" w-full h-14 flex justify-center items-center border-gray-400 border-t">
