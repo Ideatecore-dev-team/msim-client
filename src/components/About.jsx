@@ -24,7 +24,7 @@ function About() {
                 dan menginspirasi para pelajar.
               </p>
             </div>
-            <div className="about-picture flex  justify-center lg:justify-end relative w-full">
+            <div className="about-picture flex justify-center lg:justify-end relative w-full">
               <div className="mascot-about">
                 <img
                   className="absolute size-24 lg:size-52 left-12 lg:left-0 bottom-0"
