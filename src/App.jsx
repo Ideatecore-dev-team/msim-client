@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -12,15 +12,19 @@ import SkyshareActivity from "./pages/SkyshareActivity";
 import MentorActivity from "./pages/MentorActivity";
 import ContactUs from "./pages/ContactUs";
 import ArticleOpennedPage from "./pages/ArticleOpennedPage";
+import CmsLogin from "./pages/CmsLogin";
 import { Helmet } from "react-helmet";
 
 function App() {
+  const location = useLocation();
+  const hideNavbarAndFooter = location.pathname === "/cms/login";
+
   return (
     <>
       <Helmet>
         <title>MSIM</title>
       </Helmet>
-      <Navbar />
+      {!hideNavbarAndFooter && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
@@ -38,9 +42,10 @@ function App() {
         />
         <Route path="/article" element={<Article />} />
         <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/cms/login" element={<CmsLogin />} />
         {/* Tambahkan rute-rute tambahan di sini */}
       </Routes>
-      <Footer />
+      {!hideNavbarAndFooter && <Footer />}
     </>
   );
 }

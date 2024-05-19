@@ -3,7 +3,6 @@ import SkyshareLogo from "../../public/images/Skyshare-Logo.png";
 
 function SkyshareCta({ skyshare }) {
   const data = skyshare && skyshare.length > 0 ? skyshare[0] : null;
-  console.log(data);
   return (
     <>
       <div className="hero bg-hero-bg bg-cover bg-center flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
@@ -13,7 +12,7 @@ function SkyshareCta({ skyshare }) {
               <img className="w-56" src={SkyshareLogo} alt="" />
             </div>
             <h1 className="text-white headline-1 text-center mb-4">
-              Skyshare Academy
+              Talent Academy
             </h1>
             <p className="paragraph text-center mb-3">
               Open registration Skyshare Academy Season 6.

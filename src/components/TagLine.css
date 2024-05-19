@@ -1,0 +1,12 @@
+.logo-ant {
+  height: 31.25rem;
+  width: 72rem;
+  padding-top: 100px;
+}
+
+@media (max-width: 639px) {
+  .logo-txt {
+    line-height: 150%;
+    font-size: 10px;
+  }
+}

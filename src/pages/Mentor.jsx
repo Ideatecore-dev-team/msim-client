@@ -14,14 +14,14 @@ function Mentor() {
   useEffect(() => {
     const GetDataMentor = async function () {
       try {
-        const response = await axios.get("https://api.julio.my.id/mentor");
+        const response = await axios.get("https://api.skyshareacademy.com/mentor");
         setMentor(response.data.data);
       } catch (error) {
         console.log(error);
       }
     };
     GetDataMentor();
-  });
+  }, []);
   return (
     <>
       <div className="home">
