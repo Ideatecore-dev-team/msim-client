@@ -1,0 +1,11 @@
+.misi-point {
+  width: 956px;
+  height: 109px;
+}
+
+@media (max-width: 639px) {
+  .misi-point {
+    width: 330px;
+    height: 100%;
+  }
+}
