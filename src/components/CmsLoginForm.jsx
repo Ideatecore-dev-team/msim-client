@@ -39,6 +39,29 @@ function CmsLoginForm() {
             placeholder="Password"
             className="px-2 mt-5 py-2 rounded-md w-80 block border border-gray-300 shadow-sm shadow-gray-500"
           />
+          <div className="px-2 mt-5 py-2 rounded-md w-80 border border-gray-300 shadow-sm shadow-gray-500">
+            <form action="">
+              <input
+                type="radio"
+                name="role"
+                value="superadmin"
+                id="superadmin"
+              />
+              <label htmlFor="superadmin" className="ml-2 font-bold">
+                Super Admin
+              </label>
+              <input
+                type="radio"
+                name="role"
+                value="admin"
+                id="admin"
+                className="ml-5"
+              />
+              <label htmlFor="admin" className="ml-2 font-bold">
+                Admin
+              </label>
+            </form>
+          </div>
           <button className=" bg-primary-1 w-80 py-2 mt-5 rounded-lg flex items-center justify-center gap-2 hover:bg-primary-2">
             <p className="font-bold text-white">Login</p>
             <img className="w-6 -rotate-90" src={ArrowLeft} alt="" />

@@ -223,9 +223,9 @@ h1 {
 }
 
 .drop {
-  height: 9rem;
+  height: 12rem;
   width: 11rem;
-  margin-top: 1.4rem;
+  margin-top: 1.6rem;
   margin-left: -1.4rem;
   transition: 0.5s;
   transform: scaley(0);

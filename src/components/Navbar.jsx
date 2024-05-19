@@ -22,10 +22,10 @@ function Navbar() {
     <>
       <div className="flex justify-center bg-slate-600">
         <div className="sm:w-10/12 w-10/12 lg:w-nav lg:py-4 sm:px-8 sm:py-12 px-8 py-8 justify-around gap-56 lg:gap-0 shadow-lg bg-neutral-white rounded-full absolute mt-5 flex items-center lg:flex-wrap lg:justify-around z-10">
-          <div className=" lg:w-logo-msim w-logo-msim xs:bg-black flex lg:-ml-44">
+          <div className=" lg:w-logo-msim w-logo-msim flex lg:-ml-44">
             <Link to="/">
               <img
-                className=" absolute lg:ml-0  w-32 lg:-mt-7 -mt-5 sm:w-44 sm:-mt-7 sm:-ml-44 -ml-20"
+                className=" absolute lg:ml-0  w-32 lg:-mt-7 -mt-5 sm:w-44 sm:-mt-7 sm:-ml-44 -ml-12"
                 src={Logo}
                 alt=""
               />
@@ -37,7 +37,7 @@ function Navbar() {
             </Link>
             <div className="flex down  gap-2 Our-program">
               <Link
-                className=" text-slate-500 hover:text-black  flex gap-2 "
+                className=" text-slate-500 hover:text-black flex gap-2 "
                 to="/ourprogram"
               >
                 <p>Our Program</p>
@@ -73,12 +73,20 @@ function Navbar() {
               {/* ini adalah menu dropdown */}
               <div className=" absolute drop bg-neutral-white w-44">
                 <div className=" w-full flex justify-center items-center h-1/5 "></div>
-                <div className=" w-full flex mt-1 justify-center items-center h-14 border-gray-400 border-t">
+                <div className=" w-full flex -mt-2 justify-center items-center h-14 border-gray-400 border-t">
                   <Link
                     className="text-slate-500 hover:text-black"
                     to="/ourprogram/skyshare"
                   >
-                    <p>Skyshare Academy</p>
+                    <p>Talent Academy</p>
+                  </Link>
+                </div>
+                <div className=" w-full flex -mt-1 justify-center items-center h-14 border-gray-400 border-t">
+                  <Link
+                    className="text-slate-500 hover:text-black"
+                    to="/ourprogram/skyshare"
+                  >
+                    <p>Parents Academy</p>
                   </Link>
                 </div>
                 <div className=" w-full h-14 flex justify-center items-center border-gray-400 border-t">
@@ -131,7 +139,7 @@ function Navbar() {
           </div>
           <button
             onClick={dropNavbar}
-            className="flex justify-around bg-primary-1 px-1 py-1 rounded-md absolute ml-72 sm:-mr-40 hover:bg-primary-2 lg:hidden"
+            className="flex justify-around bg-primary-1 px-1 py-1 rounded-md absolute ml-60 sm:-mr-40 hover:bg-primary-2 lg:hidden"
           >
             <img
               id="hamburger"
@@ -149,15 +157,15 @@ function Navbar() {
         </div>
         <div
           id="drop"
-          className="block duration-500 origin-top scale-y-0 absolute bg-white mt-24 rounded-lg padding pt-20 items-center gap-10 w-10/12 lg:hidden"
+          className="block duration-500 origin-top scale-y-0 absolute bg-white mt-16 rounded-lg padding pt-20 items-center gap-10 w-10/12 lg:hidden"
         >
-          <div className=" px-16 mt-5">
+          <div className=" px-16 -mt-10">
             <Link className="text-slate-500 hover:text-black" to="/aboutus">
               <p className="text-xl">About Us</p>
             </Link>
-            <div className="flex  gap-2 Our-program  mt-10">
+            <div className="flex  gap-2 Our-program  mt-5">
               <Link
-                className=" text-slate-500 hover:text-black  mb-10 flex gap-2 "
+                className=" text-slate-500 hover:text-black  mb-5 flex gap-2 "
                 to="/ourprogram"
               >
                 <p className="text-xl">Our Program</p>
@@ -165,12 +173,12 @@ function Navbar() {
             </div>
             <div className="flex  gap-2 Our-program ">
               <Link
-                className=" text-slate-500 hover:text-black  mb-10 flex gap-2 "
+                className=" text-slate-500 hover:text-black  mb-5 flex gap-2 "
                 to="/ourprogram/skyshare"
               >
-                <p className="text-xl">Skyshare Academy</p>
+                <p className="text-xl">Talent Academy</p>
                 <svg
-                  className=" -rotate-90"
+                  className=" -rotate-90 mt-5"
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
                   height="24"
@@ -200,12 +208,12 @@ function Navbar() {
             </div>
             <div className="flex  gap-2 Our-program ">
               <Link
-                className=" text-slate-500 hover:text-black  mb-10 flex gap-2 "
+                className=" text-slate-500 hover:text-black  mb-5 flex gap-2 "
                 to="/ourprogram/mentor"
               >
                 <p className="text-xl">Mentor Academy</p>
                 <svg
-                  className=" -rotate-90"
+                  className=" -rotate-90 mt-5"
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
                   height="24"
@@ -235,7 +243,7 @@ function Navbar() {
             </div>
 
             <Link
-              className="text-slate-500 hover:text-black mt-10"
+              className="text-slate-500 hover:text-black mt-5"
               to="/article"
             >
               <p className="text-xl">Article</p>
