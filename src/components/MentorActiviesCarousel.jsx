@@ -1,5 +1,5 @@
 import React from "react";
-import MaCarousel from "./SSACarousel";
+import MaCarousel from "./SSACarouselMentor";
 import ArrowLeft from "../../public/images/mascot-icons/Arrow - Down 3.png";
 import { Link } from "react-router-dom";
 

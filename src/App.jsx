@@ -7,9 +7,10 @@ import AboutUs from "./pages/AboutUs";
 import OurProgram from "./pages/OurProgram";
 import Skyshare from "./pages/Skyshare";
 import Mentor from "./pages/Mentor";
-// import Parents from "./pages/Parents";
+import Parents from "./pages/Parents";
 import Article from "./pages/Article";
 import SkyshareActivity from "./pages/SkyshareActivity";
+import ParentsActivity from "./pages/ParentsActivity"
 import MentorActivity from "./pages/MentorActivity";
 import ContactUs from "./pages/ContactUs";
 import ArticleOpennedPage from "./pages/ArticleOpennedPage";
@@ -32,17 +33,21 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/ourprogram" element={<OurProgram />} />
-        <Route path="/ourprogram/skyshare" element={<Skyshare />} />
+        <Route path="/ourprogram/talent" element={<Skyshare />} />
         <Route path="/ourprogram/mentor" element={<Mentor />} />
-        {/* <Route path="/ourprogram/parents" element={<Parents />} /> */}
+        <Route path="/ourprogram/parents" element={<Parents />} />
         <Route path="/article/:id" element={<ArticleOpennedPage />} />
         <Route
-          path="/ourprogram/skyshare/activities"
+          path="/ourprogram/talent/activities"
           element={<SkyshareActivity />}
         />
         <Route
           path="/ourprogram/mentor/activities"
           element={<MentorActivity />}
+        />
+          <Route
+          path="/ourprogram/parents/activities"
+          element={<ParentsActivity />}
         />
         <Route path="/article" element={<Article />} />
         <Route path="/contactus" element={<ContactUs />} />
