@@ -14,6 +14,8 @@ export default {
           "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)) ,url('/images/StudEx7.jpeg')",
         "mentor-bg":
           "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)) ,url('/images/Parent.jpeg')",
+        "parent-bg":
+          "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)) ,url('/images/ParentsConference.jpeg')",
         "card-bg-1":
           "linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)) ,url('/images/cardbg1.jpeg')",
         "card-bg-2":

@@ -7,6 +7,7 @@ import AboutUs from "./pages/AboutUs";
 import OurProgram from "./pages/OurProgram";
 import Skyshare from "./pages/Skyshare";
 import Mentor from "./pages/Mentor";
+// import Parents from "./pages/Parents";
 import Article from "./pages/Article";
 import SkyshareActivity from "./pages/SkyshareActivity";
 import MentorActivity from "./pages/MentorActivity";
@@ -31,6 +32,7 @@ function App() {
         <Route path="/ourprogram" element={<OurProgram />} />
         <Route path="/ourprogram/skyshare" element={<Skyshare />} />
         <Route path="/ourprogram/mentor" element={<Mentor />} />
+        {/* <Route path="/ourprogram/parents" element={<Parents />} /> */}
         <Route path="/article/openned" element={<ArticleOpennedPage />} />
         <Route
           path="/ourprogram/skyshare/activities"

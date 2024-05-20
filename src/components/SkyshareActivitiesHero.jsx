@@ -19,7 +19,7 @@ function SkyshareActivitiesHero() {
               <div className="flex items-center mt-5  justify-center">
                 <img className="w-5" src={WorkIcon} alt="tas" />
                 <p className="paragraph ml-2 text-slate-600">
-                  Ada kegiatan apa aja sih di Skyshare Academy?
+                  Ada kegiatan apa aja sih di Talent Academy?
                 </p>
               </div>
             </div>
