@@ -15,7 +15,7 @@ function About() {
               <h4 className=" text-base lg:text-lg font-bold w-full">
                 Apa sih MSiM itu?
               </h4>
-              <p className=" self-stretch text-sm lg:text-base font-normal w-full">
+              <p className="self-stretch text-sm lg:text-base font-normal w-full">
                 MSiM (More Stylish in Mentoring) menyediakan dua program
                 unggulan: SkyShare Academy dan Mentor Academy, yang
                 masing-masing menawarkan pembinaan personal dan profesional.

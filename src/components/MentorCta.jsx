@@ -5,7 +5,7 @@ function MentorCta({ mentor }) {
   const data = mentor && mentor.length > 0 ? mentor[0] : null;
   return (
     <>
-      <div className="hero bg-hero bg-cover bg-center flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
+      <div className="hero bg-hero-bg bg-cover bg-center flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
         <div className="content text-white flex justify-center items-end">
           <div className="w-2/3">
             <div className="flex justify-center">
