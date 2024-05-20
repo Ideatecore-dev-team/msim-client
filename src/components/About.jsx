@@ -6,16 +6,16 @@ function About() {
   return (
     <>
       <div className="about flex flex-col items-center self-stretch pt-14 lg:pt-24">
-        <div className="flex flex-col justify-center items-center gap-7 lg:gap-10">
+        <div className="flex flex-col about-container justify-center items-center gap-7 lg:gap-6">
           <h1 className="text-center text-2xl lg:text-4xl text-black font-bold">
             About
           </h1>
-          <div className="about-container flex flex-col lg:flex-row gap-8 lg:gap-6">
-            <div className="about-desc flex flex-col mx-auto lg:items-start gap-8 lg:gap-4 text-center lg:text-left ">
+          <div className="about-container  w-full flex flex-col lg:flex-row gap-8 lg:gap-20">
+            <div className="about-desc about-contain flex flex-col mx-auto lg:items-start gap-8 lg:gap-4 text-center lg:text-left ">
               <h4 className=" text-base lg:text-lg font-bold w-full">
                 Apa sih Skyshare Academy itu?
               </h4>
-              <p className="self-strech text-sm lg:text-base font-normal w-full">
+              <p className="text-sm lg:text-base font-normal w-full">
                 Skyshare Academy menyediakan tiga program
                 unggulan: Talent Academy, Mentor Academy, dan Parents Academy yang
                 masing-masing menawarkan pembinaan personal dan profesional.
@@ -24,7 +24,7 @@ function About() {
                 dan menginspirasi para pelajar.
               </p>
             </div>
-            <div className="about-picture flex justify-center lg:justify-end relative w-full">
+            <div className="about-picture flex bg-blue-200 justify-center lg:justify-end relative w-full">
               <div className="mascot-about">
                 <img
                   className="absolute size-24 lg:size-52 left-12 lg:left-0 bottom-0"
