@@ -1,5 +1,5 @@
 import React from "react";
-import logoPlaceholder from "../../public/images/logo placeholder.png";
+import logoPlaceholder from "../../public/images/mascot-icons/logo placeholder.png";
 import Mascot from "../../public/images/mascot-icons/pose=9.png";
 import SecondaryButton from "./SecondayButton";
 // test conflict
@@ -13,8 +13,8 @@ function Footer() {
               <div className="logo-placeholder lg:w-44 lg:h-14 xs:w-28 xs:h-6 xs:mb-4">
                 <img src={logoPlaceholder} alt="logo" />
               </div>
-              <p className="lg:text-sm xs:text-xs font-medium	">
-                Build up your mentoring with us.
+              <p className="lg:text-base lg:h-6 xs:text-xs font-medium	">
+                Find Yourself
               </p>
             </div>
             <div className="footer-info w-1/2 lg:w-full lg:flex-nowrap flex items-start flex-wrap gap-8 self-stretch">

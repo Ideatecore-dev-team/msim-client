@@ -12,15 +12,17 @@ import TimelineMentorAcademy from "../components/TimelineMentorAcademy";
 function Mentor() {
   const [mentor, setMentor] = useState([]);
   useEffect(() => {
-    const GetDataMentor = async function () {
+    const getDataMentor = async function () {
       try {
-        const response = await axios.get("https://api.skyshareacademy.com/mentor");
+        const response = await axios.get(
+          "https://api.skyshareacademy.com/mentor"
+        );
         setMentor(response.data.data);
       } catch (error) {
         console.log(error);
       }
     };
-    GetDataMentor();
+    getDataMentor();
   }, []);
   return (
     <>

@@ -5,7 +5,7 @@ import Icon1 from "../../public/images/mascot-icons/circle.png";
 function BenefitMentor() {
   return (
     <>
-      <div className="hero bg-blue-bg bg-cover border-y-2 border-black flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
+      <div className="hero bg-orange-bg bg-cover border-y-2 border-black flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
         <div className="content -mt-10">
           <div className="flex justify-center">
             <div className=" h-14 gap-3 flex items-center">

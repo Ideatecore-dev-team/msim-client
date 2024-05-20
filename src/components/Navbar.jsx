@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../public/images/logo placeholder.png";
+import Logo from "../../public/images/mascot-icons/logo placeholder.png";
 import Hamburger from "../../public/images/Hamburger Icon.png";
 import XCircle from "../../public/images/mascot-icons/Close Square.svg";
 function Navbar() {
@@ -76,17 +76,9 @@ function Navbar() {
                 <div className=" w-full flex -mt-2 justify-center items-center h-14 border-gray-400 border-t">
                   <Link
                     className="text-slate-500 hover:text-black"
-                    to="/ourprogram/skyshare"
+                    to="/ourprogram/talent"
                   >
                     <p>Talent Academy</p>
-                  </Link>
-                </div>
-                <div className=" w-full flex -mt-1 justify-center items-center h-14 border-gray-400 border-t">
-                  <Link
-                    className="text-slate-500 hover:text-black"
-                    to="/ourprogram/skyshare"
-                  >
-                    <p>Parents Academy</p>
                   </Link>
                 </div>
                 <div className=" w-full h-14 flex justify-center items-center border-gray-400 border-t">
@@ -95,6 +87,14 @@ function Navbar() {
                     to="/ourprogram/mentor"
                   >
                     <p>Mentor Academy</p>
+                  </Link>
+                </div>
+                <div className=" w-full flex -mt-1 justify-center items-center h-14 border-gray-400 border-t">
+                  <Link
+                    className="text-slate-500 hover:text-black"
+                    to="/ourprogram/parents"
+                  >
+                    <p>Parents Academy</p>
                   </Link>
                 </div>
               </div>
