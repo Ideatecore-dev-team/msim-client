@@ -11,7 +11,6 @@ function TagLine() {
             <img src={logoPlaceholder} alt="logo" />
           </div>
           <p className="logo-txt lg:text-xl font-medium text-slate-900	">
-            Build up your mentoring with us.
           </p>
         </div>
       </div>

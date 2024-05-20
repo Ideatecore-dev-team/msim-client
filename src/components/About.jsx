@@ -13,13 +13,13 @@ function About() {
           <div className="about-container flex flex-col lg:flex-row gap-8 lg:gap-6">
             <div className="about-desc flex flex-col mx-auto lg:items-start gap-8 lg:gap-4 text-center lg:text-left ">
               <h4 className=" text-base lg:text-lg font-bold w-full">
-                Apa sih MSiM itu?
+                Apa sih Skyshare Academy itu?
               </h4>
-              <p className="self-stretch text-sm lg:text-base font-normal w-full">
-                MSiM (More Stylish in Mentoring) menyediakan dua program
-                unggulan: SkyShare Academy dan Mentor Academy, yang
+              <p className="self-strech text-sm lg:text-base font-normal w-full">
+                Skyshare Academy menyediakan tiga program
+                unggulan: Talent Academy, Mentor Academy, dan Parents Academy yang
                 masing-masing menawarkan pembinaan personal dan profesional.
-                Dengan fokus pada pengembangan karier dan kepemimpinan, MSiM
+                Dengan fokus pada pengembangan karier dan kepemimpinan, Skyshare Academy
                 bertujuan untuk menciptakan lingkungan pendidikan yang mendukung
                 dan menginspirasi para pelajar.
               </p>
