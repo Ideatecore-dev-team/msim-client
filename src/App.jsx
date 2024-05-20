@@ -14,18 +14,20 @@ import MentorActivity from "./pages/MentorActivity";
 import ContactUs from "./pages/ContactUs";
 import ArticleOpennedPage from "./pages/ArticleOpennedPage";
 import CmsLogin from "./pages/CmsLogin";
+import CmsKelolaAkun from "./pages/CmsKelolaAkun";
 import { Helmet } from "react-helmet";
 
 function App() {
   const location = useLocation();
   const hideNavbarAndFooter = location.pathname === "/cms/login";
+  const hideNavbarAndFooter2 = location.pathname === "/cms/kelolaakun";
 
   return (
     <>
       <Helmet>
         <title>MSIM</title>
       </Helmet>
-      {!hideNavbarAndFooter && <Navbar />}
+      {!hideNavbarAndFooter && !hideNavbarAndFooter2 && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
@@ -33,7 +35,7 @@ function App() {
         <Route path="/ourprogram/skyshare" element={<Skyshare />} />
         <Route path="/ourprogram/mentor" element={<Mentor />} />
         {/* <Route path="/ourprogram/parents" element={<Parents />} /> */}
-        <Route path="/article/openned" element={<ArticleOpennedPage />} />
+        <Route path="/article/:id" element={<ArticleOpennedPage />} />
         <Route
           path="/ourprogram/skyshare/activities"
           element={<SkyshareActivity />}
@@ -45,9 +47,10 @@ function App() {
         <Route path="/article" element={<Article />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/cms/login" element={<CmsLogin />} />
+        <Route path="/cms/kelolaakun" element={<CmsKelolaAkun />} />
         {/* Tambahkan rute-rute tambahan di sini */}
       </Routes>
-      {!hideNavbarAndFooter && <Footer />}
+      {!hideNavbarAndFooter && !hideNavbarAndFooter2 && <Footer />}
     </>
   );
 }
