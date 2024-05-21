@@ -16,15 +16,15 @@ function About() {
                 Apa sih Skyshare Academy itu?
               </h4>
               <p className="text-sm lg:text-base font-normal w-full">
-                Skyshare Academy menyediakan tiga program
-                unggulan: Talent Academy, Mentor Academy, dan Parents Academy yang
-                masing-masing menawarkan pembinaan personal dan profesional.
-                Dengan fokus pada pengembangan karier dan kepemimpinan, Skyshare Academy
-                bertujuan untuk menciptakan lingkungan pendidikan yang mendukung
-                dan menginspirasi para pelajar.
+                Skyshare Academy menyediakan tiga program unggulan: Talent
+                Academy, Mentor Academy, dan Parents Academy yang masing-masing
+                menawarkan pembinaan personal dan profesional. Dengan fokus pada
+                pengembangan karier dan kepemimpinan, Skyshare Academy bertujuan
+                untuk menciptakan lingkungan pendidikan yang mendukung dan
+                menginspirasi para pelajar.
               </p>
             </div>
-            <div className="about-picture flex bg-blue-200 justify-center lg:justify-end relative w-full">
+            <div className="about-picture flex justify-center lg:justify-end relative w-full">
               <div className="mascot-about">
                 <img
                   className="absolute size-24 lg:size-52 left-12 lg:left-0 bottom-0"

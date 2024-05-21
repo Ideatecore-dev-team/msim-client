@@ -1,12 +1,10 @@
 import React from "react";
 import { Link, Navigate } from "react-router-dom";
-import IconAddUser from "../../public/images/mascot-icons/Add User.png";
-import ArrowRight from "../../public/images/mascot-icons/Arrow - Right 3.png";
-import Edit from "../../public/images/mascot-icons/Edit.png";
 import Character from "../../public/images/mascot-icons/Char.png";
 import Edit1 from "../../public/images/mascot-icons/Edit Square.png";
 import Delete from "../../public/images/mascot-icons/Delete.png";
 import Add from "../../public/images/mascot-icons/Plus.png";
+import CmsNavCard from "./CmsNavCard";
 
 function CmsDashboardAkun() {
   return (
@@ -14,40 +12,7 @@ function CmsDashboardAkun() {
       <div className="bg-background flex flex-col pb-44 pt-12 items-center self-stretch h-auto">
         <div className="content flex gap-4 ">
           <div className="">
-            <div className="py-4 px-3 w-72 flex justify-center items-center rounded-xl bg-neutral-white ">
-              <ul>
-                <li className="  py-4 w-64 px-4">
-                  <Link className="flex gap-4" to="/">
-                    <img className="w-6" src={IconAddUser} alt="" />
-                    <p className=" text-base">Kelola Akun</p>
-                  </Link>
-                </li>
-                <li className=" py-4 w-64 px-4">
-                  <Link className="flex gap-4" to="/ourprogram/talent">
-                    <img className="w-6" src={ArrowRight} alt="" />
-                    <p className=" text-base">Talent Academy</p>
-                  </Link>
-                </li>
-                <li className="  py-4 w-64 px-4">
-                  <Link className="flex gap-4" to="/ourprogram/mentor">
-                    <img className="w-6" src={ArrowRight} alt="" />
-                    <p className=" text-base">Mentor Academy</p>
-                  </Link>
-                </li>
-                <li className=" py-4 w-64 px-4">
-                  <Link className="flex gap-4" to="">
-                    <img className="w-6" src={ArrowRight} alt="/ourprogram/parent" />
-                    <p className=" text-base">Parents Academy</p>
-                  </Link>
-                </li>
-                <li className=" py-4 w-64 px-4">
-                  <Link className="flex gap-4" to="/article">
-                    <img className="w-6" src={Edit} alt="" />
-                    <p className=" text-base">Article</p>
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            <CmsNavCard />
           </div>
           <div className=" w-full">
             <div className=" ">
@@ -57,7 +22,7 @@ function CmsDashboardAkun() {
                 <span className=" font-bold">“Super Admin”</span>).
               </p>
             </div>
-            <div className=" mt-10 border-2 border-black rounded-xl pb-44 px-3 bg-neutral-white w-full">
+            <div className=" shadow-md mt-10 border-2 border-black rounded-xl pb-44 px-3 bg-neutral-white w-full">
               <div className="bg-background flex justify-between rounded-xl mt-5 py-3 px-3">
                 <div className="flex items-center gap-5 ">
                   <img className=" w-10" src={Character} alt="" />
