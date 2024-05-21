@@ -51,7 +51,6 @@
   }
 
   .article .slick-list {
-    overflow: hidden !important;
-    width: 290px;
+    width: 300px;
   }
 }
