@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Character from "../../public/images/mascot-icons/Char.png";
 import Edit1 from "../../public/images/mascot-icons/Edit Square.png";
 import Delete from "../../public/images/mascot-icons/Delete.png";
@@ -7,6 +7,11 @@ import Add from "../../public/images/mascot-icons/Plus.png";
 import CmsNavCard from "./CmsNavCard";
 
 function CmsDashboardAkun() {
+  const Navigate = useNavigate();
+  function handleNavigateEdit() {
+    Navigate("/cms/edit/admin");
+  }
+
   return (
     <>
       <div className="bg-background flex flex-col pb-44 pt-12 items-center self-stretch h-auto">
@@ -29,7 +34,10 @@ function CmsDashboardAkun() {
                   <h4 className="headline-4">Akun Admin</h4>
                 </div>
                 <div className="bg-primary-1 flex items-center rounded-md px-2 py-2">
-                  <Link to="/" className="bg-primary-1 hover:bg-primary-2">
+                  <Link
+                    to="/cms/add/admin"
+                    className="bg-primary-1 hover:bg-primary-2"
+                  >
                     <img className=" w-6" src={Add} alt="" />
                   </Link>
                 </div>
@@ -53,7 +61,10 @@ function CmsDashboardAkun() {
                       <td className="px-16 py-4 text-left">Admin</td>
                       <td className="px-16 py-4 text-left flex gap-4">
                         <div className="w-10 flex items-center justify-center rounded-md py-2">
-                          <button className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center">
+                          <button
+                            onClick={handleNavigateEdit}
+                            className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center"
+                          >
                             <img className="w-5" src={Edit1} alt="" />
                           </button>
                         </div>
@@ -71,7 +82,10 @@ function CmsDashboardAkun() {
                       <td className="px-16 py-4 text-left">Admin</td>
                       <td className="px-16 py-4 text-left flex gap-4">
                         <div className="w-10 flex items-center justify-center rounded-md py-2">
-                          <button className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center">
+                          <button
+                            onClick={handleNavigateEdit}
+                            className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center"
+                          >
                             <img className="w-5" src={Edit1} alt="" />
                           </button>
                         </div>

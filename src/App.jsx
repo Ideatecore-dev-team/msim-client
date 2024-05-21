@@ -17,6 +17,7 @@ import ArticleOpennedPage from "./pages/ArticleOpennedPage";
 import CmsLogin from "./pages/CmsLogin";
 import CmsKelolaAkun from "./pages/CmsKelolaAkun";
 import CmsAddAdmin from "./pages/CmsAddAdmin";
+import CmsEditAdmin from "./pages/CmsEditAdmin";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
   const hideNavbarAndFooter = location.pathname === "/cms/login";
   const hideNavbarAndFooter2 = location.pathname === "/cms/kelolaakun";
   const hideNavbarAndFooter3 = location.pathname === "/cms/add/admin";
+  const hideNavbarAndFooter4 = location.pathname === "/cms/edit/admin";
 
   return (
     <>
@@ -32,7 +34,8 @@ function App() {
       </Helmet>
       {!hideNavbarAndFooter &&
         !hideNavbarAndFooter2 &&
-        !hideNavbarAndFooter3 && <Navbar />}
+        !hideNavbarAndFooter3 &&
+        !hideNavbarAndFooter4 && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
@@ -58,11 +61,13 @@ function App() {
         <Route path="/cms/login" element={<CmsLogin />} />
         <Route path="/cms/kelolaakun" element={<CmsKelolaAkun />} />
         <Route path="cms/add/admin" element={<CmsAddAdmin />} />
+        <Route path="cms/edit/admin" element={<CmsEditAdmin />} />
         {/* Tambahkan rute-rute tambahan di sini */}
       </Routes>
       {!hideNavbarAndFooter &&
         !hideNavbarAndFooter2 &&
-        !hideNavbarAndFooter3 && <Footer />}
+        !hideNavbarAndFooter3 &&
+        !hideNavbarAndFooter4 && <Footer />}
     </>
   );
 }

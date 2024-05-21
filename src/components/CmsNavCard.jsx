@@ -10,7 +10,7 @@ function CmsNavCard() {
       <div className="py-4 px-3 w-72 flex justify-center items-center rounded-xl bg-neutral-white ">
         <ul>
           <li className="  py-4 w-64 px-4 hover:bg-background rounded-xl">
-            <Link className="flex gap-4" to="/">
+            <Link className="flex gap-4" to="/cms/kelolaakun">
               <img className="w-6" src={IconAddUser} alt="" />
               <p className=" text-base">Kelola Akun</p>
             </Link>
