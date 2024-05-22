@@ -51,11 +51,9 @@ function CmsAddAdminForm() {
                   >
                     Role <span className="text-primary-1 font-bold">*</span>
                   </label>
-                  <input
-                    placeholder="Masukkan Role"
-                    type="text"
-                    className=" w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
-                  />
+                  <div className=" w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none">
+                    Admin
+                  </div>
                   <div className=" w-full mt-10 flex justify-end">
                     <div className=" w-56 py-2 flex">
                       <button className="bg-primary-1 w-20 py-2 rounded-md hover:bg-primary-2 text-white font-bold">

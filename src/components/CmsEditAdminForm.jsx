@@ -34,7 +34,20 @@ function CmsEditAdminForm() {
                     htmlFor="username"
                     className=" font-bold block mb-2 mt-5"
                   >
-                    Password <span className="text-primary-1 font-bold">*</span>
+                    Password Lama{" "}
+                    <span className="text-primary-1 font-bold">*</span>
+                  </label>
+                  <input
+                    placeholder="Masukkan Password"
+                    type="password"
+                    className=" w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                  />
+                  <label
+                    htmlFor="username"
+                    className=" font-bold block mb-2 mt-5"
+                  >
+                    Password Baru{" "}
+                    <span className="text-primary-1 font-bold">*</span>
                   </label>
                   <input
                     placeholder="Masukkan Password"
@@ -51,11 +64,9 @@ function CmsEditAdminForm() {
                   >
                     Role <span className="text-primary-1 font-bold">*</span>
                   </label>
-                  <input
-                    placeholder="Masukkan Role"
-                    type="text"
-                    className=" w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
-                  />
+                  <div className=" w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none">
+                    Admin
+                  </div>
                   <div className=" w-full mt-10 flex gap-5 justify-end">
                     <div className=" w-56 py-2 flex">
                       <button className="bg-gray-300 w-20 py-2 rounded-md hover:bg-gray-200 text-black font-bold">
