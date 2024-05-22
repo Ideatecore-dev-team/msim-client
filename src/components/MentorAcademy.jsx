@@ -5,7 +5,7 @@ import MentorLogo from "../../public/images/Mentor-logo.png";
 function MentorAcademy() {
   return (
     <>
-      <div className="hero bg-hero bg-cover bg-center border-t border-white flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
+      <div className="hero bg-hero-bg bg-cover bg-center border-t border-white flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
         <div className="content text-white flex justify-center items-end">
           <div className="w-2/3">
             <div className="flex justify-center">

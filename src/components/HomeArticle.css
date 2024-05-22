@@ -40,11 +40,17 @@
 
 @media (max-width: 639px) {
   .card-art {
-    width: 16.188rem;
-    height: 19.5rem;
+    width: 16.188rem !important;
+    height: 22rem;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   .card-img {
     height: 6.875rem;
+  }
+
+  .article .slick-list {
+    width: 300px;
   }
 }

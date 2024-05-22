@@ -1,0 +1,9 @@
+.visi-content {
+  width: 956px;
+}
+
+@media (max-width: 639px) {
+  .visi-content {
+    width: 100%;
+  }
+}
