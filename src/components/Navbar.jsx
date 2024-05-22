@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../public/images/mascot-icons/logo placeholder.png";
+import Logo from "../../public/images/logo placeholder.png";
 import Hamburger from "../../public/images/Hamburger Icon.png";
 import XCircle from "../../public/images/mascot-icons/Close Square.svg";
 function Navbar() {

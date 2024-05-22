@@ -1,5 +1,5 @@
 import React from "react";
-import logoPlaceholder from "../../public/images/logo placeholder.png";
+import logoPlaceholder from "../../public/images/logo SkyshareAcademy.png";
 import "./TagLine.css";
 
 function TagLine() {

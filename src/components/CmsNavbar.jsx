@@ -1,6 +1,6 @@
 import React from "react";
 import "./CmsNavbar.css";
-import Logo from "../../public/images/mascot-icons/logo placeholder.png";
+import Logo from "../../public/images/logo placeholder.png";
 import IconButton from "../../public/images/mascot-icons/Fill 280.png";
 
 function CmsNavbar() {
