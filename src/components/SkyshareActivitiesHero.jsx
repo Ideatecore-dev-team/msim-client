@@ -1,6 +1,6 @@
 import React from "react";
 import WorkIcon from "../../public/images/mascot-icons/Vector.png";
-import SkyshareLogo from "../../public/images/Skyshare-Logo.png";
+import SkyshareLogo from "../../public/images/Talent-logo.png";
 import "./SkyshareActivitiesHero.css";
 
 function SkyshareActivitiesHero() {

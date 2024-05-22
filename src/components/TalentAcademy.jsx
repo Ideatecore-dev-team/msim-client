@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import MentorLogo from "../../public/images/Mentor-logo.png";
+import TalentLogo from "../../public/images/Talent-logo.png";
 
 function OurProgramHero() {
   return (
@@ -9,13 +9,14 @@ function OurProgramHero() {
         <div className="content text-white flex justify-center items-end">
           <div className="w-2/3">
             <div className="flex justify-center">
-              <img className="w-56" src={MentorLogo} alt="" />
+              <img className="w-56" src={TalentLogo} alt="" />
             </div>
             <h1 className=" text-white headline-1 text-center mb-4">
-              Mentor Academy
+              Talent Academy
             </h1>
             <p className="paragraph text-center mb-3">
-              Mentor Academy merupakan program Lanjutan dari Skyshare Academy
+              Talent Academy merupakan program ekskul kelas karakter minat dan
+              bakat
             </p>
             <div className="flex justify-center">
               <div className=" w-1/2 flex justify-center">

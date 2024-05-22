@@ -25,5 +25,4 @@ function CmsNavbar() {
     </div>
   );
 }
-
 export default CmsNavbar;

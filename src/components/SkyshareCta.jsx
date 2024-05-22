@@ -1,5 +1,5 @@
 import React from "react";
-import SkyshareLogo from "../../public/images/Skyshare-Logo.png";
+import SkyshareLogo from "../../public/images/Talent-logo.png";
 
 function SkyshareCta({ skyshare }) {
   const data = skyshare && skyshare.length > 0 ? skyshare[0] : null;

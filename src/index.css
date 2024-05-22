@@ -132,20 +132,6 @@ h1 {
   background: #343434;
 }
 
-.headline-1 {
-  font-size: 34px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 150%;
-}
-.headline-2 {
-  /* H2 */
-  font-family: "Plus Jakarta Sans";
-  font-size: 34px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 150%; /* 51px */
-}
 
 .card-size {
   width: 294px;
@@ -166,6 +152,21 @@ h1 {
   height: 394px;
 }
 
+.headline-1 {
+  font-family: "Plus Jakarta Sans";
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+}
+.headline-2 {
+  /* H2 */
+  font-family: "Plus Jakarta Sans";
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 51px */
+}
 .headline-3 {
   /* H3 */
   font-family: "Plus Jakarta Sans";

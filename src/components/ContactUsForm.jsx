@@ -1,5 +1,5 @@
 import React from "react";
-import SkyshareLogo from "../../public/images/Skyshare-Logo.png";
+import SkyshareLogo from "../../public/images/Talent-logo.png";
 import ArrowLeft from "../../public/images/mascot-icons/Arrow - Down 3.png";
 import { Link } from "react-router-dom";
 
