@@ -10,14 +10,14 @@ function OurProgram() {
   const navigate = useNavigate();
   return (
     <>
-      <div className="our-program bg-background flex flex-col items-center pt-52 pb-24">
-        <div className="title flex flex-col items-center gap-2">
+      <div className="our-program bg-background flex flex-col items-center px-6 py-14 lg:pt-52 lg:pb-24">
+        <div className="title lg:flex lg:flex-col lg:items-center lg:gap-2 hidden">
           <h1 className="headline-1 text-black">Explore Our Programs</h1>
           <p className="paragraph">Pelajari lebih lanjut program di MSiM</p>
         </div>
-        <div className="all-program flex items-start gap-6">
-          <div className="program relative flex flex-col items-center gap-4 pb-6 text-center">
-            <div className="image-container absolute flex items-center content-center size-52 p-5">
+        <div className="all-program flex flex-col lg:flex-row items-start gap-28 lg:gap-6 lg:pt-0 pt-48">
+          <div className="program relative px-6 lg:px-0 flex flex-col items-center gap-4 lg:pb-6 pb-6 text-center">
+            <div className="image-container absolute flex items-center content-center size-44 lg:size-52 p-5">
               <img src={TalentLogo} alt="" className="image" />
             </div>
             <h2 className="headline-2">Talent Academy</h2>
@@ -58,8 +58,8 @@ function OurProgram() {
               </div>
             </Button>
           </div>
-          <div className="program relative flex flex-col items-center gap-4 pb-6 text-center">
-            <div className="image-container absolute flex items-center content-center size-52 p-5">
+          <div className="program relative px-6 lg:px-0 flex flex-col items-center gap-4 pb-6 text-center">
+            <div className="image-container absolute flex items-center content-center size-44 lg:size-52 p-5">
               <img src={MentorLogo} alt="" className="image" />
             </div>
             <h2 className="headline-2">Mentor Academy</h2>
@@ -99,8 +99,8 @@ function OurProgram() {
               </div>
             </Button>
           </div>
-          <div className="program relative flex flex-col items-center gap-4 pb-6 text-center">
-            <div className="image-container absolute flex items-center content-center size-52 p-5">
+          <div className="program relative px-6 lg:px-0 flex flex-col items-center gap-4 pb-6 text-center">
+            <div className="image-container absolute flex items-center content-center size-44 lg:size-52 p-5">
               <img src={ParentsLogo} alt="" className="image" />
             </div>
             <h2 className="headline-2">Parents Academy</h2>
