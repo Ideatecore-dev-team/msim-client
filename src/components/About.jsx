@@ -10,12 +10,12 @@ function About() {
           <h1 className="text-center text-2xl lg:text-4xl text-black font-bold">
             About
           </h1>
-          <div className="about-container  w-full flex flex-col lg:flex-row gap-8 lg:gap-20">
+          <div className="about-container flex flex-col lg:flex-row gap-8 lg:gap-20">
             <div className="about-desc about-contain flex flex-col mx-auto lg:items-start gap-8 lg:gap-4 text-center lg:text-left ">
-              <h4 className=" text-base lg:text-lg font-bold w-full">
+              <h4 className=" text-base lg:text-lg font-bold">
                 Apa sih Skyshare Academy itu?
               </h4>
-              <p className="text-sm lg:text-base font-normal w-full">
+              <p className="text-sm lg:text-base font-normal">
                 Skyshare Academy menyediakan tiga program unggulan: Talent
                 Academy, Mentor Academy, dan Parents Academy yang masing-masing
                 menawarkan pembinaan personal dan profesional. Dengan fokus pada

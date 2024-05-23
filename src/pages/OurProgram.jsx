@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import TalentLogo from "../../public/images/Talent-logo.png";
 import MentorLogo from "../../public/images/Mentor-logo.png";
@@ -8,6 +7,7 @@ import Button from "../components/Button";
 import "../components/OurProgram.css";
 
 function OurProgram() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="our-program bg-background flex flex-col items-center pt-52 pb-24">
@@ -18,10 +18,13 @@ function OurProgram() {
         <div className="all-program flex items-start gap-6">
           <div className="program relative flex flex-col items-center gap-4 pb-6 text-center">
             <div className="image-container absolute flex items-center content-center size-52 p-5">
-              <img src={TalentLogo} alt="" className="image"/>
+              <img src={TalentLogo} alt="" className="image" />
             </div>
             <h2 className="headline-2">Talent Academy</h2>
-            <p className="paragraph">Talent Academy merupakan program ekskul kelas karakter minat dan bakat</p>
+            <p className="paragraph">
+              Talent Academy merupakan program ekskul kelas karakter minat dan
+              bakat
+            </p>
             <Button onClick={() => navigate("/ourprogram/talent")}>
               <div className="flex gap-2">
                 <p className="font-bold text-neutral-white">Learn more</p>
@@ -57,10 +60,12 @@ function OurProgram() {
           </div>
           <div className="program relative flex flex-col items-center gap-4 pb-6 text-center">
             <div className="image-container absolute flex items-center content-center size-52 p-5">
-              <img src={MentorLogo} alt="" className="image"/>
+              <img src={MentorLogo} alt="" className="image" />
             </div>
             <h2 className="headline-2">Mentor Academy</h2>
-            <p className="paragraph">Mentor Academy merupakan program lanjutan dari Talent Academy</p>
+            <p className="paragraph">
+              Mentor Academy merupakan program lanjutan dari Talent Academy
+            </p>
             <Button onClick={() => navigate("/ourprogram/mentor")}>
               <div className="flex gap-2">
                 <p className="font-bold text-neutral-white">Learn more</p>
@@ -96,10 +101,13 @@ function OurProgram() {
           </div>
           <div className="program relative flex flex-col items-center gap-4 pb-6 text-center">
             <div className="image-container absolute flex items-center content-center size-52 p-5">
-              <img src={ParentsLogo} alt="" className="image"/>
+              <img src={ParentsLogo} alt="" className="image" />
             </div>
             <h2 className="headline-2">Parents Academy</h2>
-            <p className="paragraph">Parents Academy merupakan program untuk... lorem ipsum dolor sit ammet</p>
+            <p className="paragraph">
+              Parents Academy merupakan program untuk... lorem ipsum dolor sit
+              ammet
+            </p>
             <Button onClick={() => navigate("/ourprogram/parents")}>
               <div className="flex gap-2">
                 <p className="font-bold text-neutral-white">Learn more</p>
