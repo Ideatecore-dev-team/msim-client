@@ -1,78 +1,71 @@
 import React from "react";
 import Stars from "../../public/images/mascot-icons/Vector1.png";
 import Icon1 from "../../public/images/mascot-icons/circle.png";
+import "./BenefitSkyshare.css";
 
 function BenefitSkyshare() {
   return (
     <>
-      <div className="hero bg-orange-bg bg-cover border-t-2 border-black flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
-        <div className="content -mt-10">
-          <div className="flex justify-center">
-            <div className=" h-14 gap-3 flex items-center">
-              <img className="w-12 h-12" src={Stars} alt="starts" />
-              <h2 className="headline-2">Benefit of joining</h2>
-            </div>
+      <div className="benefit bg-orange-bg bg-cover border-t-2 border-black flex flex-col py-14 lg:py-24 items-center self-stretch">
+        <div className="benefit-container flex flex-col items-center gap-16 lg:gap-20">
+          <div className="benefit-title flex items-center gap-3 lg:gap-4 ">
+            <img className="w-12 h-12" src={Stars} alt="starts" />
+            <h2 className="headline-2">Benefit of joining</h2>
           </div>
-          <div className=" w-full h-auto">
-            <div className="flex justify-center gap-6 mt-16">
-              <div className=" w-80 h-96 rounded-xl border-black border-2 shadow-md bg-white">
-                <div className="flex justify-center">
-                  <img className=" w-16 -mt-8" src={Icon1} alt="" />
-                </div>
-                <div className="flex mt-5 justify-center">
-                  <div className="border-b-2 pb-4 border-black px-4">
-                    <h4 className="headline-4">Exclusive Resources</h4>
-                  </div>
-                </div>
-                <div className="flex justify-center mt-4">
-                  <div className=" w-72">
-                    <p className="paragraph text-center">
-                      Akses ke workshop, seminar, kursus online, dan komunitas
-                      yang mendukung untuk meningkatkan pengalaman belajarmu dan
-                      memperluas wawasan.
-                    </p>
-                  </div>
-                </div>
+          <div className="benefit-cards flex lg:flex-row flex-col items-center lg:items-start gap-4 lg:gap-9 flex-wrap">
+            <div className="benefit-card flex flex-col px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center">
+              <div className="icon-card flex justify-center">
+                <img
+                  className="star-icon size-16 lg:size-20"
+                  src={Icon1}
+                  alt=""
+                />
               </div>
-              <div className=" w-80 h-96 rounded-xl border-black border-2 shadow-md bg-white">
-                <div className="flex justify-center">
-                  <img className=" w-16 -mt-8" src={Icon1} alt="" />
-                </div>
-                <div className="flex mt-5 justify-center">
-                  <div className="border-b-2 pb-4 border-black px-4">
-                    <h4 className="headline-4">Career Advancement</h4>
-                  </div>
-                </div>
-                <div className="flex justify-center mt-4">
-                  <div className=" w-72">
-                    <p className="paragraph text-center">
-                      Dapatkan konseling karier, kesempatan untuk berjejaring,
-                      dan bimbingan untuk menjelajahi magang dan melamar
-                      pekerjaan, mempersiapkanmu untuk sukses dalam bidang yang
-                      kamu pilih.
-                    </p>
-                  </div>
-                </div>
+              <div className="main-card flex flex-col item self-stretch">
+                <h4 className="headline-4">Personalized Mentorship</h4>
               </div>
-              <div className=" w-80 h-96 rounded-xl border-black border-2 shadow-md bg-white">
-                <div className="flex justify-center">
-                  <img className=" w-16 -mt-8" src={Icon1} alt="" />
-                </div>
-                <div className="flex mt-5 justify-center">
-                  <div className="border-b-2 pb-4 border-black px-4">
-                    <h4 className="headline-4">Personalized Mentorship</h4>
-                  </div>
-                </div>
-                <div className="flex justify-center mt-4">
-                  <div className=" w-72">
-                    <p className="paragraph text-center">
-                      Dapatkan mentor yang disesuaikan dengan kebutuhanmu,
-                      mendukungmu dalam menghadapi tantangan akademik, keputusan
-                      karier, dan perkembangan pribadi.
-                    </p>
-                  </div>
-                </div>
+              <hr className=" horz-rule" />
+              <p className="alternative-paragraph">
+                Dapatkan mentor yang disesuaikan dengan kebutuhanmu, mendukungmu
+                dalam menghadapi tantangan akademik, keputusan karier, dan
+                perkembangan pribadi.
+              </p>
+            </div>
+            <div className="benefit-card flex flex-col px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center mt-10 lg:mt-0">
+              <div className="icon-card flex justify-center">
+                <img
+                  className="star-icon size-16 lg:size-20"
+                  src={Icon1}
+                  alt=""
+                />
               </div>
+              <div className="main-card flex flex-col item self-stretch">
+                <h4 className="headline-4">Exclusive Resources</h4>
+              </div>
+              <hr className=" horz-rule" />
+              <p className="alternative-paragraph">
+                Akses ke workshop, seminar, kursus online, dan komunitas yang
+                mendukung untuk meningkatkan pengalaman belajarmu dan memperluas
+                wawasan.
+              </p>
+            </div>
+            <div className="benefit-card flex flex-col px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center mt-10 lg:mt-0">
+              <div className="icon-card flex justify-center">
+                <img
+                  className="star-icon size-16 lg:size-20"
+                  src={Icon1}
+                  alt=""
+                />
+              </div>
+              <div className="main-card flex flex-col item self-stretch">
+                <h4 className="headline-4">Career Advancement</h4>
+              </div>
+              <hr className=" horz-rule" />
+              <p className="alternative-paragraph">
+                Dapatkan konseling karier, kesempatan untuk berjejaring, dan
+                bimbingan untuk menjelajahi magang dan melamar pekerjaan,
+                mempersiapkanmu untuk sukses dalam bidang yang kamu pilih.
+              </p>
             </div>
           </div>
         </div>

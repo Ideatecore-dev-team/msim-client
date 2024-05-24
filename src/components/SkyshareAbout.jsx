@@ -1,16 +1,17 @@
 import React from "react";
+import "./SkyshareAbout.css";
 
 function Skyshareabout() {
   return (
     <>
-      <div className="hero bg-background flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
-        <div className="content h-56 flex justify-center items-end">
-          <div className=" w-1/2 lg:w-2/3 h-full text-center">
-            <h2 className="headline-2 mb-6">About</h2>
-            <h4 className="headline-4 mt-12">
+      <div className="skyshare-about bg-background flex flex-col py-14 lg:py-24 items-center self-stretch">
+        <div className="about-container flex flex-col items-center gap-7 lg:gap-10">
+          <h2 className="headline-2">About</h2>
+          <div className="title-desc flex justify-center items-center content-center gap-2 flex-wrap text-center">
+            <h4 className="headline-4 text-center">
               Jadi apa sih Skyshare Academy itu?
             </h4>
-            <p className="paragraph mt-4">
+            <p className="paragraph">
               Skyshare Academy merupakan program ekskul kelas karakter minat dan
               bakat pengembangan potensi diri di bawah MSiM Mentoring Consulting
               Indonesia yang terinspirasi dari Mentoring Project* di Harvard
