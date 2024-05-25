@@ -14,7 +14,7 @@ function BenefitSkyshare() {
           </div>
           <div className="benefit-cards flex lg:flex-row flex-col items-center lg:items-start gap-4 lg:gap-9 flex-wrap">
             <div className="benefit-card flex flex-col px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center">
-              <div className="icon-card flex justify-center">
+              <div className="flex justify-center">
                 <img
                   className="star-icon size-16 lg:size-20"
                   src={Icon1}
@@ -32,7 +32,7 @@ function BenefitSkyshare() {
               </p>
             </div>
             <div className="benefit-card flex flex-col px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center mt-10 lg:mt-0">
-              <div className="icon-card flex justify-center">
+              <div className="flex justify-center">
                 <img
                   className="star-icon size-16 lg:size-20"
                   src={Icon1}
@@ -50,7 +50,7 @@ function BenefitSkyshare() {
               </p>
             </div>
             <div className="benefit-card flex flex-col px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center mt-10 lg:mt-0">
-              <div className="icon-card flex justify-center">
+              <div className="flex justify-center">
                 <img
                   className="star-icon size-16 lg:size-20"
                   src={Icon1}
