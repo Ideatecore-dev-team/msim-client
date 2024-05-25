@@ -8,6 +8,7 @@ import Button from "../components/Button";
 import "../components/OurProgram.css";
 
 function OurProgram() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="our-program bg-background flex flex-col items-center pt-52 pb-24">
