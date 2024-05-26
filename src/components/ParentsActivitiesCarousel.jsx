@@ -49,71 +49,71 @@ function ParentsActivitiesCarousel() {
                         </svg>
                         <p className="paragraph self-stretch">Lorem impum dolor sit ammet, consectetur edipisching elit</p>
                     </div> */}
-                <div className="benefit-card m-auto">
-                    <div className="bg-white rounded-xl card-size border-gray-900 border-2 ">
-                    <div className="rounded-full w-16 h-16 -mt-9 ml-28">
-                    <img
-                        className="w-16 h-16 border-2 border-black rounded-full"
-                        src={Mascot1}
-                        alt=""
-                    />
-                    </div>
-                    <div className="">
-                    <h4 className="headline-4 text-center mt-3">
-                        1. Seminar
-                        </h4>
-                    <div className="flex justify-center mt-4 w-full">
-                        <div className="border-t-2 border-black w-2/3 "></div>
-                    </div>
-                    <p className="paragraph mt-5 mx-5 text-center">
-                        Lorem Ipsum Dolor sit Ammet, consectetur adipiscing elit
-                    </p>
-                    </div>
+                    <div className="benefit-card m-auto">
+                        <div className="bg-white rounded-xl card-size border-gray-900 border-2 ">
+                        <div className="rounded-full w-16 h-16 -mt-9 ml-28">
+                        <img
+                            className="w-16 h-16 border-2 border-black rounded-full"
+                            src={Mascot1}
+                            alt=""
+                        />
+                        </div>
+                        <div className="">
+                        <h4 className="headline-4 text-center mt-3">
+                            1. Seminar
+                            </h4>
+                        <div className="flex justify-center mt-4 w-full">
+                            <div className="border-t-2 border-black w-2/3 "></div>
+                        </div>
+                        <p className="paragraph mt-5 mx-5 text-center">
+                            Lorem Ipsum Dolor sit Ammet, consectetur adipiscing elit
+                        </p>
+                        </div>
+                    </div>`
                 </div>
-                </div>
-                <div className="benefit-card m-auto ">
-                    <div className="bg-white rounded-xl card-size border-gray-900 border-2 ">
-                    <div className="rounded-full w-16 h-16 -mt-9 ml-28">
-                    <img
-                        className="w-16 h-16 border-2 border-black rounded-full"
-                        src={Mascot2}
-                        alt=""
-                    />
+                    <div className="benefit-card m-auto ">
+                        <div className="bg-white rounded-xl card-size border-gray-900 border-2 ">
+                        <div className="rounded-full w-16 h-16 -mt-9 ml-28">
+                        <img
+                            className="w-16 h-16 border-2 border-black rounded-full"
+                            src={Mascot2}
+                            alt=""
+                        />
+                        </div>
+                        <div className="">
+                        <h4 className="headline-4 text-center mt-3">
+                            2. Training
+                            </h4>
+                        <div className="flex justify-center mt-4 w-full">
+                            <div className="border-t-2 border-black w-2/3 "></div>
+                        </div>
+                        <p className="paragraph mt-5 mx-5 text-center">
+                            Lorem Ipsum Dolor sit Ammet, consectetur adipiscing elit
+                        </p>
+                        </div>
                     </div>
-                    <div className="">
-                    <h4 className="headline-4 text-center mt-3">
-                        2. Training
-                        </h4>
-                    <div className="flex justify-center mt-4 w-full">
-                        <div className="border-t-2 border-black w-2/3 "></div>
                     </div>
-                    <p className="paragraph mt-5 mx-5 text-center">
-                        Lorem Ipsum Dolor sit Ammet, consectetur adipiscing elit
-                    </p>
+                    <div className="benefit-card m-auto ">
+                        <div className="bg-white rounded-xl card-size border-gray-900 border-2 ">
+                        <div className="rounded-full w-16 h-16 -mt-9 ml-28">
+                        <img
+                            className="w-16 h-16 border-2 border-black rounded-full"
+                            src={Mascot3}
+                            alt=""
+                        />
+                        </div>
+                        <div className="">
+                        <h4 className="headline-4 text-center mt-3">
+                            3. Parents Talk
+                            </h4>
+                        <div className="flex justify-center mt-4 w-full">
+                            <div className="border-t-2 border-black w-2/3 "></div>
+                        </div>
+                        <p className="paragraph mt-5 mx-5 text-center">
+                            Lorem Ipsum Dolor sit Ammet, consectetur adipiscing elit
+                        </p>
+                        </div>
                     </div>
-                </div>
-                </div>
-                <div className="benefit-card m-auto ">
-                    <div className="bg-white rounded-xl card-size border-gray-900 border-2 ">
-                    <div className="rounded-full w-16 h-16 -mt-9 ml-28">
-                    <img
-                        className="w-16 h-16 border-2 border-black rounded-full"
-                        src={Mascot3}
-                        alt=""
-                    />
-                    </div>
-                    <div className="">
-                    <h4 className="headline-4 text-center mt-3">
-                        3. Parents Talk
-                        </h4>
-                    <div className="flex justify-center mt-4 w-full">
-                        <div className="border-t-2 border-black w-2/3 "></div>
-                    </div>
-                    <p className="paragraph mt-5 mx-5 text-center">
-                        Lorem Ipsum Dolor sit Ammet, consectetur adipiscing elit
-                    </p>
-                    </div>
-                </div>
                 </div>
                 </div>
                 <div className="menu-item flex justify-center py-4 px-5 items-center gap-2">

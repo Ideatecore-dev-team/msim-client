@@ -1,6 +1,6 @@
 import React from "react";
 import SkyshareLogo from "../../public/images/Talent-logo.png";
-import "./SkyshareCta.css";
+import "./TalentCta.css";
 import ButtonLink from "./ButtonLink";
 
 function SkyshareCta() {

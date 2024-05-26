@@ -1,5 +1,5 @@
 import React from "react";
-import SkyshareCta from "../components/SkyshareCta";
+import TalentCta from "../components/TalentCta";
 import Skyshareabout from "../components/SkyshareAbout";
 import BenefitSkyshare from "../components/BenefitSkyshare";
 import AlurAcara from "../components/AlurAcara";
@@ -11,7 +11,7 @@ function Skyshare() {
   return (
     <>
       <div className="talent-academy">
-        <SkyshareCta />
+        <TalentCta />
         <Skyshareabout />
         <BenefitSkyshare />
         <AlurAcara />

@@ -150,6 +150,32 @@ function SsaCarousel() {
             dan latar belakang member dengan waktu sebulan sekali.
           </p>
         </div>
+        <div className="activities-card mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+          <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M23 12C23 5.92487 18.0751 1 12 1M23 12C23 18.0751 18.0751 23 12 23M23 12C23 14.2091 18.0751 16 12 16C5.92487 16 1 14.2091 1 12M12 1C5.92487 1 1 5.92487 1 12M12 1C14.7614 1 17 5.92487 17 12C17 18.0751 14.7614 23 12 23M12 1C9.23858 1 7 5.92487 7 12C7 18.0751 9.23858 23 12 23M12 23C5.92487 23 1 18.0751 1 12"
+                stroke="white"
+                strokeWidth="1.5"
+              />
+            </svg>
+          </div>
+          <div className="main-card flex flex-col item self-stretch">
+            <h4 className="headline-4">6. Lorem Ipsum Dollor sit ammet</h4>
+          </div>
+          <hr className=" horz-rule" />
+          <p className="alternative-paragraph">
+            Kegiatan circle time yang dilakukan secara berkala dari rumah ke
+            rumah secara bergantian untuk membangun bonding, mengenal keluarga
+            dan latar belakang member dengan waktu sebulan sekali.
+          </p>
+        </div>
       </Slider>
     </>
   );

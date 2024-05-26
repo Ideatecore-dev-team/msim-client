@@ -5,11 +5,11 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import OurProgram from "./pages/OurProgram";
-import Skyshare from "./pages/Skyshare";
+import Skyshare from "./pages/Talent";
 import Mentor from "./pages/Mentor";
 import Parents from "./pages/Parents";
 import Article from "./pages/Article";
-import SkyshareActivity from "./pages/SkyshareActivity";
+import TalentActivity from "./pages/TalentActivity";
 import ParentsActivity from "./pages/ParentsActivity";
 import MentorActivity from "./pages/MentorActivity";
 import ContactUs from "./pages/ContactUs";
@@ -46,7 +46,7 @@ function App() {
         <Route path="/article/:id" element={<ArticleOpennedPage />} />
         <Route
           path="/ourprogram/talent/activities"
-          element={<SkyshareActivity />}
+          element={<TalentActivity />}
         />
         <Route
           path="/ourprogram/mentor/activities"
