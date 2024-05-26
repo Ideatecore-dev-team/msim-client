@@ -21,7 +21,7 @@ function OurProgram() {
               <img src={TalentLogo} alt="" className="image" />
             </div>
             <h2 className="headline-2">Talent Academy</h2>
-            <p className="paragraph">
+            <p className="paragraph px-6">
               Talent Academy merupakan program ekskul kelas karakter minat dan
               bakat
             </p>
@@ -58,12 +58,12 @@ function OurProgram() {
               </div>
             </Button>
           </div>
-          <div className="program relative px-6 lg:px-0 flex flex-col items-center gap-4 pb-6 text-center">
+          <div className="program relative px-6 lg:px-0 flex flex-col items-center gap-4 lg:pb-6 pb-6 text-center">
             <div className="image-container absolute flex items-center content-center size-44 lg:size-52 p-5">
               <img src={MentorLogo} alt="" className="image" />
             </div>
             <h2 className="headline-2">Mentor Academy</h2>
-            <p className="paragraph">
+            <p className="paragraph px-6">
               Mentor Academy merupakan program lanjutan dari Skyshare Academy
             </p>
             <Button onClick={() => navigate("/ourprogram/mentor")}>
@@ -99,13 +99,13 @@ function OurProgram() {
               </div>
             </Button>
           </div>
-          <div className="program relative px-6 lg:px-0 flex flex-col items-center gap-4 pb-6 text-center">
+          <div className="program relative px-6 lg:px-0 flex flex-col items-center gap-4 lg:pb-6 pb-6 text-center">
             <div className="image-container absolute flex items-center content-center size-44 lg:size-52 p-5">
               <img src={ParentsLogo} alt="" className="image" />
             </div>
             <h2 className="headline-2">Parents Academy</h2>
-            <p className="paragraph">
-              Parents Academy merupakan program untuk..
+            <p className="paragraph px-6">
+              Parents Academy merupakan program untuk..Lorem Ipsum Dolor Sit Ammet
             </p>
             <Button onClick={() => navigate("/ourprogram/parents")}>
               <div className="flex gap-2">
