@@ -1,7 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import skyshareApi from "../utilities/skyshareApi";
 
 function ArticleHeroOpenned() {
   const [article, setArticle] = useState({});
@@ -9,7 +10,7 @@ function ArticleHeroOpenned() {
   useEffect(() => {
     const getArticleById = async function () {
       try {
-        const response = await axios.get(`http://localhost:3000/article/${id}`);
+        const response = await skyshareApi.get(`/article/${id}`);
         setArticle(response.data.data);
       } catch (error) {
         console.log(error);

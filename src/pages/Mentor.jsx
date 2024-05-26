@@ -1,5 +1,6 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
+import skyshareApi from "../utilities/skyshareApi";
 import { useEffect, useState } from "react";
 import MentorCta from "../components/MentorCta";
 import Mentorabout from "../components/MentorAbout";
@@ -14,9 +15,7 @@ function Mentor() {
   useEffect(() => {
     const getDataMentor = async function () {
       try {
-        const response = await axios.get(
-          "https://api.skyshareacademy.com/mentor"
-        );
+        const response = await skyshareApi.get("/mentor");
         setMentor(response.data.data);
       } catch (error) {
         console.log(error);

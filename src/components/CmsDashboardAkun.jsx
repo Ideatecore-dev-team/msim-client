@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Character from "../../public/images/mascot-icons/Char.png";
 import Edit1 from "../../public/images/mascot-icons/Edit Square.png";
 import Delete from "../../public/images/mascot-icons/Delete.png";
 import Add from "../../public/images/mascot-icons/Plus.png";
 import CmsNavCard from "./CmsNavCard";
+import Mascot from "../../public/images/mascot-icons/pose=2.png";
 
 function CmsDashboardAkun() {
-  const Navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const navigate = useNavigate();
+
   function handleNavigateEdit() {
-    Navigate("/cms/edit/admin");
+    navigate("/cms/edit/admin");
+  }
+
+  function handleDelete(user) {
+    setSelectedUser(user);
+    setIsModalOpen(true);
+  }
+
+  function closeModal() {
+    setIsModalOpen(false);
+    setSelectedUser(null);
+  }
+
+  function confirmDelete() {
+    // Add your delete logic here
+    console.log("Deleting user:", selectedUser);
+    closeModal();
   }
 
   return (
@@ -69,28 +89,10 @@ function CmsDashboardAkun() {
                           </button>
                         </div>
                         <div className="w-10 flex items-center justify-center rounded-md py-2">
-                          <button className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center">
-                            <img className="w-5" src={Delete} alt="" />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="pl-3 py-4 text-left font-semibold">2.</td>
-                      <td className="pl-1 py-4 text-left">admin1</td>
-                      <td className="px-16 py-4 text-left">hdkdk1234</td>
-                      <td className="px-16 py-4 text-left">Admin</td>
-                      <td className="px-16 py-4 text-left flex gap-4">
-                        <div className="w-10 flex items-center justify-center rounded-md py-2">
                           <button
-                            onClick={handleNavigateEdit}
-                            className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center"
+                            onClick={() => handleDelete("admin1")}
+                            className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center"
                           >
-                            <img className="w-5" src={Edit1} alt="" />
-                          </button>
-                        </div>
-                        <div className="w-10 flex items-center justify-center rounded-md py-2">
-                          <button className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center">
                             <img className="w-5" src={Delete} alt="" />
                           </button>
                         </div>
@@ -103,6 +105,33 @@ function CmsDashboardAkun() {
           </div>
         </div>
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white w-2/5 h-80 rounded-3xl p-6">
+            <div className="flex justify-center">
+              <img className=" w-40" src={Mascot} alt="" />
+            </div>
+            <h3 className="mb-5 mt-5 headline-3 text-center">
+              Yakin untuk menghapus Admin?
+            </h3>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={closeModal}
+                className="bg-gray-300 px-4 py-2 w-1/2 rounded-lg"
+              >
+                Batal
+              </button>
+              <button
+                onClick={confirmDelete}
+                className="bg-red-500 w-1/2 hover:bg-red-400 text-white px-4 py-2 rounded-lg"
+              >
+                Hapus
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

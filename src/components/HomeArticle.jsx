@@ -1,5 +1,6 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
+import skyshareApi from "../utilities/skyshareApi";
 import { useState, useEffect } from "react";
 import "./HomeArticle.css";
 import "slick-carousel/slick/slick.css";
@@ -14,7 +15,7 @@ function HomeArticle() {
   useEffect(() => {
     const getAllArticle = async function () {
       try {
-        const response = await axios.get("https://api.julio.my.id/article");
+        const response = await skyshareApi.get("/article");
         setArticles(response.data.data);
       } catch (error) {
         console.log(error);
@@ -29,6 +30,7 @@ function HomeArticle() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  console.log(articles, "===>");
 
   const sortArticles = [...articles].sort((a, b) => b.id - a.id);
   const navigate = useNavigate();
@@ -93,7 +95,7 @@ function HomeArticle() {
                 >
                   <div
                     className="card-img bg-cover"
-                    style={{ backgroundImage: `url(${article.image})` }}
+                    style={{ backgroundImage: `url(${article.image_heading})` }}
                   ></div>
                   <div className="card-content flex px-6 flex-col gap-4">
                     <p className="font-bold text-base">{article.title}</p>
@@ -102,9 +104,11 @@ function HomeArticle() {
                         (article.content.length > 100 ? "..." : "")}
                     </p>
                     <div className="card-cta flex lg:flex-row xs:flex-col gap-4 items-center">
-                      <div className="text-white category flex px-4 py-1 content-center items-center gap-3 rounded-3xl">
-                        <p className="font-normal lg:text-sm xs:text-xs">
-                          {article.category}
+                      <div
+                        className={`text-white  flex px-4 py-1 content-center items-center gap-3 rounded-3xl bg-${article.category_color}-300`}
+                      >
+                        <p className={`font-normal lg:text-sm xs:text-xs`}>
+                          {article.category_name}
                         </p>
                       </div>
                       <a href="#" className="link-txt flex items-start gap-1">
@@ -126,7 +130,7 @@ function HomeArticle() {
                 >
                   <div
                     className="card-img bg-cover"
-                    style={{ backgroundImage: `url(${article.image})` }}
+                    style={{ backgroundImage: `url(${article.image_heading})` }}
                   ></div>
                   <div className="card-content flex px-6 flex-col gap-4">
                     <p className="font-bold text-base">{article.title}</p>
@@ -135,7 +139,9 @@ function HomeArticle() {
                         (article.content.length > 100 ? "..." : "")}
                     </p>
                     <div className="card-cta flex lg:flex-row xs:flex-col gap-4 items-center">
-                      <div className="text-white category flex px-4 py-1 content-center items-center gap-3 rounded-3xl">
+                      <div
+                        className={`text-white  flex px-4 py-1 content-center items-center gap-3 rounded-3xl bg-${article.category_color}-300`}
+                      >
                         <p className="font-normal lg:text-sm xs:text-xs">
                           {article.category}
                         </p>

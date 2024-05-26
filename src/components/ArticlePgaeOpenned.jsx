@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import skyshareApi from "../utilities/skyshareApi";
 import Image1 from "../../public/images/Rectangle 33.png";
 import Image2 from "../../public/images/Rectangle 34.png";
 import Image3 from "../../public/images/Rectangle 35.png";
@@ -13,7 +13,7 @@ function ArticlePageOpenned() {
   useEffect(() => {
     const getArticleById = async function () {
       try {
-        const response = await axios.get(`http://localhost:3000/article/${id}`);
+        const response = await skyshareApi.get(`article/${id}`);
         setArticle(response.data.data);
       } catch (error) {
         console.log(error);
@@ -21,7 +21,7 @@ function ArticlePageOpenned() {
     };
     getArticleById();
   }, [id]);
-  console.log(article);
+  console.log(article, "==>");
   return (
     <>
       <div className="hero flex background border-t-2 border-black flex-col items-center self-stretch">
