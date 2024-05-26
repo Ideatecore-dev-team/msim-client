@@ -1,0 +1,9 @@
+.contact-padding {
+  height: 500px;
+}
+
+@media (max-width: 639px) {
+  .contact-padding {
+    height: 300px;
+  }
+}
