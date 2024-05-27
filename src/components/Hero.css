@@ -21,6 +21,10 @@
   width: 17.25rem;
 }
 
+.content-1 {
+  width: 72rem;
+}
+
 @media (max-width: 639px) {
   .content {
     height: 18.75rem;

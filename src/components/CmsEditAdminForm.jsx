@@ -31,7 +31,7 @@ function CmsEditAdminForm() {
 
   return (
     <>
-      <div className="bg-background flex flex-col pb-44 pt-12 items-center self-stretch h-auto">
+      <div className="bg-background flex flex-col pb-52 pt-12 items-center self-stretch h-auto">
         <div className="content flex gap-4">
           <div className="">
             <CmsNavCard />

@@ -18,6 +18,9 @@ import CmsLogin from "./pages/CmsLogin";
 import CmsKelolaAkun from "./pages/CmsKelolaAkun";
 import CmsAddAdmin from "./pages/CmsAddAdmin";
 import CmsEditAdmin from "./pages/CmsEditAdmin";
+import CmsTalentAcademy from "./pages/CmsTalentAcademy";
+import CmsMentorAcademy from "./pages/CmsMentorAcademy";
+import CmsParentsAcademy from "./pages/CmsParentsAcademy";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -26,6 +29,9 @@ function App() {
   const hideNavbarAndFooter2 = location.pathname === "/cms/kelolaakun";
   const hideNavbarAndFooter3 = location.pathname === "/cms/add/admin";
   const hideNavbarAndFooter4 = location.pathname === "/cms/edit/admin";
+  const hideNavbarAndFooter5 = location.pathname === "/cms/talentacademy";
+  const hideNavbarAndFooter6 = location.pathname === "/cms/mentoracademy";
+  const hideNavbarAndFooter7 = location.pathname === "/cms/parentsacademy";
 
   return (
     <>
@@ -35,7 +41,10 @@ function App() {
       {!hideNavbarAndFooter &&
         !hideNavbarAndFooter2 &&
         !hideNavbarAndFooter3 &&
-        !hideNavbarAndFooter4 && <Navbar />}
+        !hideNavbarAndFooter4 &&
+        !hideNavbarAndFooter5 &&
+        !hideNavbarAndFooter6 &&
+        !hideNavbarAndFooter7 && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
@@ -62,12 +71,18 @@ function App() {
         <Route path="/cms/kelolaakun" element={<CmsKelolaAkun />} />
         <Route path="cms/add/admin" element={<CmsAddAdmin />} />
         <Route path="cms/edit/admin" element={<CmsEditAdmin />} />
+        <Route path="cms/talentacademy" element={<CmsTalentAcademy />} />
+        <Route path="cms/mentoracademy" element={<CmsMentorAcademy />} />
+        <Route path="cms/parentsacademy" element={<CmsParentsAcademy />} />
         {/* Tambahkan rute-rute tambahan di sini */}
       </Routes>
       {!hideNavbarAndFooter &&
         !hideNavbarAndFooter2 &&
         !hideNavbarAndFooter3 &&
-        !hideNavbarAndFooter4 && <Footer />}
+        !hideNavbarAndFooter4 &&
+        !hideNavbarAndFooter5 &&
+        !hideNavbarAndFooter6 &&
+        !hideNavbarAndFooter7 && <Footer />}
     </>
   );
 }
