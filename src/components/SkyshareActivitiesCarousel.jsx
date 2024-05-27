@@ -12,7 +12,7 @@ function SkyshareActivitiesCarousel() {
         </div>
         <div className="join-btn mx-auto w-64 py-14 lg:py-24">
           <ButtonLink
-            caption="Go to Skyshare Academy"
+            caption="Go to Talent Academy"
             to="/ourprogram/talent"
             backgroundColor="bg-primary-1"
             textColor="text-white"
