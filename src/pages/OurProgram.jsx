@@ -13,7 +13,7 @@ function OurProgram() {
       <div className="our-program bg-background flex flex-col items-center px-6 py-14 lg:pt-52 lg:pb-24">
         <div className="title lg:flex lg:flex-col lg:items-center lg:gap-2 hidden">
           <h1 className="headline-1 text-black">Explore Our Programs</h1>
-          <p className="paragraph">Pelajari lebih lanjut program di MSiM</p>
+          <p className="paragraph">Pelajari lebih lanjut program di Skyshare Academy</p>
         </div>
         <div className="all-program flex flex-col lg:flex-row items-start gap-28 lg:gap-6 lg:pt-0 pt-48">
           <div className="program relative px-6 lg:px-0 flex flex-col items-center gap-4 lg:pb-6 pb-6 text-center">
