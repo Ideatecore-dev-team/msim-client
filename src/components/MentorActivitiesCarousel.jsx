@@ -1,9 +1,9 @@
 import React from "react";
-import SSACarousel from "./SSACarouselParents";
+import SSACarousel from "./SSACarouselMentor";
 import ButtonLink from "./ButtonLink";
-import "./ParentsActivitiesCarousel.css";
+import "./MentorActivitiesCarousel.css";
 
-function ParentsActivitiesCarousel() {
+function MentorActivitiesCarousel() {
     return (
         <>
         <div className="carousel-act bg-background flex lg:pb-24 lg:pt-14 py-14 px-6 lg:px-0 flex-col justify-center items-center overflow-hidden">
@@ -12,8 +12,8 @@ function ParentsActivitiesCarousel() {
             </div>
             <div className="join-btn mx-auto w-64 py-14 lg:py-24">
             <ButtonLink
-                caption="Go to Parents Academy"
-                to="/ourprogram/parents"
+                caption="Go to Mentor Academy"
+                to="/ourprogram/mentor"
                 backgroundColor="bg-primary-1"
                 textColor="text-white"
             >
@@ -50,4 +50,4 @@ function ParentsActivitiesCarousel() {
     );
 }
 
-export default ParentsActivitiesCarousel;
+export default MentorActivitiesCarousel;
