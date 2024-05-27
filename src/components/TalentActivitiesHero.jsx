@@ -1,7 +1,7 @@
 import React from "react";
 import WorkIcon from "../../public/images/mascot-icons/Vector.png";
 import SkyshareLogo from "../../public/images/Talent-logo.png";
-import "./SkyshareActivitiesHero.css";
+import "./TalentActivitiesHero.css";
 
 function SkyshareActivitiesHero() {
   return (

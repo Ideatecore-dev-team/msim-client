@@ -1,11 +1,11 @@
 import React from "react";
 import TalentCta from "../components/TalentCta";
-import Skyshareabout from "../components/SkyshareAbout";
-import BenefitSkyshare from "../components/BenefitSkyshare";
+import Skyshareabout from "../components/TalentAbout";
+import BenefitSkyshare from "../components/BenefitTalent";
 import AlurAcara from "../components/AlurAcara";
 import TimelineSkyshare from "../components/TimelineSkyshare";
 import CurrentGroupSkyshare from "../components/CurrentGroupSkyshare";
-import AllActivitiesSkyShare from "../components/AllActivitiesSkyShare";
+import AllActivitiesSkyShare from "../components/AllActivitiesTalent";
 
 function Skyshare() {
   return (

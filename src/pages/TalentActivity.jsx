@@ -1,6 +1,6 @@
 import React from "react";
-import SkyshareActivitiesHero from "../components/SkyshareActivitiesHero";
-import SkyshareActivitiesCarousel from "../components/SkyshareActivitiesCarousel";
+import SkyshareActivitiesHero from "../components/TalentActivitiesHero";
+import SkyshareActivitiesCarousel from "../components/TalentActivitiesCarousel";
 
 function SkyshareActivity() {
   return (

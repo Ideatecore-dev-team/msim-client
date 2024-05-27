@@ -1,7 +1,7 @@
 import React from "react";
 import Stars from "../../public/images/mascot-icons/Vector1.png";
 import Icon1 from "../../public/images/mascot-icons/circle.png";
-import "./BenefitSkyshare.css";
+import "./BenefitTalent.css";
 
 function BenefitSkyshare() {
   return (

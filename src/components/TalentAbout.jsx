@@ -1,5 +1,5 @@
 import React from "react";
-import "./SkyshareAbout.css";
+import "./TalentAbout.css";
 
 function Skyshareabout() {
   return (
@@ -9,10 +9,10 @@ function Skyshareabout() {
           <h2 className="headline-2">About</h2>
           <div className="title-desc flex justify-center items-center content-center gap-2 flex-wrap text-center">
             <h4 className="headline-4 text-center">
-              Jadi apa sih Skyshare Academy itu?
+              Jadi apa sih Talent Academy itu?
             </h4>
             <p className="paragraph">
-              Skyshare Academy merupakan program ekskul kelas karakter minat dan
+              Talent Academy merupakan program ekskul kelas karakter minat dan
               bakat pengembangan potensi diri di bawah MSiM Mentoring Consulting
               Indonesia yang terinspirasi dari Mentoring Project* di Harvard
               T.H. Chan School of Public Health Boston, Amerika Serikat sejak
