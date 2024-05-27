@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Hero.css";
 import CmsNavCard from "./CmsNavCard";
@@ -15,6 +16,10 @@ import Add from "../../public/images/mascot-icons/Plus.png";
 import Chain from "../../public/images/mascot-icons/Link.png";
 
 function CmsTalentForm() {
+  const Navigate = useNavigate();
+  function handleNavigate() {
+    Navigate("/cms/talent/editschool");
+  }
   return (
     <>
       <div className="bg-background flex flex-col pt-12 items-center self-stretch">
@@ -211,7 +216,10 @@ function CmsTalentForm() {
                         </td>
                         <td className="pl-10 py-4 text-left flex gap-4">
                           <div className="w-10 flex items-center justify-center rounded-md py-2">
-                            <button className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center">
+                            <button
+                              onClick={handleNavigate}
+                              className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center"
+                            >
                               <img className="w-5" src={Edit1} alt="" />
                             </button>
                           </div>

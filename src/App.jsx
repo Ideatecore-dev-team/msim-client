@@ -21,30 +21,35 @@ import CmsEditAdmin from "./pages/CmsEditAdmin";
 import CmsTalentAcademy from "./pages/CmsTalentAcademy";
 import CmsMentorAcademy from "./pages/CmsMentorAcademy";
 import CmsParentsAcademy from "./pages/CmsParentsAcademy";
+import CmsTalentEditSchool from "./pages/CmsTalentEditSchool";
+import CmsTalentEditGroup from "./pages/CmsTalentEditGroup";
 import { Helmet } from "react-helmet";
 
 function App() {
   const location = useLocation();
-  const hideNavbarAndFooter = location.pathname === "/cms/login";
-  const hideNavbarAndFooter2 = location.pathname === "/cms/kelolaakun";
-  const hideNavbarAndFooter3 = location.pathname === "/cms/add/admin";
-  const hideNavbarAndFooter4 = location.pathname === "/cms/edit/admin";
-  const hideNavbarAndFooter5 = location.pathname === "/cms/talentacademy";
-  const hideNavbarAndFooter6 = location.pathname === "/cms/mentoracademy";
-  const hideNavbarAndFooter7 = location.pathname === "/cms/parentsacademy";
+
+  const hideNavbarAndFooterPaths = [
+    "/cms/login",
+    "/cms/kelolaakun",
+    "/cms/add/admin",
+    "/cms/edit/admin",
+    "/cms/talentacademy",
+    "/cms/mentoracademy",
+    "/cms/parentsacademy",
+    "/cms/talent/editschool",
+    "/cms/talent/editgroup",
+  ];
+
+  const shouldHideNavbarAndFooter = hideNavbarAndFooterPaths.includes(
+    location.pathname
+  );
 
   return (
     <>
       <Helmet>
         <title>MSIM</title>
       </Helmet>
-      {!hideNavbarAndFooter &&
-        !hideNavbarAndFooter2 &&
-        !hideNavbarAndFooter3 &&
-        !hideNavbarAndFooter4 &&
-        !hideNavbarAndFooter5 &&
-        !hideNavbarAndFooter6 &&
-        !hideNavbarAndFooter7 && <Navbar />}
+      {!shouldHideNavbarAndFooter && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
@@ -69,20 +74,19 @@ function App() {
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/cms/login" element={<CmsLogin />} />
         <Route path="/cms/kelolaakun" element={<CmsKelolaAkun />} />
-        <Route path="cms/add/admin" element={<CmsAddAdmin />} />
-        <Route path="cms/edit/admin" element={<CmsEditAdmin />} />
-        <Route path="cms/talentacademy" element={<CmsTalentAcademy />} />
-        <Route path="cms/mentoracademy" element={<CmsMentorAcademy />} />
-        <Route path="cms/parentsacademy" element={<CmsParentsAcademy />} />
+        <Route path="/cms/add/admin" element={<CmsAddAdmin />} />
+        <Route path="/cms/edit/admin" element={<CmsEditAdmin />} />
+        <Route path="/cms/talentacademy" element={<CmsTalentAcademy />} />
+        <Route path="/cms/mentoracademy" element={<CmsMentorAcademy />} />
+        <Route path="/cms/parentsacademy" element={<CmsParentsAcademy />} />
+        <Route
+          path="/cms/talent/editschool"
+          element={<CmsTalentEditSchool />}
+        />
+        <Route path="/cms/talent/editgroup" element={<CmsTalentEditGroup />} />
         {/* Tambahkan rute-rute tambahan di sini */}
       </Routes>
-      {!hideNavbarAndFooter &&
-        !hideNavbarAndFooter2 &&
-        !hideNavbarAndFooter3 &&
-        !hideNavbarAndFooter4 &&
-        !hideNavbarAndFooter5 &&
-        !hideNavbarAndFooter6 &&
-        !hideNavbarAndFooter7 && <Footer />}
+      {!shouldHideNavbarAndFooter && <Footer />}
     </>
   );
 }
