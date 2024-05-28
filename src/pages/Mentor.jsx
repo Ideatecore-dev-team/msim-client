@@ -22,6 +22,7 @@ function Mentor() {
     };
     getDataMentor();
   }, []);
+  console.log(mentor, "==>");
   return (
     <>
       <div className="home">

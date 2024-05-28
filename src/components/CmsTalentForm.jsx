@@ -236,7 +236,7 @@ function CmsTalentForm() {
               </div>
 
               <div className=" join-button mt-6">
-                <div className="bg-background p-4 gap-4 flex items-center rounded-xl">
+                <div className="bg-background py-4 gap-4 flex items-center rounded-xl">
                   <img className="w-6" src={Chain} alt="" />
                   <h4 className="headline-4">Join Button</h4>
                 </div>
@@ -253,7 +253,8 @@ function CmsTalentForm() {
                     <label className="block font-bold mt-4 mb-1" htmlFor="cta">
                       <div className="flex gap-1">
                         <img className="w-6" src={Chain} alt="" />
-                        Call To Action <span className="text-red-500">*</span>
+                        Link Join Program{" "}
+                        <span className="text-red-500">*</span>
                       </div>
                     </label>
                     <input

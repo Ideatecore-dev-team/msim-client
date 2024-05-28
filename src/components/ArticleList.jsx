@@ -14,13 +14,19 @@ function ArticleList({ articles }) {
             key={index}
             className="flex bg-white mb-5 rounded-xl mt-10 border-2 border-black shadow-lg shadow-zinc-400"
           >
-            <img className=" rounded-xl w-64" src={article.image} alt="" />
+            <img
+              className=" rounded-xl w-64"
+              src={article.image_heading}
+              alt=""
+            />
             <div className=" w-full">
               <h4 className=" headline-4 ml-5 mt-5">{article.title}</h4>
               <p className=" ml-5 mt-5 paragraph">{article.content}</p>
               <div className=" w-full flex gap-2">
-                <p className="ml-5 mt-3 px-2 py-1 text-white bg-red-300 w-28 text-center rounded-full">
-                  {article.category}
+                <p
+                  className={`ml-5 mt-3 px-2 py-1 text-white bg-${article.category_color}-300 w-28 text-center rounded-full`}
+                >
+                  {article.category_name}
                 </p>
                 <Link
                   to={`/article/${article.id}`}

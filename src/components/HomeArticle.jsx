@@ -1,5 +1,4 @@
 import React from "react";
-// import axios from "axios";
 import skyshareApi from "../utilities/skyshareApi";
 import { useState, useEffect } from "react";
 import "./HomeArticle.css";
@@ -7,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
+import parse from "html-react-parser"; // Importing html-react-parser
 
 function HomeArticle() {
   const [articles, setArticles] = useState([]);
@@ -99,10 +99,12 @@ function HomeArticle() {
                   ></div>
                   <div className="card-content flex px-6 flex-col gap-4">
                     <p className="font-bold text-base">{article.title}</p>
-                    <p className="font-normal text-sm">
-                      {article.content.substring(0, 100) +
-                        (article.content.length > 100 ? "..." : "")}
-                    </p>
+                    <div className="font-normal text-sm">
+                      {parse(
+                        article.content.substring(0, 100) +
+                          (article.content.length > 100 ? "..." : "")
+                      )}
+                    </div>
                     <div className="card-cta flex lg:flex-row xs:flex-col gap-4 items-center">
                       <div
                         className={`text-white  flex px-4 py-1 content-center items-center gap-3 rounded-3xl bg-${article.category_color}-300`}
@@ -134,16 +136,18 @@ function HomeArticle() {
                   ></div>
                   <div className="card-content flex px-6 flex-col gap-4">
                     <p className="font-bold text-base">{article.title}</p>
-                    <p className="font-normal text-sm">
-                      {article.content.substring(0, 100) +
-                        (article.content.length > 100 ? "..." : "")}
-                    </p>
+                    <div className="font-normal text-sm">
+                      {parse(
+                        article.content.substring(0, 200) +
+                          (article.content.length > 200 ? "..." : "")
+                      )}
+                    </div>
                     <div className="card-cta flex lg:flex-row xs:flex-col gap-4 items-center">
                       <div
                         className={`text-white  flex px-4 py-1 content-center items-center gap-3 rounded-3xl bg-${article.category_color}-300`}
                       >
                         <p className="font-normal lg:text-sm xs:text-xs">
-                          {article.category}
+                          {article.category_name}
                         </p>
                       </div>
                       <a href="#" className="link-txt flex items-start gap-1">

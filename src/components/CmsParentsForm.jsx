@@ -35,42 +35,20 @@ function CmsParentsForm() {
                   <img className="w-6" src={Book} alt="" />
                   <h4 className="headline-4">Booklet</h4>
                 </div>
-                <div className="bg-neutral-white p-4 gap-4 flex items-center">
-                  <h4 className=" font-bold text-base">
-                    Upload File “Booklet”{" "}
-                    <span className=" text-base font-bold text-orange-300">
-                      *
-                    </span>
-                  </h4>
-                </div>
-                <div className="bg-neutral-white rounded-xl border-2 border-gray-400 px-6 pt-7 pb-4">
-                  <div className="border-2 border-dashed flex justify-center items-center border-gray-400 rounded-xl h-60">
-                    <div className="">
-                      <div className="flex justify-center">
-                        <img className=" w-7 mb-4" src={File} alt="" />
+                <div className="bg-neutral-white py-4 gap-4 flex items-center">
+                  <form className="w-full" action="">
+                    <label className="block font-bold mt-4 mb-1" htmlFor="cta">
+                      <div className="flex gap-1">
+                        <img className="w-6" src={Chain} alt="" />
+                        Link Booklet<span className="text-red-500">*</span>
                       </div>
-                      <p className="paragraph text-center">Drag & Drop here</p>
-                      <p className="paragraph text-center">or</p>
-                      <div className="flex relative justify-center">
-                        <h4 className=" font-bold text-orange-400 text-base absolute">
-                          Browse
-                        </h4>
-                        <input
-                          className="ml-80 opacity-0 absolute"
-                          type="file"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="my-4 bg-primary-1 hover:bg-primary-2 flex justify-center rounded-xl">
-                    <button className="bg-primary-1 hover:bg-primary-2 flex justify-center gap-2 py-4">
-                      <p className=" text-white font-bold">Upload File</p>
-                      <img className=" w-6 -rotate-90" src={Arrow} alt="" />
-                    </button>
-                  </div>
-                  <div className="flex justify-center pb-3">
-                    <h4 className=" text-base">(File PDF)</h4>
-                  </div>
+                    </label>
+                    <input
+                      placeholder="https://"
+                      type="text"
+                      className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                    />
+                  </form>
                 </div>
               </div>
 
@@ -168,71 +146,12 @@ function CmsParentsForm() {
                 </div>
               </div>
 
-              <div className="daftar-sekolah mt-6">
-                <div className="bg-background flex justify-between rounded-xl mt-5 py-3 px-3">
-                  <div className="flex items-center gap-5 ">
-                    <img className=" w-6" src={Work} alt="" />
-                    <h4 className="headline-4">Daftar Sekolah</h4>
-                  </div>
-                  <div className="bg-primary-1 flex items-center rounded-md px-2 py-2">
-                    <Link to="" className="bg-primary-1 hover:bg-primary-2">
-                      <img className=" w-6" src={Add} alt="" />
-                    </Link>
-                  </div>
-                </div>
-                <div className="bg-neutral-white p-4 gap-4 flex items-center">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th className=" pr-8 pl-2 py-3">No.</th>
-                        <th className="pr-16 w-48 py-3">Nama Sekolah</th>
-                        <th className="pr-20 py-3">Koordinat</th>
-                        <th className="px-16 py-3">Grup</th>
-                        <th className="pl-10 py-3">Manage</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="pl-3 py-4 text-left font-semibold text-sm">
-                          1.
-                        </td>
-                        <td className="pl-1 py-4 text-left text-sm">
-                          SIT Cordova 1 Pondok Aren
-                        </td>
-                        <td className="pl-6 py-4 text-left flex items-center text-sm gap-1">
-                          <img className=" w-6 h-6" src={Location} alt="" />
-                          -6.254461963781855, 106.72336923592384
-                        </td>
-                        <td className=" w-8 py-4">
-                          <button className="border-2 border-gray-300 ml-4 rounded-full px-2  flex py-1.5 gap-2 items-center justify-center ">
-                            <img className=" w-6 h-6" src={Show} alt="" />
-                            <p className="paragraph text-sm">Lihat Group</p>
-                          </button>
-                        </td>
-                        <td className="pl-10 py-4 text-left flex gap-4">
-                          <div className="w-10 flex items-center justify-center rounded-md py-2">
-                            <button className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center">
-                              <img className="w-5" src={Edit1} alt="" />
-                            </button>
-                          </div>
-                          <div className="w-10 flex items-center justify-center rounded-md py-2">
-                            <button className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center">
-                              <img className="w-5" src={Delete} alt="" />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
               <div className=" join-button mt-6">
                 <div className="bg-background p-4 gap-4 flex items-center rounded-xl">
                   <img className="w-6" src={Chain} alt="" />
                   <h4 className="headline-4">Join Button</h4>
                 </div>
-                <div className="bg-neutral-white p-4 gap-4 flex items-center">
+                <div className="bg-neutral-white py-4 gap-4 flex items-center">
                   <form className="w-full" action="">
                     <label className="block font-bold mb-1" htmlFor="cta">
                       Call To Action <span className="text-red-500">*</span>
