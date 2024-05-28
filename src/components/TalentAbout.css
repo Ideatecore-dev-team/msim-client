@@ -1,9 +1,0 @@
-.title-desc {
-  width: 956px;
-}
-
-@media (max-width: 639px) {
-  .title-desc {
-    width: 320px;
-  }
-}

@@ -8,16 +8,13 @@ import ArrowDown from "../../public/images/mascot-icons/Arrow - Down 3.png";
 const CurrentGroupParents = () => {
     return (
         <>
-        <div className="hero bg-background flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
-            <div className="content -mt-10">
-            <div className="flex justify-center">
-                <div className="h-14 gap-3 flex items-center">
-                <img className="w-12 h-12" src={GroupIcon} alt="starts" />
-                <h2 className="headline-2 font-bold">Current GroupS</h2>
-                </div>
+        <div className="group-section flex px-3 py-14 lg:py-24 lg:px-0 flex-col items-center bg-background">
+        <div className="group-container flex flex-col items-center gap-9 lg:gap-10">
+            <div className="group-title flex items-center gap-2 lg:gap-4">
+                <img className=" size-6 lg:size-10" src={GroupIcon} alt="starts" />
+                <h2 className="headline-2">Current Group</h2>
             </div>
-            <div className="flex w-full h-5/6 justify-center gap-6 mt-7">
-                {/* card1 */}
+            <div className="schoolgroup-card flex items-center gap-9 lg:flex-row flex-col">
                 <div className="card-size1 rounded-xl border-2 mt-4 border-black bg-white">
                 <iframe
                     title="Google Maps"
@@ -165,7 +162,6 @@ const CurrentGroupParents = () => {
                     </div>
                 </div>
                 </div>
-                {/* card3 */}
             </div>
             </div>
         </div>

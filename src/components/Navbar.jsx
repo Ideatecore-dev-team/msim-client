@@ -174,7 +174,7 @@ function Navbar() {
             <div className="flex  gap-2 Our-program ">
               <Link
                 className=" text-slate-500 hover:text-black  mb-5 flex gap-2 "
-                to="/ourprogram/skyshare"
+                to="/ourprogram/talent"
               >
                 <p className="text-xl">Talent Academy</p>
                 <svg

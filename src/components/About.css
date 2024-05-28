@@ -1,3 +1,13 @@
+.title-desc {
+  width: 956px;
+}
+
+@media (max-width: 639px) {
+  .title-desc {
+    width: 320px;
+  }
+}
+
 .about-desc {
   width: 461px;
   height: 300px;

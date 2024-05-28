@@ -1,5 +1,5 @@
 import React from "react";
-import "./TalentAbout.css";
+import "./About.css";
 
 function Skyshareabout() {
   return (
@@ -13,7 +13,7 @@ function Skyshareabout() {
             </h4>
             <p className="paragraph">
               Talent Academy merupakan program ekskul kelas karakter minat dan
-              bakat pengembangan potensi diri di bawah MSiM Mentoring Consulting
+              bakat pengembangan potensi diri di bawah Skyshare Academy
               Indonesia yang terinspirasi dari Mentoring Project* di Harvard
               T.H. Chan School of Public Health Boston, Amerika Serikat sejak
               1997.

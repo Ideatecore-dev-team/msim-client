@@ -1,9 +1,9 @@
 import React from "react";
 import Stars from "../../public/images/mascot-icons/Vector1.png";
 import Icon1 from "../../public/images/mascot-icons/circle.png";
-import "./BenefitTalent.css";
+import "./Benefit.css";
 
-function BenefitSkyshare() {
+function BenefitTalent() {
   return (
     <>
       <div className="benefit bg-orange-bg bg-cover border-t-2 border-black flex flex-col py-14 lg:py-24 items-center self-stretch">
@@ -73,4 +73,4 @@ function BenefitSkyshare() {
     </>
   );
 }
-export default BenefitSkyshare;
+export default BenefitTalent;
