@@ -7,7 +7,6 @@ import ParentsAbout from "../components/ParentsAbout";
 import BenefitParents from "../components/BenefitParents";
 import AlurAcara from "../components/AlurAcara";
 import TimelineSkyshare from "../components/TimelineSkyshare";
-import CurrentGroupParents from "../components/CurrentGroupParents";
 import AllActivitiesParents from "../components/AllActivitiesParents";
 
 function Parents() {
@@ -30,7 +29,6 @@ function Parents() {
             <BenefitParents/>
             <AlurAcara skyshare={skyshare} />
             <TimelineSkyshare skyshare={skyshare} />
-            <CurrentGroupParents />
             <AllActivitiesParents />
         </div>
         </>

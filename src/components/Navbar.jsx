@@ -71,7 +71,7 @@ function Navbar() {
                 </div>
               </Link>
               {/* ini adalah menu dropdown */}
-              <div className=" absolute drop bg-neutral-white w-44">
+              <div className=" absolute drop bg-neutral-white w-44 z-50">
                 <div className=" w-full flex justify-center items-center h-1/5 "></div>
                 <div className=" w-full flex -mt-2 justify-center items-center h-14 border-gray-400 border-t">
                   <Link
