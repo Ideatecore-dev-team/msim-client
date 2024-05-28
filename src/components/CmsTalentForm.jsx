@@ -31,7 +31,7 @@ function CmsTalentForm() {
             <div>
               <h1 className="headline-1">Talent Academy</h1>
               <p className="paragraph">
-                Kelola secara dinamis page Skyshare Academy disini.
+                Kelola secara dinamis page Talent Academy disini.
               </p>
             </div>
             <div className="shadow-md bg-neutral-white mt-10 border-2 border-black rounded-xl pb-5 px-3 w-full">
@@ -246,7 +246,7 @@ function CmsTalentForm() {
                       Call To Action <span className="text-red-500">*</span>
                     </label>
                     <input
-                      placeholder="Example: Join Skyshare Academy Season 6"
+                      placeholder="Example: Join Talent Academy Season 6"
                       type="text"
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                     />
