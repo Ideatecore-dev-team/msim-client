@@ -29,7 +29,7 @@ function App() {
   const location = useLocation();
 
   const hideNavbarAndFooterPaths = [
-    "/cms/login",
+    "/cms",
     "/cms/kelolaakun",
     "/cms/add/admin",
     "/cms/edit/admin",
@@ -72,7 +72,7 @@ function App() {
         />
         <Route path="/article" element={<Article />} />
         <Route path="/contactus" element={<ContactUs />} />
-        <Route path="/cms/login" element={<CmsLogin />} />
+        <Route path="/cms" element={<CmsLogin />} />
         <Route path="/cms/kelolaakun" element={<CmsKelolaAkun />} />
         <Route path="/cms/add/admin" element={<CmsAddAdmin />} />
         <Route path="/cms/edit/admin" element={<CmsEditAdmin />} />
