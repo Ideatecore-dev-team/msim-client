@@ -1,10 +1,10 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
+import skyshareApi from "../utilities/skyshareApi";
 import { useEffect, useState } from "react";
 import MentorCta from "../components/MentorCta";
 import Mentorabout from "../components/MentorAbout";
 import BenefitMentor from "../components/BenefitMentor";
-import CurrentGroupSkyshare from "../components/CurrentGroupSkyshare";
 import AllActivitiesMentorAcademy from "../components/AllActivityMentorAcademy";
 import AlurAcaraMentorAcademy from "../components/AlurAcaraMentorAcademy";
 import TimelineMentorAcademy from "../components/TimelineMentorAcademy";
@@ -14,9 +14,7 @@ function Mentor() {
   useEffect(() => {
     const getDataMentor = async function () {
       try {
-        const response = await axios.get(
-          "https://api.skyshareacademy.com/mentor"
-        );
+        const response = await skyshareApi.get("/mentor");
         setMentor(response.data.data);
       } catch (error) {
         console.log(error);
@@ -24,6 +22,7 @@ function Mentor() {
     };
     getDataMentor();
   }, []);
+  console.log(mentor, "==>");
   return (
     <>
       <div className="home">
@@ -32,7 +31,6 @@ function Mentor() {
         <BenefitMentor />
         <AlurAcaraMentorAcademy mentor={mentor} />
         <TimelineMentorAcademy mentor={mentor} />
-        <CurrentGroupSkyshare />
         <AllActivitiesMentorAcademy mentor={mentor} />
       </div>
     </>

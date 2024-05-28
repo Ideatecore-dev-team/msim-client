@@ -2,8 +2,7 @@ import React from "react";
 import WorkIcon from "../../public/images/mascot-icons/Work.png";
 
 function AlurAcaraMentorAcademy({ mentor }) {
-  const data = mentor && mentor.length > 0 ? mentor[0] : null;
-
+  console.log(mentor, "==> data");
   return (
     <div className="hero bg-background flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
       <div className="content -mt-10">
@@ -13,11 +12,11 @@ function AlurAcaraMentorAcademy({ mentor }) {
             <h2 className="headline-2 font-bold">Alur Acara</h2>
           </div>
         </div>
-        {data && (
-          <div className="flex w-full h-96 mt-10">
+        {mentor && (
+          <div className="ml-24 timeline-img mt-10">
             <img
               className="w-full h-full"
-              src={data.gambar_alur_acara}
+              src={mentor.gambar_alur_acara}
               alt="Alur Acara Image"
             />
           </div>

@@ -16,19 +16,19 @@ function CmsNavCard() {
             </Link>
           </li>
           <li className=" py-4 w-64 px-4 hover:bg-background rounded-xl">
-            <Link className="flex gap-4" to="/ourprogram/talent">
+            <Link className="flex gap-4" to="/cms/talentacademy">
               <img className="w-6" src={ArrowRight} alt="" />
               <p className=" text-base">Talent Academy</p>
             </Link>
           </li>
           <li className="  py-4 w-64 px-4 hover:bg-background rounded-xl">
-            <Link className="flex gap-4" to="/ourprogram/mentor">
+            <Link className="flex gap-4" to="/cms/mentoracademy">
               <img className="w-6" src={ArrowRight} alt="" />
               <p className=" text-base">Mentor Academy</p>
             </Link>
           </li>
           <li className=" py-4 w-64 px-4 hover:bg-background rounded-xl">
-            <Link className="flex gap-4" to="">
+            <Link className="flex gap-4" to="/cms/parentsacademy">
               <img className="w-6" src={ArrowRight} alt="/ourprogram/parent" />
               <p className=" text-base">Parents Academy</p>
             </Link>

@@ -17,7 +17,7 @@ function Misi() {
                 Personalized Mentorship
               </h4>
               <p className="text-sm lg:text-base font-normal">
-                MSiM menyediakan mentor yang sesuai dengan kebutuhan individu,
+                Skyshare Academy menyediakan mentor yang sesuai dengan kebutuhan individu,
                 membantu mengatasi tantangan akademik, karier, dan pertumbuhan
                 pribadi.
               </p>
@@ -43,7 +43,7 @@ function Misi() {
                 Empowerment for Success
               </h4>
               <p className="text-sm lg:text-base font-normal">
-                MSiM memberdayakan individu untuk meraih kesuksesan di dunia dan
+                Skyshare Academy memberdayakan individu untuk meraih kesuksesan di dunia dan
                 akhirat, menyediakan keterampilan, pengetahuan, dan kedalaman
                 spiritual yang diperlukan.
               </p>

@@ -11,7 +11,7 @@ export default {
         "hero-bg":
           "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)) ,url('/images/bg.jpeg')",
         "talent-bg":
-          "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)) ,url('/images/StudEx7.jpeg')",
+          "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)) ,url('/images/StudExAlt.jpeg')",
         "mentor-bg":
           "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)) ,url('/images/Parent.jpeg')",
         "parent-bg":

@@ -1,8 +1,10 @@
 import React from "react";
 import "./Hero.css";
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 
 function Hero() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="hero bg-hero-bg bg-cover bg-center flex flex-col pb-24 pt-48 items-center self-stretch h-auto">
@@ -15,7 +17,7 @@ function Hero() {
               Katanya mau berkembang? daripada berkembang seorang diri, Yukk
               maksimalkan potensi kamu dengan adanya mentorship!
             </p>
-            <Button onClick={() => console.log("Button clicked")} className="">
+            <Button onClick={() => navigate("/ourprogram")} className="">
               Check Our Programs
               <svg
                 width="24"

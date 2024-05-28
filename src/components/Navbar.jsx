@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../public/images/mascot-icons/logo placeholder.png";
+import Logo from "../../public/images/logo placeholder.png";
 import Hamburger from "../../public/images/Hamburger Icon.png";
 import XCircle from "../../public/images/mascot-icons/Close Square.svg";
 function Navbar() {
@@ -71,7 +71,7 @@ function Navbar() {
                 </div>
               </Link>
               {/* ini adalah menu dropdown */}
-              <div className=" absolute drop bg-neutral-white w-44">
+              <div className=" absolute drop bg-neutral-white w-44 z-50">
                 <div className=" w-full flex justify-center items-center h-1/5 "></div>
                 <div className=" w-full flex -mt-2 justify-center items-center h-14 border-gray-400 border-t">
                   <Link
@@ -174,7 +174,7 @@ function Navbar() {
             <div className="flex  gap-2 Our-program ">
               <Link
                 className=" text-slate-500 hover:text-black  mb-5 flex gap-2 "
-                to="/ourprogram/skyshare"
+                to="/ourprogram/talent"
               >
                 <p className="text-xl">Talent Academy</p>
                 <svg
@@ -212,6 +212,42 @@ function Navbar() {
                 to="/ourprogram/mentor"
               >
                 <p className="text-xl">Mentor Academy</p>
+                <svg
+                  className=" -rotate-90 mt-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="24"
+                  viewBox="0 0 25 24"
+                  fill="none"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M11.4997 20.7496L11.4997 3.24987L12.9997 3.24987L12.9997 20.7496L11.4997 20.7496Z"
+                    fill="#64748b"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M12.9997 19.9999C12.9997 16.4723 9.89755 13.5898 6.58965 13.5898H5.83965V15.0898H6.58965C9.10123 15.0898 11.4997 17.3325 11.4997 19.9999V20.7499H12.9997V19.9999Z"
+                    fill="#64748b"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M11.4997 19.9999C11.4997 16.4723 14.6018 13.5898 17.9097 13.5898H18.6597V15.0898H17.9097C15.3982 15.0898 12.9997 17.3325 12.9997 19.9999V20.7499H11.4997V19.9999Z"
+                    fill="#64748b"
+                  />
+                </svg>
+              </Link>
+            </div>
+
+            <div className="flex  gap-2 Our-program ">
+              <Link
+                className=" text-slate-500 hover:text-black  mb-5 flex gap-2 "
+                to="/ourprogram/parents"
+              >
+                <p className="text-xl">Parents Academy</p>
                 <svg
                   className=" -rotate-90 mt-5"
                   xmlns="http://www.w3.org/2000/svg"

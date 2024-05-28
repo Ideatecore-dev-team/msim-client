@@ -1,5 +1,5 @@
 import React from "react";
-import MentorActivitiesCarousel from "../components/MentorActiviesCarousel";
+import MentorActivitiesCarousel from "../components/MentorActivitiesCarousel";
 import MentorActivitiesHero from "../components/MentorActivitiesHero";
 
 function MentorActivity() {
