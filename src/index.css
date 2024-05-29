@@ -11,6 +11,10 @@ body {
   padding: 16px 32px;
 }
 
+.drop-down a {
+  height: 36px;
+}
+
 .button {
   background: #fea02f;
   border-radius: 8px;
