@@ -1,3 +1,4 @@
+// src/App.js
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -23,6 +24,7 @@ import CmsMentorAcademy from "./pages/CmsMentorAcademy";
 import CmsParentsAcademy from "./pages/CmsParentsAcademy";
 import CmsTalentEditSchool from "./pages/CmsTalentEditSchool";
 import CmsTalentEditGroup from "./pages/CmsTalentEditGroup";
+import CmsPrivateRoute from "./components/CmsPrivateRoute";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -73,18 +75,22 @@ function App() {
         <Route path="/article" element={<Article />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/cms" element={<CmsLogin />} />
-        <Route path="/cms/kelolaakun" element={<CmsKelolaAkun />} />
-        <Route path="/cms/add/admin" element={<CmsAddAdmin />} />
-        <Route path="/cms/edit/admin" element={<CmsEditAdmin />} />
-        <Route path="/cms/talentacademy" element={<CmsTalentAcademy />} />
-        <Route path="/cms/mentoracademy" element={<CmsMentorAcademy />} />
-        <Route path="/cms/parentsacademy" element={<CmsParentsAcademy />} />
-        <Route
-          path="/cms/talent/editschool"
-          element={<CmsTalentEditSchool />}
-        />
-        <Route path="/cms/talent/editgroup" element={<CmsTalentEditGroup />} />
-        {/* Tambahkan rute-rute tambahan di sini */}
+        <Route element={<CmsPrivateRoute />}>
+          <Route path="/cms/kelolaakun" element={<CmsKelolaAkun />} />
+          <Route path="/cms/add/admin" element={<CmsAddAdmin />} />
+          <Route path="/cms/edit/admin" element={<CmsEditAdmin />} />
+          <Route path="/cms/talentacademy" element={<CmsTalentAcademy />} />
+          <Route path="/cms/mentoracademy" element={<CmsMentorAcademy />} />
+          <Route path="/cms/parentsacademy" element={<CmsParentsAcademy />} />
+          <Route
+            path="/cms/talent/editschool"
+            element={<CmsTalentEditSchool />}
+          />
+          <Route
+            path="/cms/talent/editgroup"
+            element={<CmsTalentEditGroup />}
+          />
+        </Route>
       </Routes>
       {!shouldHideNavbarAndFooter && <Footer />}
     </>

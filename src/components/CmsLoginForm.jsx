@@ -32,7 +32,6 @@ function CmsLoginForm() {
       skyshareApi.defaults.headers.common["authorization"] = `${token}`;
       console.log(token, "token");
       console.log(dataFromServer.data, "==>");
-
       if (dataFromServer.data.status === "success") {
         navigate("/cms/kelolaakun");
       }
