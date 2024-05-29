@@ -1,9 +1,9 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
-const CmsPrivateRoute = () => {
+const CmsLoginRoute = () => {
   const token = localStorage.getItem("authorization");
-  return token ? <Outlet /> : <Navigate to="/cms" />;
+  return token ? <Navigate to="/cms/kelolaakun" /> : <Outlet />;
 };
 
-export default CmsPrivateRoute;
+export default CmsLoginRoute;

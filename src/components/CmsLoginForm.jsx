@@ -11,7 +11,7 @@ import ArrowLeft from "../../public/images/mascot-icons/Arrow - Down 3.png";
 function CmsLoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
 
   const handleLogin = async () => {
     const inputAdmin = {
@@ -33,13 +33,13 @@ function CmsLoginForm() {
       console.log(token, "token");
       console.log(dataFromServer.data, "==>");
       if (dataFromServer.data.status === "success") {
-        navigate("/cms/kelolaakun");
+        Navigate("/cms/kelolaakun");
       }
     } catch (error) {
       console.log(error);
     }
   };
-
+  console.log("==>");
   return (
     <div className="hero bg-background flex flex-col pb-12 pt-24 items-center self-stretch h-full">
       <div className="w-4/5 text-white flex justify-center">
@@ -62,7 +62,7 @@ function CmsLoginForm() {
         <input
           onChange={(e) => setEmail(e.target.value)}
           type="text"
-          placeholder="Username"
+          placeholder="Email"
           className="px-2 mt-5 py-2 rounded-md w-80 block border border-gray-300 shadow-sm shadow-gray-500"
         />
         <input

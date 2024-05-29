@@ -25,6 +25,7 @@ import CmsParentsAcademy from "./pages/CmsParentsAcademy";
 import CmsTalentEditSchool from "./pages/CmsTalentEditSchool";
 import CmsTalentEditGroup from "./pages/CmsTalentEditGroup";
 import CmsPrivateRoute from "./components/CmsPrivateRoute";
+import CmsLoginRoute from "./components/CmsLoginRoute";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -74,7 +75,9 @@ function App() {
         />
         <Route path="/article" element={<Article />} />
         <Route path="/contactus" element={<ContactUs />} />
-        <Route path="/cms" element={<CmsLogin />} />
+        <Route path="/cms" element={<CmsLoginRoute />}>
+          <Route path="/cms" element={<CmsLogin />} />
+        </Route>
         <Route element={<CmsPrivateRoute />}>
           <Route path="/cms/kelolaakun" element={<CmsKelolaAkun />} />
           <Route path="/cms/add/admin" element={<CmsAddAdmin />} />
