@@ -50,7 +50,7 @@ function App() {
   return (
     <>
       <Helmet>
-        <title>MSIM</title>
+        <title>Skyshare Academy</title>
       </Helmet>
       {!shouldHideNavbarAndFooter && <Navbar />}
       <Routes>
