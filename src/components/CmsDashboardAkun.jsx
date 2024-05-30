@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import skyshareApi from "../utilities/skyshareApi";
 import { Link, useNavigate } from "react-router-dom";
 import Character from "../../public/images/mascot-icons/Char.png";
 import Edit1 from "../../public/images/mascot-icons/Edit Square.png";
@@ -10,11 +11,21 @@ import Mascot from "../../public/images/mascot-icons/pose=2.png";
 function CmsDashboardAkun() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [dataAdmins, setDataAdmins] = useState([]);
   const navigate = useNavigate();
 
-  function handleNavigateEdit() {
-    navigate("/cms/edit/admin");
-  }
+  useEffect(() => {
+    const getDataAdmin = async function () {
+      try {
+        const dataAdminFromServer = await skyshareApi.get("/admin/admins");
+        setDataAdmins(dataAdminFromServer.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getDataAdmin();
+  }, []);
+  console.log(dataAdmins);
 
   function handleDelete(user) {
     setSelectedUser(user);
@@ -26,10 +37,15 @@ function CmsDashboardAkun() {
     setSelectedUser(null);
   }
 
-  function confirmDelete() {
-    // Add your delete logic here
-    console.log("Deleting user:", selectedUser);
-    closeModal();
+  async function confirmDelete() {
+    if (!selectedUser) return;
+    try {
+      await skyshareApi.delete(`/admin/admin/${selectedUser.id}`);
+      setDataAdmins(dataAdmins.filter((admin) => admin.id !== selectedUser.id));
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -67,37 +83,45 @@ function CmsDashboardAkun() {
                   <thead>
                     <tr>
                       <th className=" pr-8 pl-2 py-3">No.</th>
-                      <th className="pr-16 py-3">Username</th>
-                      <th className="px-16 py-3">Password</th>
+                      <th className="pr-16 py-3">Name</th>
+                      <th className="px-16 py-3">Email</th>
                       <th className="px-16 py-3">Role</th>
                       <th className="px-16 py-3">Manage</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="pl-3 py-4 text-left font-semibold">1.</td>
-                      <td className="pl-1 py-4 text-left">admin1</td>
-                      <td className="px-16 py-4 text-left">hdkdk1234</td>
-                      <td className="px-16 py-4 text-left">Admin</td>
-                      <td className="px-16 py-4 text-left flex gap-4">
-                        <div className="w-10 flex items-center justify-center rounded-md py-2">
-                          <button
-                            onClick={handleNavigateEdit}
-                            className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center"
-                          >
-                            <img className="w-5" src={Edit1} alt="" />
-                          </button>
-                        </div>
-                        <div className="w-10 flex items-center justify-center rounded-md py-2">
-                          <button
-                            onClick={() => handleDelete("admin1")}
-                            className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center"
-                          >
-                            <img className="w-5" src={Delete} alt="" />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
+                    {dataAdmins.map((admin, index) => {
+                      return (
+                        <tr key={admin.id}>
+                          <td className="pl-3 py-4 text-left font-semibold">
+                            {index + 1}
+                          </td>
+                          <td className="pl-1 py-4 text-left">{admin.name}</td>
+                          <td className="px-16 py-4 text-left">
+                            {admin.email}
+                          </td>
+                          <td className="px-16 py-4 text-left">{admin.role}</td>
+                          <td className="px-16 py-4 text-left flex gap-4">
+                            <div className="w-10 flex items-center justify-center rounded-md py-2">
+                              <Link
+                                to={`/cms/edit/admin/${admin.id}`}
+                                className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center"
+                              >
+                                <img className="w-5" src={Edit1} alt="" />
+                              </Link>
+                            </div>
+                            <div className="w-10 flex items-center justify-center rounded-md py-2">
+                              <button
+                                onClick={() => handleDelete(admin)}
+                                className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center"
+                              >
+                                <img className="w-5" src={Delete} alt="" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

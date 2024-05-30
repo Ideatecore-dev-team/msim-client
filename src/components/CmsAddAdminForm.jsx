@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import skyshareApi from "../utilities/skyshareApi";
+import { Link, useNavigate } from "react-router-dom";
 import Caution from "../../public/images/mascot-icons/Info Square.png";
 import CmsNavCard from "./CmsNavCard";
 import Xbutton from "../../public/images/mascot-icons/Fill 300.png";
@@ -13,6 +14,32 @@ function CmsAddAdminForm() {
   const [errorMessage, setErrorMessage] = useState("");
   const [imageIcon, setImageIcon] = useState("");
   const [imageMascot, setImageMascot] = useState("");
+  const Navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleData = function () {
+    const inputAdmin = {
+      name: name,
+      email: email,
+      password: password,
+    };
+    adminRegist(inputAdmin);
+  };
+
+  const adminRegist = async function (inputAdmin) {
+    try {
+      const adminRegistToServer = await skyshareApi({
+        method: "post",
+        url: "/admin/register",
+        data: inputAdmin,
+      });
+      console.log(inputAdmin);
+      console.log(adminRegistToServer.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -35,6 +62,7 @@ function CmsAddAdminForm() {
 
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
+    Navigate("/cms/kelolaakun");
   };
 
   return (
@@ -55,12 +83,27 @@ function CmsAddAdminForm() {
             <div className="shadow-md bg-neutral-white mt-10 border-2 border-black rounded-xl pb-5 px-3 w-full">
               <div className="mt-10 ml-2">
                 <form onSubmit={handleSave}>
-                  <label htmlFor="username" className="font-bold block mb-2">
-                    Username <span className="text-primary-1 font-bold">*</span>
+                  <label htmlFor="name" className="font-bold block mb-2">
+                    Name <span className="text-primary-1 font-bold">*</span>
                   </label>
                   <input
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                    name="name"
+                    placeholder="Masukkan Name"
+                    type="text"
+                    className="w-full mb-6 px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                  />
+                  <label htmlFor="username" className="font-bold block mb-2">
+                    Email <span className="text-primary-1 font-bold">*</span>
+                  </label>
+                  <input
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
                     name="username"
-                    placeholder="Masukkan Username"
+                    placeholder="Masukkan Email"
                     type="text"
                     className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                   />
@@ -71,6 +114,9 @@ function CmsAddAdminForm() {
                     Password <span className="text-primary-1 font-bold">*</span>
                   </label>
                   <input
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
                     name="password"
                     placeholder="Masukkan Password"
                     type="password"
@@ -89,6 +135,7 @@ function CmsAddAdminForm() {
                   <div className="w-full mt-10 flex justify-end">
                     <div className="w-56 py-2 flex">
                       <button
+                        onClick={handleData}
                         type="submit"
                         className="bg-primary-1 w-20 py-2 rounded-md hover:bg-primary-2 text-white font-bold"
                       >
