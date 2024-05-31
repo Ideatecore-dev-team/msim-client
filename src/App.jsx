@@ -1,4 +1,3 @@
-// src/App.js
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -35,7 +34,7 @@ function App() {
     "/cms",
     "/cms/kelolaakun",
     "/cms/add/admin",
-    "/cms/edit/admin",
+    "/cms/edit/admin/:id",
     "/cms/talentacademy",
     "/cms/mentoracademy",
     "/cms/parentsacademy",
@@ -43,14 +42,18 @@ function App() {
     "/cms/talent/editgroup",
   ];
 
-  const shouldHideNavbarAndFooter = hideNavbarAndFooterPaths.includes(
-    location.pathname
-  );
+  const shouldHideNavbarAndFooter = hideNavbarAndFooterPaths.some((path) => {
+    if (path.includes(":id")) {
+      const regex = new RegExp(`^${path.replace(":id", "[^/]+")}$`);
+      return regex.test(location.pathname);
+    }
+    return path === location.pathname;
+  });
 
   return (
     <>
       <Helmet>
-        <title>MSIM</title>
+        <title>Skyshare Academy</title>
       </Helmet>
       {!shouldHideNavbarAndFooter && <Navbar />}
       <Routes>
@@ -81,7 +84,7 @@ function App() {
         <Route element={<CmsPrivateRoute />}>
           <Route path="/cms/kelolaakun" element={<CmsKelolaAkun />} />
           <Route path="/cms/add/admin" element={<CmsAddAdmin />} />
-          <Route path="/cms/edit/admin" element={<CmsEditAdmin />} />
+          <Route path="/cms/edit/admin/:id" element={<CmsEditAdmin />} />
           <Route path="/cms/talentacademy" element={<CmsTalentAcademy />} />
           <Route path="/cms/mentoracademy" element={<CmsMentorAcademy />} />
           <Route path="/cms/parentsacademy" element={<CmsParentsAcademy />} />

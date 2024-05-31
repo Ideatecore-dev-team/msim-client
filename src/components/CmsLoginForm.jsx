@@ -52,9 +52,9 @@ function CmsLoginForm() {
         </div>
       </div>
       <div className="mt-36 w-96">
-        <h1 className="headline-1 text-center">CMS MsiM</h1>
+        <h1 className="headline-1 text-center">CMS Skyshare Academy</h1>
         <p className="paragraph text-center">
-          Website ini digunakan untuk mengelola konten pada website MSiM.
+          Website ini digunakan untuk mengelola konten pada website Skyshare Academy.
         </p>
       </div>
       <div className="mt-6 bg-white border-2 rounded-xl shadow-lg shadow-gray-500 border-black px-5 pb-10 pt-5">

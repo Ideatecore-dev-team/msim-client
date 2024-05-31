@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import skyshareApi from "../utilities/skyshareApi";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import Caution from "../../public/images/mascot-icons/Info Square.png";
 import CmsNavCard from "./CmsNavCard";
 import Xbutton from "../../public/images/mascot-icons/Fill 300.png";
@@ -11,6 +12,46 @@ import Mascot2 from "../../public/images/mascot-icons/pose=1.png";
 function CmsEditAdminForm() {
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [adminById, setAdminById] = useState({});
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { id } = useParams();
+  const handleData = function () {
+    const inputEditAdmin = {
+      name: name,
+      email: email,
+      password: password,
+    };
+    adminEditAkun(inputEditAdmin);
+  };
+
+  const adminEditAkun = async function (inputEditAdmin) {
+    console.log(inputEditAdmin);
+    try {
+      const editDataFromServer = await skyshareApi.put(
+        `/admin/admin/${id}`,
+        inputEditAdmin
+      );
+      console.log(editDataFromServer.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const getDataAdmin = async function () {
+      try {
+        const getDataAdminById = await skyshareApi.get(`/admin/admin/${id}`);
+        setAdminById(getDataAdminById.data.data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getDataAdmin();
+  }, []);
+
+  console.log(adminById);
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -21,8 +62,10 @@ function CmsEditAdminForm() {
     setIsCancelModalOpen(true);
   };
 
+  const Navigate = useNavigate();
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
+    Navigate("/cms/kelolaakun");
   };
 
   const closeCancelModal = () => {
@@ -48,10 +91,14 @@ function CmsEditAdminForm() {
               <div className="mt-10 ml-2">
                 <form onSubmit={handleSave}>
                   <label htmlFor="username" className="font-bold block mb-2">
-                    Username <span className="text-primary-1 font-bold">*</span>
+                    Name <span className="text-primary-1 font-bold">*</span>
                   </label>
                   <input
-                    placeholder="Masukkan Username"
+                    placeholder="Masukkan Name"
+                    defaultValue={adminById.name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
                     type="text"
                     className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                   />
@@ -59,23 +106,28 @@ function CmsEditAdminForm() {
                     htmlFor="oldPassword"
                     className="font-bold block mb-2 mt-5"
                   >
-                    Password Lama{" "}
-                    <span className="text-primary-1 font-bold">*</span>
+                    Email <span className="text-primary-1 font-bold">*</span>
                   </label>
                   <input
-                    placeholder="Masukkan Password"
-                    type="password"
+                    placeholder="Masukkan Email"
+                    defaultValue={adminById.email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                    type="text"
                     className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                   />
                   <label
                     htmlFor="newPassword"
                     className="font-bold block mb-2 mt-5"
                   >
-                    Password Baru{" "}
-                    <span className="text-primary-1 font-bold">*</span>
+                    Password <span className="text-primary-1 font-bold">*</span>
                   </label>
                   <input
                     placeholder="Masukkan Password"
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
                     type="password"
                     className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                   />
@@ -102,6 +154,7 @@ function CmsEditAdminForm() {
                     <div className="w-56 py-2 flex">
                       <button
                         type="submit"
+                        onClick={handleData}
                         className="bg-primary-1 w-20 py-2 rounded-md hover:bg-primary-2 text-white font-bold"
                       >
                         Simpan
