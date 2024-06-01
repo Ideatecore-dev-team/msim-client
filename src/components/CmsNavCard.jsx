@@ -34,7 +34,7 @@ function CmsNavCard() {
             </Link>
           </li>
           <li className=" py-4 w-64 px-4 hover:bg-background rounded-xl">
-            <Link className="flex gap-4" to="/article">
+            <Link className="flex gap-4" to="/cms/article">
               <img className="w-6" src={Edit} alt="" />
               <p className=" text-base">Article</p>
             </Link>

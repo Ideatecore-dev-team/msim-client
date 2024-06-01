@@ -1,0 +1,264 @@
+import React, { useState, useEffect } from "react";
+import "./Hero.css";
+import { Link } from "react-router-dom";
+import CmsNavCard from "./CmsNavCard";
+import Arrow from "../../public/images/mascot-icons/Arrow-down.png";
+import File from "../../public/images/mascot-icons/Image 3.png";
+import Plus from "../../public/images/mascot-icons/Plus-0.png";
+import Delete from "../../public/images/mascot-icons/Delete.png";
+import Del from "../../public/images/mascot-icons/Delete-0.png";
+import Add from "../../public/images/mascot-icons/Plus.png";
+
+function CmsArticleEditForm() {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownAddOpen, setIsDropdownAddOpen] = useState(false);
+  const [colorInputValet, setColorInputValet] = useState("#FFFFFF");
+  const [colorInputHexa, setColorInputHexa] = useState("#FFFFFF");
+
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+    if (isDropdownAddOpen) {
+      setIsDropdownAddOpen(false);
+    }
+  };
+
+  const handleDropDownAddOpen = () => {
+    setIsDropdownAddOpen(!isDropdownAddOpen);
+    if (!isDropdownAddOpen) {
+      setIsDropdownOpen(true);
+    }
+  };
+
+  useEffect(() => {
+    setColorInputHexa(colorInputValet);
+  }, [colorInputValet]);
+
+  useEffect(() => {
+    setColorInputValet(colorInputHexa);
+  }, [colorInputHexa]);
+
+  return (
+    <>
+      <div className="bg-background flex flex-col pt-12 items-center self-stretch">
+        <div className="content-1 flex gap-4">
+          <div>
+            <CmsNavCard />
+          </div>
+          <div className="w-full">
+            <div>
+              <h1 className="headline-1">Edit Article</h1>
+              <p className="paragraph">Masukkan data pada field yang tertera</p>
+            </div>
+            <div className="shadow-md bg-neutral-white mt-10 border-2 border-black rounded-xl pb-5 px-3 w-full">
+              <div className="alur-acara">
+                <div className="bg-neutral-white p-4 gap-4 flex items-center">
+                  <h4 className="font-bold text-base">
+                    Upload gambar heading{" "}
+                    <span className="text-base font-bold text-orange-300">
+                      *
+                    </span>
+                  </h4>
+                </div>
+                <div className="bg-neutral-white rounded-xl border-2 border-gray-400 px-6 pt-7 pb-4">
+                  <div className="border-2 flex justify-center items-center mb-4 border-gray-400 rounded-xl h-16">
+                    <div className="flex justify-between px-4 w-full">
+                      <div className="flex items-center">
+                        <div className="flex items-center gap-2">
+                          <img className="w-7" src={File} alt="" />
+                          <p className="paragraph">Mentorship.png</p>
+                        </div>
+                        <input
+                          className="w-10 opacity-0 absolute"
+                          type="file"
+                        />
+                      </div>
+                      <div className="w-10 flex items-center justify-center rounded-md py-2">
+                        <button className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center">
+                          <img className="w-5" src={Delete} alt="" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex justify-center pb-3">
+                    <h4 className="text-base">
+                      Minimal Ukuran{" "}
+                      <span className="font-bold">(956 x 350px)</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              <div className="join-button">
+                <div className="bg-neutral-white py-4 gap-4 flex items-center">
+                  <form className="w-full" action="">
+                    <label className="block font-bold mb-1" htmlFor="cta">
+                      Judul <span className="text-orange-400">*</span>
+                    </label>
+                    <input
+                      placeholder="Example: Join Skyshare Academy Season 6"
+                      type="text"
+                      className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                    />
+                    <label className="block font-bold mt-4 mb-1" htmlFor="cta">
+                      <div className="flex gap-1">
+                        Penulis <span className="text-orange-400">*</span>
+                      </div>
+                    </label>
+                    <input
+                      placeholder="https://"
+                      type="text"
+                      className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                    />
+                    <label className="block font-bold mt-4 mb-1" htmlFor="cta">
+                      <div className="flex gap-1">
+                        Kategori <span className="text-orange-400">*</span>
+                      </div>
+                    </label>
+                    <div
+                      className={`w-full px-4 duration-500 origin-top ${
+                        isDropdownAddOpen
+                          ? "h-64"
+                          : isDropdownOpen
+                          ? "h-40"
+                          : "h-14"
+                      } border-gray-300 border-2 rounded-lg outline-none`}
+                    >
+                      <div className="mt-3.5 flex justify-between">
+                        <div className="flex items-center justify-center">
+                          <p className="text-gray-400">--Pilih kategory--</p>
+                        </div>
+                        <div className="flex">
+                          <button type="button" onClick={handleDropdownToggle}>
+                            <img
+                              className={`w-6 duration-500 ${
+                                isDropdownOpen ? "rotate-180" : "rotate-0"
+                              }`}
+                              src={Arrow}
+                              alt=""
+                            />
+                          </button>
+                        </div>
+                      </div>
+                      <div
+                        className={`mt-2 flex gap-4 flex-wrap ${
+                          !isDropdownOpen
+                            ? "opacity-0"
+                            : "opacity-1 duration-700"
+                        }`}
+                      >
+                        <p className="px-3 py-1 bg-red-300 text-white font-bold rounded-full">
+                          Mentorship
+                        </p>
+                        <p className="px-3 py-1 bg-red-300 text-white font-bold rounded-full">
+                          Education
+                        </p>
+                        <p className="px-3 py-1 bg-red-300 text-white font-bold rounded-full">
+                          Career
+                        </p>
+                      </div>
+                      <div
+                        className={`${
+                          !isDropdownOpen
+                            ? "opacity-0"
+                            : "opacity-1 duration-1000"
+                        } mt-8 justify-between flex`}
+                      >
+                        <button
+                          type="button"
+                          onClick={handleDropDownAddOpen}
+                          className="flex px-2 py-1 rounded-full bg-neutral-white shadow shadow-slate-400 gap-1 items-center"
+                        >
+                          <img className="w-5" src={Plus} alt="" />
+                          <p className="text-slate-700">Tambah Kategori</p>
+                        </button>
+                        <button className="flex px-2 py-1 rounded-full bg-neutral-white shadow shadow-slate-400 gap-1 items-center">
+                          <img className="w-5" src={Del} alt="" />
+                          <p className="text-slate-700">Hapus Kategori</p>
+                        </button>
+                      </div>
+                      {isDropdownAddOpen && (
+                        <div className="mt-4 bg-background py-2 gap-3 flex px-3 rounded-2xl">
+                          <div className="block w-2/4">
+                            <label
+                              className="block font-bold mb-1"
+                              htmlFor="cta"
+                            >
+                              Kategori Baru{" "}
+                              <span className="text-orange-400">*</span>
+                            </label>
+                            <input
+                              placeholder="Masukkan nama kategori"
+                              type="text"
+                              className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                            />
+                          </div>
+                          <div className="block w-80">
+                            <label
+                              className="block font-bold mb-1"
+                              htmlFor="cta"
+                            >
+                              Warna(Hex Code){" "}
+                              <span className="text-orange-400">*</span>
+                            </label>
+                            <div className="w-full h-11 bg-neutral-white px-4 py-2 border-gray-300 border-2 rounded-lg outline-none flex gap-2">
+                              <input
+                                value={colorInputValet}
+                                onChange={(e) => {
+                                  setColorInputValet(e.target.value);
+                                }}
+                                className="w-6 h-6 inline-block rounded-full p-0 cursor-pointer"
+                                type="color"
+                              />
+                              <input
+                                value={colorInputHexa}
+                                onChange={(e) => {
+                                  setColorInputHexa(e.target.value);
+                                }}
+                                placeholder="#FFFFFF"
+                                className=" outline-none"
+                                type="text"
+                              />
+                            </div>
+                          </div>
+                          <div className=" flex justify-center items-center w-10">
+                            <div className="bg-primary-1 flex mt-7 items-center rounded-md px-2 py-2">
+                              <Link
+                                to="/cms/add/admin"
+                                className="bg-primary-1 hover:bg-primary-2"
+                              >
+                                <img className=" w-6" src={Add} alt="" />
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </form>
+                </div>
+                <div className="mt-4 flex gap-5 justify-end">
+                  <div className="w-56 py-2 flex">
+                    <button
+                      type="button"
+                      className="bg-gray-300 w-full py-2 rounded-md hover:bg-gray-200 text-black font-bold"
+                    >
+                      Batal
+                    </button>
+                  </div>
+                  <div className="w-56 py-2 flex">
+                    <button
+                      type="submit"
+                      className="bg-primary-1 w-full py-2 rounded-md hover:bg-primary-2 text-white font-bold"
+                    >
+                      Simpan
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default CmsArticleEditForm;

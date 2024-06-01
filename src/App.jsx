@@ -1,3 +1,4 @@
+// src/App.js
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -25,6 +26,9 @@ import CmsTalentEditSchool from "./pages/CmsTalentEditSchool";
 import CmsTalentEditGroup from "./pages/CmsTalentEditGroup";
 import CmsPrivateRoute from "./components/CmsPrivateRoute";
 import CmsLoginRoute from "./components/CmsLoginRoute";
+import CmsArticleDashboard from "./pages/CmsArticleDashboard";
+import NotFoundPage from "./pages/NotFoundPage";
+import CmsArticleEdit from "./pages/CmsArticleEdit";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -40,6 +44,8 @@ function App() {
     "/cms/parentsacademy",
     "/cms/talent/editschool",
     "/cms/talent/editgroup",
+    "/cms/article",
+    "/cms/article/edit",
   ];
 
   const shouldHideNavbarAndFooter = hideNavbarAndFooterPaths.some((path) => {
@@ -88,6 +94,8 @@ function App() {
           <Route path="/cms/talentacademy" element={<CmsTalentAcademy />} />
           <Route path="/cms/mentoracademy" element={<CmsMentorAcademy />} />
           <Route path="/cms/parentsacademy" element={<CmsParentsAcademy />} />
+          <Route path="/cms/article" element={<CmsArticleDashboard />} />
+          <Route path="/cms/article/edit" element={<CmsArticleEdit />} />
           <Route
             path="/cms/talent/editschool"
             element={<CmsTalentEditSchool />}
@@ -97,6 +105,7 @@ function App() {
             element={<CmsTalentEditGroup />}
           />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {!shouldHideNavbarAndFooter && <Footer />}
     </>
