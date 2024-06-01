@@ -7,27 +7,22 @@ import File from "../../public/images/mascot-icons/Image 3.png";
 import Plus from "../../public/images/mascot-icons/Plus-0.png";
 import Delete from "../../public/images/mascot-icons/Delete.png";
 import Del from "../../public/images/mascot-icons/Delete-0.png";
+import Mascot from "../../public/images/mascot-icons/pose=2.png";
 import Add from "../../public/images/mascot-icons/Plus.png";
+import Xbutton from "../../public/images/mascot-icons/Fill 300.png";
+import Ceklist from "../../public/images/mascot-icons/Tick Square.png";
+import Coution from "../../public/images/mascot-icons/Info Square.png";
+import Mascot1 from "../../public/images/mascot-icons/pose=8.png";
+import Mascot2 from "../../public/images/mascot-icons/pose=1.png";
 
 function CmsArticleEditForm() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownAddOpen, setIsDropdownAddOpen] = useState(false);
   const [colorInputValet, setColorInputValet] = useState("#FFFFFF");
   const [colorInputHexa, setColorInputHexa] = useState("#FFFFFF");
-
-  const handleDropdownToggle = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-    if (isDropdownAddOpen) {
-      setIsDropdownAddOpen(false);
-    }
-  };
-
-  const handleDropDownAddOpen = () => {
-    setIsDropdownAddOpen(!isDropdownAddOpen);
-    if (!isDropdownAddOpen) {
-      setIsDropdownOpen(true);
-    }
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
 
   useEffect(() => {
     setColorInputHexa(colorInputValet);
@@ -36,6 +31,41 @@ function CmsArticleEditForm() {
   useEffect(() => {
     setColorInputValet(colorInputHexa);
   }, [colorInputHexa]);
+
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+    if (isDropdownAddOpen) setIsDropdownAddOpen(false);
+  };
+
+  const handleDropDownAddOpen = () => {
+    setIsDropdownAddOpen(!isDropdownAddOpen);
+    if (!isDropdownAddOpen) setIsDropdownOpen(true);
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    setIsSaveModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsCancelModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const confirmDelete = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeSaveModal = () => {
+    setIsSaveModalOpen(false);
+  };
+
+  const closeCancelModal = () => {
+    setIsCancelModalOpen(false);
+  };
 
   return (
     <>
@@ -73,7 +103,10 @@ function CmsArticleEditForm() {
                         />
                       </div>
                       <div className="w-10 flex items-center justify-center rounded-md py-2">
-                        <button className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center">
+                        <button
+                          onClick={() => setIsModalOpen(true)}
+                          className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center"
+                        >
                           <img className="w-5" src={Delete} alt="" />
                         </button>
                       </div>
@@ -89,7 +122,7 @@ function CmsArticleEditForm() {
               </div>
               <div className="join-button">
                 <div className="bg-neutral-white py-4 gap-4 flex items-center">
-                  <form className="w-full" action="">
+                  <form className="w-full" onSubmit={handleSave}>
                     <label className="block font-bold mb-1" htmlFor="cta">
                       Judul <span className="text-orange-400">*</span>
                     </label>
@@ -97,6 +130,7 @@ function CmsArticleEditForm() {
                       placeholder="Example: Join Skyshare Academy Season 6"
                       type="text"
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                      required
                     />
                     <label className="block font-bold mt-4 mb-1" htmlFor="cta">
                       <div className="flex gap-1">
@@ -107,6 +141,7 @@ function CmsArticleEditForm() {
                       placeholder="https://"
                       type="text"
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                      required
                     />
                     <label className="block font-bold mt-4 mb-1" htmlFor="cta">
                       <div className="flex gap-1">
@@ -189,6 +224,7 @@ function CmsArticleEditForm() {
                               placeholder="Masukkan nama kategori"
                               type="text"
                               className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                              required
                             />
                           </div>
                           <div className="block w-80">
@@ -202,20 +238,21 @@ function CmsArticleEditForm() {
                             <div className="w-full h-11 bg-neutral-white px-4 py-2 border-gray-300 border-2 rounded-lg outline-none flex gap-2">
                               <input
                                 value={colorInputValet}
-                                onChange={(e) => {
-                                  setColorInputValet(e.target.value);
-                                }}
+                                onChange={(e) =>
+                                  setColorInputValet(e.target.value)
+                                }
                                 className="w-6 h-6 inline-block rounded-full p-0 cursor-pointer"
                                 type="color"
                               />
                               <input
                                 value={colorInputHexa}
-                                onChange={(e) => {
-                                  setColorInputHexa(e.target.value);
-                                }}
+                                onChange={(e) =>
+                                  setColorInputHexa(e.target.value)
+                                }
                                 placeholder="#FFFFFF"
                                 className=" outline-none"
                                 type="text"
+                                required
                               />
                             </div>
                           </div>
@@ -237,6 +274,7 @@ function CmsArticleEditForm() {
                 <div className="mt-4 flex gap-5 justify-end">
                   <div className="w-56 py-2 flex">
                     <button
+                      onClick={handleCancel}
                       type="button"
                       className="bg-gray-300 w-full py-2 rounded-md hover:bg-gray-200 text-black font-bold"
                     >
@@ -245,6 +283,7 @@ function CmsArticleEditForm() {
                   </div>
                   <div className="w-56 py-2 flex">
                     <button
+                      onClick={handleSave}
                       type="submit"
                       className="bg-primary-1 w-full py-2 rounded-md hover:bg-primary-2 text-white font-bold"
                     >
@@ -257,6 +296,70 @@ function CmsArticleEditForm() {
           </div>
         </div>
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white w-2/5 h-80 rounded-3xl p-6">
+            <div className="flex justify-center">
+              <img className=" w-40" src={Mascot} alt="" />
+            </div>
+            <h3 className="mb-5 mt-5 headline-3 text-center">
+              Yakin untuk menghapus Admin?
+            </h3>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={closeModal}
+                className="bg-gray-300 px-4 py-2 w-1/2 rounded-lg"
+              >
+                Batal
+              </button>
+              <button
+                onClick={confirmDelete}
+                className="bg-red-500 w-1/2 hover:bg-red-400 text-white px-4 py-2 rounded-lg"
+              >
+                Hapus
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isSaveModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white rounded-3xl p-6 relative">
+            <button onClick={closeSaveModal} className="absolute top-6 right-6">
+              <img className="w-5" src={Xbutton} alt="" />
+            </button>
+            <div className="flex justify-center">
+              <img className="w-40" src={Mascot1} alt="" />
+            </div>
+            <div className="flex gap-1 mt-5 items-center">
+              <img className="w-6 h-6" src={Ceklist} alt="" />
+              <h3 className="headline-3 ">Saved Successfully</h3>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isCancelModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white rounded-3xl p-6 relative">
+            <button
+              onClick={closeCancelModal}
+              className="absolute top-6 right-6"
+            >
+              <img className="w-5" src={Xbutton} alt="" />
+            </button>
+            <div className="flex justify-center">
+              <img className="w-40" src={Mascot2} alt="" />
+            </div>
+            <div className="flex gap-1 mt-5 items-center">
+              <img className="w-6 h-6" src={Coution} alt="" />
+              <h3 className="headline-3 ">Progress is not saved</h3>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

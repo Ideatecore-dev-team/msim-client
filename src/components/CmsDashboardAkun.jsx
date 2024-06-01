@@ -97,7 +97,7 @@ function CmsDashboardAkun() {
                             {index + 1}
                           </td>
                           <td className="pl-1 py-4 text-left">{admin.name}</td>
-                          <td className="px-16 py-4 text-left">
+                          <td className="pl-20 py-4 text-left">
                             {admin.email}
                           </td>
                           <td className="px-16 py-4 text-left">{admin.role}</td>

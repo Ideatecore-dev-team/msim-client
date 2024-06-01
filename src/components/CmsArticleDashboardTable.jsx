@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import skyshareApi from "../utilities/skyshareApi";
 import { Link, useNavigate } from "react-router-dom";
-import Character from "../../public/images/mascot-icons/Char.png";
+import Mascot from "../../public/images/mascot-icons/pose=2.png";
 import Edit1 from "../../public/images/mascot-icons/Edit Square.png";
 import Delete from "../../public/images/mascot-icons/Delete.png";
 import Add from "../../public/images/mascot-icons/Plus.png";

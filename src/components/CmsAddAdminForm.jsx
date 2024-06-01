@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import skyshareApi from "../utilities/skyshareApi";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Caution from "../../public/images/mascot-icons/Info Square.png";
 import CmsNavCard from "./CmsNavCard";
 import Xbutton from "../../public/images/mascot-icons/Fill 300.png";
@@ -14,20 +14,19 @@ function CmsAddAdminForm() {
   const [errorMessage, setErrorMessage] = useState("");
   const [imageIcon, setImageIcon] = useState("");
   const [imageMascot, setImageMascot] = useState("");
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleData = function () {
+  const [errors, setErrors] = useState({});
+
+  const handleData = async function () {
     const inputAdmin = {
       name: name,
       email: email,
       password: password,
     };
-    adminRegist(inputAdmin);
-  };
 
-  const adminRegist = async function (inputAdmin) {
     try {
       const adminRegistToServer = await skyshareApi({
         method: "post",
@@ -36,42 +35,52 @@ function CmsAddAdminForm() {
       });
       console.log(inputAdmin);
       console.log(adminRegistToServer.data);
+      setErrorMessage("Saved Successfully");
+      setImageIcon(Ceklist);
+      setImageMascot(Mascot2);
+      setIsSaveModalOpen(true);
     } catch (error) {
       console.log(error);
+      setErrorMessage("Error Empty Field");
+      setImageIcon(Danger);
+      setImageMascot(Mascot1);
+      setIsSaveModalOpen(true);
     }
   };
 
   const handleSave = (e) => {
     e.preventDefault();
-    const username = e.target.username.value;
-    const password = e.target.password.value;
+    let fieldErrors = {};
 
-    if (!username || !password) {
+    if (!name) fieldErrors.name = "Name is required";
+    if (!email) fieldErrors.email = "Email is required";
+    if (!password) fieldErrors.password = "Password is required";
+    else if (password.length < 8)
+      fieldErrors.password = "Password must be at least 8 characters long";
+
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors(fieldErrors);
       setErrorMessage("Error Empty Field");
       setImageIcon(Danger);
       setImageMascot(Mascot1);
       setIsSaveModalOpen(true);
     } else {
-      console.log("Form submitted with:", { username, password });
-      setErrorMessage("Saved Successfully");
-      setImageIcon(Ceklist);
-      setImageMascot(Mascot2);
-      setIsSaveModalOpen(true);
+      handleData();
     }
   };
 
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
-    Navigate("/cms/kelolaakun");
+    if (errorMessage === "Saved Successfully") {
+      navigate("/cms/kelolaakun");
+    }
   };
 
   return (
     <>
       <div className="bg-background flex flex-col pb-44 pt-12 items-center self-stretch h-auto">
         <div className="content flex gap-4">
-          <div>
-            <CmsNavCard />
-          </div>
+          <CmsNavCard />
           <div className="w-full">
             <div>
               <h1 className="headline-1">Add Admin</h1>
@@ -90,11 +99,17 @@ function CmsAddAdminForm() {
                     onChange={(e) => {
                       setName(e.target.value);
                     }}
+                    value={name}
                     name="name"
                     placeholder="Masukkan Name"
                     type="text"
-                    className="w-full mb-6 px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                    className={`w-full  px-4 py-2 border-2 rounded-lg outline-none ${
+                      errors.name ? "border-red-500" : "border-gray-300"
+                    }`}
                   />
+                  {errors.name && (
+                    <p className="text-red-500 mb-6 text-sm">{errors.name}</p>
+                  )}
                   <label htmlFor="username" className="font-bold block mb-2">
                     Email <span className="text-primary-1 font-bold">*</span>
                   </label>
@@ -102,11 +117,17 @@ function CmsAddAdminForm() {
                     onChange={(e) => {
                       setEmail(e.target.value);
                     }}
+                    value={email}
                     name="username"
                     placeholder="Masukkan Email"
                     type="text"
-                    className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                    className={`w-full px-4 py-2 border-2 rounded-lg outline-none ${
+                      errors.email ? "border-red-500" : "border-gray-300"
+                    }`}
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm">{errors.email}</p>
+                  )}
                   <label
                     htmlFor="password"
                     className="font-bold block mb-2 mt-5"
@@ -117,11 +138,17 @@ function CmsAddAdminForm() {
                     onChange={(e) => {
                       setPassword(e.target.value);
                     }}
+                    value={password}
                     name="password"
                     placeholder="Masukkan Password"
                     type="password"
-                    className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                    className={`w-full px-4 py-2 border-2 rounded-lg outline-none ${
+                      errors.password ? "border-red-500" : "border-gray-300"
+                    }`}
                   />
+                  {errors.password && (
+                    <p className="text-red-500 text-sm">{errors.password}</p>
+                  )}
                   <div className="flex gap-1">
                     <img className="w-5" src={Caution} alt="Caution" />
                     <p className="text-xs mt-1">Minimal 8 huruf atau angka</p>
@@ -135,7 +162,6 @@ function CmsAddAdminForm() {
                   <div className="w-full mt-10 flex justify-end">
                     <div className="w-56 py-2 flex">
                       <button
-                        onClick={handleData}
                         type="submit"
                         className="bg-primary-1 w-20 py-2 rounded-md hover:bg-primary-2 text-white font-bold"
                       >

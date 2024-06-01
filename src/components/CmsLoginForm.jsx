@@ -7,10 +7,14 @@ import Pose3 from "../../public/images/mascot-icons/pose=6.png";
 import Pose4 from "../../public/images/mascot-icons/pose=8.png";
 import Pose5 from "../../public/images/mascot-icons/pose=3.png";
 import ArrowLeft from "../../public/images/mascot-icons/Arrow - Down 3.png";
+import Xbutton from "../../public/images/mascot-icons/Fill 300.png";
+import Danger from "../../public/images/mascot-icons/Danger Triangle.png";
 
 function CmsLoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const Navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -32,13 +36,22 @@ function CmsLoginForm() {
       skyshareApi.defaults.headers.common["authorization"] = `${token}`;
       console.log(token, "token");
       console.log(dataFromServer.data, "==>");
-      if (dataFromServer.data.status === "success") {
+      if (dataFromServer.data.data.role === "superadmin") {
         Navigate("/cms/kelolaakun");
+      } else {
+        Navigate("/cms/talentacademy");
       }
     } catch (error) {
       console.log(error);
+      setErrorMessage("Email or Password is incorrect. Please try again.");
+      setIsErrorModalOpen(true);
     }
   };
+
+  const closeErrorModal = () => {
+    setIsErrorModalOpen(false);
+  };
+
   console.log("==>");
   return (
     <div className="hero bg-background flex flex-col pb-12 pt-24 items-center self-stretch h-full">
@@ -54,7 +67,8 @@ function CmsLoginForm() {
       <div className="mt-36 w-96">
         <h1 className="headline-1 text-center">CMS Skyshare Academy</h1>
         <p className="paragraph text-center">
-          Website ini digunakan untuk mengelola konten pada website Skyshare Academy.
+          Website ini digunakan untuk mengelola konten pada website Skyshare
+          Academy.
         </p>
       </div>
       <div className="mt-6 bg-white border-2 rounded-xl shadow-lg shadow-gray-500 border-black px-5 pb-10 pt-5">
@@ -102,6 +116,26 @@ function CmsLoginForm() {
           <img className="w-6 -rotate-90" src={ArrowLeft} alt="" />
         </button>
       </div>
+
+      {isErrorModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white rounded-3xl p-6 relative">
+            <button
+              onClick={closeErrorModal}
+              className="absolute top-6 right-6"
+            >
+              <img className="w-5" src={Xbutton} alt="Close" />
+            </button>
+            <div className="flex justify-center">
+              <img className="w-40" src={Danger} alt="Error" />
+            </div>
+            <div className="flex gap-1 mt-5 items-center">
+              <img className="w-6 h-6" src={Danger} alt="Error Icon" />
+              <h3 className="headline-3">{errorMessage}</h3>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
