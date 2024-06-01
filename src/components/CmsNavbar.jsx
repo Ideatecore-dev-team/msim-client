@@ -3,7 +3,7 @@ import "./CmsNavbar.css";
 import { useEffect, useState } from "react";
 import skyshareApi from "../utilities/skyshareApi";
 import Logo from "../../public/images/logo placeholder.png";
-import IconButton from "../../public/images/mascot-icons/Fill 280.png";
+import IconButton from "../../public/images/mascot-icons/Logout.png";
 import { useNavigate } from "react-router-dom";
 
 function CmsNavbar() {

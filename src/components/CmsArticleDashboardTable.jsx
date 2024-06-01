@@ -46,7 +46,7 @@ function CmsArticleDashboardTable() {
                 </div>
                 <div className="bg-primary-1 flex items-center rounded-md px-2 py-2">
                   <Link
-                    to="/cms/add/admin"
+                    to="/cms/article/add"
                     className="bg-primary-1 hover:bg-primary-2"
                   >
                     <img className=" w-6" src={Add} alt="" />

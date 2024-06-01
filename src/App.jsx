@@ -29,6 +29,7 @@ import CmsLoginRoute from "./components/CmsLoginRoute";
 import CmsArticleDashboard from "./pages/CmsArticleDashboard";
 import NotFoundPage from "./pages/NotFoundPage";
 import CmsArticleEdit from "./pages/CmsArticleEdit";
+import CmsArticleAdd from "./pages/CmsArticleAdd";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
     "/cms/talent/editgroup",
     "/cms/article",
     "/cms/article/edit",
+    "/cms/article/add",
   ];
 
   const shouldHideNavbarAndFooter = hideNavbarAndFooterPaths.some((path) => {
@@ -96,6 +98,7 @@ function App() {
           <Route path="/cms/parentsacademy" element={<CmsParentsAcademy />} />
           <Route path="/cms/article" element={<CmsArticleDashboard />} />
           <Route path="/cms/article/edit" element={<CmsArticleEdit />} />
+          <Route path="/cms/article/add" element={<CmsArticleAdd />} />
           <Route
             path="/cms/talent/editschool"
             element={<CmsTalentEditSchool />}

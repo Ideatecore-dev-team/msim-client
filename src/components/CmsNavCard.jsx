@@ -29,7 +29,7 @@ function CmsNavCard() {
   }
 
   return (
-    <div className="py-4 px-3 w-72 flex justify-center items-center rounded-xl bg-neutral-white ">
+    <div className="py-4 px-3 w-72 h-80 flex justify-center items-center rounded-xl bg-neutral-white ">
       <ul>
         {dataAdmin && dataAdmin.role !== "admin" && (
           <li className="py-4 w-64 px-4 hover:bg-background rounded-xl">

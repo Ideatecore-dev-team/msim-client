@@ -16,8 +16,9 @@ import Mascot1 from "../../public/images/mascot-icons/pose=8.png";
 import Mascot2 from "../../public/images/mascot-icons/pose=1.png";
 import Chain from "../../public/images/mascot-icons/Link.png";
 import Close from "../../public/images/mascot-icons/Close Square.png";
+import ArrowLeft from "../../public/images/mascot-icons/Arrow - Down 3.png";
 
-function CmsArticleEditForm() {
+function CmsArticleAddForm() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownAddOpen, setIsDropdownAddOpen] = useState(false);
   const [colorInputValet, setColorInputValet] = useState("#FFFFFF");
@@ -91,56 +92,41 @@ function CmsArticleEditForm() {
           </div>
           <div className="w-full">
             <div>
-              <h1 className="headline-1">Edit Article</h1>
+              <h1 className="headline-1">Add Article</h1>
               <p className="paragraph">Masukkan data pada field yang tertera</p>
             </div>
             <div className="shadow-md bg-neutral-white mt-10 border-2 border-black rounded-xl pb-5 px-3 w-full">
-              <div className="alur-acara">
-                <div className="bg-neutral-white p-4 gap-4 flex items-center">
-                  <h4 className="font-bold text-base">
-                    Upload gambar heading{" "}
-                    <span className="text-base font-bold text-orange-300">
-                      *
-                    </span>
-                  </h4>
-                </div>
-                <div className="bg-neutral-white rounded-xl border-2 border-gray-400 px-6 pt-7 pb-4">
-                  <div className="border-2 flex justify-center items-center mb-4 border-gray-400 rounded-xl h-16">
-                    <div className="flex justify-between px-4 w-full">
-                      <div className="flex items-center">
-                        <div className="flex items-center gap-2">
-                          <img className="w-7" src={File} alt="" />
-                          <p className="paragraph">Mentorship.png</p>
-                        </div>
-                        <input
-                          className="w-10 opacity-0 absolute"
-                          type="file"
-                        />
-                      </div>
-                      <div className="w-10 flex items-center justify-center rounded-md py-2">
-                        <button
-                          onClick={() => {
-                            setIsModalOpen(true);
-                            setDeleteMessage(
-                              "Yakin untuk menghapus image heading?"
-                            );
-                          }}
-                          className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center"
-                        >
-                          <img className="w-5" src={Delete} alt="" />
-                        </button>
-                      </div>
+              <h4 className=" font-bold text-base mt-6">
+                Upload gambar heading{" "}
+                <span className=" text-base font-bold text-orange-300">*</span>
+              </h4>
+              <div className="bg-neutral-white rounded-xl border-2 mt-4 border-gray-400 px-6 pt-7 pb-4">
+                <div className="border-2 border-dashed flex justify-center items-center border-gray-400 rounded-xl h-60">
+                  <div className="">
+                    <div className="flex justify-center">
+                      <img className=" w-7 mb-4" src={File} alt="" />
+                    </div>
+                    <p className="paragraph text-center">Drag & Drop here</p>
+                    <p className="paragraph text-center">or</p>
+                    <div className="flex relative justify-center">
+                      <h4 className=" font-bold text-orange-400 text-base absolute">
+                        Browse
+                      </h4>
+                      <input className="ml-80 opacity-0 absolute" type="file" />
                     </div>
                   </div>
-                  <div className="flex justify-center pb-3">
-                    <h4 className="text-base">
-                      Minimal Ukuran{" "}
-                      <span className="font-bold">(956 x 350px)</span>
-                    </h4>
-                  </div>
+                </div>
+                <div className="my-4 bg-primary-1 hover:bg-primary-2 flex justify-center rounded-xl">
+                  <button className="bg-primary-1 hover:bg-primary-2 flex justify-center gap-2 py-4">
+                    <p className=" text-white font-bold">Upload File</p>
+                    <img className=" w-6 -rotate-90" src={ArrowLeft} alt="" />
+                  </button>
+                </div>
+                <div className="flex justify-center pb-3">
+                  <h4 className=" text-base">(File PDF)</h4>
                 </div>
               </div>
-              <div className="join-button">
+              <div className="add-content">
                 <div className="bg-neutral-white py-4 gap-4 flex items-center">
                   <form className="w-full" onSubmit={handleSave}>
                     <label className="block font-bold mb-1" htmlFor="cta">
@@ -443,4 +429,4 @@ function CmsArticleEditForm() {
   );
 }
 
-export default CmsArticleEditForm;
+export default CmsArticleAddForm;
