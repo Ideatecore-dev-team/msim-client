@@ -1,6 +1,6 @@
 import React from "react";
-import "./CmsNavbar.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import skyshareApi from "../utilities/skyshareApi";
 import Logo from "../../public/images/logo placeholder.png";
 import IconButton from "../../public/images/mascot-icons/Logout.png";
@@ -32,9 +32,15 @@ function CmsNavbar() {
   console.log(dataAdmin, "==>");
   return (
     <div className="bg-neutral-white justify-center items-center flex  py-6">
-      <div className=" flex self-stretch items-start cms-navbar justify-between">
+      <div className=" flex self-stretch items-start w-nav justify-between">
         <div className="">
-          <img className=" w-44" src={Logo} alt="" />
+          <Link to="/">
+            <img 
+            className="w-44" 
+            src={Logo} 
+            alt=""
+            />
+          </Link>
         </div>
         <div className=" flex gap-2 items-center">
           <div className="">
