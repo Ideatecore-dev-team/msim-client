@@ -11,6 +11,7 @@ import Edit from "../../public/images/mascot-icons/Edit.png";
 function CmsArticleDashboardTable() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dataArticles, setDataarticles] = useState([]);
+  const [deleteArticle, setDeleteArticle] = useState(null);
 
   useEffect(() => {
     const getDataArticles = async function () {
@@ -31,12 +32,22 @@ function CmsArticleDashboardTable() {
     setSelectedUser(null);
   }
 
-  function deletArticle() {
+  function deletArticle(article) {
+    setDeleteArticle(article);
     setIsModalOpen(true);
   }
 
   async function confirmDelete() {
-    setIsModalOpen(true);
+    if (!deleteArticle) return;
+    try {
+      await skyshareApi.delete(`/article/${deleteArticle.id}`);
+      setDataarticles(
+        dataArticles.filter((article) => article.id !== deleteArticle.id)
+      );
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -53,7 +64,7 @@ function CmsArticleDashboardTable() {
                 Kelola artikel untuk website MSiM disini.
               </p>
             </div>
-            <div className=" shadow-md mt-10 border-2 border-black rounded-xl pb-44 px-3 bg-neutral-white w-full">
+            <div className=" shadow-md mt-10 border-2 border-black rounded-xl px-3 bg-neutral-white w-full">
               <div className="bg-background flex justify-between rounded-xl mt-5 py-3 px-3">
                 <div className="flex items-center gap-5 ">
                   <img className=" w-10" src={Edit} alt="" />
@@ -102,7 +113,7 @@ function CmsArticleDashboardTable() {
                           <td className="px-16 py-4 text-left flex gap-4">
                             <div className="w-10 flex items-center justify-center rounded-md py-2">
                               <Link
-                                to="/cms/article/edit"
+                                to={`/cms/article/edit/${article.id}`}
                                 className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center"
                               >
                                 <img className="w-5" src={Edit1} alt="" />
@@ -110,7 +121,7 @@ function CmsArticleDashboardTable() {
                             </div>
                             <div className="w-10 flex items-center justify-center rounded-md py-2">
                               <button
-                                onClick={deletArticle}
+                                onClick={() => deletArticle(article)}
                                 className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center"
                               >
                                 <img className="w-5" src={Delete} alt="" />

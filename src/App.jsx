@@ -46,7 +46,7 @@ function App() {
     "/cms/talent/editschool",
     "/cms/talent/editgroup",
     "/cms/article",
-    "/cms/article/edit",
+    "/cms/article/edit/:id",
     "/cms/article/add",
   ];
 
@@ -97,7 +97,7 @@ function App() {
           <Route path="/cms/mentoracademy" element={<CmsMentorAcademy />} />
           <Route path="/cms/parentsacademy" element={<CmsParentsAcademy />} />
           <Route path="/cms/article" element={<CmsArticleDashboard />} />
-          <Route path="/cms/article/edit" element={<CmsArticleEdit />} />
+          <Route path="/cms/article/edit/:id" element={<CmsArticleEdit />} />
           <Route path="/cms/article/add" element={<CmsArticleAdd />} />
           <Route
             path="/cms/talent/editschool"
