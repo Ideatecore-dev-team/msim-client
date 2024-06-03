@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Hero.css";
 import { Link } from "react-router-dom";
 import CmsNavCard from "./CmsNavCard";
@@ -17,7 +17,39 @@ import Mascot2 from "../../public/images/mascot-icons/pose=1.png";
 import Chain from "../../public/images/mascot-icons/Link.png";
 import Close from "../../public/images/mascot-icons/Close Square.png";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+// import "react-quill/dist/quill.snow.css";
+
+const imageHandler = function () {
+  console.log("okeee");
+  const url = prompt("Enter the image URL");
+  if (url) {
+    const range = this.quill.getSelection();
+    this.quill.insertEmbed(range.index, "image", url);
+  }
+};
+
+const modules = {
+  toolbar: {
+    container: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      [{ font: ["serif", "monospace", "fantasy", "sans-serif"] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ color: [] }],
+      [{ align: [] }],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ],
+      ["link", "image"],
+      // color
+    ],
+    handlers: {
+      image: imageHandler,
+    },
+  },
+};
 
 function CmsArticleEditForm() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -30,6 +62,7 @@ function CmsArticleEditForm() {
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState(false);
   const [value, setValue] = useState("");
+  const quillRef = useRef(null);
 
   useEffect(() => {
     setColorInputHexa(colorInputValet);
@@ -84,35 +117,6 @@ function CmsArticleEditForm() {
     setDeleteMessage("Yakin untuk menghapus category?");
     console.log(deleteMessage);
   };
-
-  const modules = {
-    toolbar: [
-      [{ header: "1" }, { header: "2" }, { font: [] }],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ align: [] }],
-      [{ color: [] }, { background: [] }],
-      ["link", "image", "video"],
-      ["clean"],
-    ],
-  };
-
-  const formats = [
-    "header",
-    "font",
-    "list",
-    "bullet",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "align",
-    "color",
-    "background",
-    "link",
-    "image",
-  ];
 
   return (
     <>
@@ -364,37 +368,32 @@ function CmsArticleEditForm() {
                       <label className="block font-bold mb-1" htmlFor="cta">
                         Berikan Isi <span className="text-orange-400">*</span>
                       </label>
-                      <ReactQuill
-                        style={{
-                          border: "2px solid #000",
-                          width: "52rem",
-                          borderColor: "#dbdbdb",
-                          borderRadius: "10px",
-                        }}
-                        theme="snow"
-                        value={value}
-                        onChange={setValue}
-                        modules={modules}
-                        formats={formats}
-                        placeholder="Masukkan Isi Content"
-                      />
-                    </div>
-                    <div className=" mt-4">
-                      <label
-                        className=" font-bold mb-1 flex gap-2"
-                        htmlFor="cta"
-                      >
-                        <img className=" w-6" src={Chain} alt="" />
-                        Link{" "}
-                        <span className="text-orange-400">(Opsional) *</span>
-                      </label>
-                      <input
-                        placeholder="https://belajarmentorship.co.id/pembelajaran"
-                        type="text"
-                        className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
-                      />
                     </div>
                   </form>
+                </div>
+
+                <div>
+                  <ReactQuill
+                    style={{
+                      border: "2px solid #e6e6e6",
+                      borderRadius: "10px",
+                    }}
+                    ref={quillRef}
+                    value={value}
+                    onChange={setValue}
+                    modules={modules}
+                  />
+                </div>
+                <div className=" mt-4">
+                  <label className=" font-bold mb-1 flex gap-2" htmlFor="cta">
+                    <img className=" w-6" src={Chain} alt="" />
+                    Link <span className="text-orange-400">(Opsional) *</span>
+                  </label>
+                  <input
+                    placeholder="https://belajarmentorship.co.id/pembelajaran"
+                    type="text"
+                    className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                  />
                 </div>
                 <div className="mt-4 flex gap-5 justify-end">
                   <div className="w-56 py-2 flex">
