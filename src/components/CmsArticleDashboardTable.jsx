@@ -10,6 +10,21 @@ import Edit from "../../public/images/mascot-icons/Edit.png";
 
 function CmsArticleDashboardTable() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [dataArticles, setDataarticles] = useState([]);
+
+  useEffect(() => {
+    const getDataArticles = async function () {
+      try {
+        const responseFromServer = await skyshareApi.get("/article");
+        setDataarticles(responseFromServer.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getDataArticles();
+  }, []);
+
+  console.log(dataArticles);
 
   function closeModal() {
     setIsModalOpen(false);
@@ -27,7 +42,7 @@ function CmsArticleDashboardTable() {
   return (
     <>
       <div className="bg-background flex flex-col pb-44 pt-12 items-center self-stretch h-auto">
-        <div className="content flex gap-4 ">
+        <div className="content-1 flex gap-4 ">
           <div className="">
             <CmsNavCard />
           </div>
@@ -65,34 +80,46 @@ function CmsArticleDashboardTable() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="pl-3 py-4 text-left font-semibold">1</td>
-                      <td className="pl-1 py-4 text-left">admin.name</td>
-                      <td className="px-16 py-4 text-left">admin.email</td>
-                      <td className="px-16 py-4 text-left">
-                        <p className="bg-red-300 px-3 pb-1 text-white paragraph rounded-full">
-                          category
-                        </p>
-                      </td>
-                      <td className="px-16 py-4 text-left flex gap-4">
-                        <div className="w-10 flex items-center justify-center rounded-md py-2">
-                          <Link
-                            to="/cms/article/edit"
-                            className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center"
-                          >
-                            <img className="w-5" src={Edit1} alt="" />
-                          </Link>
-                        </div>
-                        <div className="w-10 flex items-center justify-center rounded-md py-2">
-                          <button
-                            onClick={deletArticle}
-                            className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center"
-                          >
-                            <img className="w-5" src={Delete} alt="" />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
+                    {dataArticles.map((article, index) => {
+                      return (
+                        <tr key={article.id}>
+                          <td className="pl-3 py-4 text-left font-semibold">
+                            {index + 1}
+                          </td>
+                          <td className="pl-1 py-4 text-left">
+                            {new Date(article.createdAt).toLocaleDateString()}
+                          </td>
+                          <td className="px-16 py-4 text-left">
+                            {article.title.substring(0, 15)}
+                          </td>
+                          <td className="px-16 py-4 text-left">
+                            <p
+                              className={`bg-red-300 px-3 pb-1 text-white paragraph rounded-full bg-${article.category_color}-300`}
+                            >
+                              {article.category_name}
+                            </p>
+                          </td>
+                          <td className="px-16 py-4 text-left flex gap-4">
+                            <div className="w-10 flex items-center justify-center rounded-md py-2">
+                              <Link
+                                to="/cms/article/edit"
+                                className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center"
+                              >
+                                <img className="w-5" src={Edit1} alt="" />
+                              </Link>
+                            </div>
+                            <div className="w-10 flex items-center justify-center rounded-md py-2">
+                              <button
+                                onClick={deletArticle}
+                                className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center"
+                              >
+                                <img className="w-5" src={Delete} alt="" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

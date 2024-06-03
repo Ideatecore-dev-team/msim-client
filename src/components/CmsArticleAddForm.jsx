@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Hero.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import skyshareApi from "../utilities/skyshareApi";
 import CmsNavCard from "./CmsNavCard";
 import Arrow from "../../public/images/mascot-icons/Arrow-down.png";
 import File from "../../public/images/mascot-icons/Image 3.png";
@@ -64,6 +65,32 @@ function CmsArticleAddForm() {
   const [deleteMessage, setDeleteMessage] = useState(false);
   const [value, setValue] = useState("");
   const quillRef = useRef(null);
+  const [imageHeading, setImageHeading] = useState(null);
+  const [title, setTitle] = useState("");
+  const [link, setLink] = useState("");
+  const [categoryId, setCategoryId] = useState("");
+  console.log(categoryId, "id");
+
+  const handleArticleData = async function () {
+    const inputData = {
+      image_heading: imageHeading,
+      title: title,
+      content: value,
+      link: link,
+      category_id: categoryId,
+    };
+    console.log(inputData, "data");
+    try {
+      const responseFromServer = await skyshareApi({
+        url: "/article/add",
+        method: "post",
+        data: inputData,
+      });
+      console.log(responseFromServer.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     setColorInputHexa(colorInputValet);
@@ -105,8 +132,10 @@ function CmsArticleAddForm() {
     setIsModalOpen(true);
   };
 
+  const Navigate = useNavigate();
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
+    Navigate("/cms/article");
   };
 
   const closeCancelModal = () => {
@@ -116,7 +145,6 @@ function CmsArticleAddForm() {
   const handleDeleteCategory = () => {
     setIsModalOpen(true);
     setDeleteMessage("Yakin untuk menghapus category?");
-    console.log(deleteMessage);
   };
 
   return (
@@ -148,7 +176,11 @@ function CmsArticleAddForm() {
                       <h4 className=" font-bold text-orange-400 text-base absolute">
                         Browse
                       </h4>
-                      <input className="ml-80 opacity-0 absolute" type="file" />
+                      <input
+                        onChange={(e) => setImageHeading(e.target.value)}
+                        className="ml-80 opacity-0 absolute"
+                        type="file"
+                      />
                     </div>
                   </div>
                 </div>
@@ -169,6 +201,7 @@ function CmsArticleAddForm() {
                       Judul <span className="text-orange-400">*</span>
                     </label>
                     <input
+                      onChange={(e) => setTitle(e.target.value)}
                       placeholder="Bagaimana Mentorship Membakar Inovasi"
                       type="text"
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
@@ -219,27 +252,14 @@ function CmsArticleAddForm() {
                         }`}
                       >
                         <button
-                          onClick={handleDeleteCategory}
+                          onClick={() => {
+                            // setCategoryId("2");
+                            handleDeleteCategory();
+                          }}
                           type="button"
                           className="px-3 flex items-center gap-2 py-1 bg-red-300 text-white font-bold rounded-full"
                         >
                           Mentorship
-                          <img className=" w-6" src={Close} alt="" />
-                        </button>
-                        <button
-                          onClick={handleDeleteCategory}
-                          type="button"
-                          className="px-3 py-1 flex items-center gap-2  bg-red-300 text-white font-bold rounded-full"
-                        >
-                          Education
-                          <img className=" w-6" src={Close} alt="" />
-                        </button>
-                        <button
-                          onClick={handleDeleteCategory}
-                          type="button"
-                          className="px-3 py-1 flex items-center gap-2 bg-red-300 text-white font-bold rounded-full"
-                        >
-                          Career
                           <img className=" w-6" src={Close} alt="" />
                         </button>
                       </div>
@@ -249,22 +269,11 @@ function CmsArticleAddForm() {
                         }`}
                       >
                         <button
+                          onClick={() => setCategoryId("1")}
                           type="button"
                           className="px-3 py-1 bg-red-300 text-white font-bold rounded-full"
                         >
                           Mentorship
-                        </button>
-                        <button
-                          type="button"
-                          className="px-3 py-1 bg-red-300 text-white font-bold rounded-full"
-                        >
-                          Education
-                        </button>
-                        <button
-                          type="button"
-                          className="px-3 py-1 bg-red-300 text-white font-bold rounded-full"
-                        >
-                          Career
                         </button>
                       </div>
                       <div
@@ -375,6 +384,7 @@ function CmsArticleAddForm() {
                     Link <span className="text-orange-400">(Opsional) *</span>
                   </label>
                   <input
+                    onChange={(e) => setLink(e.target.value)}
                     placeholder="https://belajarmentorship.co.id/pembelajaran"
                     type="text"
                     className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
@@ -392,7 +402,11 @@ function CmsArticleAddForm() {
                   </div>
                   <div className="w-56 py-2 flex">
                     <button
-                      onClick={handleSave}
+                      onClick={(e) => {
+                        e.preventDefault(); // Prevent the default form submission
+                        handleSave(e);
+                        handleArticleData();
+                      }}
                       type="submit"
                       className="bg-primary-1 w-full py-2 rounded-md hover:bg-primary-2 text-white font-bold"
                     >

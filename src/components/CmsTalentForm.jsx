@@ -40,15 +40,22 @@ function CmsTalentForm() {
                   <img className="w-6" src={Book} alt="" />
                   <h4 className="headline-4">Booklet</h4>
                 </div>
-                <div className="bg-neutral-white p-4 gap-4 flex items-center">
-                  <h4 className=" font-bold text-base">
-                    Upload File “Booklet”{" "}
-                    <span className=" text-base font-bold text-orange-300">
-                      *
-                    </span>
-                  </h4>
+                <div className="bg-neutral-white gap-4 flex items-center">
+                  <form className="w-full" action="">
+                    <label className="block font-bold mt-4 mb-1" htmlFor="cta">
+                      <div className="flex gap-1">
+                        <img className="w-6" src={Chain} alt="" />
+                        Link Booklet<span className="text-red-500">*</span>
+                      </div>
+                    </label>
+                    <input
+                      placeholder="https://"
+                      type="text"
+                      className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                    />
+                  </form>
                 </div>
-                <div className="bg-neutral-white rounded-xl border-2 border-gray-400 px-6 pt-7 pb-4">
+                {/* <div className="bg-neutral-white rounded-xl border-2 border-gray-400 px-6 pt-7 pb-4">
                   <div className="border-2 border-dashed flex justify-center items-center border-gray-400 rounded-xl h-60">
                     <div className="">
                       <div className="flex justify-center">
@@ -76,7 +83,7 @@ function CmsTalentForm() {
                   <div className="flex justify-center pb-3">
                     <h4 className=" text-base">(File PDF)</h4>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <div className=" alur-acara mt-6">

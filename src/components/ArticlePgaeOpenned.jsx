@@ -45,7 +45,7 @@ function ArticlePageOpenned() {
           <div className="w-full flex justify-center mt-10">
             <a
               className="px-5 py-4 items-center gap-2 bg-primary-1 flex hover:bg-primary-2 rounded-lg"
-              href={article.link}
+              href={`https://${article.link}`}
             >
               <p className="text-white font-semibold">Learn more</p>
               <img className="w-6 -rotate-90" src={ArrowLeft} alt="" />
