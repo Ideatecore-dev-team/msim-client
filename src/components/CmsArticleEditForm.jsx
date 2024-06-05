@@ -65,24 +65,11 @@ function CmsArticleEditForm() {
   const [articleById, setArticleById] = useState({});
   const [value, setValue] = useState("");
   const quillRef = useRef(null);
-  const [imageHeading, setImageHeading] = useState("");
+  const [imageHeading, setImageHeading] = useState(null);
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const { id } = useParams();
-
-  const handleInputArticle = function () {
-    const inputData = {
-      image_heading: imageHeading,
-      title: title,
-      content: value,
-      link: link,
-      category_id: categoryId,
-    };
-    console.log(value, "value");
-    console.log(inputData, "==> input data");
-    // handleEditDataArticle(inputData);
-  };
 
   // const handleEditDataArticle = async function (inputData) {
   //   try {
@@ -101,12 +88,33 @@ function CmsArticleEditForm() {
     const getDataArticle = async function () {
       try {
         const getDataFromServer = await skyshareApi.get(`/article/${id}`);
-        setArticleById(getDataFromServer.data.data);
-      } catch (error) {}
+        const article = getDataFromServer.data.data;
+        setArticleById(article);
+        setValue(article.content || "");
+        setTitle(article.title || "");
+        setImageHeading(article.image_heading || "");
+        setLink(article.link || "");
+        setCategoryId(article.category_id || "");
+      } catch (error) {
+        console.log(error);
+      }
     };
     getDataArticle();
-  }, []);
+  }, [id]);
   console.log(articleById, "==> article");
+
+  const handleInputArticle = function () {
+    const inputData = {
+      image_heading: imageHeading,
+      title: title,
+      content: value,
+      link: link,
+      category_id: categoryId,
+    };
+    console.log(value, "value");
+    console.log(inputData, "==> input data");
+    // handleEditDataArticle(inputData);
+  };
   useEffect(() => {
     setColorInputHexa(colorInputValet);
   }, [colorInputValet]);
@@ -197,10 +205,10 @@ function CmsArticleEditForm() {
                           <p className="paragraph">Mentorship.png</p>
                         </div>
                         <input
-                          defaultValue={articleById.image_heading}
-                          onChange={(e) => setImageHeading(e.target.value)}
+                          value={articleById.image_heading}
+                          onChange={(e) => setImageHeading(e.target.files[0])}
                           className="w-10 opacity-0 absolute"
-                          type="text"
+                          type="file"
                         />
                       </div>
                       <div className="w-10 flex items-center justify-center rounded-md py-2">
@@ -229,12 +237,14 @@ function CmsArticleEditForm() {
               <div className="join-button">
                 <div className="bg-neutral-white py-4 gap-4 flex items-center">
                   <form className="w-full" onSubmit={handleSave}>
-                    <label className="block font-bold mb-1" htmlFor="cta">
+                    <label className="block font-bold mb-1" htmlFor="title">
                       Judul <span className="text-orange-400">*</span>
                     </label>
                     <input
+                      id="title"
+                      name="title"
                       onChange={(e) => setTitle(e.target.value)}
-                      defaultValue={articleById.title}
+                      value={articleById.title}
                       placeholder="Bagaimana Mentorship Membakar Inovasi"
                       type="text"
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
@@ -289,7 +299,7 @@ function CmsArticleEditForm() {
                           onClick={handleDeleteCategory}
                           // value={articleById.category_id}
                           type="button"
-                          className={`px-3 flex items-center gap-2 py-1 hover:bg-${articleById.category_color}-200 bg-${articleById.category_color}-300 text-white font-bold rounded-full`}
+                          className={`px-3 flex items-center gap-2 py-1 hover:bg-${articleById?.category_color}-200 bg-${articleById?.category_color}-300 text-white font-bold rounded-full`}
                         >
                           {articleById.category_name}
                           <img className=" w-6" src={Close} alt="" />

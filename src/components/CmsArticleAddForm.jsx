@@ -69,6 +69,7 @@ function CmsArticleAddForm() {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [categoryId, setCategoryId] = useState("");
+  const [categories, setCategories] = useState([]);
   console.log(categoryId, "id");
 
   const handleArticleData = async function () {
@@ -91,6 +92,17 @@ function CmsArticleAddForm() {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    const getCategories = async function () {
+      try {
+        const response = await skyshareApi.get("/category");
+        setCategories(response.data.data);
+      } catch (error) {}
+    };
+    getCategories();
+  }, []);
+  console.log(categories, "===> categories");
 
   useEffect(() => {
     setColorInputHexa(colorInputValet);
@@ -177,7 +189,7 @@ function CmsArticleAddForm() {
                         Browse
                       </h4>
                       <input
-                        onChange={(e) => setImageHeading(e.target.value)}
+                        onChange={(e) => setImageHeading(e.target.files)}
                         className="ml-80 opacity-0 absolute"
                         type="file"
                       />
@@ -224,9 +236,9 @@ function CmsArticleAddForm() {
                     <div
                       className={`w-full px-4 duration-500 origin-top ${
                         isDropdownAddOpen
-                          ? "h-64"
+                          ? "h-80"
                           : isDropdownOpen
-                          ? "h-40"
+                          ? "h-52"
                           : "h-14"
                       } border-gray-300 border-2 rounded-lg outline-none`}
                     >
@@ -247,41 +259,52 @@ function CmsArticleAddForm() {
                         </div>
                       </div>
                       <div
-                        className={`mt-2 gap-4 flex-wrap bg-neutral-white absolute w-6/12 ${
+                        className={`mt-2 gap-4 flex-wrap bg-neutral-white absolute ${
                           isDropdownOpen && ishidenCategori ? "flex" : "hidden"
                         }`}
                       >
-                        <button
-                          onClick={() => {
-                            // setCategoryId("2");
-                            handleDeleteCategory();
-                          }}
-                          type="button"
-                          className="px-3 flex items-center gap-2 py-1 bg-red-300 text-white font-bold rounded-full"
-                        >
-                          Mentorship
-                          <img className=" w-6" src={Close} alt="" />
-                        </button>
+                        {categories.map((category) => {
+                          return (
+                            <button
+                              key={category.id}
+                              onClick={() => {
+                                // setCategoryId("2");
+                                handleDeleteCategory();
+                              }}
+                              type="button"
+                              style={{ backgroundColor: category.color }}
+                              className={`px-3 flex items-center gap-2 py-1  text-white font-bold rounded-full`}
+                            >
+                              {category.name}
+                              <img className=" w-6" src={Close} alt="" />
+                            </button>
+                          );
+                        })}
                       </div>
                       <div
                         className={`mt-2 flex gap-4 flex-wrap ${
                           !isDropdownOpen ? "opacity-0" : "opacity-1"
                         }`}
                       >
-                        <button
-                          onClick={() => setCategoryId("1")}
-                          type="button"
-                          className="px-3 py-1 bg-red-300 text-white font-bold rounded-full"
-                        >
-                          Mentorship
-                        </button>
+                        {categories.map((category) => {
+                          return (
+                            <button
+                              style={{ backgroundColor: category.color }}
+                              onClick={() => setCategoryId(category.id)}
+                              type="button"
+                              className="px-3 py-1 text-white font-bold rounded-full"
+                            >
+                              {category.name}
+                            </button>
+                          );
+                        })}
                       </div>
                       <div
                         className={`${
                           !isDropdownOpen
                             ? "opacity-0"
                             : "opacity-1 duration-1000"
-                        } mt-8 justify-between flex`}
+                        } mt-20 justify-between flex`}
                       >
                         <button
                           type="button"
