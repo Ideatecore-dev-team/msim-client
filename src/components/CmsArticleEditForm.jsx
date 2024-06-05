@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Hero.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CmsNavCard from "./CmsNavCard";
 import Arrow from "../../public/images/mascot-icons/Arrow-down.png";
 import File from "../../public/images/mascot-icons/Image 3.png";
@@ -17,6 +17,7 @@ import Mascot2 from "../../public/images/mascot-icons/pose=1.png";
 import Chain from "../../public/images/mascot-icons/Link.png";
 import Close from "../../public/images/mascot-icons/Close Square.png";
 import ReactQuill from "react-quill";
+import skyshareApi from "../utilities/skyshareApi";
 // import "react-quill/dist/quill.snow.css";
 
 const imageHandler = function () {
@@ -61,9 +62,51 @@ function CmsArticleEditForm() {
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState(false);
+  const [articleById, setArticleById] = useState({});
   const [value, setValue] = useState("");
   const quillRef = useRef(null);
+  const [imageHeading, setImageHeading] = useState("");
+  const [title, setTitle] = useState("");
+  const [link, setLink] = useState("");
+  const [categoryId, setCategoryId] = useState("");
+  const { id } = useParams();
 
+  const handleInputArticle = function () {
+    const inputData = {
+      image_heading: imageHeading,
+      title: title,
+      content: value,
+      link: link,
+      category_id: categoryId,
+    };
+    console.log(value, "value");
+    console.log(inputData, "==> input data");
+    // handleEditDataArticle(inputData);
+  };
+
+  // const handleEditDataArticle = async function (inputData) {
+  //   try {
+  //     const responseFromServer = await skyshareApi({
+  //       url: `/article/${id}`,
+  //       method: "put",
+  //       data: inputData,
+  //     });
+  //     console.log(responseFromServer.data.data, "response");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  useEffect(() => {
+    const getDataArticle = async function () {
+      try {
+        const getDataFromServer = await skyshareApi.get(`/article/${id}`);
+        setArticleById(getDataFromServer.data.data);
+      } catch (error) {}
+    };
+    getDataArticle();
+  }, []);
+  console.log(articleById, "==> article");
   useEffect(() => {
     setColorInputHexa(colorInputValet);
   }, [colorInputValet]);
@@ -88,6 +131,7 @@ function CmsArticleEditForm() {
   };
 
   const handleSave = (e) => {
+    handleInputArticle();
     e.preventDefault();
     setIsSaveModalOpen(true);
   };
@@ -110,6 +154,10 @@ function CmsArticleEditForm() {
 
   const closeCancelModal = () => {
     setIsCancelModalOpen(false);
+  };
+
+  const handleCategoryValue = () => {
+    setCategoryId(articleById.category_id);
   };
 
   const handleDeleteCategory = () => {
@@ -149,8 +197,10 @@ function CmsArticleEditForm() {
                           <p className="paragraph">Mentorship.png</p>
                         </div>
                         <input
+                          defaultValue={articleById.image_heading}
+                          onChange={(e) => setImageHeading(e.target.value)}
                           className="w-10 opacity-0 absolute"
-                          type="file"
+                          type="text"
                         />
                       </div>
                       <div className="w-10 flex items-center justify-center rounded-md py-2">
@@ -183,6 +233,8 @@ function CmsArticleEditForm() {
                       Judul <span className="text-orange-400">*</span>
                     </label>
                     <input
+                      onChange={(e) => setTitle(e.target.value)}
+                      defaultValue={articleById.title}
                       placeholder="Bagaimana Mentorship Membakar Inovasi"
                       type="text"
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
@@ -193,6 +245,7 @@ function CmsArticleEditForm() {
                       </div>
                     </label>
                     <input
+                      defaultValue={articleById.admin_name}
                       placeholder="Muhammad Nusa A."
                       type="text"
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
@@ -234,10 +287,11 @@ function CmsArticleEditForm() {
                       >
                         <button
                           onClick={handleDeleteCategory}
+                          // value={articleById.category_id}
                           type="button"
-                          className="px-3 flex items-center gap-2 py-1 bg-red-300 text-white font-bold rounded-full"
+                          className={`px-3 flex items-center gap-2 py-1 hover:bg-${articleById.category_color}-200 bg-${articleById.category_color}-300 text-white font-bold rounded-full`}
                         >
-                          Mentorship
+                          {articleById.category_name}
                           <img className=" w-6" src={Close} alt="" />
                         </button>
                         <button
@@ -258,15 +312,16 @@ function CmsArticleEditForm() {
                         </button>
                       </div>
                       <div
-                        className={`mt-2 flex gap-4 flex-wrap ${
-                          !isDropdownOpen ? "opacity-0" : "opacity-1"
+                        className={`mt-2 gap-4 flex-wrap ${
+                          !isDropdownOpen ? "hidden" : "flex"
                         }`}
                       >
                         <button
+                          onClick={handleCategoryValue}
                           type="button"
-                          className="px-3 py-1 bg-red-300 text-white font-bold rounded-full"
+                          className={`px-3 py-1 bg-${articleById.category_color}-300 hover:bg-${articleById.category_color}-200 text-white font-bold rounded-full`}
                         >
-                          Mentorship
+                          {articleById.category_name}
                         </button>
                         <button
                           type="button"
@@ -378,10 +433,12 @@ function CmsArticleEditForm() {
                       border: "2px solid #e6e6e6",
                       borderRadius: "10px",
                     }}
+                    defaultValue={articleById.content}
                     ref={quillRef}
                     value={value}
                     onChange={setValue}
                     modules={modules}
+                    placeholder="Tulis Article di sini"
                   />
                 </div>
                 <div className=" mt-4">
@@ -390,9 +447,11 @@ function CmsArticleEditForm() {
                     Link <span className="text-orange-400">(Opsional) *</span>
                   </label>
                   <input
+                    onChange={(e) => setLink(e.target.value)}
                     placeholder="https://belajarmentorship.co.id/pembelajaran"
                     type="text"
                     className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
+                    defaultValue={articleById.link}
                   />
                 </div>
                 <div className="mt-4 flex gap-5 justify-end">
