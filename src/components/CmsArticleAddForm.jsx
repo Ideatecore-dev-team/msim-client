@@ -70,7 +70,7 @@ function CmsArticleAddForm() {
   const [link, setLink] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [categories, setCategories] = useState([]);
-  console.log(categoryId, "id");
+  const [categoryName, setCategoryName] = useState("");
 
   const handleArticleData = async function () {
     const inputData = {
@@ -93,16 +93,41 @@ function CmsArticleAddForm() {
     }
   };
 
+  const getCategories = async function () {
+    try {
+      const response = await skyshareApi.get("/category");
+      setCategories(response.data.data);
+    } catch (error) {}
+  };
+
   useEffect(() => {
-    const getCategories = async function () {
-      try {
-        const response = await skyshareApi.get("/category");
-        setCategories(response.data.data);
-      } catch (error) {}
-    };
     getCategories();
   }, []);
+
   console.log(categories, "===> categories");
+
+  const handleCategoryAdd = async function () {
+    const inputDataCategory = {
+      name: categoryName,
+      color: colorInputHexa,
+    };
+    console.log(inputDataCategory, "==> datacategory");
+    try {
+      const response = await skyshareApi({
+        url: "/category/add",
+        method: "POST",
+        data: inputDataCategory,
+      });
+      const newCategory = response.data.data;
+      setCategories([...categories, newCategory]); // Update the state with the new category
+      setCategoryName("");
+      setColorInputHexa("#FFFFFF");
+      setColorInputValet("#FFFFFF");
+      setIsDropdownAddOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     setColorInputHexa(colorInputValet);
@@ -140,8 +165,19 @@ function CmsArticleAddForm() {
     setIsModalOpen(false);
   };
 
+  const deleteCategory = async function () {
+    try {
+      const response = await skyshareApi.delete(`/category/${categoryId}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const confirmDelete = () => {
+    deleteCategory();
+    getCategories();
     setIsModalOpen(true);
+    setIsModalOpen(false);
   };
 
   const Navigate = useNavigate();
@@ -236,9 +272,9 @@ function CmsArticleAddForm() {
                     <div
                       className={`w-full px-4 duration-500 origin-top ${
                         isDropdownAddOpen
-                          ? "h-80"
+                          ? "h-96"
                           : isDropdownOpen
-                          ? "h-52"
+                          ? "h-64"
                           : "h-14"
                       } border-gray-300 border-2 rounded-lg outline-none`}
                     >
@@ -268,7 +304,7 @@ function CmsArticleAddForm() {
                             <button
                               key={category.id}
                               onClick={() => {
-                                // setCategoryId("2");
+                                setCategoryId(category.id);
                                 handleDeleteCategory();
                               }}
                               type="button"
@@ -334,6 +370,7 @@ function CmsArticleAddForm() {
                               <span className="text-orange-400">*</span>
                             </label>
                             <input
+                              onChange={(e) => setCategoryName(e.target.value)}
                               placeholder="Masukkan nama kategori"
                               type="text"
                               className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
@@ -371,12 +408,13 @@ function CmsArticleAddForm() {
                           </div>
                           <div className=" flex justify-center items-center w-10">
                             <div className="bg-primary-1 flex mt-7 items-center rounded-md px-2 py-2">
-                              <Link
-                                to=""
+                              <button
+                                onClick={handleCategoryAdd}
+                                type="button"
                                 className="bg-primary-1 hover:bg-primary-2"
                               >
                                 <img className=" w-6" src={Add} alt="" />
-                              </Link>
+                              </button>
                             </div>
                           </div>
                         </div>
