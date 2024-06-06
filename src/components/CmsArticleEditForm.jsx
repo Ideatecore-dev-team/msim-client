@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Hero.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { Editor } from "@tinymce/tinymce-react";
 import CmsNavCard from "./CmsNavCard";
 import Arrow from "../../public/images/mascot-icons/Arrow-down.png";
 import File from "../../public/images/mascot-icons/Image 3.png";
@@ -20,38 +21,6 @@ import ReactQuill from "react-quill";
 import skyshareApi from "../utilities/skyshareApi";
 // import "react-quill/dist/quill.snow.css";
 
-const imageHandler = function () {
-  console.log("okeee");
-  const url = prompt("Enter the image URL");
-  if (url) {
-    const range = this.quill.getSelection();
-    this.quill.insertEmbed(range.index, "image", url);
-  }
-};
-
-const modules = {
-  toolbar: {
-    container: [
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-      [{ font: ["serif", "monospace", "fantasy", "sans-serif"] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ color: [] }],
-      [{ align: [] }],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
-      ["link", "image"],
-      // color
-    ],
-    handlers: {
-      image: imageHandler,
-    },
-  },
-};
-
 function CmsArticleEditForm() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownAddOpen, setIsDropdownAddOpen] = useState(false);
@@ -62,27 +31,43 @@ function CmsArticleEditForm() {
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState(false);
+  const [categories, setCategories] = useState([]);
   const [articleById, setArticleById] = useState({});
-  const [value, setValue] = useState("");
-  const quillRef = useRef(null);
-  const [imageHeading, setImageHeading] = useState(null);
-  const [title, setTitle] = useState("");
-  const [link, setLink] = useState("");
+  const [articleForm, setArticleForm] = useState({});
   const [categoryId, setCategoryId] = useState("");
   const { id } = useParams();
+  console.log(categories.id, "==>");
+  console.log(articleForm, "==> image");
 
-  // const handleEditDataArticle = async function (inputData) {
-  //   try {
-  //     const responseFromServer = await skyshareApi({
-  //       url: `/article/${id}`,
-  //       method: "put",
-  //       data: inputData,
-  //     });
-  //     console.log(responseFromServer.data.data, "response");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const handleArticleData = async function () {
+    const formData = new FormData();
+    formData.append("image_heading", articleForm.image_heading);
+    formData.append("title", articleForm.title);
+    formData.append("content", articleForm.content);
+    formData.append("link", articleForm.link);
+    formData.append("category_id", articleForm.category_id);
+    try {
+      const responseFromServer = await skyshareApi({
+        url: `/article/${id}`,
+        method: "put",
+        data: formData,
+      });
+      console.log(responseFromServer.data.data, "===>");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getCategories = async function () {
+    try {
+      const response = await skyshareApi.get("/category");
+      setCategories(response.data.data);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   useEffect(() => {
     const getDataArticle = async function () {
@@ -103,18 +88,6 @@ function CmsArticleEditForm() {
   }, [id]);
   console.log(articleById, "==> article");
 
-  const handleInputArticle = function () {
-    const inputData = {
-      image_heading: imageHeading,
-      title: title,
-      content: value,
-      link: link,
-      category_id: categoryId,
-    };
-    console.log(value, "value");
-    console.log(inputData, "==> input data");
-    // handleEditDataArticle(inputData);
-  };
   useEffect(() => {
     setColorInputHexa(colorInputValet);
   }, [colorInputValet]);
@@ -139,7 +112,7 @@ function CmsArticleEditForm() {
   };
 
   const handleSave = (e) => {
-    handleInputArticle();
+    handleArticleData();
     e.preventDefault();
     setIsSaveModalOpen(true);
   };
@@ -155,9 +128,10 @@ function CmsArticleEditForm() {
   const confirmDelete = () => {
     setIsModalOpen(true);
   };
-
+  const Navigate = useNavigate();
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
+    Navigate("/cms/article");
   };
 
   const closeCancelModal = () => {
@@ -205,8 +179,14 @@ function CmsArticleEditForm() {
                           <p className="paragraph">Mentorship.png</p>
                         </div>
                         <input
-                          value={articleById.image_heading}
-                          onChange={(e) => setImageHeading(e.target.files[0])}
+                          accept="image/*"
+                          id="image_heading"
+                          onChange={(e) =>
+                            setArticleForm({
+                              ...articleForm,
+                              image_heading: e.target.files[0],
+                            })
+                          }
                           className="w-10 opacity-0 absolute"
                           type="file"
                         />
@@ -243,8 +223,13 @@ function CmsArticleEditForm() {
                     <input
                       id="title"
                       name="title"
-                      onChange={(e) => setTitle(e.target.value)}
-                      value={articleById.title}
+                      onChange={(e) =>
+                        setArticleForm({
+                          ...articleForm,
+                          title: e.target.value,
+                        })
+                      }
+                      defaultValue={articleById.title}
                       placeholder="Bagaimana Mentorship Membakar Inovasi"
                       type="text"
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
@@ -295,56 +280,51 @@ function CmsArticleEditForm() {
                           isDropdownOpen && ishidenCategori ? "flex" : "hidden"
                         }`}
                       >
-                        <button
-                          onClick={handleDeleteCategory}
-                          // value={articleById.category_id}
-                          type="button"
-                          className={`px-3 flex items-center gap-2 py-1 hover:bg-${articleById?.category_color}-200 bg-${articleById?.category_color}-300 text-white font-bold rounded-full`}
-                        >
-                          {articleById.category_name}
-                          <img className=" w-6" src={Close} alt="" />
-                        </button>
-                        <button
-                          onClick={handleDeleteCategory}
-                          type="button"
-                          className="px-3 py-1 flex items-center gap-2  bg-red-300 text-white font-bold rounded-full"
-                        >
-                          Education
-                          <img className=" w-6" src={Close} alt="" />
-                        </button>
-                        <button
-                          onClick={handleDeleteCategory}
-                          type="button"
-                          className="px-3 py-1 flex items-center gap-2 bg-red-300 text-white font-bold rounded-full"
-                        >
-                          Career
-                          <img className=" w-6" src={Close} alt="" />
-                        </button>
+                        {categories?.map((category) => {
+                          return (
+                            <button
+                              key={category.id}
+                              value={category.id}
+                              onClick={() => {
+                                setCategoryId(category.id);
+                                handleDeleteCategory();
+                              }}
+                              type="button"
+                              style={{ backgroundColor: category.color }}
+                              className={`px-3 flex items-center gap-2 py-1  text-white font-bold rounded-full`}
+                            >
+                              {category.name}
+                              <img className=" w-6" src={Close} alt="" />
+                            </button>
+                          );
+                        })}
                       </div>
                       <div
                         className={`mt-2 gap-4 flex-wrap ${
                           !isDropdownOpen ? "hidden" : "flex"
                         }`}
                       >
-                        <button
-                          onClick={handleCategoryValue}
-                          type="button"
-                          className={`px-3 py-1 bg-${articleById.category_color}-300 hover:bg-${articleById.category_color}-200 text-white font-bold rounded-full`}
-                        >
-                          {articleById.category_name}
-                        </button>
-                        <button
-                          type="button"
-                          className="px-3 py-1 bg-red-300 text-white font-bold rounded-full"
-                        >
-                          Education
-                        </button>
-                        <button
-                          type="button"
-                          className="px-3 py-1 bg-red-300 text-white font-bold rounded-full"
-                        >
-                          Career
-                        </button>
+                        {categories?.map((category) => {
+                          return (
+                            <button
+                              name="category_id"
+                              style={{ backgroundColor: category.color }}
+                              initialValue={articleById.category_id}
+                              value={category.id}
+                              onClick={(e) => {
+                                console.log(category.id);
+                                setArticleForm({
+                                  ...articleForm,
+                                  category_id: e.target.value,
+                                });
+                              }}
+                              type="button"
+                              className="px-3 py-1 text-white font-bold rounded-full"
+                            >
+                              {category.name}
+                            </button>
+                          );
+                        })}
                       </div>
                       <div
                         className={`${
@@ -437,18 +417,42 @@ function CmsArticleEditForm() {
                   </form>
                 </div>
 
-                <div>
-                  <ReactQuill
+                <div className=" -z-50">
+                  {/* <ReactQuill
                     style={{
                       border: "2px solid #e6e6e6",
                       borderRadius: "10px",
                     }}
-                    defaultValue={articleById.content}
                     ref={quillRef}
                     value={value}
                     onChange={setValue}
                     modules={modules}
-                    placeholder="Tulis Article di sini"
+                  /> */}
+                  <Editor
+                    style={{ zIndex: -20 }}
+                    initialValue={articleById.content}
+                    value={articleForm.content}
+                    onEditorChange={(content) =>
+                      setArticleForm({ ...articleForm, content })
+                    }
+                    apiKey="gemyn0v2v0dyeaicn1p0fm8bje0jldn312dh4cz45rnzg68q"
+                    init={{
+                      menubar: false,
+                      plugins:
+                        "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
+                      toolbar:
+                        "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
+                      tinycomments_mode: "embedded",
+                      tinycomments_author: "Author name",
+                      mergetags_list: [
+                        { value: "First.Name", title: "First Name" },
+                        { value: "Email", title: "Email" },
+                      ],
+                      ai_request: (request, respondWith) =>
+                        respondWith.string(() =>
+                          Promise.reject("See docs to implement AI Assistant")
+                        ),
+                    }}
                   />
                 </div>
                 <div className=" mt-4">
@@ -457,7 +461,12 @@ function CmsArticleEditForm() {
                     Link <span className="text-orange-400">(Opsional) *</span>
                   </label>
                   <input
-                    onChange={(e) => setLink(e.target.value)}
+                    onChange={(e) =>
+                      setArticleForm({
+                        ...articleForm,
+                        link: e.target.value,
+                      })
+                    }
                     placeholder="https://belajarmentorship.co.id/pembelajaran"
                     type="text"
                     className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
@@ -518,7 +527,7 @@ function CmsArticleEditForm() {
       )}
 
       {isSaveModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+        <div className="fixed inset-0 z-50 bg-gray-600 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white rounded-3xl p-6 relative">
             <button onClick={closeSaveModal} className="absolute top-6 right-6">
               <img className="w-5" src={Xbutton} alt="" />
@@ -535,7 +544,7 @@ function CmsArticleEditForm() {
       )}
 
       {isCancelModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+        <div className="fixed inset-0 z-50 bg-gray-600 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white rounded-3xl p-6 relative">
             <button
               onClick={closeCancelModal}

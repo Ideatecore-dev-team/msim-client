@@ -105,7 +105,10 @@ function CmsArticleDashboardTable() {
                           </td>
                           <td className="px-16 py-4 text-left">
                             <p
-                              className={`px-3 pb-1 text-white rounded-full bg-${article?.category_color}-300`}
+                              style={{
+                                backgroundColor: `${article?.category_color}`,
+                              }}
+                              className={`px-2 pb-1 text-center font-bold text-white rounded-full`}
                             >
                               {article.category_name}
                             </p>

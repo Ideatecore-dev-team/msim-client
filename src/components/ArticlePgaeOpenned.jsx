@@ -35,7 +35,8 @@ function ArticlePageOpenned() {
             <div className="">
               <p className="paragraph pl-10">Category:</p>
               <h4
-                className={`text-white flex justify-center items-center font-bold px-2 py-1 rounded-full bg-${article.category_color}-300`}
+                style={{ backgroundColor: `${article.category_color}` }}
+                className={`text-white flex justify-center items-center font-bold px-2 py-1 rounded-full`}
               >
                 {article.category_name}
               </h4>

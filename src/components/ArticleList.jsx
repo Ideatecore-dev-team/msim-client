@@ -1,5 +1,6 @@
 import React from "react";
 import ArrowOrange from "../../public/images/mascot-icons/arrow-orange.png";
+import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 
 function ArticleList({ articles }) {
@@ -21,7 +22,7 @@ function ArticleList({ articles }) {
             />
             <div className=" w-full">
               <h4 className=" headline-4 ml-5 mt-5">{article.title}</h4>
-              <p className=" ml-5 mt-5 paragraph">{article.content}</p>
+              <p className=" ml-5 mt-5 paragraph">{parse(article.content)}</p>
               <div className=" w-full flex gap-2">
                 <p
                   className={`ml-5 mt-3 px-2 py-1 text-white bg-${article.category_color}-300 w-28 text-center rounded-full`}

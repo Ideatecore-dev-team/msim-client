@@ -51,10 +51,8 @@ function CmsDashboardAkun() {
   return (
     <>
       <div className="bg-background flex flex-col pb-44 pt-12 items-center self-stretch h-auto">
-        <div className="content flex gap-4 ">
-          <div className="">
-            <CmsNavCard />
-          </div>
+        <div className=" flex gap-4 ">
+          <div className="">{/* <CmsNavCard /> */}</div>
           <div className=" w-full">
             <div className=" ">
               <h1 className="headline-1">Kelola akun</h1>
