@@ -1,5 +1,6 @@
 import React from "react";
 import TimeIcon from "../../public/images/mascot-icons/Time Circle.png";
+import TimeLine from "../../public/images/Timeline Ex.png";
 import "./TimelineSkyshare.css";
 
 function TimelineSkyshare({ parents, talent }) {
@@ -13,12 +14,8 @@ function TimelineSkyshare({ parents, talent }) {
           <h2 className="headline-2">Timeline Acara</h2>
         </div>
         {timelineImageSrc ? (
-          <div className="timeline-img-container bg-red-400">
-            <img
-              className="timeline-img"
-              src={timelineImageSrc}
-              alt="timeline-acara"
-            />
+          <div className="timeline-img-container">
+            <img className="timeline-img" src={TimeLine} alt="timeline-acara" />
           </div>
         ) : (
           <p className="no-image">No timeline image available</p>

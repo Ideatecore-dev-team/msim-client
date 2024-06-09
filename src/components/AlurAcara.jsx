@@ -1,5 +1,6 @@
 import React from "react";
 import WorkIcon from "../../public/images/mascot-icons/Work.png";
+import TimeLine from "../../public/images/Alur Acara Ex.png";
 import "./AlurAcara.css";
 
 function AlurAcara({ parents, talent }) {
@@ -14,12 +15,8 @@ function AlurAcara({ parents, talent }) {
           <h2 className="headline-2">Alur Acara</h2>
         </div>
         {timelineImageSrc ? (
-          <div className="timeline-img-container bg-red-400">
-            <img
-              className="timeline-img"
-              src={timelineImageSrc}
-              alt="timeline-acara"
-            />
+          <div className="timeline-img-container">
+            <img className="timeline-img" src={TimeLine} alt="timeline-acara" />
           </div>
         ) : (
           <p className="no-image">No timeline image available</p>
