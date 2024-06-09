@@ -35,7 +35,8 @@ function ArticlePageOpenned() {
             <div className="">
               <p className="paragraph pl-10">Category:</p>
               <h4
-                className={`text-white flex justify-center items-center font-bold px-2 py-1 rounded-full bg-${article.category_color}-300`}
+                style={{ backgroundColor: `${article.category_color}` }}
+                className={`text-white flex justify-center items-center font-bold px-2 py-1 rounded-full`}
               >
                 {article.category_name}
               </h4>
@@ -45,7 +46,7 @@ function ArticlePageOpenned() {
           <div className="w-full flex justify-center mt-10">
             <a
               className="px-5 py-4 items-center gap-2 bg-primary-1 flex hover:bg-primary-2 rounded-lg"
-              href={article.link}
+              href={`https://${article.link}`}
             >
               <p className="text-white font-semibold">Learn more</p>
               <img className="w-6 -rotate-90" src={ArrowLeft} alt="" />
