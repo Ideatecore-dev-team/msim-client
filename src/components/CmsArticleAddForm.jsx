@@ -35,6 +35,8 @@ function CmsArticleAddForm() {
   const [categories, setCategories] = useState([]);
   const [categoryName, setCategoryName] = useState("");
   const [articleForm, setArticleForm] = useState({});
+  const [imagePreviewUrl, setImagePreviewUrl] = useState("");
+  const [selectedFileName, setSelectedFileName] = useState("");
   console.log(categories.id, "==>");
   console.log(articleForm, "==> image");
 
@@ -152,11 +154,24 @@ function CmsArticleAddForm() {
 
   const closeCancelModal = () => {
     setIsCancelModalOpen(false);
+    Navigate("/cms/article");
   };
 
   const handleDeleteCategory = () => {
     setIsModalOpen(true);
     setDeleteMessage("Yakin untuk menghapus category?");
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setArticleForm({
+        ...articleForm,
+        image_heading: file,
+      });
+      setSelectedFileName(file.name);
+      setImagePreviewUrl(URL.createObjectURL(file));
+    }
   };
 
   return (
@@ -179,38 +194,42 @@ function CmsArticleAddForm() {
               <div className="bg-neutral-white rounded-xl border-2 mt-4 border-gray-400 px-6 pt-7 pb-4">
                 <div className="border-2 border-dashed flex justify-center items-center border-gray-400 rounded-xl h-60">
                   <div className="">
-                    <div className="flex justify-center">
-                      <img className=" w-7 mb-4" src={File} alt="" />
-                    </div>
-                    <p className="paragraph text-center">Drag & Drop here</p>
-                    <p className="paragraph text-center">or</p>
-                    <div className="flex relative justify-center">
-                      <h4 className=" font-bold text-orange-400 text-base absolute">
-                        Browse
-                      </h4>
-                      <input
-                        id="image_heading"
-                        accept="image/*"
-                        onChange={(e) =>
-                          setArticleForm({
-                            ...articleForm,
-                            image_heading: e.target.files[0],
-                          })
-                        }
-                        className="ml-80 opacity-0 absolute"
-                        type="file"
-                      />
-                    </div>
+                    {imagePreviewUrl && (
+                      <div className="flex justify-center  ">
+                        <img
+                          src={imagePreviewUrl}
+                          alt="Image Preview"
+                          className="rounded-xl border-2 border-gray-400"
+                          style={{ maxWidth: "100%", maxHeight: "220px" }}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
-                <div className="my-4 bg-primary-1 hover:bg-primary-2 flex justify-center rounded-xl">
-                  <button className="bg-primary-1 hover:bg-primary-2 flex justify-center gap-2 py-4">
-                    <p className=" text-white font-bold">Upload File</p>
-                    <img className=" w-6 -rotate-90" src={ArrowLeft} alt="" />
-                  </button>
+                <div className="my-4 bg-primary-1 cursor-pointer hover:bg-primary-2 flex justify-center rounded-xl items-center">
+                  <input
+                    type="file"
+                    id="image_heading"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    className="cursor-pointer z-10 opacity-0 ml-80 rounded-xl flex justify-center gap-2 py-4"
+                  />
+                  <div className="absolute cursor-pointer flex gap-2 items-center ">
+                    <p className=" cursor-pointer text-white font-bold">
+                      Upload File
+                    </p>
+                    <img
+                      className=" cursor-pointer w-6 -rotate-90"
+                      src={ArrowLeft}
+                      alt=""
+                    />
+                  </div>
                 </div>
                 <div className="flex justify-center pb-3">
-                  <h4 className=" text-base">(File PDF)</h4>
+                  <h4 className="text-base">
+                    Minimal Ukuran{" "}
+                    <span className="font-bold">(956 x 350px)</span>
+                  </h4>
                 </div>
               </div>
               <div className="add-content">
@@ -227,16 +246,6 @@ function CmsArticleAddForm() {
                         })
                       }
                       placeholder="Bagaimana Mentorship Membakar Inovasi"
-                      type="text"
-                      className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
-                    />
-                    <label className="block font-bold mt-4 mb-1" htmlFor="cta">
-                      <div className="flex gap-1">
-                        Penulis <span className="text-orange-400">*</span>
-                      </div>
-                    </label>
-                    <input
-                      placeholder="Muhammad Nusa A."
                       type="text"
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                     />
@@ -271,7 +280,7 @@ function CmsArticleAddForm() {
                         </div>
                       </div>
                       <div
-                        className={`mt-2 gap-4 flex-wrap bg-neutral-white absolute ${
+                        className={`mt-2 gap-4 flex-wrap bg-neutral-white absolute w-3/6 ${
                           isDropdownOpen && ishidenCategori ? "flex" : "hidden"
                         }`}
                       >
@@ -303,7 +312,6 @@ function CmsArticleAddForm() {
                           return (
                             <button
                               name="category_id"
-                              style={{ backgroundColor: category.color }}
                               value={category.id}
                               onClick={(e) => {
                                 console.log(category.id);
@@ -311,8 +319,22 @@ function CmsArticleAddForm() {
                                   ...articleForm,
                                   category_id: e.target.value,
                                 });
+                                setCategoryId(category.id);
                               }}
                               type="button"
+                              style={{
+                                backgroundColor:
+                                  categoryId === category.id
+                                    ? "#fff" // Ganti dengan warna yang diinginkan saat tombol dipilih
+                                    : category.color,
+                                border:
+                                  categoryId === category.id
+                                    ? "2px solid red"
+                                    : "none",
+
+                                color:
+                                  categoryId === category.id ? "#000" : "#FFF", // Ganti dengan warna yang diinginkan saat tombol dipilih
+                              }}
                               className="px-3 py-1 text-white font-bold rounded-full"
                             >
                               {category.name}
@@ -325,7 +347,7 @@ function CmsArticleAddForm() {
                           !isDropdownOpen
                             ? "opacity-0"
                             : "opacity-1 duration-1000"
-                        } mt-20 justify-between flex`}
+                        } mt-32 justify-between flex`}
                       >
                         <button
                           type="button"

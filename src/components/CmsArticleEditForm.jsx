@@ -140,6 +140,7 @@ function CmsArticleEditForm() {
 
   const closeCancelModal = () => {
     setIsCancelModalOpen(false);
+    Navigate("/cms/article");
   };
 
   const handleCategoryValue = () => {
@@ -344,6 +345,7 @@ function CmsArticleEditForm() {
                               value={category.id}
                               onClick={(e) => {
                                 console.log(category.id);
+                                console.log(categoryId);
                                 setArticleForm({
                                   ...articleForm,
                                   category_id: e.target.value,
@@ -354,13 +356,15 @@ function CmsArticleEditForm() {
                               style={{
                                 backgroundColor:
                                   categoryId === category.id
-                                    ? "#000" // Ganti dengan warna yang diinginkan saat tombol dipilih
+                                    ? "#fff" // Ganti dengan warna yang diinginkan saat tombol dipilih
                                     : category.color,
+                                border:
+                                  categoryId === category.id
+                                    ? "2px solid red"
+                                    : "none",
 
                                 color:
-                                  categoryId === category.id
-                                    ? category.color
-                                    : "#FFF", // Ganti dengan warna yang diinginkan saat tombol dipilih
+                                  categoryId === category.id ? "#000" : "#FFF", // Ganti dengan warna yang diinginkan saat tombol dipilih
                               }}
                               className="px-3 py-1 text-white font-bold rounded-full"
                             >
