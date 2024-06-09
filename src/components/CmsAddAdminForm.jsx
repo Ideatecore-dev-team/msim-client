@@ -80,7 +80,7 @@ function CmsAddAdminForm() {
     <>
       <div className="bg-background flex flex-col pb-44 pt-12 items-center self-stretch h-auto">
         <div className="content flex gap-4">
-          <CmsNavCard />
+          <div className=" w-96"></div>
           <div className="w-full">
             <div>
               <h1 className="headline-1">Add Admin</h1>

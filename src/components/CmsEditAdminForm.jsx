@@ -76,9 +76,7 @@ function CmsEditAdminForm() {
     <>
       <div className="bg-background flex flex-col pb-52 pt-12 items-center self-stretch h-auto">
         <div className="content flex gap-4">
-          <div className="">
-            <CmsNavCard />
-          </div>
+          <div className=""></div>
           <div className="w-full">
             <div className="">
               <h1 className="headline-1">Edit Admin</h1>

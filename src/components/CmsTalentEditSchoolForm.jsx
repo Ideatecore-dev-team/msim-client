@@ -101,7 +101,7 @@ function CmsTalentEditSchoolForm() {
                       </div>
                     </label>
                     <input
-                      placeholder='Example : <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.8066883685956!2d1...'
+                      placeholder="Example : https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6197699153263!2d106.71407467533372!3d-6.3135771617850365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e55a184cee4d%3A0xc038909b2253775e!2sSMA%20Negeri%209%20Kota%20Tangerang%20Selatan!5e0!3m2!1sid!2sid!4v1714293197913!5m2!1sid!2sid"
                       type="text"
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                     />
