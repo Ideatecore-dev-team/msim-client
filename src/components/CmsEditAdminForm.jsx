@@ -17,17 +17,18 @@ function CmsEditAdminForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { id } = useParams();
-  const handleData = function () {
+  const navigate = useNavigate();
+
+  const handleData = () => {
     const inputEditAdmin = {
-      name: name,
-      email: email,
-      password: password,
+      name,
+      email,
+      password,
     };
     adminEditAkun(inputEditAdmin);
   };
 
-  const adminEditAkun = async function (inputEditAdmin) {
-    console.log(inputEditAdmin);
+  const adminEditAkun = async (inputEditAdmin) => {
     try {
       const editDataFromServer = await skyshareApi.put(
         `/admin/admin/${id}`,
@@ -40,21 +41,24 @@ function CmsEditAdminForm() {
   };
 
   useEffect(() => {
-    const getDataAdmin = async function () {
+    const getDataAdmin = async () => {
       try {
         const getDataAdminById = await skyshareApi.get(`/admin/admin/${id}`);
-        setAdminById(getDataAdminById.data.data[0]);
+        const adminData = getDataAdminById.data.data[0];
+        setAdminById(adminData);
+        setName(adminData.name);
+        setEmail(adminData.email);
+        // Optionally set password if needed
       } catch (error) {
         console.log(error);
       }
     };
     getDataAdmin();
-  }, []);
-
-  console.log(adminById);
+  }, [id]);
 
   const handleSave = (e) => {
     e.preventDefault();
+    handleData();
     setIsSaveModalOpen(true);
   };
 
@@ -62,23 +66,23 @@ function CmsEditAdminForm() {
     setIsCancelModalOpen(true);
   };
 
-  const Navigate = useNavigate();
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
-    Navigate("/cms/kelolaakun");
+    navigate("/cms/kelolaakun");
   };
 
   const closeCancelModal = () => {
     setIsCancelModalOpen(false);
+    navigate("/cms/kelolaakun");
   };
 
   return (
     <>
       <div className="bg-background flex flex-col pb-52 pt-12 items-center self-stretch h-auto">
         <div className="content flex gap-4">
-          <div className=""></div>
+          <div className="w-96"></div>
           <div className="w-full">
-            <div className="">
+            <div>
               <h1 className="headline-1">Edit Admin</h1>
               <p className="paragraph">
                 Masukkan data pada <span className="font-bold">Field</span> yang
@@ -93,44 +97,36 @@ function CmsEditAdminForm() {
                   </label>
                   <input
                     placeholder="Masukkan Name"
-                    defaultValue={adminById.name}
-                    onChange={(e) => {
-                      setName(e.target.value);
-                    }}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     type="text"
                     className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                   />
-                  <label
-                    htmlFor="oldPassword"
-                    className="font-bold block mb-2 mt-5"
-                  >
+                  <label htmlFor="email" className="font-bold block mb-2 mt-5">
                     Email <span className="text-primary-1 font-bold">*</span>
                   </label>
                   <input
                     placeholder="Masukkan Email"
-                    defaultValue={adminById.email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     type="text"
                     className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                   />
                   <label
-                    htmlFor="newPassword"
+                    htmlFor="password"
                     className="font-bold block mb-2 mt-5"
                   >
                     Password <span className="text-primary-1 font-bold">*</span>
                   </label>
                   <input
                     placeholder="Masukkan Password"
-                    onChange={(e) => {
-                      setPassword(e.target.value);
-                    }}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     type="password"
                     className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                   />
                   <div className="flex gap-1">
-                    <img className="w-5" src={Caution} alt="" />
+                    <img className="w-5" src={Caution} alt="Caution" />
                     <p className="text-xs mt-1">Minimal 8 huruf atau angka</p>
                   </div>
                   <label htmlFor="role" className="font-bold block mb-2 mt-5">
@@ -152,7 +148,6 @@ function CmsEditAdminForm() {
                     <div className="w-56 py-2 flex">
                       <button
                         type="submit"
-                        onClick={handleData}
                         className="bg-primary-1 w-20 py-2 rounded-md hover:bg-primary-2 text-white font-bold"
                       >
                         Simpan
@@ -170,14 +165,14 @@ function CmsEditAdminForm() {
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white rounded-3xl p-6 relative">
             <button onClick={closeSaveModal} className="absolute top-6 right-6">
-              <img className="w-5" src={Xbutton} alt="" />
+              <img className="w-5" src={Xbutton} alt="Close" />
             </button>
             <div className="flex justify-center">
-              <img className="w-40" src={Mascot1} alt="" />
+              <img className="w-40" src={Mascot1} alt="Mascot" />
             </div>
             <div className="flex gap-1 mt-5 items-center">
-              <img className="w-6 h-6" src={Ceklist} alt="" />
-              <h3 className="headline-3 ">Saved Successfully</h3>
+              <img className="w-6 h-6" src={Ceklist} alt="Check" />
+              <h3 className="headline-3">Saved Successfully</h3>
             </div>
           </div>
         </div>
@@ -190,14 +185,14 @@ function CmsEditAdminForm() {
               onClick={closeCancelModal}
               className="absolute top-6 right-6"
             >
-              <img className="w-5" src={Xbutton} alt="" />
+              <img className="w-5" src={Xbutton} alt="Close" />
             </button>
             <div className="flex justify-center">
-              <img className="w-40" src={Mascot2} alt="" />
+              <img className="w-40" src={Mascot2} alt="Mascot" />
             </div>
             <div className="flex gap-1 mt-5 items-center">
-              <img className="w-6 h-6" src={Coution} alt="" />
-              <h3 className="headline-3 ">Progress is not saved</h3>
+              <img className="w-6 h-6" src={Coution} alt="Caution" />
+              <h3 className="headline-3">Progress is not saved</h3>
             </div>
           </div>
         </div>

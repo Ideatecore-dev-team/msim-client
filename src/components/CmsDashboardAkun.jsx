@@ -61,7 +61,7 @@ function CmsDashboardAkun() {
                 <span className=" font-bold">“Super Admin”</span>).
               </p>
             </div>
-            <div className=" shadow-md mt-10 border-2 border-black rounded-xl pb-44 px-3 bg-neutral-white w-full">
+            <div className=" shadow-md mt-10 border-2 border-black rounded-xl px-3 bg-neutral-white w-full">
               <div className="bg-background flex justify-between rounded-xl mt-5 py-3 px-3">
                 <div className="flex items-center gap-5 ">
                   <img className=" w-10" src={Character} alt="" />

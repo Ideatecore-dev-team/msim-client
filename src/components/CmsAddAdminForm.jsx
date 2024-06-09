@@ -8,9 +8,11 @@ import Ceklist from "../../public/images/mascot-icons/Tick Square.png";
 import Danger from "../../public/images/mascot-icons/Danger Triangle.png";
 import Mascot1 from "../../public/images/mascot-icons/pose=9.png";
 import Mascot2 from "../../public/images/mascot-icons/pose=8.png";
+import Coution from "../../public/images/mascot-icons/Info Square.png";
 
 function CmsAddAdminForm() {
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [imageIcon, setImageIcon] = useState("");
   const [imageMascot, setImageMascot] = useState("");
@@ -74,6 +76,16 @@ function CmsAddAdminForm() {
     if (errorMessage === "Saved Successfully") {
       navigate("/cms/kelolaakun");
     }
+  };
+
+  const handleCancel = () => {
+    setIsCancelModalOpen(true);
+  };
+
+  const Navigate = useNavigate();
+  const closeCancelModal = () => {
+    setIsCancelModalOpen(false);
+    Navigate("/cms/kelolaakun");
   };
 
   return (
@@ -159,7 +171,16 @@ function CmsAddAdminForm() {
                   <div className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none">
                     Admin
                   </div>
-                  <div className="w-full mt-10 flex justify-end">
+                  <div className="w-full mt-10 flex justify-end gap-5">
+                    <div className="w-56 py-2 flex">
+                      <button
+                        type="button"
+                        onClick={handleCancel}
+                        className="bg-gray-300 w-20 py-2 rounded-md hover:bg-gray-200 text-black font-bold"
+                      >
+                        Batal
+                      </button>
+                    </div>
                     <div className="w-56 py-2 flex">
                       <button
                         type="submit"
@@ -188,6 +209,26 @@ function CmsAddAdminForm() {
             <div className="flex gap-1 mt-5 items-center">
               <img className="w-6 h-6" src={imageIcon} alt="Icon" />
               <h3 className="headline-3">{errorMessage}</h3>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isCancelModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white rounded-3xl p-6 relative">
+            <button
+              onClick={closeCancelModal}
+              className="absolute top-6 right-6"
+            >
+              <img className="w-5" src={Xbutton} alt="" />
+            </button>
+            <div className="flex justify-center">
+              <img className="w-40" src={Mascot2} alt="" />
+            </div>
+            <div className="flex gap-1 mt-5 items-center">
+              <img className="w-6 h-6" src={Coution} alt="" />
+              <h3 className="headline-3 ">Progress is not saved</h3>
             </div>
           </div>
         </div>

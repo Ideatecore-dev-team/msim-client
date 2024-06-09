@@ -40,6 +40,7 @@ function CmsTalentForm() {
     formData.append("gambar_timeline", talentForm.gambar_timeline);
     formData.append("link_cta", talentForm.link_cta);
     formData.append("school_id", JSON.stringify(talentForm.school_ids));
+    formData.append("link_join_program", talentForm.link_join_program);
     try {
       const responseFromServer = await skyshareApi({
         url: "/talent/add",
@@ -448,7 +449,7 @@ function CmsTalentForm() {
                       onChange={(e) =>
                         setTalentForm({
                           ...talentForm,
-                          school_id: e.target.value,
+                          link_join_program: e.target.value,
                         })
                       }
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
@@ -471,7 +472,7 @@ function CmsTalentForm() {
                       onClick={(e) => {
                         e.preventDefault(); // Prevent the default form submission
                         handleSave(e);
-                        // handleAddTalentAcademy();
+                        handleAddTalentAcademy();
                       }}
                       className="bg-primary-1 w-full py-2 rounded-md hover:bg-primary-2 text-white font-bold"
                     >

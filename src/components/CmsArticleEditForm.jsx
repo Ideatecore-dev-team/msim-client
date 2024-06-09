@@ -35,6 +35,8 @@ function CmsArticleEditForm() {
   const [articleById, setArticleById] = useState({});
   const [articleForm, setArticleForm] = useState({});
   const [categoryId, setCategoryId] = useState("");
+  const [selectedFileName, setSelectedFileName] = useState("");
+  const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const { id } = useParams();
   console.log(categories.id, "==>");
   console.log(articleForm, "==> image");
@@ -127,6 +129,8 @@ function CmsArticleEditForm() {
 
   const confirmDelete = () => {
     setIsModalOpen(true);
+    handleDeleteImage();
+    setIsModalOpen(false);
   };
   const Navigate = useNavigate();
   const closeSaveModal = () => {
@@ -146,6 +150,27 @@ function CmsArticleEditForm() {
     setIsModalOpen(true);
     setDeleteMessage("Yakin untuk menghapus category?");
     console.log(deleteMessage);
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setArticleForm({
+        ...articleForm,
+        image_heading: file,
+      });
+      setSelectedFileName(file.name);
+      setImagePreviewUrl(URL.createObjectURL(file));
+    }
+  };
+
+  const handleDeleteImage = () => {
+    setArticleForm({
+      ...articleForm,
+      image_heading: null,
+    });
+    setSelectedFileName("");
+    setImagePreviewUrl("");
   };
 
   return (
@@ -176,17 +201,14 @@ function CmsArticleEditForm() {
                       <div className="flex items-center">
                         <div className="flex items-center gap-2">
                           <img className="w-7" src={File} alt="" />
-                          <p className="paragraph">Mentorship.png</p>
+                          <p className="paragraph">
+                            {selectedFileName || articleById.image_heading}
+                          </p>
                         </div>
                         <input
                           accept="image/*"
                           id="image_heading"
-                          onChange={(e) =>
-                            setArticleForm({
-                              ...articleForm,
-                              image_heading: e.target.files[0],
-                            })
-                          }
+                          onChange={handleFileChange}
                           className="w-10 opacity-0 absolute"
                           type="file"
                         />
@@ -212,6 +234,16 @@ function CmsArticleEditForm() {
                       <span className="font-bold">(956 x 350px)</span>
                     </h4>
                   </div>
+                  {imagePreviewUrl && (
+                    <div className="flex justify-center pb-3">
+                      <img
+                        src={imagePreviewUrl}
+                        alt="Image Preview"
+                        className="rounded-xl border-2 border-gray-400"
+                        style={{ maxWidth: "100%", maxHeight: "300px" }}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="join-button">
@@ -253,9 +285,9 @@ function CmsArticleEditForm() {
                     <div
                       className={`w-full px-4 duration-500 origin-top ${
                         isDropdownAddOpen
-                          ? "h-64"
+                          ? "h-80"
                           : isDropdownOpen
-                          ? "h-40"
+                          ? "h-56"
                           : "h-14"
                       } border-gray-300 border-2 rounded-lg outline-none`}
                     >
@@ -308,7 +340,6 @@ function CmsArticleEditForm() {
                           return (
                             <button
                               name="category_id"
-                              style={{ backgroundColor: category.color }}
                               initialValue={articleById.category_id}
                               value={category.id}
                               onClick={(e) => {
@@ -317,8 +348,20 @@ function CmsArticleEditForm() {
                                   ...articleForm,
                                   category_id: e.target.value,
                                 });
+                                setCategoryId(category.id);
                               }}
                               type="button"
+                              style={{
+                                backgroundColor:
+                                  categoryId === category.id
+                                    ? "#000" // Ganti dengan warna yang diinginkan saat tombol dipilih
+                                    : category.color,
+
+                                color:
+                                  categoryId === category.id
+                                    ? category.color
+                                    : "#FFF", // Ganti dengan warna yang diinginkan saat tombol dipilih
+                              }}
                               className="px-3 py-1 text-white font-bold rounded-full"
                             >
                               {category.name}
@@ -331,7 +374,7 @@ function CmsArticleEditForm() {
                           !isDropdownOpen
                             ? "opacity-0"
                             : "opacity-1 duration-1000"
-                        } mt-8 justify-between flex`}
+                        } mt-24 justify-between flex`}
                       >
                         <button
                           type="button"

@@ -22,7 +22,7 @@ function Skyshare() {
     };
     getDataTalent();
   }, []);
-  console.log(talent);
+  console.log(talent, "hoooo");
   return (
     <>
       <div className="talent-academy">
