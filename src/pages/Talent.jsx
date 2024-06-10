@@ -6,7 +6,7 @@ import Skyshareabout from "../components/TalentAbout";
 import BenefitSkyshare from "../components/BenefitTalent";
 import AlurAcara from "../components/AlurAcara";
 import TimelineSkyshare from "../components/TimelineSkyshare";
-import CurrentGroupSkyshare from "../components/CurrentGroupSkyshare";
+import CurrentGroupTalent from "../components/CurrentGroupTalent";
 import AllActivitiesSkyShare from "../components/AllActivitiesTalent";
 
 function Skyshare() {
@@ -31,7 +31,7 @@ function Skyshare() {
         <BenefitSkyshare />
         <AlurAcara talent={talent} />
         <TimelineSkyshare talent={talent} />
-        <CurrentGroupSkyshare />
+        {/* <CurrentGroupTalent /> */}
         <AllActivitiesSkyShare />
       </div>
     </>
