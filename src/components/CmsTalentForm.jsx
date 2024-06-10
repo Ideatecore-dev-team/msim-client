@@ -22,15 +22,21 @@ import Mascot1 from "../../public/images/mascot-icons/pose=8.png";
 import Mascot2 from "../../public/images/mascot-icons/pose=1.png";
 import Coution from "../../public/images/mascot-icons/Info Square.png";
 import Mascot from "../../public/images/mascot-icons/pose=2.png";
+import ArrowLeft from "../../public/images/mascot-icons/Arrow - Down 3.png";
 
 function CmsTalentForm() {
   const [talentForm, setTalentForm] = useState({ school_ids: [] });
   const [schools, setSchools] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isErrorModal, setIsErrorModal] = useState(false);
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState(false);
   const [deleteSchoolById, setDeleteSchoolById] = useState(null);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState("");
+  const [imagePreviewUrlTimeline, setImagePreviewUrlTimeline] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
+  const [responseStatus, setResponseStatus] = useState("");
   console.log(talentForm, "==> form");
 
   const handleAddTalentAcademy = async function () {
@@ -41,15 +47,23 @@ function CmsTalentForm() {
     formData.append("link_cta", talentForm.link_cta);
     formData.append("school_id", JSON.stringify(talentForm.school_ids));
     formData.append("link_join_program", talentForm.link_join_program);
+    setIsUploading(true);
     try {
       const responseFromServer = await skyshareApi({
         url: "/talent/add",
         method: "post",
         data: formData,
       });
-      console.log(responseFromServer.data.data, "===>");
+      setResponseStatus(responseFromServer.data.status);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsUploading(false);
+      if (responseStatus !== "success") {
+        setIsErrorModal(true);
+      } else {
+        setIsSaveModalOpen(true);
+      }
     }
     console.log(formData, "data");
   };
@@ -84,13 +98,16 @@ function CmsTalentForm() {
     Navigate("/cms/talent/editschool");
   }
 
-  const handleSave = (e) => {
-    e.preventDefault();
+  const handleSave = () => {
     setIsSaveModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const closeErrorModal = () => {
+    setIsErrorModal(false);
   };
 
   const handleCancel = () => {
@@ -142,6 +159,30 @@ function CmsTalentForm() {
     setDeleteMessage("Yakin untuk menghapus sekolah?");
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setTalentForm({
+        ...talentForm,
+        gambar_alur_acara: file,
+      });
+      // setSelectedFileName(file.name);
+      setImagePreviewUrl(URL.createObjectURL(file));
+    }
+  };
+
+  const handleFileChangeTimeline = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setTalentForm({
+        ...talentForm,
+        gambar_timeline: file,
+      });
+      // setSelectedFileName(file.name);
+      setImagePreviewUrlTimeline(URL.createObjectURL(file));
+    }
+  };
+
   return (
     <>
       <div className="bg-background flex flex-col pt-12 items-center self-stretch">
@@ -183,35 +224,6 @@ function CmsTalentForm() {
                     />
                   </form>
                 </div>
-                {/* <div className="bg-neutral-white rounded-xl border-2 border-gray-400 px-6 pt-7 pb-4">
-                  <div className="border-2 border-dashed flex justify-center items-center border-gray-400 rounded-xl h-60">
-                    <div className="">
-                      <div className="flex justify-center">
-                        <img className=" w-7 mb-4" src={File} alt="" />
-                      </div>
-                      <p className="paragraph text-center">Drag & Drop here</p>
-                      <p className="paragraph text-center">or</p>
-                      <div className="flex relative justify-center">
-                        <h4 className=" font-bold text-orange-400 text-base absolute">
-                          Browse
-                        </h4>
-                        <input
-                          className="ml-80 opacity-0 absolute"
-                          type="file"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="my-4 bg-primary-1 hover:bg-primary-2 flex justify-center rounded-xl">
-                    <button className="bg-primary-1 hover:bg-primary-2 flex justify-center gap-2 py-4">
-                      <p className=" text-white font-bold">Upload File</p>
-                      <img className=" w-6 -rotate-90" src={Arrow} alt="" />
-                    </button>
-                  </div>
-                  <div className="flex justify-center pb-3">
-                    <h4 className=" text-base">(File PDF)</h4>
-                  </div>
-                </div> */}
               </div>
 
               <div className=" alur-acara mt-6">
@@ -230,35 +242,36 @@ function CmsTalentForm() {
                 <div className="bg-neutral-white rounded-xl border-2 border-gray-400 px-6 pt-7 pb-4">
                   <div className="border-2 border-dashed flex justify-center items-center border-gray-400 rounded-xl h-60">
                     <div className="">
-                      <div className="flex justify-center">
-                        <img className=" w-7 mb-4" src={File} alt="" />
-                      </div>
-                      <p className="paragraph text-center">Drag & Drop here</p>
-                      <p className="paragraph text-center">or</p>
-                      <div className="flex relative justify-center">
-                        <h4 className=" font-bold text-orange-400 text-base absolute">
-                          Browse
-                        </h4>
-                        <input
-                          className="ml-80 opacity-0 absolute"
-                          id="image_heading"
-                          accept="image/*"
-                          onChange={(e) =>
-                            setTalentForm({
-                              ...talentForm,
-                              gambar_alur_acara: e.target.files[0],
-                            })
-                          }
-                          type="file"
-                        />
-                      </div>
+                      {imagePreviewUrl && (
+                        <div className="flex justify-center  ">
+                          <img
+                            src={imagePreviewUrl}
+                            alt="Image Preview"
+                            className="rounded-xl border-2 border-gray-400"
+                            style={{ maxWidth: "100%", maxHeight: "220px" }}
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <div className="my-4 bg-primary-1 hover:bg-primary-2 flex justify-center rounded-xl">
-                    <button className="bg-primary-1 hover:bg-primary-2 flex justify-center gap-2 py-4">
-                      <p className=" text-white font-bold">Upload File</p>
-                      <img className=" w-6 -rotate-90" src={Arrow} alt="" />
-                    </button>
+                  <div className="my-4 bg-primary-1 cursor-pointer hover:bg-primary-2 flex justify-center rounded-xl items-center">
+                    <input
+                      type="file"
+                      id="image_heading"
+                      accept="image/*"
+                      onChange={handleFileChange}
+                      className="cursor-pointer z-10 opacity-0 ml-80 rounded-xl flex justify-center gap-2 py-4"
+                    />
+                    <div className="absolute cursor-pointer flex gap-2 items-center ">
+                      <p className=" cursor-pointer text-white font-bold">
+                        Upload File
+                      </p>
+                      <img
+                        className=" cursor-pointer w-6 -rotate-90"
+                        src={ArrowLeft}
+                        alt=""
+                      />
+                    </div>
                   </div>
                   <div className="flex justify-center pb-3">
                     <h4 className=" text-base">
@@ -285,35 +298,36 @@ function CmsTalentForm() {
                 <div className="bg-neutral-white rounded-xl border-2 border-gray-400 px-6 pt-7 pb-4">
                   <div className="border-2 border-dashed flex justify-center items-center border-gray-400 rounded-xl h-60">
                     <div className="">
-                      <div className="flex justify-center">
-                        <img className=" w-7 mb-4" src={File} alt="" />
-                      </div>
-                      <p className="paragraph text-center">Drag & Drop here</p>
-                      <p className="paragraph text-center">or</p>
-                      <div className="flex relative justify-center">
-                        <h4 className=" font-bold cursor-pointer text-orange-400 text-base absolute">
-                          Browse
-                        </h4>
-                        <input
-                          className="ml-80 cursor-pointer opacity-0 absolute"
-                          id="image_heading"
-                          accept="image/*"
-                          onChange={(e) =>
-                            setTalentForm({
-                              ...talentForm,
-                              gambar_timeline: e.target.files[0],
-                            })
-                          }
-                          type="file"
-                        />
-                      </div>
+                      {imagePreviewUrlTimeline && (
+                        <div className="flex justify-center  ">
+                          <img
+                            src={imagePreviewUrlTimeline}
+                            alt="Image Preview"
+                            className="rounded-xl border-2 border-gray-400"
+                            style={{ maxWidth: "100%", maxHeight: "220px" }}
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <div className="my-4 bg-primary-1 hover:bg-primary-2 flex justify-center rounded-xl">
-                    <button className="bg-primary-1 hover:bg-primary-2 flex justify-center gap-2 py-4">
-                      <p className=" text-white font-bold">Upload File</p>
-                      <img className=" w-6 -rotate-90" src={Arrow} alt="" />
-                    </button>
+                  <div className="my-4 bg-primary-1 cursor-pointer hover:bg-primary-2 flex justify-center rounded-xl items-center">
+                    <input
+                      type="file"
+                      id="image_heading"
+                      accept="image/*"
+                      onChange={handleFileChangeTimeline}
+                      className="cursor-pointer z-10 opacity-0 ml-80 rounded-xl flex justify-center gap-2 py-4"
+                    />
+                    <div className="absolute cursor-pointer flex gap-2 items-center ">
+                      <p className=" cursor-pointer text-white font-bold">
+                        Upload File
+                      </p>
+                      <img
+                        className=" cursor-pointer w-6 -rotate-90"
+                        src={ArrowLeft}
+                        alt=""
+                      />
+                    </div>
                   </div>
                   <div className="flex justify-center pb-3">
                     <h4 className=" text-base">
@@ -471,7 +485,6 @@ function CmsTalentForm() {
                       type="submit"
                       onClick={(e) => {
                         e.preventDefault(); // Prevent the default form submission
-                        handleSave(e);
                         handleAddTalentAcademy();
                       }}
                       className="bg-primary-1 w-full py-2 rounded-md hover:bg-primary-2 text-white font-bold"
@@ -546,6 +559,54 @@ function CmsTalentForm() {
               <img className="w-6 h-6" src={Coution} alt="" />
               <h3 className="headline-3 ">Progress is not saved</h3>
             </div>
+          </div>
+        </div>
+      )}
+
+      {isErrorModal && (
+        <div className="fixed inset-0 bg-gray-600 z-10 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white rounded-3xl p-6 relative">
+            <button
+              onClick={closeErrorModal}
+              className="absolute top-6 right-6"
+            >
+              <img className="w-5" src={Xbutton} alt="" />
+            </button>
+            <div className="flex justify-center">
+              <img className="w-40" src={Mascot2} alt="" />
+            </div>
+            <div className="flex gap-1 mt-5 items-center">
+              <img className="w-6 h-6" src={Coution} alt="" />
+              <h3 className="headline-3 ">Upload Failed</h3>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isUploading && (
+        <div className="fixed z-10 inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="flex flex-col items-center bg-white p-5 rounded-xl">
+            <svg
+              className="animate-spin h-8 w-8 text-primary-1 mb-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            <p className="text-primary-1">Uploading article...</p>
           </div>
         </div>
       )}

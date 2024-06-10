@@ -37,6 +37,9 @@ function CmsArticleAddForm() {
   const [articleForm, setArticleForm] = useState({});
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const [selectedFileName, setSelectedFileName] = useState("");
+  const [addStatus, setAddStatus] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const Navigate = useNavigate();
   console.log(categories.id, "==>");
   console.log(articleForm, "==> image");
 
@@ -47,17 +50,21 @@ function CmsArticleAddForm() {
     formData.append("content", articleForm.content);
     formData.append("link", articleForm.link);
     formData.append("category_id", articleForm.category_id);
+    setIsDeleting(true);
     try {
       const responseFromServer = await skyshareApi({
         url: "/article/add",
         method: "post",
         data: formData,
       });
-      console.log(responseFromServer.data.data, "===>");
+      console.log(responseFromServer.data.status, "===>");
+      setAddStatus(responseFromServer.data.status);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsDeleting(false);
+      Navigate("/cms/article");
     }
-    console.log(formData, "data");
   };
 
   const getCategories = async function () {
@@ -146,10 +153,9 @@ function CmsArticleAddForm() {
     setIsModalOpen(false);
   };
 
-  const Navigate = useNavigate();
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
-    Navigate("/cms/article");
+    handleArticleData();
   };
 
   const closeCancelModal = () => {
@@ -347,7 +353,7 @@ function CmsArticleAddForm() {
                           !isDropdownOpen
                             ? "opacity-0"
                             : "opacity-1 duration-1000"
-                        } mt-32 justify-between flex`}
+                        } mt-20 justify-between flex`}
                       >
                         <button
                           type="button"
@@ -503,7 +509,6 @@ function CmsArticleAddForm() {
                       onClick={(e) => {
                         e.preventDefault(); // Prevent the default form submission
                         handleSave(e);
-                        handleArticleData();
                       }}
                       type="submit"
                       className="bg-primary-1 w-full py-2 rounded-md hover:bg-primary-2 text-white font-bold"
@@ -578,6 +583,34 @@ function CmsArticleAddForm() {
               <img className="w-6 h-6" src={Coution} alt="" />
               <h3 className="headline-3 ">Progress is not saved</h3>
             </div>
+          </div>
+        </div>
+      )}
+
+      {isDeleting && (
+        <div className="fixed z-10 inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="flex flex-col items-center bg-white p-5 rounded-xl">
+            <svg
+              className="animate-spin h-8 w-8 text-primary-1 mb-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            <p className="text-primary-1">Uploading article...</p>
           </div>
         </div>
       )}
