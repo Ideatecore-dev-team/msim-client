@@ -4,18 +4,10 @@ import { Link } from "react-router-dom";
 import "./Hero.css";
 import skyshareApi from "../utilities/skyshareApi";
 import CmsNavCard from "./CmsNavCard";
-import Arrow from "../../public/images/mascot-icons/Arrow - Down 3.png";
-import File from "../../public/images/mascot-icons/Fill 337.png";
 import Book from "../../public/images/mascot-icons/Document.png";
 import Work from "../../public/images/mascot-icons/Work.png";
 import Time from "../../public/images/mascot-icons/Time Circle.png";
-import Edit1 from "../../public/images/mascot-icons/Edit Square.png";
-import Delete from "../../public/images/mascot-icons/Delete.png";
-import Location from "../../public/images/mascot-icons/Location.png";
-import Show from "../../public/images/mascot-icons/Show.png";
-import Close from "../../public/images/mascot-icons/Close Square.png";
 import Ceklist from "../../public/images/mascot-icons/Tick Square.png";
-import Add from "../../public/images/mascot-icons/Plus.png";
 import Chain from "../../public/images/mascot-icons/Link.png";
 import Xbutton from "../../public/images/mascot-icons/Fill 300.png";
 import Mascot1 from "../../public/images/mascot-icons/pose=8.png";
@@ -37,6 +29,7 @@ function CmsMentorForm() {
   const [imagePreviewUrlTimeline, setImagePreviewUrlTimeline] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [responseStatus, setResponseStatus] = useState("");
+  const Navigate = useNavigate();
   console.log(mentorForm, "==> form");
   console.log(responseStatus, "==> status");
 
@@ -77,6 +70,7 @@ function CmsMentorForm() {
   };
   const closeErrorModal = () => {
     setIsErrorModal(false);
+    Navigate("/cms/mentoracademy");
   };
 
   const handleCancel = () => {
@@ -383,6 +377,7 @@ function CmsMentorForm() {
           </div>
         </div>
       )}
+
       {isErrorModal && (
         <div className="fixed inset-0 bg-gray-600 z-10 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white rounded-3xl p-6 relative">

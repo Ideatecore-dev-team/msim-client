@@ -25,9 +25,10 @@ import Mascot from "../../public/images/mascot-icons/pose=2.png";
 import ArrowLeft from "../../public/images/mascot-icons/Arrow - Down 3.png";
 
 function CmsParentsForm() {
-  const [talentForm, setTalentForm] = useState({ school_ids: [] });
+  const [parentsForm, setParentsForm] = useState({});
   const [schools, setSchools] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isErrorModal, setIsErrorModal] = useState(false);
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState(false);
@@ -35,62 +36,37 @@ function CmsParentsForm() {
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const [imagePreviewUrlTimeline, setImagePreviewUrlTimeline] = useState("");
   const [isUploading, setIsUploading] = useState(false);
-  console.log(talentForm, "==> form");
+  const [responseStatus, setResponseStatus] = useState("");
+  const Navigate = useNavigate();
+  console.log(parentsForm, "==> form");
 
   const handleAddTalentAcademy = async function () {
     const formData = new FormData();
-    formData.append("file_booklet", talentForm.file_booklet);
-    formData.append("gambar_alur_acara", talentForm.gambar_alur_acara);
-    formData.append("gambar_timeline", talentForm.gambar_timeline);
-    formData.append("link_cta", talentForm.link_cta);
-    formData.append("school_id", JSON.stringify(talentForm.school_ids));
-    formData.append("link_join_program", talentForm.link_join_program);
+    formData.append("file_booklet", parentsForm.file_booklet);
+    formData.append("gambar_alur_acara", parentsForm.gambar_alur_acara);
+    formData.append("gambar_timeline", parentsForm.gambar_timeline);
+    formData.append("link_cta", parentsForm.link_cta);
+    formData.append("link_join_program", parentsForm.link_join_program);
     setIsUploading(true);
     try {
       const responseFromServer = await skyshareApi({
-        url: "/talent/add",
+        url: "/parent/add",
         method: "post",
         data: formData,
       });
-      console.log(responseFromServer.data.data, "===>");
+      setResponseStatus(responseFromServer.data.status);
     } catch (error) {
       console.log(error);
     } finally {
       setIsUploading(false);
-      setIsSaveModalOpen(true);
+      if (setResponseStatus !== "success") {
+        setIsErrorModal(true);
+      } else {
+        setIsSaveModalOpen(true);
+      }
     }
     console.log(formData, "data");
   };
-
-  useEffect(() => {
-    const getSchool = async function () {
-      try {
-        const response = await skyshareApi.get("/school");
-        setSchools(response.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getSchool();
-  }, []);
-  console.log(schools, "==> school");
-
-  const handleCheckboxChange = (id) => {
-    setTalentForm((prevForm) => {
-      const newSchoolIds = prevForm.school_ids.includes(id)
-        ? prevForm.school_ids.filter((schoolId) => schoolId !== id)
-        : [...prevForm.school_ids, id];
-      return {
-        ...prevForm,
-        school_ids: newSchoolIds,
-      };
-    });
-  };
-
-  const Navigate = useNavigate();
-  function handleNavigate() {
-    Navigate("/cms/talent/editschool");
-  }
 
   const handleSave = () => {
     setIsSaveModalOpen(true);
@@ -100,60 +76,29 @@ function CmsParentsForm() {
     setIsModalOpen(false);
   };
 
+  const closeErrorModal = () => {
+    setIsErrorModal(false);
+    Navigate("/cms/parentsacademy");
+  };
+
   const handleCancel = () => {
     setIsCancelModalOpen(true);
   };
 
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
+    Navigate("/cms/parentsacademy");
   };
 
   const closeCancelModal = () => {
     setIsCancelModalOpen(false);
   };
 
-  const handleDeleteSchoolById = async function () {
-    try {
-      const response = await skyshareApi.delete(`/school/${deleteSchoolById}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  async function confirmDelete() {
-    if (!deleteSchoolById) return;
-    try {
-      await skyshareApi.delete(`/school/${deleteSchoolById}`);
-      setSchools(schools.filter((school) => school.id !== deleteSchoolById));
-    } catch (error) {
-      console.log(error);
-    }
-    setIsModalOpen(false);
-  }
-
-  useEffect(() => {
-    const getSchool = async function () {
-      try {
-        const response = await skyshareApi.get("/school");
-        setSchools(response.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getSchool();
-  }, []);
-  console.log(schools, "==> school");
-
-  const handleDeleteSchool = () => {
-    setIsModalOpen(true);
-    setDeleteMessage("Yakin untuk menghapus sekolah?");
-  };
-
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setTalentForm({
-        ...talentForm,
+      setParentsForm({
+        ...parentsForm,
         gambar_alur_acara: file,
       });
       // setSelectedFileName(file.name);
@@ -164,8 +109,8 @@ function CmsParentsForm() {
   const handleFileChangeTimeline = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setTalentForm({
-        ...talentForm,
+      setParentsForm({
+        ...parentsForm,
         gambar_timeline: file,
       });
       // setSelectedFileName(file.name);
@@ -182,9 +127,9 @@ function CmsParentsForm() {
           </div>
           <div className="w-full">
             <div>
-              <h1 className="headline-1">Talent Academy</h1>
+              <h1 className="headline-1">Parents Academy</h1>
               <p className="paragraph">
-                Kelola secara dinamis page Talent Academy disini.
+                Kelola secara dinamis page Parents Academy disini.
               </p>
             </div>
             <div className="shadow-md bg-neutral-white mt-10 border-2 border-black rounded-xl pb-5 px-3 w-full">
@@ -205,8 +150,8 @@ function CmsParentsForm() {
                       placeholder="https://"
                       type="text"
                       onChange={(e) =>
-                        setTalentForm({
-                          ...talentForm,
+                        setParentsForm({
+                          ...parentsForm,
                           file_booklet: e.target.value,
                         })
                       }
@@ -341,8 +286,8 @@ function CmsParentsForm() {
                     <input
                       placeholder="Example: Join Talent Academy Season 6"
                       onChange={(e) =>
-                        setTalentForm({
-                          ...talentForm,
+                        setParentsForm({
+                          ...parentsForm,
                           link_cta: e.target.value,
                         })
                       }
@@ -360,8 +305,8 @@ function CmsParentsForm() {
                       placeholder="https://"
                       type="text"
                       onChange={(e) =>
-                        setTalentForm({
-                          ...talentForm,
+                        setParentsForm({
+                          ...parentsForm,
                           link_join_program: e.target.value,
                         })
                       }
@@ -457,6 +402,26 @@ function CmsParentsForm() {
             <div className="flex gap-1 mt-5 items-center">
               <img className="w-6 h-6" src={Coution} alt="" />
               <h3 className="headline-3 ">Progress is not saved</h3>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isErrorModal && (
+        <div className="fixed inset-0 bg-gray-600 z-10 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white rounded-3xl p-6 relative">
+            <button
+              onClick={closeErrorModal}
+              className="absolute top-6 right-6"
+            >
+              <img className="w-5" src={Xbutton} alt="" />
+            </button>
+            <div className="flex justify-center">
+              <img className="w-40" src={Mascot2} alt="" />
+            </div>
+            <div className="flex gap-1 mt-5 items-center">
+              <img className="w-6 h-6" src={Coution} alt="" />
+              <h3 className="headline-3 ">Upload Failed</h3>
             </div>
           </div>
         </div>
