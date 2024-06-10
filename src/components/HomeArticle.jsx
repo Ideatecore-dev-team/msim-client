@@ -32,7 +32,9 @@ function HomeArticle() {
   }, []);
   console.log(articles, "===>");
 
-  const sortArticles = [...articles].sort((a, b) => b.id - a.id);
+  const sortArticles = [...articles]
+    .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+    .slice(0, 3);
   const navigate = useNavigate();
 
   const settings = {

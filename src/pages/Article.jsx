@@ -20,7 +20,7 @@ function Article() {
 
   return (
     <>
-      <div className="home">
+      <div className="article-section">
         <ArticleHero />
         <ArticleList articles={article} />
       </div>
