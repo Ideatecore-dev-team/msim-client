@@ -30,6 +30,7 @@ import CmsArticleDashboard from "./pages/CmsArticleDashboard";
 import NotFoundPage from "./pages/NotFoundPage";
 import CmsArticleEdit from "./pages/CmsArticleEdit";
 import CmsArticleAdd from "./pages/CmsArticleAdd";
+import CmsTalentAddSchool from "./pages/CmsTalentAddSchool";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
     "/cms/mentoracademy",
     "/cms/parentsacademy",
     "/cms/talent/editschool",
+    "/cms/talent/addschool",
     "/cms/talent/editgroup",
     "/cms/article",
     "/cms/article/edit/:id",
@@ -102,6 +104,10 @@ function App() {
           <Route
             path="/cms/talent/editschool"
             element={<CmsTalentEditSchool />}
+          />
+          <Route
+            path="/cms/talent/addschool"
+            element={<CmsTalentAddSchool />}
           />
           <Route
             path="/cms/talent/editgroup"

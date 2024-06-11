@@ -16,7 +16,11 @@ function AlurAcara({ parents, talent }) {
         </div>
         {timelineImageSrc ? (
           <div className="timeline-img-container">
-            <img className="timeline-img" src={TimeLine} alt="timeline-acara" />
+            <img
+              className="timeline-img"
+              src={timelineImageSrc}
+              alt="timeline-acara"
+            />
           </div>
         ) : (
           <p className="no-image">No timeline image available</p>

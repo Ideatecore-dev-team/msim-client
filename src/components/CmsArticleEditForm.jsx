@@ -200,10 +200,11 @@ function CmsArticleEditForm() {
                   <div className="border-2 flex justify-center items-center mb-4 border-gray-400 rounded-xl h-16">
                     <div className="flex justify-between px-4 w-full">
                       <div className="flex items-center">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 ">
                           <img className="w-7" src={File} alt="" />
                           <p className="paragraph">
-                            {selectedFileName || articleById.image_heading}
+                            {selectedFileName.substring(0, 80) ||
+                              articleById.image_heading?.substring(0, 80)}
                           </p>
                         </div>
                         <input
@@ -360,7 +361,7 @@ function CmsArticleEditForm() {
                                     : category.color,
                                 border:
                                   categoryId === category.id
-                                    ? "2px solid red"
+                                    ? "2px solid #000"
                                     : "none",
 
                                 color:

@@ -33,6 +33,7 @@ function CmsTalentForm() {
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState(false);
   const [deleteSchoolById, setDeleteSchoolById] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const [imagePreviewUrlTimeline, setImagePreviewUrlTimeline] = useState("");
   const [isUploading, setIsUploading] = useState(false);
@@ -47,24 +48,31 @@ function CmsTalentForm() {
     formData.append("link_cta", talentForm.link_cta);
     formData.append("school_id", JSON.stringify(talentForm.school_ids));
     formData.append("link_join_program", talentForm.link_join_program);
+
     setIsUploading(true);
+
     try {
       const responseFromServer = await skyshareApi({
-        url: "/talent/add",
-        method: "post",
+        url: "/talent",
+        method: "PUT",
         data: formData,
       });
-      setResponseStatus(responseFromServer.data.status);
+
+      setResponseStatus(responseFromServer.data.data);
+
+      if (responseFromServer.data.status === "success") {
+        setIsSaveModalOpen(true);
+      } else {
+        setIsErrorModal(true);
+      }
     } catch (error) {
       console.log(error);
+      setIsErrorModal(true);
     } finally {
       setIsUploading(false);
-      if (responseStatus !== "success") {
-        setIsErrorModal(true);
-      } else {
-        setIsSaveModalOpen(true);
-      }
     }
+
+    console.log(responseStatus, "==> res");
     console.log(formData, "data");
   };
 
@@ -114,31 +122,29 @@ function CmsTalentForm() {
     setIsCancelModalOpen(true);
   };
 
-  const closeSaveModal = () => {
+  function closeSaveModal() {
+    setTalentForm({ school_ids: [] });
+    setImagePreviewUrl("");
+    setImagePreviewUrlTimeline("");
     setIsSaveModalOpen(false);
-  };
+  }
 
   const closeCancelModal = () => {
     setIsCancelModalOpen(false);
   };
 
-  const handleDeleteSchoolById = async function () {
-    try {
-      const response = await skyshareApi.delete(`/school/${deleteSchoolById}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   async function confirmDelete() {
+    setIsModalOpen(false);
     if (!deleteSchoolById) return;
+    setIsDeleting(true);
     try {
       await skyshareApi.delete(`/school/${deleteSchoolById}`);
       setSchools(schools.filter((school) => school.id !== deleteSchoolById));
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsDeleting(false);
     }
-    setIsModalOpen(false);
   }
 
   useEffect(() => {
@@ -345,7 +351,10 @@ function CmsTalentForm() {
                     <h4 className="headline-4">Daftar Sekolah</h4>
                   </div>
                   <div className="bg-primary-1 flex items-center rounded-md px-2 py-2">
-                    <Link to="" className="bg-primary-1 hover:bg-primary-2">
+                    <Link
+                      to="/cms/talent/addschool"
+                      className="bg-primary-1 hover:bg-primary-2"
+                    >
                       <img className=" w-6" src={Add} alt="" />
                     </Link>
                   </div>
@@ -382,7 +391,7 @@ function CmsTalentForm() {
                             <td className="pl-1 py-4 text-left text-sm">
                               {school.nama_sekolah}
                             </td>
-                            <td className="pl-6 py-4 text-left flex items-center text-sm gap-1">
+                            <td className="pr-6 py-4 text-left flex items-center text-sm gap-1">
                               <img className=" w-6 h-6" src={Location} alt="" />
                               {school.embed_map.substring(0, 20)}
                             </td>
@@ -543,6 +552,34 @@ function CmsTalentForm() {
         </div>
       )}
 
+      {isDeleting && (
+        <div className="fixed z-10 inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="flex flex-col items-center bg-white p-5 rounded-xl">
+            <svg
+              className="animate-spin h-8 w-8 text-primary-1 mb-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            <p className="text-primary-1">Uploading article...</p>
+          </div>
+        </div>
+      )}
+
       {isCancelModalOpen && (
         <div className="fixed inset-0 z-10 bg-gray-600 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white rounded-3xl p-6 relative">
@@ -565,7 +602,7 @@ function CmsTalentForm() {
 
       {isErrorModal && (
         <div className="fixed inset-0 bg-gray-600 z-10 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white rounded-3xl p-6 relative">
+          <div className="bg-white rounded-3xl p-6 w-80 relative">
             <button
               onClick={closeErrorModal}
               className="absolute top-6 right-6"
@@ -575,9 +612,9 @@ function CmsTalentForm() {
             <div className="flex justify-center">
               <img className="w-40" src={Mascot2} alt="" />
             </div>
-            <div className="flex gap-1 mt-5 items-center">
+            <div className="flex gap-1 mt-5 items-center justify-center">
               <img className="w-6 h-6" src={Coution} alt="" />
-              <h3 className="headline-3 ">Upload Failed</h3>
+              <h3 className="headline-3 text-center ">Upload Article Failed</h3>
             </div>
           </div>
         </div>
