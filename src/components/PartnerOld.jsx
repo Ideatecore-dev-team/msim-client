@@ -35,21 +35,56 @@ function Partner() {
           <h2 className=" font-bold lg:text-3xl xs:text-2xl text-center">
             Our Partner
           </h2>
-          <div className="frame205 flex items-start gap-14">
-                <div className="logoplaceholder flex w-120 h-120 content-center items-center">
+          <div className="partner-list lg:gap-14 xs:gap-4 lg:flex lg:items-start">
+            {isMobile ? (
+              <Slider {...settings}>
+                <div className="partner1 flex content-center items-center">
                   <img
                     src={Partner1}
                     alt="partnerlogo"
-                    className="w-120 h-120 flex-shrink-0"
+                    className="w-full h-auto"
                   />
                 </div>
-                <div className="ogoplaceholder flex w-120 h-120 content-center items-center">
+                <div className="partner2 flex content-center items-center">
                   <img
                     src={Partner2}
                     alt="partnerlogo"
-                    className="w-120 h-120 flex-shrink-0"
+                    className="w-full h-auto"
                   />
                 </div>
+                <div className="partner3 flex content-center items-center">
+                  <img
+                    src={Partner3}
+                    alt="partnerlogo"
+                    className="w-full h-auto"
+                  />
+                </div>
+              </Slider>
+            ) : (
+              <>
+                <div className="partner1">
+                  <img
+                    src={Partner1}
+                    alt="partnerlogo"
+                    className="w-full h-auto"
+                  />
+                </div>
+                <div className="partner2">
+                  <img
+                    src={Partner2}
+                    alt="partnerlogo"
+                    className="w-full h-auto"
+                  />
+                </div>
+                <div className="partner3">
+                  <img
+                    src={Partner3}
+                    alt="partnerlogo"
+                    className="w-full h-auto"
+                  />
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

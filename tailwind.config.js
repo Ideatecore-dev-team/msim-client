@@ -53,13 +53,18 @@ export default {
         "logo-msim": "192px",
         "slash-w": "45.5rem;",
         "slash-sm": "28rem",
+        "120":"120px",
       },
       height: {
         testimoni: "648px",
+        "120":"120px",
       },
       margin: {
         "slash-top": "4.7rem",
       },
+      gap: {
+        "gap10":"10px"
+      }
     },
   },
   plugins: [],
