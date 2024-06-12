@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import skyshareApi from "../utilities/skyshareApi";
 import "./Hero.css";
 import CmsNavCard from "./CmsNavCard";
@@ -11,20 +11,20 @@ import Coution from "../../public/images/mascot-icons/Info Square.png";
 import Mascot from "../../public/images/mascot-icons/pose=2.png";
 import Chain from "../../public/images/mascot-icons/Link.png";
 
-function CmsTalentEditGroupForm() {
+function CmsTalentAddGroupForm() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isErrorModal, setIsErrorModal] = useState(false);
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [groupName, setGroupName] = useState("");
   const [groupLink, setGroupLink] = useState("");
-  const [schoolId, setSchoolId] = useState(1); // Initialized schoolId to 1 as per previous code
+  const [schoolId, setSchoolId] = useState(null);
+  const [schools, setSchools] = useState([]);
 
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
+  console.log(schoolId, "id");
 
-  const testButton = function () {
-    console.log("oke");
-  };
   const handleAddGroups = async (e) => {
     const inputData = {
       name: groupName,
@@ -44,10 +44,31 @@ function CmsTalentEditGroupForm() {
         setIsErrorModal(true);
       }
     } catch (error) {
+      console.log(error);
       setIsErrorModal(true);
     } finally {
       setIsUploading(false);
     }
+  };
+
+  useEffect(() => {
+    const getSchool = async function () {
+      try {
+        const response = await skyshareApi.get("/school");
+        setSchools(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getSchool();
+  }, []);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const closeErrorModal = () => {
+    setIsErrorModal(false);
   };
 
   const handleCancel = () => {
@@ -56,18 +77,13 @@ function CmsTalentEditGroupForm() {
 
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
-    navigate("/cms/talent/addschool");
+    Navigate("/cms/talent/addschool");
   };
 
   const closeCancelModal = () => {
     setIsCancelModalOpen(false);
-    navigate("/cms/talent/addschool");
+    Navigate("/cms/talent/addschool");
   };
-
-  const closeErrorModal = () => {
-    setIsErrorModal(false);
-  };
-
   return (
     <>
       <div className="bg-background flex pb-56 flex-col pt-12 items-center self-stretch">
@@ -110,6 +126,46 @@ function CmsTalentEditGroupForm() {
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                       required
                     />
+
+                    <div className=" mt-4 border-2 border-gray-300 rounded-md">
+                      <table>
+                        <thead className="bg-gray-200">
+                          <tr>
+                            <th className=" pr-8 pl-2 py-3">Add</th>
+                            <th className=" pr-20 pl-2 py-3">No.</th>
+                            <th className="pr-24  w-48 py-3">Nama Sekolah</th>
+                            <th className="pl-28 py-3">Alamat</th>
+                            <th className="pl-44 py-3"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {schools.map((school, index) => {
+                            return (
+                              <tr key={school.id}>
+                                <td className="pl-4">
+                                  <input
+                                    name="pilihan"
+                                    value={school.id}
+                                    onChange={(e) =>
+                                      setSchoolId(e.target.value)
+                                    }
+                                    type="radio"
+                                  />
+                                </td>
+                                <td className="pr-14 py-3 pl-3">{index + 1}</td>
+                                <td className="pr-14 py-3 pl-3">
+                                  {school.nama_sekolah}
+                                </td>
+                                <td className="py-3 pl-28 text-center">
+                                  {school.alamat}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+
                     <div className="mt-4 flex gap-5 justify-end">
                       <button
                         type="button"
@@ -122,8 +178,8 @@ function CmsTalentEditGroupForm() {
                         onClick={(e) => {
                           e.preventDefault();
                           handleAddGroups();
-                          type = "button";
                         }}
+                        type="button"
                         className="bg-primary-1 w-56 py-2 rounded-md hover:bg-primary-2 text-white font-bold"
                       >
                         Simpan
@@ -136,6 +192,33 @@ function CmsTalentEditGroupForm() {
           </div>
         </div>
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white w-2/5 h-80 rounded-3xl p-6">
+            <div className="flex justify-center">
+              <img className=" w-40" src={Mascot} alt="" />
+            </div>
+            <h3 className="mb-5 mt-5 headline-3 text-center">
+              {deleteMessage}
+            </h3>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={closeModal}
+                className="bg-gray-300 px-4 py-2 w-1/2 rounded-lg"
+              >
+                Batal
+              </button>
+              <button
+                onClick={confirmDelete}
+                className="bg-red-500 w-1/2 hover:bg-red-400 text-white px-4 py-2 rounded-lg"
+              >
+                Hapus
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {isSaveModalOpen && (
         <div className="fixed inset-0 bg-gray-600 z-10 bg-opacity-50 flex justify-center items-center">
@@ -225,4 +308,4 @@ function CmsTalentEditGroupForm() {
   );
 }
 
-export default CmsTalentEditGroupForm;
+export default CmsTalentAddGroupForm;

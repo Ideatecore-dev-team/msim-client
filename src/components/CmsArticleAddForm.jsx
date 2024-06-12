@@ -460,6 +460,8 @@ function CmsArticleAddForm() {
                     apiKey="gemyn0v2v0dyeaicn1p0fm8bje0jldn312dh4cz45rnzg68q"
                     init={{
                       menubar: false,
+                      resize: false,
+                      height: 400,
                       plugins:
                         "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
                       toolbar:

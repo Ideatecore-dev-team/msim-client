@@ -43,34 +43,33 @@ function CmsMentorForm() {
     setIsUploading(true);
     try {
       const responseFromServer = await skyshareApi({
-        url: "/mentor/add",
-        method: "post",
+        url: "/mentor",
+        method: "PUT",
         data: formData,
       });
-      setResponseStatus(responseFromServer.data.status);
+      const status = responseFromServer.data.status;
+      setResponseStatus(status);
+      if (status === "success") {
+        setIsSaveModalOpen(true);
+      } else {
+        setIsErrorModal(true);
+      }
     } catch (error) {
       console.log(error);
     } finally {
       setIsUploading(false);
-      if (responseStatus !== "success") {
-        setIsErrorModal(true);
-      } else {
-        setIsSaveModalOpen(true);
-      }
     }
     console.log(formData, "data");
-  };
-
-  const handleSave = () => {
-    setIsSaveModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
   const closeErrorModal = () => {
+    setMentorForm({ school_ids: [] });
+    setImagePreviewUrl("");
+    setImagePreviewUrlTimeline("");
     setIsErrorModal(false);
-    Navigate("/cms/mentoracademy");
   };
 
   const handleCancel = () => {
