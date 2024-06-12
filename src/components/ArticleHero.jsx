@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import mascot1 from "/images/mascot-icons/pose=11.png";
 import SearchbarArticle from "./SearcbarArticle";
 import FilterIcon from "/images/mascot-icons/Filter.png";
 import ArrowUp from "/images/mascot-icons/Arrow - Right 3.png";
 import "./ArticleHero.css";
 
-function ArticleHero() {
+function ArticleHero({ onSearch }) {
   const filterActive = function () {
     const filter = document.querySelector("#filter");
     filter.classList.toggle("scale-y-0");
@@ -102,7 +102,7 @@ function ArticleHero() {
             <p className="paragraph text-neutral-2">
               Cari article menarik untukmu!
             </p>
-            <SearchbarArticle />
+            <SearchbarArticle onSearch={onSearch} />
           </div>
         </div>
       </div>

@@ -1,30 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ArticleHero from "../components/ArticleHero";
 import ArticleList from "../components/ArticleList";
-import skyshareApi from "../utilities/skyshareApi";
 
 function Article() {
-  const [article, setArticle] = useState([]);
-  useEffect(() => {
-    const getAllArticle = async function () {
-      try {
-        const response = await skyshareApi.get("/article");
-        setArticle(response.data.data);
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getAllArticle();
-  }, []);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
 
   return (
-    <>
-      <div className="article-section">
-        <ArticleHero />
-        <ArticleList articles={article} />
-      </div>
-    </>
+    <div className="article-section">
+      <ArticleHero onSearch={handleSearch} />
+      <ArticleList searchTerm={searchTerm} />
+    </div>
   );
 }
 

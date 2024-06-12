@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ArrowOrange from "../../public/images/mascot-icons/arrow-orange.png";
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 import "./ArticleList.css";
+import skyshareApi from "../utilities/skyshareApi";
 
-function ArticleList({ articles }) {
+function ArticleList({ searchTerm }) {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    const getAllArticle = async function () {
+      try {
+        const response = await skyshareApi.get("/article");
+        setArticles(response.data.data);
+        console.log(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getAllArticle();
+  }, []);
+
+  const filterArticlesBySearch = () => {
+    if (!searchTerm) return articles;
+    return articles.filter((article) =>
+      article.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  };
+
+  const filteredArticles = filterArticlesBySearch();
+
   const extractAndLimitContent = (htmlContent, limit) => {
     // Replace <div> with <p>
     htmlContent = htmlContent
@@ -25,7 +50,7 @@ function ArticleList({ articles }) {
       <div className="article-lists-container flex flex-col items-center gap-10">
         <h1 className=" headline-1">Article Terbaru</h1>
         <div className="article-list flex flex-col items-start gap-6">
-          {articles.map((article, index) => (
+          {filteredArticles.map((article, index) => (
             <div
               key={index}
               className="article-card flex bg-white rounded-2xl pr-6 gap-6"
