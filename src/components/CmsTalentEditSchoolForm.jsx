@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import skyshareApi from "../utilities/skyshareApi";
 import "./Hero.css";
 import CmsNavCard from "./CmsNavCard";
@@ -25,7 +25,24 @@ function CmsTalentEditSchoolForm() {
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [responseStatus, setResponseStatus] = useState("");
-  console.log(schoolForm, "data");
+  const [dataGroups, setDataGroups] = useState([]);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [groupById, setGroupById] = useState(null);
+  const [school, setSchool] = useState({});
+  const Navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const getSchoolbyId = async function () {
+      try {
+        const response = await skyshareApi.get(`/school/${id}`);
+        setSchool(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getSchoolbyId();
+  }, []);
 
   const handleEditSchool = async function () {
     const formData = new FormData();
@@ -36,7 +53,7 @@ function CmsTalentEditSchoolForm() {
     setIsUploading(true);
     try {
       const responseFromServer = await skyshareApi({
-        url: "/school/add",
+        url: `/school/${id}`,
         method: "PUT",
         data: formData,
       });
@@ -54,6 +71,33 @@ function CmsTalentEditSchoolForm() {
     }
   };
 
+  const deleteGroup = async function () {
+    setIsModalOpen(false);
+    setIsDeleting(true);
+    try {
+      await skyshareApi.delete(`/group/${groupById}`);
+      setDataGroups(dataGroups.filter((group) => group.id !== groupById));
+    } catch (error) {
+      console.log();
+      setIsErrorModal(true);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  useEffect(() => {
+    const getDataGroups = async function () {
+      try {
+        const response = await skyshareApi.get("/group");
+        setDataGroups(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getDataGroups();
+  }, []);
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -70,10 +114,12 @@ function CmsTalentEditSchoolForm() {
     setSchoolForm({});
     setImagePreviewUrl("");
     setIsSaveModalOpen(false);
+    Navigate("/cms/talentacademy");
   };
 
   const closeCancelModal = () => {
     setIsCancelModalOpen(false);
+    Navigate("/cms/talentacademy");
   };
 
   const handleFileChange = (e) => {
@@ -88,9 +134,8 @@ function CmsTalentEditSchoolForm() {
     }
   };
 
-  const Navigate = useNavigate();
-  function handleNavigate() {
-    Navigate("/cms/talent/editgroup");
+  function handleNavigate(id) {
+    Navigate(`/cms/talent/editgroup/${id}`);
   }
   return (
     <>
@@ -134,6 +179,7 @@ function CmsTalentEditSchoolForm() {
                       type="file"
                       id="image_heading"
                       accept="image/*"
+                      defaultValue={school.gambar_logo_sekolah}
                       onChange={handleFileChange}
                       className="cursor-pointer z-10 opacity-0 ml-80 rounded-xl flex justify-center gap-2 py-4"
                     />
@@ -165,6 +211,7 @@ function CmsTalentEditSchoolForm() {
                     </label>
                     <input
                       placeholder="Masukkan nama sekolah"
+                      defaultValue={school.nama_sekolah}
                       type="text"
                       onChange={(e) =>
                         setSchoolForm({
@@ -181,6 +228,7 @@ function CmsTalentEditSchoolForm() {
                     </label>
                     <input
                       placeholder="Masukkan alamat sekolah"
+                      defaultValue={school.alamat}
                       type="text"
                       onChange={(e) =>
                         setSchoolForm({
@@ -197,6 +245,7 @@ function CmsTalentEditSchoolForm() {
                       </div>
                     </label>
                     <input
+                      defaultValue={school.embed_map}
                       placeholder="Example : https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6197699153263!2d106.71407467533372!3d-6.3135771617850365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e55a184cee4d%3A0xc038909b2253775e!2sSMA%20Negeri%209%20Kota%20Tangerang%20Selatan!5e0!3m2!1sid!2sid!4v1714293197913!5m2!1sid!2sid"
                       type="text"
                       onChange={(e) =>
@@ -217,7 +266,7 @@ function CmsTalentEditSchoolForm() {
                     </div>
                     <div className="bg-primary-1 flex items-center rounded-md px-2 py-2">
                       <Link
-                        to="/cms/talent/editgroup"
+                        to="/cms/talent/addgroup"
                         className="bg-primary-1 hover:bg-primary-2"
                       >
                         <img className=" w-6" src={Add} alt="" />
@@ -235,35 +284,49 @@ function CmsTalentEditSchoolForm() {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td className="pl-3 py-4 text-left font-semibold text-sm">
-                            1.
-                          </td>
-                          <td className="pl-1 py-4 text-left text-sm">
-                            SIT Cordova 1 Pondok Aren
-                          </td>
-                          <td className="pl-10 py-4 text-left">
-                            <div className="flex  items-center text-sm gap-1">
-                              <img className=" w-6 h-6" src={Chain} alt="" />
-                              https://www.instagram.com/grup1/
-                            </div>
-                          </td>
-                          <td className="pl-24 py-4 text-left flex gap-4">
-                            <div className="w-10 flex items-center justify-center rounded-md py-2">
-                              <button
-                                onClick={handleNavigate}
-                                className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center"
-                              >
-                                <img className="w-5" src={Edit1} alt="" />
-                              </button>
-                            </div>
-                            <div className="w-10 flex items-center justify-center rounded-md py-2">
-                              <button className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center">
-                                <img className="w-5" src={Delete} alt="" />
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
+                        {dataGroups.map((dataGroup, index) => {
+                          return (
+                            <tr key={dataGroup.id}>
+                              <td className="pl-3 py-4 text-left font-semibold text-sm">
+                                {index + 1}
+                              </td>
+                              <td className="pl-1 py-4 text-left text-sm">
+                                {dataGroup.name}
+                              </td>
+                              <td className="pl-10 py-4 text-left">
+                                <div className="flex  items-center text-sm gap-1">
+                                  <img
+                                    className=" w-6 h-6"
+                                    src={Chain}
+                                    alt=""
+                                  />
+                                  {dataGroup.link}
+                                </div>
+                              </td>
+                              <td className="pl-24 py-4 text-left flex gap-4">
+                                <div className="w-10 flex items-center justify-center rounded-md py-2">
+                                  <button
+                                    onClick={() => handleNavigate(dataGroup.id)}
+                                    className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center"
+                                  >
+                                    <img className="w-5" src={Edit1} alt="" />
+                                  </button>
+                                </div>
+                                <div className="w-10 flex items-center justify-center rounded-md py-2">
+                                  <button
+                                    onClick={(e) => {
+                                      setGroupById(dataGroup.id);
+                                      setIsModalOpen(true);
+                                    }}
+                                    className="bg-red-500 hover:bg-red-400 px-2 py-2 rounded-lg flex justify-center items-center"
+                                  >
+                                    <img className="w-5" src={Delete} alt="" />
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          );
+                        })}
                       </tbody>
                     </table>
                   </div>
@@ -304,7 +367,7 @@ function CmsTalentEditSchoolForm() {
               <img className=" w-40" src={Mascot} alt="" />
             </div>
             <h3 className="mb-5 mt-5 headline-3 text-center">
-              {deleteMessage}
+              Yakin untuk menghapus Group?
             </h3>
             <div className="flex justify-center gap-4">
               <button
@@ -314,7 +377,7 @@ function CmsTalentEditSchoolForm() {
                 Batal
               </button>
               <button
-                onClick={confirmDelete}
+                onClick={deleteGroup}
                 className="bg-red-500 w-1/2 hover:bg-red-400 text-white px-4 py-2 rounded-lg"
               >
                 Hapus
@@ -404,7 +467,35 @@ function CmsTalentEditSchoolForm() {
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            <p className="text-primary-1">Uploading article...</p>
+            <p className="text-primary-1">Uploading school...</p>
+          </div>
+        </div>
+      )}
+
+      {isDeleting && (
+        <div className="fixed z-10 inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="flex flex-col items-center bg-white p-5 rounded-xl">
+            <svg
+              className="animate-spin h-8 w-8 text-primary-1 mb-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            <p className="text-primary-1">Deleting Group...</p>
           </div>
         </div>
       )}

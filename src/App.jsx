@@ -45,7 +45,7 @@ function App() {
     "/cms/talentacademy",
     "/cms/mentoracademy",
     "/cms/parentsacademy",
-    "/cms/talent/editschool",
+    "/cms/talent/editschool/:id",
     "/cms/talent/addschool",
     "/cms/talent/editgroup/:id",
     "/cms/talent/addgroup",
@@ -104,7 +104,7 @@ function App() {
           <Route path="/cms/article/edit/:id" element={<CmsArticleEdit />} />
           <Route path="/cms/article/add" element={<CmsArticleAdd />} />
           <Route
-            path="/cms/talent/editschool"
+            path="/cms/talent/editschool/:id"
             element={<CmsTalentEditSchool />}
           />
           <Route

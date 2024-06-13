@@ -116,8 +116,8 @@ function CmsTalentForm() {
   };
 
   const Navigate = useNavigate();
-  function handleNavigate() {
-    Navigate("/cms/talent/editschool");
+  function handleNavigate(id) {
+    Navigate(`/cms/talent/editschool/${id}`);
   }
 
   const handleSave = () => {
@@ -419,7 +419,7 @@ function CmsTalentForm() {
                             </td>
                             <td className=" w-8 py-4">
                               {isOpenGroups === school.id && (
-                                <div className=" bg-neutral-white absolute ml-5 -mt-10 rounded-lg border-2 border-gray-300 pr-6 pl-2 py-1">
+                                <div className=" bg-neutral-white absolute ml-4 -mt-10 rounded-lg border-2 border-gray-300  px-2 py-1">
                                   {dataGroups.map((dataGroup) => {
                                     return (
                                       <p
@@ -443,7 +443,7 @@ function CmsTalentForm() {
                             <td className="pl-10 py-4 text-left flex gap-4">
                               <div className="w-10 flex items-center justify-center rounded-md py-2">
                                 <button
-                                  onClick={handleNavigate}
+                                  onClick={() => handleNavigate(school.id)}
                                   className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center"
                                 >
                                   <img className="w-5" src={Edit1} alt="" />
