@@ -35,7 +35,7 @@ const CurrentGroupSkyshare = () => {
                 <div className="card-size1 rounded-xl border-2 mt-4 border-black bg-white">
                   <iframe
                     title="Google Maps"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.7319723526257!2d106.835111275332!3d-6.166636160434512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f516437bc001%3A0x4e45903b12eb3209!2sSMAN%201%20JAKARTA!5e0!3m2!1sid!2sid!4v1717938834325!5m2!1sid!2sid"
+                    src={group.embed_map}
                     width="290"
                     height="140"
                     // style={{ border: "0" }}
@@ -50,7 +50,11 @@ const CurrentGroupSkyshare = () => {
                   <div className=" h-auto border-t-2 -mt-3 relative bg-white border-black rounded-t-xl ">
                     <div className="w-full flex justify-center  ">
                       <div className="w-16 border-2 border-black  rounded-full -mt-8">
-                        <img className="w-16" src={SchoolIcon1} alt="" />
+                        <img
+                          className="w-16 rounded-full"
+                          src={group.gambar_logo_sekolah}
+                          alt=""
+                        />
                       </div>
                     </div>
                     <div className=" flex justify-center">
@@ -63,9 +67,7 @@ const CurrentGroupSkyshare = () => {
                     <div className="flex justify-center">
                       <div className=" w-5/6 mt-4 ">
                         <p className="paragraph text-justify text-slate-500">
-                          PPW9+WGV, Jl. Pd. Jati Raya No.9 03, Jurang Mangu
-                          Barat, Kec. Pd. Aren, Kota Tangerang Selatan, Banten
-                          15223
+                          {group.alamat.substring(0, 80)}
                         </p>
                       </div>
                     </div>

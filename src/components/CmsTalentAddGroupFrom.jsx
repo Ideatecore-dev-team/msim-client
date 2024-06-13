@@ -157,7 +157,7 @@ function CmsTalentAddGroupForm() {
                                   {school.nama_sekolah}
                                 </td>
                                 <td className="py-3 pl-28 text-center">
-                                  {school.alamat}
+                                  {school.alamat.substring(0, 20)}
                                 </td>
                               </tr>
                             );

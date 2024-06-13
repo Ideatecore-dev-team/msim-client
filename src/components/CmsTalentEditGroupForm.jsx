@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import skyshareApi from "../utilities/skyshareApi";
 import "./Hero.css";
 import CmsNavCard from "./CmsNavCard";
@@ -12,20 +12,21 @@ import Mascot from "../../public/images/mascot-icons/pose=2.png";
 import Chain from "../../public/images/mascot-icons/Link.png";
 
 function CmsTalentEditGroupForm() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isErrorModal, setIsErrorModal] = useState(false);
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [groupName, setGroupName] = useState("");
   const [groupLink, setGroupLink] = useState("");
-  const [schoolId, setSchoolId] = useState(1); // Initialized schoolId to 1 as per previous code
+  const [schoolId, setSchoolId] = useState(null);
+  const [dataGroups, setDataGroups] = useState({});
+  const [schools, setSchools] = useState([]);
+  const { id } = useParams();
 
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
 
-  const testButton = function () {
-    console.log("oke");
-  };
-  const handleAddGroups = async (e) => {
+  const handleEditGroups = async (e) => {
     const inputData = {
       name: groupName,
       link: groupLink,
@@ -34,8 +35,8 @@ function CmsTalentEditGroupForm() {
     setIsUploading(true);
     try {
       const response = await skyshareApi({
-        url: "/group/add",
-        method: "POST",
+        url: `/group/${id}`,
+        method: "PUT",
         data: inputData,
       });
       if (response.data.status === "success") {
@@ -44,10 +45,44 @@ function CmsTalentEditGroupForm() {
         setIsErrorModal(true);
       }
     } catch (error) {
+      console.log(error);
       setIsErrorModal(true);
     } finally {
       setIsUploading(false);
     }
+  };
+
+  useEffect(() => {
+    const getDataGroups = async function () {
+      try {
+        const response = await skyshareApi.get(`/group/${id}`);
+        setDataGroups(response.data.data);
+      } catch (error) {
+        onsole.log(error);
+      }
+    };
+
+    getDataGroups();
+  }, []);
+
+  useEffect(() => {
+    const getSchool = async function () {
+      try {
+        const response = await skyshareApi.get("/school");
+        setSchools(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getSchool();
+  }, []);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const closeErrorModal = () => {
+    setIsErrorModal(false);
   };
 
   const handleCancel = () => {
@@ -56,18 +91,13 @@ function CmsTalentEditGroupForm() {
 
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
-    navigate("/cms/talent/addschool");
+    Navigate("/cms/talent/addschool");
   };
 
   const closeCancelModal = () => {
     setIsCancelModalOpen(false);
-    navigate("/cms/talent/addschool");
+    Navigate("/cms/talent/addschool");
   };
-
-  const closeErrorModal = () => {
-    setIsErrorModal(false);
-  };
-
   return (
     <>
       <div className="bg-background flex pb-56 flex-col pt-12 items-center self-stretch">
@@ -78,18 +108,19 @@ function CmsTalentEditGroupForm() {
           <div className="w-full">
             <div>
               <div className="flex items-center gap-4">
-                <h1 className="headline-1">Add Group</h1>
+                <h1 className="headline-1">Edit Group</h1>
               </div>
               <p className="paragraph">Masukkan data pada field yang tertera</p>
             </div>
             <div className="shadow-md bg-neutral-white mt-10 border-2 border-black rounded-xl pb-5 px-3 w-full">
               <div className="join-button mt-6">
                 <div className="bg-neutral-white p-4 gap-4 flex items-center">
-                  <form className="w-full" onSubmit={handleAddGroups}>
+                  <form className="w-full" onSubmit={handleEditGroups}>
                     <label className="block font-bold mb-1" htmlFor="cta">
                       Nama Grup <span className="text-red-500">*</span>
                     </label>
                     <input
+                      defaultValue={dataGroups.name}
                       onChange={(e) => setGroupName(e.target.value)}
                       placeholder="Masukkan nama grup"
                       type="text"
@@ -104,12 +135,53 @@ function CmsTalentEditGroupForm() {
                       </div>
                     </label>
                     <input
+                      defaultValue={dataGroups.link}
                       onChange={(e) => setGroupLink(e.target.value)}
                       placeholder="https://"
                       type="text"
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                       required
                     />
+
+                    <div className=" mt-4 border-2 border-gray-300 rounded-md">
+                      <table>
+                        <thead className="bg-gray-200">
+                          <tr>
+                            <th className=" pr-8 pl-2 py-3">Add</th>
+                            <th className=" pr-20 pl-2 py-3">No.</th>
+                            <th className="pr-24  w-48 py-3">Nama Sekolah</th>
+                            <th className="pl-28 py-3">Alamat</th>
+                            <th className="pl-44 py-3"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {schools.map((school, index) => {
+                            return (
+                              <tr key={school.id}>
+                                <td className="pl-4">
+                                  <input
+                                    name="pilihan"
+                                    value={school.id}
+                                    onChange={(e) =>
+                                      setSchoolId(e.target.value)
+                                    }
+                                    type="radio"
+                                  />
+                                </td>
+                                <td className="pr-14 py-3 pl-3">{index + 1}</td>
+                                <td className="pr-14 py-3 pl-3">
+                                  {school.nama_sekolah}
+                                </td>
+                                <td className="py-3 pl-28 text-center">
+                                  {school.alamat.substring(0, 20)}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+
                     <div className="mt-4 flex gap-5 justify-end">
                       <button
                         type="button"
@@ -121,9 +193,9 @@ function CmsTalentEditGroupForm() {
                       <button
                         onClick={(e) => {
                           e.preventDefault();
-                          handleAddGroups();
-                          type = "button";
+                          handleEditGroups();
                         }}
+                        type="button"
                         className="bg-primary-1 w-56 py-2 rounded-md hover:bg-primary-2 text-white font-bold"
                       >
                         Simpan
@@ -136,6 +208,33 @@ function CmsTalentEditGroupForm() {
           </div>
         </div>
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white w-2/5 h-80 rounded-3xl p-6">
+            <div className="flex justify-center">
+              <img className=" w-40" src={Mascot} alt="" />
+            </div>
+            <h3 className="mb-5 mt-5 headline-3 text-center">
+              {deleteMessage}
+            </h3>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={closeModal}
+                className="bg-gray-300 px-4 py-2 w-1/2 rounded-lg"
+              >
+                Batal
+              </button>
+              <button
+                onClick={confirmDelete}
+                className="bg-red-500 w-1/2 hover:bg-red-400 text-white px-4 py-2 rounded-lg"
+              >
+                Hapus
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {isSaveModalOpen && (
         <div className="fixed inset-0 bg-gray-600 z-10 bg-opacity-50 flex justify-center items-center">
@@ -188,7 +287,7 @@ function CmsTalentEditGroupForm() {
             </div>
             <div className="flex gap-1 mt-5 items-center">
               <img className="w-6 h-6" src={Coution} alt="" />
-              <h3 className="headline-3 ">Upload Failed</h3>
+              <h3 className="headline-3 ">Edit Failed</h3>
             </div>
           </div>
         </div>

@@ -121,8 +121,8 @@ function CmsTalentAddSchoolForm() {
     }
   };
 
-  function handleNavigate() {
-    Navigate("/cms/talent/editgroup");
+  function handleNavigate(id) {
+    Navigate(`/cms/talent/editgroup/${id}`);
   }
   return (
     <>
@@ -289,7 +289,7 @@ function CmsTalentAddSchoolForm() {
                               <td className="pl-24 py-4 text-left flex gap-4">
                                 <div className="w-10 flex items-center justify-center rounded-md py-2">
                                   <button
-                                    onClick={handleNavigate}
+                                    onClick={() => handleNavigate(dataGroup.id)}
                                     className="bg-primary-1 hover:bg-primary-2 px-2 py-2 rounded-lg flex justify-center items-center"
                                   >
                                     <img className="w-5" src={Edit1} alt="" />

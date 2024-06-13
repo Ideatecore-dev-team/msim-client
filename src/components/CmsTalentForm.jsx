@@ -203,9 +203,9 @@ function CmsTalentForm() {
     }
   };
 
-  function handleGroupsOpen() {
+  function handleGroupsOpen(id) {
     if (!isOpenGroups) {
-      setIsOpenGroups(true);
+      setIsOpenGroups(isOpenGroups === id ? null : id);
     } else {
       setIsOpenGroups(false);
     }
@@ -418,8 +418,8 @@ function CmsTalentForm() {
                               {school.embed_map.substring(0, 20)}
                             </td>
                             <td className=" w-8 py-4">
-                              {isOpenGroups && (
-                                <div className=" bg-neutral-white absolute ml-5 -mt-16 rounded-lg border-2 border-gray-300 pr-6 pl-2 py-1">
+                              {isOpenGroups === school.id && (
+                                <div className=" bg-neutral-white absolute ml-5 -mt-10 rounded-lg border-2 border-gray-300 pr-6 pl-2 py-1">
                                   {dataGroups.map((dataGroup) => {
                                     return (
                                       <p
@@ -433,7 +433,7 @@ function CmsTalentForm() {
                                 </div>
                               )}
                               <button
-                                onClick={handleGroupsOpen}
+                                onClick={() => handleGroupsOpen(school.id)}
                                 className="border-2 border-gray-300 ml-4 rounded-full px-2  flex py-1.5 gap-2 items-center justify-center "
                               >
                                 <img className=" w-6 h-6" src={Show} alt="" />

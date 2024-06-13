@@ -31,7 +31,7 @@ function Skyshare() {
         <BenefitSkyshare />
         <AlurAcara talent={talent} />
         <TimelineSkyshare talent={talent} />
-        {/* <CurrentGroupTalent /> */}
+        <CurrentGroupTalent />
         <AllActivitiesSkyShare />
       </div>
     </>
