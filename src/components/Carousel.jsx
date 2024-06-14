@@ -16,7 +16,7 @@ function Carousel() {
     slidesToShow: isMobile ? 1.3 : 2.1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1500,
+    autoplaySpeed: 4500,
     arrows: false,
     draggable: false,
     pauseOnHover: false,
