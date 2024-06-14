@@ -30,16 +30,24 @@ function CmsArticleEditForm() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const [isErrorModal, setIsErrorModal] = useState(false);
+  const [isCategorySelected, setIsCategorySelected] = useState(false);
+  const [isCategoryNoSelected, setIsCategoryNoSelected] = useState(true);
   const [deleteMessage, setDeleteMessage] = useState(false);
   const [categories, setCategories] = useState([]);
   const [articleById, setArticleById] = useState({});
-  const [articleForm, setArticleForm] = useState({});
   const [categoryId, setCategoryId] = useState("");
+  const [articleForm, setArticleForm] = useState({});
   const [selectedFileName, setSelectedFileName] = useState("");
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState({});
+  const [idCategory, setIdCategory] = useState(null);
+  const { selectedCategoryById, setSelectedCategoryById } = useState({});
   const { id } = useParams();
-  console.log(categories.id, "==>");
-  console.log(articleForm, "==> image");
+
+  console.log(idCategory, " ===>");
+  console.log(selectedCategoryById);
 
   const handleArticleData = async function () {
     const formData = new FormData();
@@ -48,13 +56,32 @@ function CmsArticleEditForm() {
     formData.append("content", articleForm.content);
     formData.append("link", articleForm.link);
     formData.append("category_id", articleForm.category_id);
+    setIsUploading(true);
     try {
       const responseFromServer = await skyshareApi({
         url: `/article/${id}`,
         method: "put",
         data: formData,
       });
+      if (responseFromServer.data.status === "success") {
+        setIsSaveModalOpen(true);
+      } else {
+        setIsErrorModal(true);
+      }
       console.log(responseFromServer.data.data, "===>");
+    } catch (error) {
+      setIsErrorModal(true);
+      console.log(error);
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const getCategoryByid = async function (id) {
+    try {
+      const response = await skyshareApi.get(`category/${id}`);
+      // console.log(response.data, "==> res");
+      setSelectedCategory(response.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -72,23 +99,33 @@ function CmsArticleEditForm() {
   }, []);
 
   useEffect(() => {
-    const getDataArticle = async function () {
+    const getDataArticle = async () => {
       try {
         const getDataFromServer = await skyshareApi.get(`/article/${id}`);
         const article = getDataFromServer.data.data;
         setArticleById(article);
-        setValue(article.content || "");
-        setTitle(article.title || "");
-        setImageHeading(article.image_heading || "");
-        setLink(article.link || "");
-        setCategoryId(article.category_id || "");
+        setArticleForm({
+          ...articleForm,
+          title: article.title,
+          content: article.content,
+          link: article.link,
+          category_id: article.category_id,
+        });
+        setSelectedFileName(article.image_heading || "");
+        setImagePreviewUrl(article.image_heading || "");
+        setIdCategory(articleById.category_id);
+        setIsCategorySelected(true);
+        setIsCategoryNoSelected(false);
+
+        if (article.category_id) {
+          getCategoryByid(article.category_id);
+        }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     getDataArticle();
   }, [id]);
-  console.log(articleById, "==> article");
 
   useEffect(() => {
     setColorInputHexa(colorInputValet);
@@ -113,11 +150,15 @@ function CmsArticleEditForm() {
     if (!isDropdownAddOpen) setIsDropdownOpen(true);
   };
 
-  const handleSave = (e) => {
-    handleArticleData();
-    e.preventDefault();
-    setIsSaveModalOpen(true);
+  const closeErrorModal = () => {
+    setIsErrorModal(false);
   };
+
+  // const handleSave = (e) => {
+  //   handleArticleData();
+  //   e.preventDefault();
+  //   setIsSaveModalOpen(true);
+  // };
 
   const handleCancel = () => {
     setIsCancelModalOpen(true);
@@ -250,32 +291,20 @@ function CmsArticleEditForm() {
               </div>
               <div className="join-button">
                 <div className="bg-neutral-white py-4 gap-4 flex items-center">
-                  <form className="w-full" onSubmit={handleSave}>
+                  <form className="w-full" onSubmit={handleArticleData}>
                     <label className="block font-bold mb-1" htmlFor="title">
                       Judul <span className="text-orange-400">*</span>
                     </label>
                     <input
-                      id="title"
-                      name="title"
+                      initialValue={articleById.title}
+                      value={articleForm.title}
                       onChange={(e) =>
                         setArticleForm({
                           ...articleForm,
                           title: e.target.value,
                         })
                       }
-                      defaultValue={articleById.title}
                       placeholder="Bagaimana Mentorship Membakar Inovasi"
-                      type="text"
-                      className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
-                    />
-                    <label className="block font-bold mt-4 mb-1" htmlFor="cta">
-                      <div className="flex gap-1">
-                        Penulis <span className="text-orange-400">*</span>
-                      </div>
-                    </label>
-                    <input
-                      defaultValue={articleById.admin_name}
-                      placeholder="Muhammad Nusa A."
                       type="text"
                       className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                     />
@@ -295,7 +324,21 @@ function CmsArticleEditForm() {
                     >
                       <div className="mt-3.5 flex justify-between">
                         <div className="flex items-center justify-center">
-                          <p className="text-gray-400">--Pilih kategory--</p>
+                          {isCategorySelected && (
+                            <div
+                              style={{
+                                backgroundColor: `${selectedCategory.color}`,
+                              }}
+                              className=" -mt-1 px-3 py-1 rounded-full bg-slate-400"
+                            >
+                              <p className="font-bold text-white">
+                                {selectedCategory.name}
+                              </p>
+                            </div>
+                          )}
+                          {isCategoryNoSelected && (
+                            <p className="text-gray-400">--Pilih kategory--</p>
+                          )}
                         </div>
                         <div className="flex">
                           <button type="button" onClick={handleDropdownToggle}>
@@ -310,7 +353,7 @@ function CmsArticleEditForm() {
                         </div>
                       </div>
                       <div
-                        className={`mt-2 gap-4 flex-wrap bg-neutral-white absolute w-6/12 ${
+                        className={`mt-2 gap-4 flex-wrap bg-neutral-white absolute w-6/10 pb-4 ${
                           isDropdownOpen && ishidenCategori ? "flex" : "hidden"
                         }`}
                       >
@@ -352,6 +395,10 @@ function CmsArticleEditForm() {
                                   category_id: e.target.value,
                                 });
                                 setCategoryId(category.id);
+                                getCategoryByid(category.id);
+                                setIsCategoryNoSelected(false);
+                                setIsCategorySelected(true);
+                                setIsDropdownOpen(false);
                               }}
                               type="button"
                               style={{
@@ -379,7 +426,7 @@ function CmsArticleEditForm() {
                           !isDropdownOpen
                             ? "opacity-0"
                             : "opacity-1 duration-1000"
-                        } mt-24 justify-between flex`}
+                        } mt-10 justify-between flex`}
                       >
                         <button
                           type="button"
@@ -466,16 +513,6 @@ function CmsArticleEditForm() {
                 </div>
 
                 <div className=" -z-50">
-                  {/* <ReactQuill
-                    style={{
-                      border: "2px solid #e6e6e6",
-                      borderRadius: "10px",
-                    }}
-                    ref={quillRef}
-                    value={value}
-                    onChange={setValue}
-                    modules={modules}
-                  /> */}
                   <Editor
                     style={{ zIndex: -20 }}
                     initialValue={articleById.content}
@@ -533,7 +570,7 @@ function CmsArticleEditForm() {
                   </div>
                   <div className="w-56 py-2 flex">
                     <button
-                      onClick={handleSave}
+                      onClick={handleArticleData}
                       type="submit"
                       className="bg-primary-1 w-full py-2 rounded-md hover:bg-primary-2 text-white font-bold"
                     >
@@ -606,6 +643,54 @@ function CmsArticleEditForm() {
             <div className="flex gap-1 mt-5 items-center">
               <img className="w-6 h-6" src={Coution} alt="" />
               <h3 className="headline-3 ">Progress is not saved</h3>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isUploading && (
+        <div className="fixed z-10 inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="flex flex-col items-center bg-white p-5 rounded-xl">
+            <svg
+              className="animate-spin h-8 w-8 text-primary-1 mb-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            <p className="text-primary-1">Uploading article...</p>
+          </div>
+        </div>
+      )}
+
+      {isErrorModal && (
+        <div className="fixed inset-0 bg-gray-600 z-10 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white rounded-3xl p-6 w-80 relative">
+            <button
+              onClick={closeErrorModal}
+              className="absolute top-6 right-6"
+            >
+              <img className="w-5" src={Xbutton} alt="" />
+            </button>
+            <div className="flex justify-center">
+              <img className="w-40" src={Mascot2} alt="" />
+            </div>
+            <div className="flex gap-1 mt-5 items-center justify-center">
+              <img className="w-6 h-6" src={Coution} alt="" />
+              <h3 className="headline-3 text-center ">Update Article Failed</h3>
             </div>
           </div>
         </div>

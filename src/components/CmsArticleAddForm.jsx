@@ -30,6 +30,8 @@ function CmsArticleAddForm() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [isCategorySelected, setIsCategorySelected] = useState(false);
+  const [isCategoryNoSelected, setIsCategoryNoSelected] = useState(true);
   const [deleteMessage, setDeleteMessage] = useState(false);
   const [categoryId, setCategoryId] = useState("");
   const [categories, setCategories] = useState([]);
@@ -39,6 +41,7 @@ function CmsArticleAddForm() {
   const [selectedFileName, setSelectedFileName] = useState("");
   const [addStatus, setAddStatus] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState({});
   const Navigate = useNavigate();
   console.log(categories.id, "==>");
   console.log(articleForm, "==> image");
@@ -64,6 +67,16 @@ function CmsArticleAddForm() {
     } finally {
       setIsDeleting(false);
       Navigate("/cms/article");
+    }
+  };
+
+  const getCategoryByid = async function (id) {
+    try {
+      const response = await skyshareApi.get(`category/${id}`);
+      // console.log(response.data, "==> res");
+      setSelectedCategory(response.data.data);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -271,7 +284,21 @@ function CmsArticleAddForm() {
                     >
                       <div className="mt-3.5 flex justify-between">
                         <div className="flex items-center justify-center">
-                          <p className="text-gray-400">--Pilih kategory--</p>
+                          {isCategorySelected && (
+                            <div
+                              style={{
+                                backgroundColor: `${selectedCategory.color}`,
+                              }}
+                              className=" -mt-1 px-3 py-1 rounded-full bg-slate-400"
+                            >
+                              <p className="font-bold text-white">
+                                {selectedCategory.name}
+                              </p>
+                            </div>
+                          )}
+                          {isCategoryNoSelected && (
+                            <p className="text-gray-400">--Pilih kategory--</p>
+                          )}
                         </div>
                         <div className="flex">
                           <button type="button" onClick={handleDropdownToggle}>
@@ -326,6 +353,10 @@ function CmsArticleAddForm() {
                                   category_id: e.target.value,
                                 });
                                 setCategoryId(category.id);
+                                getCategoryByid(category.id);
+                                setIsCategorySelected(true);
+                                setIsCategoryNoSelected(false);
+                                setIsDropdownOpen(false);
                               }}
                               type="button"
                               style={{
