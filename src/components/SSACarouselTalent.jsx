@@ -7,14 +7,14 @@ import "./SSACarouselTalent.css";
 
 function SsaCarousel() {
   var settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 1500,
-    arrows: false,
+    arrows: true,
     draggable: true,
     rows: 1,
   };

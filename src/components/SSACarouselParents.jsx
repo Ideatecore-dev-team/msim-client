@@ -7,14 +7,14 @@ import "./SSACarouselParents.css";
 
 function SsaCarousel() {
     var settings = {
-        dots: false,
+        dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 3.7,
         slidesToScroll: 1,
         autoplay: false,
         autoplaySpeed: 150,
-        arrows: false,
+        arrows: true,
         draggable: true,
         rows: 1,
     };
