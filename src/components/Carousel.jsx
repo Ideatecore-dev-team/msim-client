@@ -94,8 +94,8 @@ function Carousel() {
                     Member group of Legacy
                   </p>
                   <p className="paragraph text-left mx-5">
-                    “Setelah mengikuti MSIM Mentoring Consulting terutama
-                    program Skyshare Academy saya merasa memiliki teman yang
+                    “Setelah mengikuti Skyshare Academy yg terutama
+                    program Talent Academy saya merasa memiliki teman yang
                     satu frekuensi. Teman-teman di group bukan hanya menjadi
                     partner untuk saling berbagi cerita namun juga sebagai
                     penjaga keimanan serta kesadaran saya sebagai manusia.”

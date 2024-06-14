@@ -19,7 +19,7 @@ function Testimoni() {
               </h1>
               <p className=" text-center lg:text-left paragraph mt-4">
                 Simakk Yukk apa kata para alumni & orang tua pelajar tentang
-                program dari MSiM!
+                program dari Skyshare Academy!
               </p>
             </div>
           </div>
