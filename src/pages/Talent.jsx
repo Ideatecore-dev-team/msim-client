@@ -11,6 +11,7 @@ import AllActivitiesSkyShare from "../components/AllActivitiesTalent";
 
 function Skyshare() {
   const [talent, setTalent] = useState([]);
+  console.log(talent, "==>");
   useEffect(() => {
     const getDataTalent = async function () {
       try {

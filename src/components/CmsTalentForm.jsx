@@ -40,7 +40,35 @@ function CmsTalentForm() {
   const [isUploading, setIsUploading] = useState(false);
   const [responseStatus, setResponseStatus] = useState("");
   const [dataGroups, setDataGroups] = useState([]);
+  const [dataTalent, setDataTalent] = useState({});
   console.log(talentForm, "==> form");
+  console.log(dataTalent, "==> form");
+
+  useEffect(() => {
+    const getDataArticle = async () => {
+      try {
+        const getDataFromServer = await skyshareApi.get(`/talent`);
+        const talent = getDataFromServer.data.data;
+        setDataTalent(talent);
+        setTalentForm({
+          ...talentForm,
+          file_booklet: talent.file_booklet,
+          link_cta: talent.link_cta,
+          link_join_program: talent.link_join_program,
+          school_id: talent.school_id,
+        });
+        setImagePreviewUrl(talent.gambar_alur_acara || "");
+        setImagePreviewUrlTimeline(talent.gambar_timeline || "");
+
+        if (article.category_id) {
+          getCategoryByid(article.category_id);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getDataArticle();
+  }, []);
 
   const handleAddTalentAcademy = async function () {
     const formData = new FormData();
@@ -140,6 +168,7 @@ function CmsTalentForm() {
     setTalentForm({ school_ids: [] });
     setImagePreviewUrl("");
     setImagePreviewUrlTimeline("");
+    setDataTalent({});
     setIsSaveModalOpen(false);
   }
 
@@ -241,6 +270,7 @@ function CmsTalentForm() {
                     </label>
                     <input
                       placeholder="https://"
+                      defaultValue={dataTalent.file_booklet}
                       type="text"
                       onChange={(e) =>
                         setTalentForm({
@@ -481,6 +511,7 @@ function CmsTalentForm() {
                     </label>
                     <input
                       placeholder="Example: Join Talent Academy Season 6"
+                      defaultValue={dataTalent.link_cta}
                       onChange={(e) =>
                         setTalentForm({
                           ...talentForm,
@@ -500,6 +531,7 @@ function CmsTalentForm() {
                     <input
                       placeholder="https://"
                       type="text"
+                      defaultValue={dataTalent.link_join_program}
                       onChange={(e) =>
                         setTalentForm({
                           ...talentForm,
