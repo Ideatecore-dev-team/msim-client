@@ -64,7 +64,7 @@ function CmsArticleDashboardTable() {
             <div className=" ">
               <h1 className="headline-1">Article</h1>
               <p className="paragraph">
-                Kelola artikel untuk website MSiM disini.
+                Kelola artikel untuk website Skyshare Academy disini.
               </p>
             </div>
             <div className=" shadow-md mt-10 border-2 border-black rounded-xl px-3 bg-neutral-white w-full">
