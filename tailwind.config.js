@@ -54,6 +54,7 @@ export default {
         "slash-w": "45.5rem;",
         "slash-sm": "28rem",
         "120":"120px",
+        "312":"312px",
       },
       height: {
         testimoni: "648px",
@@ -63,7 +64,12 @@ export default {
         "slash-top": "4.7rem",
       },
       gap: {
-        "gap10":"10px"
+        "gap10":"10px",
+        "gap7277": "7.277px"
+      },
+      padding: {
+        "padding106":"106px",
+        "padding170":"170px"
       }
     },
   },
