@@ -29,8 +29,32 @@ function CmsParentsForm() {
   const [imagePreviewUrlTimeline, setImagePreviewUrlTimeline] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [responseStatus, setResponseStatus] = useState("");
+  const [dataParents, setDataParents] = useState({});
   const Navigate = useNavigate();
-  console.log(parentsForm, "==> form");
+
+  useEffect(() => {
+    const getDataParents = async () => {
+      setIsUploading(true);
+      try {
+        const getDataFromServer = await skyshareApi.get(`/parent`);
+        const parents = getDataFromServer.data.data;
+        setDataParents(parents);
+        setParentsForm({
+          ...parentsForm,
+          file_booklet: parents.file_booklet,
+          link_cta: parents.link_cta,
+          link_join_program: parents.link_join_program,
+        });
+        setImagePreviewUrl(parents.gambar_alur_acara || "");
+        setImagePreviewUrlTimeline(parents.gambar_timeline || "");
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsUploading(false);
+      }
+    };
+    getDataParents();
+  }, []);
 
   const handleAddTalentAcademy = async function () {
     const formData = new FormData();
@@ -57,7 +81,6 @@ function CmsParentsForm() {
     } finally {
       setIsUploading(false);
     }
-    console.log(formData, "data");
   };
 
   const closeModal = () => {
@@ -77,6 +100,7 @@ function CmsParentsForm() {
     setParentsForm({});
     setImagePreviewUrl("");
     setImagePreviewUrlTimeline("");
+    setDataParents({});
     setIsSaveModalOpen(false);
   };
 
@@ -138,6 +162,7 @@ function CmsParentsForm() {
                     </label>
                     <input
                       placeholder="https://"
+                      defaultValue={dataParents.file_booklet}
                       type="text"
                       onChange={(e) =>
                         setParentsForm({
@@ -275,6 +300,7 @@ function CmsParentsForm() {
                     </label>
                     <input
                       placeholder="Example: Join Talent Academy Season 6"
+                      defaultValue={dataParents.link_cta}
                       onChange={(e) =>
                         setParentsForm({
                           ...parentsForm,
@@ -294,6 +320,7 @@ function CmsParentsForm() {
                     <input
                       placeholder="https://"
                       type="text"
+                      defaultValue={dataParents.link_join_program}
                       onChange={(e) =>
                         setParentsForm({
                           ...parentsForm,

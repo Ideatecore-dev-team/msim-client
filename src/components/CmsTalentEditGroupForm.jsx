@@ -53,29 +53,32 @@ function CmsTalentEditGroupForm() {
   };
 
   useEffect(() => {
-    const getDataGroups = async function () {
+    const getDataGroup = async () => {
       try {
         const response = await skyshareApi.get(`/group/${id}`);
-        setDataGroups(response.data.data);
-      } catch (error) {
-        onsole.log(error);
-      }
-    };
-
-    getDataGroups();
-  }, []);
-
-  useEffect(() => {
-    const getSchool = async function () {
-      try {
-        const response = await skyshareApi.get("/school");
-        setSchools(response.data.data);
+        const groupData = response.data.data;
+        setDataGroups(groupData);
+        setGroupName(groupData.name);
+        setGroupLink(groupData.link);
+        setSchoolId(groupData.school_id);
       } catch (error) {
         console.log(error);
       }
     };
-    getSchool();
-  }, []);
+    getDataGroup();
+  }, [id]);
+
+  // useEffect(() => {
+  //   const getSchool = async function () {
+  //     try {
+  //       const response = await skyshareApi.get("/school");
+  //       setSchools(response.data.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getSchool();
+  // }, []);
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -143,7 +146,7 @@ function CmsTalentEditGroupForm() {
                       required
                     />
 
-                    <div className=" mt-4 border-2 border-gray-300 rounded-md">
+                    {/* <div className=" mt-4 border-2 border-gray-300 rounded-md">
                       <table>
                         <thead className="bg-gray-200">
                           <tr>
@@ -180,7 +183,7 @@ function CmsTalentEditGroupForm() {
                           })}
                         </tbody>
                       </table>
-                    </div>
+                    </div> */}
 
                     <div className="mt-4 flex gap-5 justify-end">
                       <button

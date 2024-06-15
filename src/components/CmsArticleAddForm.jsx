@@ -32,6 +32,7 @@ function CmsArticleAddForm() {
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [isCategorySelected, setIsCategorySelected] = useState(false);
   const [isCategoryNoSelected, setIsCategoryNoSelected] = useState(true);
+  const [isDeleteFailed, setIsDeleteFailed] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState(false);
   const [categoryId, setCategoryId] = useState("");
   const [categories, setCategories] = useState([]);
@@ -43,8 +44,6 @@ function CmsArticleAddForm() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState({});
   const Navigate = useNavigate();
-  console.log(categories.id, "==>");
-  console.log(articleForm, "==> image");
 
   const handleArticleData = async function () {
     const formData = new FormData();
@@ -60,20 +59,20 @@ function CmsArticleAddForm() {
         method: "post",
         data: formData,
       });
-      console.log(responseFromServer.data.status, "===>");
       setAddStatus(responseFromServer.data.status);
+      if (responseFromServer.data.status === "success") {
+        setIsSaveModalOpen(true);
+      }
     } catch (error) {
       console.log(error);
     } finally {
       setIsDeleting(false);
-      Navigate("/cms/article");
     }
   };
 
   const getCategoryByid = async function (id) {
     try {
       const response = await skyshareApi.get(`category/${id}`);
-      // console.log(response.data, "==> res");
       setSelectedCategory(response.data.data);
     } catch (error) {
       console.log(error);
@@ -91,14 +90,12 @@ function CmsArticleAddForm() {
     getCategories();
   }, []);
 
-  // console.log(categories, "===> categories");
-
   const handleCategoryAdd = async function () {
     const inputDataCategory = {
       name: categoryName,
       color: colorInputHexa,
     };
-    console.log(inputDataCategory, "==> datacategory");
+
     try {
       const response = await skyshareApi({
         url: "/category/add",
@@ -106,7 +103,7 @@ function CmsArticleAddForm() {
         data: inputDataCategory,
       });
       const newCategory = response.data.data;
-      setCategories([...categories, newCategory]); // Update the state with the new category
+      setCategories([...categories, newCategory]);
       setCategoryName("");
       setColorInputHexa("#FFFFFF");
       setColorInputValet("#FFFFFF");
@@ -152,23 +149,30 @@ function CmsArticleAddForm() {
     setIsModalOpen(false);
   };
 
-  const deleteCategory = async function () {
-    try {
-      const response = await skyshareApi.delete(`/category/${categoryId}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const confirmDelete = () => {
-    // setIsModalOpen(true);
-    deleteCategory();
+  async function deleteCategory() {
     setIsModalOpen(false);
-  };
+    if (!categoryId) return;
+
+    const updatedCategories = categories.filter(
+      (category) => category.id !== categoryId
+    );
+    setCategories(updatedCategories);
+
+    setIsDeleting(true);
+    try {
+      await skyshareApi.delete(`/category/${categoryId}`);
+    } catch (error) {
+      setIsDeleteFailed(true);
+      setCategories(categories);
+      console.error(error);
+    } finally {
+      setIsDeleting(false);
+    }
+  }
 
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
-    handleArticleData();
+    Navigate("/cms/article");
   };
 
   const closeCancelModal = () => {
@@ -192,6 +196,10 @@ function CmsArticleAddForm() {
       setImagePreviewUrl(URL.createObjectURL(file));
     }
   };
+
+  function closeDeleteFailedModal() {
+    setIsDeleteFailed(false);
+  }
 
   return (
     <>
@@ -313,7 +321,7 @@ function CmsArticleAddForm() {
                         </div>
                       </div>
                       <div
-                        className={`mt-2 gap-4 flex-wrap bg-neutral-white absolute w-3/6 ${
+                        className={`mt-2 gap-4 flex-wrap pb-10 bg-neutral-white absolute w-3/6 ${
                           isDropdownOpen && ishidenCategori ? "flex" : "hidden"
                         }`}
                       >
@@ -541,7 +549,7 @@ function CmsArticleAddForm() {
                     <button
                       onClick={(e) => {
                         e.preventDefault(); // Prevent the default form submission
-                        handleSave(e);
+                        handleArticleData();
                       }}
                       type="submit"
                       className="bg-primary-1 w-full py-2 rounded-md hover:bg-primary-2 text-white font-bold"
@@ -557,7 +565,7 @@ function CmsArticleAddForm() {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+        <div className="fixed inset-0 z-10 bg-gray-600 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white w-2/5 h-80 rounded-3xl p-6">
             <div className="flex justify-center">
               <img className=" w-40" src={Mascot} alt="" />
@@ -573,7 +581,7 @@ function CmsArticleAddForm() {
                 Batal
               </button>
               <button
-                onClick={confirmDelete}
+                onClick={deleteCategory}
                 className="bg-red-500 w-1/2 hover:bg-red-400 text-white px-4 py-2 rounded-lg"
               >
                 Hapus
@@ -615,6 +623,26 @@ function CmsArticleAddForm() {
             <div className="flex gap-1 mt-5 items-center">
               <img className="w-6 h-6" src={Coution} alt="" />
               <h3 className="headline-3 ">Progress is not saved</h3>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isDeleteFailed && (
+        <div className="fixed inset-0 z-10 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white rounded-3xl p-6 relative">
+            <button
+              onClick={closeDeleteFailedModal}
+              className="absolute top-6 right-6"
+            >
+              <img className="w-5" src={Xbutton} alt="" />
+            </button>
+            <div className="flex justify-center">
+              <img className="w-40" src={Mascot2} alt="" />
+            </div>
+            <div className="flex gap-1 mt-5 items-center">
+              <img className="w-6 h-6" src={Coution} alt="" />
+              <h3 className="headline-3 ">Delete Failed, Category Used</h3>
             </div>
           </div>
         </div>

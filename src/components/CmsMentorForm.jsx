@@ -29,9 +29,32 @@ function CmsMentorForm() {
   const [imagePreviewUrlTimeline, setImagePreviewUrlTimeline] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [responseStatus, setResponseStatus] = useState("");
+  const [dataMentor, setDataMentor] = useState({});
   const Navigate = useNavigate();
-  console.log(mentorForm, "==> form");
-  console.log(responseStatus, "==> status");
+
+  useEffect(() => {
+    const getDataMentor = async () => {
+      setIsUploading(true);
+      try {
+        const getDataFromServer = await skyshareApi.get(`/mentor`);
+        const mentor = getDataFromServer.data.data;
+        setDataMentor(mentor);
+        setMentorForm({
+          ...mentorForm,
+          file_booklet: mentor.file_booklet,
+          link_cta: mentor.link_cta,
+          link_join_program: mentor.link_join_program,
+        });
+        setImagePreviewUrl(mentor.gambar_alur_acara || "");
+        setImagePreviewUrlTimeline(mentor.gambar_timeline || "");
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsUploading(false);
+      }
+    };
+    getDataMentor();
+  }, []);
 
   const handleAddTalentAcademy = async function () {
     const formData = new FormData();
@@ -78,6 +101,9 @@ function CmsMentorForm() {
 
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
+    setImagePreviewUrl("");
+    setImagePreviewUrlTimeline("");
+    setDataMentor({});
   };
 
   const closeCancelModal = () => {
@@ -139,6 +165,7 @@ function CmsMentorForm() {
                     <input
                       placeholder="https://"
                       type="text"
+                      defaultValue={dataMentor.file_booklet}
                       onChange={(e) =>
                         setMentorForm({
                           ...mentorForm,
@@ -275,6 +302,7 @@ function CmsMentorForm() {
                     </label>
                     <input
                       placeholder="Example: Join Talent Academy Season 6"
+                      defaultValue={dataMentor.link_cta}
                       onChange={(e) =>
                         setMentorForm({
                           ...mentorForm,
@@ -294,6 +322,7 @@ function CmsMentorForm() {
                     <input
                       placeholder="https://"
                       type="text"
+                      defaultValue={dataMentor.link_join_program}
                       onChange={(e) =>
                         setMentorForm({
                           ...mentorForm,

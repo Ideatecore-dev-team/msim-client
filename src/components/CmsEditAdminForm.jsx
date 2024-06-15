@@ -12,6 +12,8 @@ import Mascot2 from "../../public/images/mascot-icons/pose=1.png";
 function CmsEditAdminForm() {
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [isErrorModal, setIsErrorModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [adminById, setAdminById] = useState({});
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,28 +31,34 @@ function CmsEditAdminForm() {
   };
 
   const adminEditAkun = async (inputEditAdmin) => {
+    setIsLoading(true);
     try {
       const editDataFromServer = await skyshareApi.put(
         `/admin/admin/${id}`,
         inputEditAdmin
       );
-      console.log(editDataFromServer.data);
+      setIsSaveModalOpen(true);
     } catch (error) {
+      setIsErrorModal(true);
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     const getDataAdmin = async () => {
+      setIsLoading(true);
       try {
         const getDataAdminById = await skyshareApi.get(`/admin/admin/${id}`);
         const adminData = getDataAdminById.data.data[0];
         setAdminById(adminData);
         setName(adminData.name);
         setEmail(adminData.email);
-        // Optionally set password if needed
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     getDataAdmin();
@@ -59,8 +67,11 @@ function CmsEditAdminForm() {
   const handleSave = (e) => {
     e.preventDefault();
     handleData();
-    setIsSaveModalOpen(true);
   };
+
+  function closeErrorModal() {
+    setIsErrorModal(false);
+  }
 
   const handleCancel = () => {
     setIsCancelModalOpen(true);
@@ -97,7 +108,7 @@ function CmsEditAdminForm() {
                   </label>
                   <input
                     placeholder="Masukkan Name"
-                    value={name}
+                    defaultValue={name}
                     onChange={(e) => setName(e.target.value)}
                     type="text"
                     className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
@@ -107,7 +118,7 @@ function CmsEditAdminForm() {
                   </label>
                   <input
                     placeholder="Masukkan Email"
-                    value={email}
+                    defaultValue={email}
                     onChange={(e) => setEmail(e.target.value)}
                     type="text"
                     className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
@@ -120,7 +131,7 @@ function CmsEditAdminForm() {
                   </label>
                   <input
                     placeholder="Masukkan Password"
-                    value={password}
+                    defaultValue={password}
                     onChange={(e) => setPassword(e.target.value)}
                     type="password"
                     className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
@@ -178,6 +189,26 @@ function CmsEditAdminForm() {
         </div>
       )}
 
+      {isErrorModal && (
+        <div className="fixed inset-0 bg-gray-600 z-10 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white rounded-3xl p-6 relative">
+            <button
+              onClick={closeErrorModal}
+              className="absolute top-6 right-6"
+            >
+              <img className="w-5" src={Xbutton} alt="" />
+            </button>
+            <div className="flex justify-center">
+              <img className="w-40" src={Mascot2} alt="" />
+            </div>
+            <div className="flex gap-1 mt-5 items-center">
+              <img className="w-6 h-6" src={Coution} alt="" />
+              <h3 className="headline-3 ">Edit Failed Password Is Riquired</h3>
+            </div>
+          </div>
+        </div>
+      )}
+
       {isCancelModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white rounded-3xl p-6 relative">
@@ -194,6 +225,34 @@ function CmsEditAdminForm() {
               <img className="w-6 h-6" src={Coution} alt="Caution" />
               <h3 className="headline-3">Progress is not saved</h3>
             </div>
+          </div>
+        </div>
+      )}
+
+      {isLoading && (
+        <div className="fixed z-10 inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="flex flex-col items-center bg-white p-5 rounded-xl">
+            <svg
+              className="animate-spin h-8 w-8 text-primary-1 mb-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            <p className="text-primary-1">Uploading article...</p>
           </div>
         </div>
       )}

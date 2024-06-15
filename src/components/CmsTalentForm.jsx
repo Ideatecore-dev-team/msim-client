@@ -41,11 +41,10 @@ function CmsTalentForm() {
   const [responseStatus, setResponseStatus] = useState("");
   const [dataGroups, setDataGroups] = useState([]);
   const [dataTalent, setDataTalent] = useState({});
-  console.log(talentForm, "==> form");
-  console.log(dataTalent, "==> form");
 
   useEffect(() => {
-    const getDataArticle = async () => {
+    const getDataTalent = async () => {
+      setIsUploading(true);
       try {
         const getDataFromServer = await skyshareApi.get(`/talent`);
         const talent = getDataFromServer.data.data;
@@ -59,15 +58,12 @@ function CmsTalentForm() {
         });
         setImagePreviewUrl(talent.gambar_alur_acara || "");
         setImagePreviewUrlTimeline(talent.gambar_timeline || "");
-
-        if (article.category_id) {
-          getCategoryByid(article.category_id);
-        }
       } catch (error) {
         console.error(error);
       }
+      setIsUploading(false);
     };
-    getDataArticle();
+    getDataTalent();
   }, []);
 
   const handleAddTalentAcademy = async function () {
@@ -101,9 +97,6 @@ function CmsTalentForm() {
     } finally {
       setIsUploading(false);
     }
-
-    console.log(responseStatus, "==> res");
-    console.log(formData, "data");
   };
 
   useEffect(() => {
@@ -117,31 +110,27 @@ function CmsTalentForm() {
     };
     getSchool();
   }, []);
-  console.log(schools, "==> school");
 
-  useEffect(() => {
-    const getDataGroups = async function () {
-      try {
-        const response = await skyshareApi.get("/group");
-        setDataGroups(response.data.data);
-      } catch (error) {
-        onsole.log(error);
-      }
-    };
-    getDataGroups();
-  }, []);
-
-  const handleCheckboxChange = (id) => {
-    setTalentForm((prevForm) => {
-      const newSchoolIds = prevForm.school_ids.includes(id)
-        ? prevForm.school_ids.filter((schoolId) => schoolId !== id)
-        : [...prevForm.school_ids, id];
-      return {
-        ...prevForm,
-        school_ids: newSchoolIds,
-      };
-    });
+  const getDataGroupById = async function (id) {
+    try {
+      const response = await skyshareApi.get(`/group/school/${id}`);
+      setDataGroups(response.data.data);
+    } catch (error) {
+      onsole.log(error);
+    }
   };
+
+  // const handleCheckboxChange = (id) => {
+  //   setTalentForm((prevForm) => {
+  //     const newSchoolIds = prevForm.school_ids.includes(id)
+  //       ? prevForm.school_ids.filter((schoolId) => schoolId !== id)
+  //       : [...prevForm.school_ids, id];
+  //     return {
+  //       ...prevForm,
+  //       school_ids: newSchoolIds,
+  //     };
+  //   });
+  // };
 
   const Navigate = useNavigate();
   function handleNavigate(id) {
@@ -201,7 +190,6 @@ function CmsTalentForm() {
     };
     getSchool();
   }, []);
-  console.log(schools, "==> school");
 
   const handleDeleteSchool = () => {
     setIsModalOpen(true);
@@ -428,14 +416,14 @@ function CmsTalentForm() {
                         return (
                           <tr key={school.id}>
                             <td className="mt-3">
-                              <input
+                              {/* <input
                                 value={school.id}
                                 checked={talentForm.school_ids.includes(
                                   school.id
                                 )}
                                 onChange={() => handleCheckboxChange(school.id)}
                                 type="checkbox"
-                              />
+                              /> */}
                             </td>
                             <td className="pl-3 py-4 text-left font-semibold text-sm">
                               {index + 1}
@@ -449,21 +437,31 @@ function CmsTalentForm() {
                             </td>
                             <td className=" w-8 py-4">
                               {isOpenGroups === school.id && (
-                                <div className=" bg-neutral-white absolute ml-4 -mt-10 rounded-lg border-2 border-gray-300  px-2 py-1">
-                                  {dataGroups.map((dataGroup) => {
-                                    return (
-                                      <p
-                                        key={dataGroup.id}
-                                        className="paragraph"
-                                      >
-                                        {dataGroup.name}
-                                      </p>
-                                    );
-                                  })}
+                                <div className=" bg-neutral-white absolute ml-4 mt-11 w-36 origin-bottom rounded-lg border-2 border-gray-300  px-2 py-1">
+                                  {dataGroups && dataGroups.length > 0 ? (
+                                    dataGroups.map((dataGroup) => {
+                                      return (
+                                        <p
+                                          key={dataGroup?.id}
+                                          className="paragraph"
+                                        >
+                                          {dataGroup?.name}
+                                        </p>
+                                      );
+                                    })
+                                  ) : (
+                                    <p className="text-red-500 font-bold">
+                                      Tidak Ada Group
+                                    </p>
+                                  )}
                                 </div>
                               )}
                               <button
-                                onClick={() => handleGroupsOpen(school.id)}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handleGroupsOpen(school.id);
+                                  getDataGroupById(school.id);
+                                }}
                                 className="border-2 border-gray-300 ml-4 rounded-full px-2  flex py-1.5 gap-2 items-center justify-center "
                               >
                                 <img className=" w-6 h-6" src={Show} alt="" />

@@ -16,17 +16,18 @@ function CmsArticleDashboardTable() {
 
   useEffect(() => {
     const getDataArticles = async function () {
+      setIsDeleting(true);
       try {
         const responseFromServer = await skyshareApi.get("/article");
         setDataarticles(responseFromServer.data.data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsDeleting(false);
       }
     };
     getDataArticles();
   }, []);
-
-  console.log(dataArticles);
 
   function closeModal() {
     setIsModalOpen(false);

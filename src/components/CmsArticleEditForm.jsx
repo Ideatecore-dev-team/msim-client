@@ -35,6 +35,7 @@ function CmsArticleEditForm() {
   const [isCategorySelected, setIsCategorySelected] = useState(false);
   const [isCategoryNoSelected, setIsCategoryNoSelected] = useState(true);
   const [deleteMessage, setDeleteMessage] = useState(false);
+  const [isModalOpenDelCategory, setIsModalOpenDelCategory] = useState(false);
   const [categories, setCategories] = useState([]);
   const [articleById, setArticleById] = useState({});
   const [categoryId, setCategoryId] = useState("");
@@ -43,11 +44,9 @@ function CmsArticleEditForm() {
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const [selectedCategory, setSelectedCategory] = useState({});
   const [idCategory, setIdCategory] = useState(null);
+  const [categoryName, setCategoryName] = useState("");
   const { selectedCategoryById, setSelectedCategoryById } = useState({});
   const { id } = useParams();
-
-  console.log(idCategory, " ===>");
-  console.log(selectedCategoryById);
 
   const handleArticleData = async function () {
     const formData = new FormData();
@@ -68,7 +67,6 @@ function CmsArticleEditForm() {
       } else {
         setIsErrorModal(true);
       }
-      console.log(responseFromServer.data.data, "===>");
     } catch (error) {
       setIsErrorModal(true);
       console.log(error);
@@ -87,6 +85,29 @@ function CmsArticleEditForm() {
     }
   };
 
+  const handleCategoryAdd = async function () {
+    console.log("nfj");
+    const inputDataCategory = {
+      name: categoryName,
+      color: colorInputHexa,
+    };
+    try {
+      const response = await skyshareApi({
+        url: "/category/add",
+        method: "POST",
+        data: inputDataCategory,
+      });
+      const newCategory = response.data.data;
+      setCategories([...categories, newCategory]); // Update the state with the new category
+      setCategoryName("");
+      setColorInputHexa("#FFFFFF");
+      setColorInputValet("#FFFFFF");
+      setIsDropdownAddOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getCategories = async function () {
     try {
       const response = await skyshareApi.get("/category");
@@ -97,6 +118,14 @@ function CmsArticleEditForm() {
   useEffect(() => {
     getCategories();
   }, []);
+
+  const deleteCategory = async function () {
+    try {
+      const response = await skyshareApi.delete(`/category/${idCategory}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     const getDataArticle = async () => {
@@ -166,6 +195,7 @@ function CmsArticleEditForm() {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setIsModalOpenDelCategory(false);
   };
 
   const confirmDelete = () => {
@@ -173,6 +203,12 @@ function CmsArticleEditForm() {
     handleDeleteImage();
     setIsModalOpen(false);
   };
+
+  function confirmDeleteCategory() {
+    deleteCategory();
+    setIsModalOpenDelCategory(false);
+  }
+
   const Navigate = useNavigate();
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
@@ -189,7 +225,7 @@ function CmsArticleEditForm() {
   };
 
   const handleDeleteCategory = () => {
-    setIsModalOpen(true);
+    setIsModalOpenDelCategory(true);
     setDeleteMessage("Yakin untuk menghapus category?");
     console.log(deleteMessage);
   };
@@ -352,8 +388,8 @@ function CmsArticleEditForm() {
                           </button>
                         </div>
                       </div>
-                      <div
-                        className={`mt-2 gap-4 flex-wrap bg-neutral-white absolute w-6/10 pb-4 ${
+                      {/* <div
+                        className={`mt-2 gap-4 flex-wrap bg-neutral-white absolute w-1/2 pb-4 ${
                           isDropdownOpen && ishidenCategori ? "flex" : "hidden"
                         }`}
                       >
@@ -375,7 +411,7 @@ function CmsArticleEditForm() {
                             </button>
                           );
                         })}
-                      </div>
+                      </div> */}
                       <div
                         className={`mt-2 gap-4 flex-wrap ${
                           !isDropdownOpen ? "hidden" : "flex"
@@ -436,14 +472,14 @@ function CmsArticleEditForm() {
                           <img className="w-5" src={Plus} alt="" />
                           <p className="text-slate-700">Tambah Kategori</p>
                         </button>
-                        <button
+                        {/* <button
                           onClick={handleHideCategory}
                           type="button"
                           className="flex px-2 py-1 rounded-full bg-neutral-white shadow shadow-slate-400 gap-1 items-center"
                         >
                           <img className="w-5" src={Del} alt="" />
                           <p className="text-slate-700">Hapus Kategori</p>
-                        </button>
+                        </button> */}
                       </div>
                       {isDropdownAddOpen && (
                         <div className="mt-4 duration-1000 bg-background py-2 gap-3 flex px-3 rounded-2xl">
@@ -457,6 +493,7 @@ function CmsArticleEditForm() {
                             </label>
                             <input
                               placeholder="Masukkan nama kategori"
+                              onChange={(e) => setCategoryName(e.target.value)}
                               type="text"
                               className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
                               required
@@ -493,12 +530,13 @@ function CmsArticleEditForm() {
                           </div>
                           <div className=" flex justify-center items-center w-10">
                             <div className="bg-primary-1 flex mt-7 items-center rounded-md px-2 py-2">
-                              <Link
-                                to=""
+                              <button
+                                type="button"
+                                onClick={handleCategoryAdd}
                                 className="bg-primary-1 hover:bg-primary-2"
                               >
                                 <img className=" w-6" src={Add} alt="" />
-                              </Link>
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -585,7 +623,7 @@ function CmsArticleEditForm() {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+        <div className="fixed inset-0 z-50 bg-gray-600 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white w-2/5 h-80 rounded-3xl p-6">
             <div className="flex justify-center">
               <img className=" w-40" src={Mascot} alt="" />
@@ -602,6 +640,32 @@ function CmsArticleEditForm() {
               </button>
               <button
                 onClick={confirmDelete}
+                className="bg-red-500 w-1/2 hover:bg-red-400 text-white px-4 py-2 rounded-lg"
+              >
+                Hapus
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {isModalOpenDelCategory && (
+        <div className="fixed inset-0 z-50 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white w-2/5 h-80 rounded-3xl p-6">
+            <div className="flex justify-center">
+              <img className=" w-40" src={Mascot} alt="" />
+            </div>
+            <h3 className="mb-5 mt-5 headline-3 text-center">
+              {deleteMessage}
+            </h3>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={closeModal}
+                className="bg-gray-300 px-4 py-2 w-1/2 rounded-lg"
+              >
+                Batal
+              </button>
+              <button
+                onClick={confirmDeleteCategory}
                 className="bg-red-500 w-1/2 hover:bg-red-400 text-white px-4 py-2 rounded-lg"
               >
                 Hapus

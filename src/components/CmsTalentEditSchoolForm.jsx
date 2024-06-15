@@ -28,20 +28,28 @@ function CmsTalentEditSchoolForm() {
   const [dataGroups, setDataGroups] = useState([]);
   const [isDeleting, setIsDeleting] = useState(false);
   const [groupById, setGroupById] = useState(null);
-  const [school, setSchool] = useState({});
+  const [dataSchool, setDataSchool] = useState({});
   const Navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
-    const getSchoolbyId = async function () {
+    const getDataSchool = async () => {
       try {
-        const response = await skyshareApi.get(`/school/${id}`);
-        setSchool(response.data.data);
+        const getDataFromServer = await skyshareApi.get(`/school/${id}`);
+        const schools = getDataFromServer.data.data;
+        setDataSchool(schools);
+        setSchoolForm({
+          ...schoolForm,
+          nama_sekolah: schools.nama_sekolah,
+          alamat: schools.alamat,
+          embed_map: schools.embed_map,
+        });
+        setImagePreviewUrl(schools.gambar_logo_sekolah || "");
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
-    getSchoolbyId();
+    getDataSchool();
   }, []);
 
   const handleEditSchool = async function () {
@@ -179,7 +187,7 @@ function CmsTalentEditSchoolForm() {
                       type="file"
                       id="image_heading"
                       accept="image/*"
-                      defaultValue={school.gambar_logo_sekolah}
+                      defaultValue={dataSchool.gambar_logo_sekolah}
                       onChange={handleFileChange}
                       className="cursor-pointer z-10 opacity-0 ml-80 rounded-xl flex justify-center gap-2 py-4"
                     />
@@ -211,7 +219,7 @@ function CmsTalentEditSchoolForm() {
                     </label>
                     <input
                       placeholder="Masukkan nama sekolah"
-                      defaultValue={school.nama_sekolah}
+                      defaultValue={dataSchool.nama_sekolah}
                       type="text"
                       onChange={(e) =>
                         setSchoolForm({
@@ -228,7 +236,7 @@ function CmsTalentEditSchoolForm() {
                     </label>
                     <input
                       placeholder="Masukkan alamat sekolah"
-                      defaultValue={school.alamat}
+                      defaultValue={dataSchool.alamat}
                       type="text"
                       onChange={(e) =>
                         setSchoolForm({
@@ -245,7 +253,7 @@ function CmsTalentEditSchoolForm() {
                       </div>
                     </label>
                     <input
-                      defaultValue={school.embed_map}
+                      defaultValue={dataSchool.embed_map}
                       placeholder="Example : https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6197699153263!2d106.71407467533372!3d-6.3135771617850365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e55a184cee4d%3A0xc038909b2253775e!2sSMA%20Negeri%209%20Kota%20Tangerang%20Selatan!5e0!3m2!1sid!2sid!4v1714293197913!5m2!1sid!2sid"
                       type="text"
                       onChange={(e) =>
