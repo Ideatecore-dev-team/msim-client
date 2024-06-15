@@ -28,3 +28,7 @@
 .filter-pop {
   width: 400px;
 }
+
+.filter-drop {
+  border-bottom: 1px solid #99a0a8;
+}

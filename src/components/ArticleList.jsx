@@ -1,34 +1,45 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import React from "react";
 import ArrowOrange from "../../public/images/mascot-icons/arrow-orange.png";
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 import "./ArticleList.css";
-import skyshareApi from "../utilities/skyshareApi";
 
-function ArticleList({ searchTerm }) {
-  const [articles, setArticles] = useState([]);
+function ArticleList({ searchTerm, articles, sortOrder, selectedCategories }) {
+  const filterAndSortArticles = () => {
+    let filteredArticles = articles;
 
-  useEffect(() => {
-    const getAllArticle = async function () {
-      try {
-        const response = await skyshareApi.get("/article");
-        setArticles(response.data.data);
-        console.log(response.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getAllArticle();
-  }, []);
+    // Filter berdasarkan kategori
+    if (selectedCategories) {
+      filteredArticles = filteredArticles.filter(
+        (article) => article.category_name === selectedCategories.category_name
+      );
+    }
 
-  const filterArticlesBySearch = () => {
-    if (!searchTerm) return articles;
-    return articles.filter((article) =>
-      article.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    // Filter berdasarkan kata kunci pencarian
+    if (searchTerm) {
+      filteredArticles = filteredArticles.filter((article) =>
+        article.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    // Urutkan artikel berdasarkan sortOrder
+    if (sortOrder) {
+      filteredArticles.sort((a, b) => {
+        const dateA = new Date(a.updatedAt);
+        const dateB = new Date(b.updatedAt);
+        if (sortOrder === "newest") {
+          return dateB - dateA;
+        } else {
+          return dateA - dateB;
+        }
+      });
+    }
+
+    return filteredArticles;
   };
 
-  const filteredArticles = filterArticlesBySearch();
+  const filteredArticles = filterAndSortArticles();
 
   const extractAndLimitContent = (htmlContent, limit) => {
     // Replace <div> with <p>
@@ -68,7 +79,8 @@ function ArticleList({ searchTerm }) {
                 </div>
                 <div className=" article-cta flex items-center justify-center gap-4">
                   <p
-                    className={`px-3 py-1 text-white bg-${article.category_color}-300 w-28 text-center rounded-full`}
+                    style={{ backgroundColor: `${article.category_color}` }}
+                    className={`px-3 py-1 text-white w-28 text-center rounded-full`}
                   >
                     {article.category_name}
                   </p>

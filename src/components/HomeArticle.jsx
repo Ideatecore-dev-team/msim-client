@@ -37,6 +37,21 @@ function HomeArticle() {
     .slice(0, 3);
   const navigate = useNavigate();
 
+  const extractAndLimitContent = (htmlContent, limit) => {
+    // Replace <div> with <p>
+    htmlContent = htmlContent
+      .replace(/<div>/g, "<p>")
+      .replace(/<\/div>/g, "</p>");
+
+    const firstParagraphMatch = htmlContent.match(/<p>(.*?)<\/p>/s);
+    if (!firstParagraphMatch) return "";
+    let firstParagraph = firstParagraphMatch[1]; // Extract inner content of the first paragraph
+    if (firstParagraph.length > limit) {
+      firstParagraph = firstParagraph.substring(0, limit) + "...";
+    }
+    return `<p>${firstParagraph}</p>`; // Return as a paragraph
+  };
+
   const settings = {
     dots: false,
     arrows: false,

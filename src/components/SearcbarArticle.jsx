@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SearchIcon from "/images/mascot-icons/search.png";
 
+// eslint-disable-next-line react/prop-types
 function SearchbarArticle({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
 
