@@ -13,6 +13,7 @@ function ArticleHero({ onSearch, articles }) {
   // eslint-disable-next-line no-unused-vars
   const [sortOrder, setSortOrder] = useState("newest");
   const [searchTerm, setSearchTerm] = useState("");
+  const [isMouseOverDropdown, setIsMouseOverDropdown] = useState(true);
 
   const selectCategories = (category) => {
     setSelectedCategories(category);
@@ -45,19 +46,9 @@ function ArticleHero({ onSearch, articles }) {
     filter.classList.toggle("scale-y-100");
   };
 
-  const mouseHover = () => {
-    if (selectedCategories === null) {
+  const showCategory = () => {
+    if (!selectedCategories) {
       setIsCategoryDropdownVisible(true);
-    } else {
-      setIsCategoryDropdownVisible(false);
-    }
-  };
-
-  const hideCategory = () => {
-    if (selectedCategories === null) {
-      setIsCategoryDropdownVisible(true);
-    } else {
-      setIsCategoryDropdownVisible(false);
     }
   };
 
@@ -95,8 +86,7 @@ function ArticleHero({ onSearch, articles }) {
               </div>
               <div
                 className="filter-drop py-4 flex justify-between durasi items-center self-stretch"
-                onMouseEnter={mouseHover}
-                onMouseLeave={hideCategory}
+                onMouseEnter={showCategory}
               >
                 {selectedCategories ? (
                   <div
@@ -169,8 +159,13 @@ function ArticleHero({ onSearch, articles }) {
                 <div
                   className="category-drop duration-500 flex gap-4 flex-wrap items-start"
                   id="category"
-                  onMouseEnter={mouseHover}
-                  onMouseLeave={hideCategory}
+                  onMouseEnter={() => {
+                    setIsMouseOverDropdown(true);
+                  }}
+                  onMouseLeave={() => {
+                    setIsMouseOverDropdown(false);
+                    setIsCategoryDropdownVisible(false);
+                  }}
                 >
                   {categories.map((category) => {
                     return (
@@ -196,7 +191,7 @@ function ArticleHero({ onSearch, articles }) {
                       className={`paragraph px-4 py-1 rounded-full border-2 ${
                         sortOrder === "newest"
                           ? "text-black border-black"
-                          : " text-neutral-3 border-l-neutral-5"
+                          : " text-neutral-5 border-l-neutral-5"
                       }`}
                     >
                       Terbaru
@@ -207,7 +202,7 @@ function ArticleHero({ onSearch, articles }) {
                       className={`paragraph px-4 py-1 rounded-full border-2 ${
                         sortOrder === "oldest"
                           ? "text-black border-black"
-                          : " text-neutral-3 border-l-neutral-5"
+                          : " text-neutral-5 border-l-neutral-5"
                       }`}
                     >
                       Terlama

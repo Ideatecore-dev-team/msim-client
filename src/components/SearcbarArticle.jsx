@@ -25,7 +25,7 @@ function SearchbarArticle({ onSearch }) {
         id="article-search"
         autoFocus={true}
         placeholder="Masukkan nama article"
-        className="w-full"
+        className="w-full outline-none"
         value={searchTerm}
         onChange={handleChange}
       />
