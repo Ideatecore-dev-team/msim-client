@@ -19,16 +19,38 @@
   top: 103px;
 }
 
-.filter-button {
-  padding: 18px;
-  width: 60px;
-  height: 60px;
-}
-
 .filter-pop {
   width: 400px;
 }
 
 .filter-drop {
   border-bottom: 1px solid #99a0a8;
+}
+
+@media (max-width: 639px) {
+  .article-hero-container {
+    width: 358.33px;
+    margin-top: 40px;
+    height: 300px;
+  }
+
+  .filter-container {
+    width: 358.33px;
+    height: 40px;
+    right: 0;
+    top: 0px;
+  }
+
+  .filter-pop {
+    width: 358.33px;
+  }
+
+  .article-find {
+    width: 100%;
+  }
+
+  .search-button {
+    width: 41px;
+    height: 40px;
+  }
 }

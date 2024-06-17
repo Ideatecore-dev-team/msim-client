@@ -59,17 +59,17 @@ function ArticleHero({ onSearch, articles }) {
 
   return (
     <>
-      <div className="article-section bg-orange-bg bg-cover bg-center flex flex-col py-24 items-center self-stretch">
-        <div className="article-hero-container flex flex-col items-center justify-end w-nav gap-3 flex-wrap relative">
-          <div className="article-mascot flex items-start justify-center size-52">
-            <img className="size-52" src={mascot1} alt="" />
+      <div className="article-section bg-orange-bg bg-cover bg-center flex flex-col px-6 py-14 lg:py-24 lg:px-0 items-center self-stretch">
+        <div className="article-hero-container flex flex-col items-center justify-end lg:w-nav gap-3 flex-wrap relative">
+          <div className="article-mascot flex items-start justify-center lg:size-52 size-32">
+            <img className=" size-32 lg:size-52" src={mascot1} alt="" />
           </div>
           <div className="filter-container absolute flex pl-6 flex-col items-end gap-6">
             <button
               onClick={filterActive}
-              className="filter-button border-2 border-black rounded-xl  bg-gray-200 hover:bg-gray-300"
+              className="filter-button border-2 border-black rounded-xl  bg-gray-200 hover:bg-gray-300 size-10 lg:size-14 flex flex-col items-center justify-center"
             >
-              <img className="size-6" src={FilterIcon} alt="" />
+              <img className=" size-4 lg:size-6" src={FilterIcon} alt="" />
             </button>
             <div
               id="filter"

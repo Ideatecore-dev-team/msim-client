@@ -57,27 +57,27 @@ function ArticleList({ searchTerm, articles, sortOrder, selectedCategories }) {
   };
 
   return (
-    <div className="article-list-section bg-background flex flex-col items-center self-stretch pb-24 pt-12">
-      <div className="article-lists-container flex flex-col items-center gap-10">
+    <div className="article-list-section bg-background flex flex-col items-center self-stretch py-14 lg:pb-24 lg:pt-12">
+      <div className="article-lists-container flex flex-col items-center gap-7 lg:gap-10">
         <h1 className=" headline-1">Article Terbaru</h1>
-        <div className="article-list flex flex-col items-start gap-6">
+        <div className="article-list flex flex-col items-start gap-4 lg:gap-6 ">
           {filteredArticles.map((article, index) => (
             <div
               key={index}
-              className="article-card flex bg-white rounded-2xl pr-6 gap-6"
+              className="article-card flex flex-col lg:flex-row bg-white rounded-2xl pb-8 lg:pr-6 lg:pb-0 gap-4 lg:gap-6 overflow-hidden"
             >
               <div
-                className="article-list-img bg-cover rounded-2xl h-full"
+                className="article-list-img bg-cover lg:rounded-2xl lg:h-full"
                 style={{ backgroundImage: `url(${article.image_heading})` }}
               ></div>
-              <div className=" article-content w-3/4 flex flex-col py-6 items-start gap-4">
+              <div className=" article-content w-full lg:w-3/4 flex flex-col py-0 px-6 lg:py-6 lg:px-0 items-start gap-4">
                 <h4 className=" headline-4">{article.title}</h4>
                 <div className="article-desc">
                   <p className=" paragraph ">
                     {parse(extractAndLimitContent(article.content, 120))}
                   </p>
                 </div>
-                <div className=" article-cta flex items-center justify-center gap-4">
+                <div className=" article-cta flex flex-col lg:flex-row items-center mx-auto gap-2 lg:gap-4 w-full">
                   <p
                     style={{ backgroundColor: `${article.category_color}` }}
                     className={`px-3 py-1 text-white w-28 text-center rounded-full`}
@@ -86,11 +86,15 @@ function ArticleList({ searchTerm, articles, sortOrder, selectedCategories }) {
                   </p>
                   <Link
                     to={`/article/${article.id}`}
-                    className="paragraph underline text-primary-1"
+                    className="paragraph underline text-primary-1 flex flex-row items-center justify-center"
                   >
                     Baca Selengkapnya
+                    <img
+                      className="size-4 lg:size-6 "
+                      src={ArrowOrange}
+                      alt=""
+                    />
                   </Link>
-                  <img className=" w-10" src={ArrowOrange} alt="" />
                 </div>
               </div>
             </div>

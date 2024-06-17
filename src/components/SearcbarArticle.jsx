@@ -31,9 +31,9 @@ function SearchbarArticle({ onSearch }) {
       />
       <button
         type="submit"
-        className="bg-primary-1 hover:bg-primary-2 flex justify-center items-center gap-2 rounded-lg px-5 py-4"
+        className="search-button bg-primary-1 hover:bg-primary-2 flex justify-center items-center gap-2 rounded-lg p-3 lg:px-5 lg:py-4"
       >
-        <p className="text-base text-white font-bold">Search</p>
+        <p className="text-base text-white font-bold hidden lg:block">Search</p>
         <img className="w-5" src={SearchIcon} alt="Search" />
       </button>
     </form>
