@@ -241,7 +241,7 @@ function CmsTalentAddSchoolForm() {
                     />
                   </form>
                 </div>
-                <div className="daftar-sekolah mt-6">
+                {/* <div className="daftar-sekolah mt-6">
                   <div className="bg-background flex justify-between rounded-xl mt-5 py-3 px-3">
                     <div className="flex items-center gap-5 ">
                       <img className=" w-6" src={Group} alt="" />
@@ -313,7 +313,7 @@ function CmsTalentAddSchoolForm() {
                       </tbody>
                     </table>
                   </div>
-                </div>
+                </div> */}
                 <div className=" mt-4 flex gap-5 justify-end">
                   <div className=" w-56 py-2 flex">
                     <button

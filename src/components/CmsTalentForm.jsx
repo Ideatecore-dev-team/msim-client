@@ -437,16 +437,21 @@ function CmsTalentForm() {
                             </td>
                             <td className=" w-8 py-4">
                               {isOpenGroups === school.id && (
-                                <div className=" bg-neutral-white absolute ml-4 mt-11 w-36 origin-bottom rounded-lg border-2 border-gray-300  px-2 py-1">
+                                <div className=" bg-neutral-white absolute  mt-11 w-44 origin-bottom rounded-lg border-2 border-gray-300  px-2 py-1">
                                   {dataGroups && dataGroups.length > 0 ? (
-                                    dataGroups.map((dataGroup) => {
+                                    dataGroups.map((dataGroup, index) => {
                                       return (
-                                        <p
+                                        <div
                                           key={dataGroup?.id}
-                                          className="paragraph"
+                                          className=" flex gap-2"
                                         >
-                                          {dataGroup?.name}
-                                        </p>
+                                          <p className="text-sm mt-1 font-bold">
+                                            {index + 1}.
+                                          </p>
+                                          <p className="text-sm mt-1 font-bold">
+                                            {dataGroup?.name}
+                                          </p>
+                                        </div>
                                       );
                                     })
                                   ) : (
