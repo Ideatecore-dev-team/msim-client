@@ -56,7 +56,7 @@ function ContactUsHero() {
                   <p className=" paragraph text-neutral-2 text-center">msimbusiness@org.com</p>       
                 </button>
               </div>
-              <img src={mascot} className="hidden lg:block lg:absolute -right-24 bottom-0"></img>
+              <img src={mascot} className="hidden lg:block lg:absolute -right-24 bottom-0 w-w200 h-h200"></img>
             </div>
           </div>
         </div>
