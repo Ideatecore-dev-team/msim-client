@@ -10,14 +10,24 @@ function SsaCarousel() {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3.7,
-        slidesToScroll: 1,
+        slidesToShow: 3,
         autoplay: false,
-        autoplaySpeed: 150,
+        autoplaySpeed: 1500,
         arrows: true,
         draggable: true,
         rows: 1,
-    };
+        responsive: [
+          {
+            breakpoint: 639,
+            settings: {
+              slidesToShow: 1,
+              infinite: true,
+              dots: false,
+              arrows: false,
+            }
+          }
+        ]
+      };
     return (
         <>
         <Slider {...settings}>

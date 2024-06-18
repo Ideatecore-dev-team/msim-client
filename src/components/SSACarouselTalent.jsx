@@ -10,18 +10,30 @@ function SsaCarousel() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToShow: 3,
     autoplay: false,
     autoplaySpeed: 1500,
     arrows: true,
     draggable: true,
     rows: 1,
+    responsive: [
+      {
+        breakpoint: 639,
+        settings: {
+          slidesToShow: 1,
+          infinite: true,
+          dots: false,
+          arrows: false,
+        }
+      }
+    ]
   };
+
+
   return (
     <>
       <Slider {...settings}>
-        <div className="activities-card mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-gap10 text-center items-center content-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
