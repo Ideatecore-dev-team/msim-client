@@ -68,17 +68,17 @@ function CmsTalentEditGroupForm() {
     getDataGroup();
   }, [id]);
 
-  // useEffect(() => {
-  //   const getSchool = async function () {
-  //     try {
-  //       const response = await skyshareApi.get("/school");
-  //       setSchools(response.data.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getSchool();
-  // }, []);
+  useEffect(() => {
+    const getSchool = async function () {
+      try {
+        const response = await skyshareApi.get("/school");
+        setSchools(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getSchool();
+  }, []);
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -94,12 +94,12 @@ function CmsTalentEditGroupForm() {
 
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
-    Navigate("/cms/talent/addschool");
+    Navigate(`/cms/talentacademy`);
   };
 
   const closeCancelModal = () => {
     setIsCancelModalOpen(false);
-    Navigate("/cms/talent/addschool");
+    Navigate(`/cms/talentacademy`);
   };
   return (
     <>
@@ -146,7 +146,7 @@ function CmsTalentEditGroupForm() {
                       required
                     />
 
-                    {/* <div className=" mt-4 border-2 border-gray-300 rounded-md">
+                    <div className=" mt-4 border-2 border-gray-300 rounded-md">
                       <table>
                         <thead className="bg-gray-200">
                           <tr>
@@ -183,7 +183,7 @@ function CmsTalentEditGroupForm() {
                           })}
                         </tbody>
                       </table>
-                    </div> */}
+                    </div>
 
                     <div className="mt-4 flex gap-5 justify-end">
                       <button

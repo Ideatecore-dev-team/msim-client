@@ -29,6 +29,7 @@ function CmsTalentEditSchoolForm() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [groupById, setGroupById] = useState(null);
   const [dataSchool, setDataSchool] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
   const Navigate = useNavigate();
   const { id } = useParams();
 
@@ -70,6 +71,7 @@ function CmsTalentEditSchoolForm() {
         setIsSaveModalOpen(true);
       } else {
         setIsErrorModal(true);
+        setErrorMessage("Upload Filed");
       }
       console.log(responseStatus, "====> res");
     } catch (error) {
@@ -88,6 +90,7 @@ function CmsTalentEditSchoolForm() {
     } catch (error) {
       console.log();
       setIsErrorModal(true);
+      setErrorMessage("Delete Filed");
     } finally {
       setIsDeleting(false);
     }
@@ -270,7 +273,7 @@ function CmsTalentEditSchoolForm() {
                   <div className="bg-background flex justify-between rounded-xl mt-5 py-3 px-3">
                     <div className="flex items-center gap-5 ">
                       <img className=" w-6" src={Group} alt="" />
-                      <h4 className="headline-4">Group</h4>
+                      <h4 className="headline-4">List All Groups</h4>
                     </div>
                     <div className="bg-primary-1 flex items-center rounded-md px-2 py-2">
                       <Link
@@ -285,9 +288,10 @@ function CmsTalentEditSchoolForm() {
                     <table>
                       <thead>
                         <tr>
-                          <th className=" pr-8 pl-2 py-3">No.</th>
-                          <th className="pr-24 w-48 py-3">Nama Grup</th>
-                          <th className="pr-24 py-3">Link Instagram</th>
+                          <th className="pr-4 py-3">No.</th>
+                          <th className="pr-20 py-3">Nama Grup</th>
+                          <th className="pr-20 py-3">Link Instagram</th>
+                          <th className="pr-1 py-3">Nama Sekolah</th>
                           <th className="pl-16 py-3">Manage</th>
                         </tr>
                       </thead>
@@ -301,7 +305,7 @@ function CmsTalentEditSchoolForm() {
                               <td className="pl-1 py-4 text-left text-sm">
                                 {dataGroup.name}
                               </td>
-                              <td className="pl-10 py-4 text-left">
+                              <td className=" py-4 text-left">
                                 <div className="flex  items-center text-sm gap-1">
                                   <img
                                     className=" w-6 h-6"
@@ -310,6 +314,9 @@ function CmsTalentEditSchoolForm() {
                                   />
                                   {dataGroup.link}
                                 </div>
+                              </td>
+                              <td className="pl-1 py-4 text-center text-sm">
+                                {dataGroup.nama_sekolah}
                               </td>
                               <td className="pl-24 py-4 text-left flex gap-4">
                                 <div className="w-10 flex items-center justify-center rounded-md py-2">
@@ -446,7 +453,7 @@ function CmsTalentEditSchoolForm() {
             </div>
             <div className="flex gap-1 mt-5 items-center">
               <img className="w-6 h-6" src={Coution} alt="" />
-              <h3 className="headline-3 ">Upload Failed</h3>
+              <h3 className="headline-3 ">{errorMessage}</h3>
             </div>
           </div>
         </div>
