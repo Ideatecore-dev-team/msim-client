@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import mascot1 from "/images/mascot-icons/pose=11.png";
@@ -10,7 +11,7 @@ function ArticleHero({ onSearch, articles }) {
   const [selectedCategories, setSelectedCategories] = useState(null);
   const [isCategoryDropdownVisible, setIsCategoryDropdownVisible] =
     useState(false);
-  // eslint-disable-next-line no-unused-vars
+
   const [sortOrder, setSortOrder] = useState("newest");
   const [searchTerm, setSearchTerm] = useState("");
   const [isMouseOverDropdown, setIsMouseOverDropdown] = useState(true);
