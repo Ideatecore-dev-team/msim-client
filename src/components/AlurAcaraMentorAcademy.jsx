@@ -2,7 +2,6 @@ import React from "react";
 import WorkIcon from "../../public/images/mascot-icons/Work.png";
 
 function AlurAcaraMentorAcademy({ mentor }) {
-  console.log(mentor, "==> data");
   return (
     <div className="hero bg-background flex flex-col pb-24 pt-24 items-center self-stretch h-auto">
       <div className="content -mt-10">

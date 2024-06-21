@@ -11,7 +11,7 @@ import AllActivitiesSkyShare from "../components/AllActivitiesTalent";
 
 function Skyshare() {
   const [talent, setTalent] = useState([]);
-  console.log(talent, "==>");
+
   useEffect(() => {
     const getDataTalent = async function () {
       try {
@@ -23,17 +23,16 @@ function Skyshare() {
     };
     getDataTalent();
   }, []);
-  console.log(talent, "hoooo");
   return (
     <>
       <div className="talent-academy">
-        <TalentCta />
+        <TalentCta talent={talent} />
         <Skyshareabout />
         <BenefitSkyshare />
         <AlurAcara talent={talent} />
         <TimelineSkyshare talent={talent} />
         <CurrentGroupTalent />
-        <AllActivitiesSkyShare />
+        <AllActivitiesSkyShare talent={talent} />
       </div>
     </>
   );

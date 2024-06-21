@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import SecondayButton from "./SecondayButton";
 import ButtonLink from "./ButtonLink";
 
-function AllActivitiesMentorAcademy() {
+function AllActivitiesMentorAcademy({ mentor }) {
+  const data = mentor;
   return (
     <>
       <div className="botton-section bg-background flex flex-col pt-14 lg:pt-24 items-center">
@@ -52,7 +53,7 @@ function AllActivitiesMentorAcademy() {
           </div>
           <div className="join-btn mx-auto w-48 py-14 lg:py-24">
             <ButtonLink
-              to="/"
+              to={data.link_join_program}
               caption="Join #Season6"
               backgroundColor={"bg-primary-1"}
               textColor={"text-white"}

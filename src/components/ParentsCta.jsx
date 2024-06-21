@@ -4,6 +4,7 @@ import "./Cta.css";
 import ButtonLink from "./ButtonLink";
 
 function ParentsCta({ parents }) {
+  const data = parents;
   return (
     <>
       <div className="cta-title bg-parent-bg bg-cover flex flex-col self-stretch items-center px-6 py-14 lg:py-24 lg:px-0">
@@ -20,7 +21,7 @@ function ParentsCta({ parents }) {
             </p>
             <div className="join-download flex items-start gap-7 flex-col lg:flex-row ">
               <ButtonLink
-                to="/"
+                to={data.link_cta}
                 caption="Join #Season6"
                 backgroundColor={"bg-primary-1"}
                 textColor={"text-white"}
@@ -54,7 +55,7 @@ function ParentsCta({ parents }) {
                 </svg>
               </ButtonLink>
               <ButtonLink
-                to="/"
+                to={data.file_booklet}
                 caption="Unduh Booklet"
                 backgroundColor={"bg-neutral-5"}
                 textColor={"text-neutral-2"}

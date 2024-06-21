@@ -22,7 +22,7 @@ function Parents() {
     };
     getDataparents();
   }, []);
-  console.log(parents, "==>");
+
   return (
     <>
       <div className="home">
@@ -31,7 +31,7 @@ function Parents() {
         <BenefitParents />
         <AlurAcara parents={parents} />
         <TimelineSkyshare parents={parents} />
-        <AllActivitiesParents />
+        <AllActivitiesParents parents={parents} />
       </div>
     </>
   );

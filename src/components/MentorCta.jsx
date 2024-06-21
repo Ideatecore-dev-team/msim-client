@@ -4,10 +4,10 @@ import "./Cta.css";
 import ButtonLink from "./ButtonLink";
 
 function MentorCta({ mentor }) {
-  const data = mentor && mentor.length > 0 ? mentor[0] : null;
+  const data = mentor;
   return (
     <>
-    <div className="cta-title bg-mentor-bg bg-cover flex flex-col self-stretch items-center px-6 py-14 lg:py-24 lg:px-0">
+      <div className="cta-title bg-mentor-bg bg-cover flex flex-col self-stretch items-center px-6 py-14 lg:py-24 lg:px-0">
         <div className="cta-padding flex flex-col justify-end items-center flex-wrap">
           <div className="cta-hero-content flex px-6 flex-col items-center gap-2 self-stretch lg:px-0 lg:gap-4">
             <div className="logo-title flex flex-col items-center">
@@ -21,7 +21,7 @@ function MentorCta({ mentor }) {
             </p>
             <div className="join-download flex items-start gap-7 flex-col lg:flex-row ">
               <ButtonLink
-                to="/"
+                to={data.link_cta}
                 caption="Join #Season6"
                 backgroundColor={"bg-primary-1"}
                 textColor={"text-white"}
@@ -55,7 +55,7 @@ function MentorCta({ mentor }) {
                 </svg>
               </ButtonLink>
               <ButtonLink
-                to="/"
+                to={data.file_booklet}
                 caption="Unduh Booklet"
                 backgroundColor={"bg-neutral-5"}
                 textColor={"text-neutral-2"}

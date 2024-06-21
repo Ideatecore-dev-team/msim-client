@@ -9,6 +9,8 @@ import ArrowDown from "../../public/images/mascot-icons/Arrow - Down 3.png";
 
 const CurrentGroupSkyshare = () => {
   const [groups, setgroups] = useState([]);
+  const [dataGroups, setDataGroups] = useState([]);
+  const [isDropDown, setIsDropDown] = useState(false);
   useEffect(() => {
     const getGroupSchool = async function () {
       try {
@@ -20,7 +22,25 @@ const CurrentGroupSkyshare = () => {
     };
     getGroupSchool();
   }, []);
-  console.log(groups, "groups");
+
+  const getDataGroupByid = async function (id) {
+    setIsDropDown(true);
+    try {
+      const response = await skyshareApi.get(`group/school/${id}`);
+      setDataGroups(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleOpenGroups = function (id) {
+    if (!isDropDown) {
+      setIsDropDown(isDropDown === id ? null : id);
+    } else {
+      setIsDropDown(false);
+    }
+  };
+
   return (
     <>
       <div className="group-section flex px-3 py-14 lg:py-24 lg:px-0 flex-col items-center bg-background">
@@ -32,7 +52,10 @@ const CurrentGroupSkyshare = () => {
           <div className="schoolgroup-card flex items-center gap-9 lg:flex-row flex-col">
             {groups.map((group) => {
               return (
-                <div className="card-size1 rounded-xl border-2 mt-4 border-black bg-white">
+                <div
+                  key={group.id}
+                  className="card-size1 rounded-xl border-2 mt-4 border-black bg-white"
+                >
                   <iframe
                     title="Google Maps"
                     src={group.embed_map}
@@ -72,13 +95,59 @@ const CurrentGroupSkyshare = () => {
                       </div>
                     </div>
                     <div className="flex mt-5 justify-center">
-                      <a
-                        className="bg-primary-1 hover:bg-primary-2 px-3 py-2 rounded-full flex"
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          getDataGroupByid(group.id);
+                          handleOpenGroups(group.id);
+                        }}
+                        className="bg-primary-1 z-20 hover:bg-primary-2 px-3 py-2 rounded-full flex"
                         href="#"
                       >
                         <p className="px-2 text-white">Daftar Kelompok</p>
-                        <img className="w-5 ml-2" src={ArrowDown} alt="" />
-                      </a>
+                        <img
+                          className={`w-5 ml-2 duration-500 ${
+                            isDropDown === group.id ? "-rotate-180" : "rotate-0"
+                          }`}
+                          src={ArrowDown}
+                          alt=""
+                        />
+                      </button>
+                    </div>
+                    <div className="flex justify-center">
+                      <div
+                        className={`bg-gray-200 absolute w-44 -mt-2 duration-500 rounded-lg ${
+                          isDropDown === group.id ? "h-20" : "h-1"
+                        }`}
+                      >
+                        <div
+                          className={` px-4 mt-2 bg-gray-200 duration-300 rounded-lg ease-in-out ${
+                            isDropDown === group.id ? "opacity-1" : "opacity-0"
+                          }`}
+                        >
+                          {dataGroups && dataGroups.length > 0 ? (
+                            dataGroups.map((group, index) => {
+                              return (
+                                <div
+                                  key={group.id}
+                                  className="flex gap-2 w-full"
+                                >
+                                  <h4 className="font-bold text-base my-1">
+                                    {index + 1}.
+                                  </h4>
+                                  <h4 className={`font-bold text-base my-1 `}>
+                                    {group.name}
+                                  </h4>
+                                </div>
+                              );
+                            })
+                          ) : (
+                            <h4 className={`font-bold text-red-500 ml-2 mt-2`}>
+                              Tidak Ada Group
+                            </h4>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
