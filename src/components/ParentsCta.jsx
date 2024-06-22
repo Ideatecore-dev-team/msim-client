@@ -13,7 +13,7 @@ function ParentsCta({ parents }) {
           <div className="cta-hero-content flex px-6 flex-col items-center gap-2 self-stretch lg:px-0 lg:gap-4">
             <div className="logo-title flex flex-col items-center">
               <img src={ParentsLogo} alt="logo" />
-              <h1 className="text-white headline-1 text-center">
+              <h1 className="text-white headline-1 text-center  w-72 -ml-2">
                 Parents Academy
               </h1>
             </div>
