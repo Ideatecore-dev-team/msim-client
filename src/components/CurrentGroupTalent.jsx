@@ -2,9 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import skyshareApi from "../utilities/skyshareApi";
 import GroupIcon from "../../public/images/mascot-icons/3 User.png";
-import SchoolIcon1 from "../../public/images/1.png";
-import SchoolIcon2 from "../../public/images/2.png";
-import SchoolIcon3 from "../../public/images/3.png";
+import Chain from "../../public/images/mascot-icons/Link.png";
 import ArrowDown from "../../public/images/mascot-icons/Arrow - Down 3.png";
 
 const CurrentGroupSkyshare = () => {
@@ -49,12 +47,12 @@ const CurrentGroupSkyshare = () => {
             <img className=" size-6 lg:size-10" src={GroupIcon} alt="starts" />
             <h2 className="headline-2">Current Group</h2>
           </div>
-          <div className="schoolgroup-card flex items-center gap-9 lg:flex-row flex-col">
+          <div className="schoolgroup-card flex items-start gap-9 origin-top lg:flex-row flex-col">
             {groups.map((group) => {
               return (
                 <div
                   key={group.id}
-                  className="card-size1 rounded-xl border-2 mt-4 border-black bg-white"
+                  className="card-size1 pb-10 rounded-xl border-2 mt-4 border-black bg-white"
                 >
                   <iframe
                     title="Google Maps"
@@ -116,33 +114,38 @@ const CurrentGroupSkyshare = () => {
                     </div>
                     <div className="flex justify-center">
                       <div
-                        className={`bg-gray-200 absolute w-44 -mt-2 duration-500 rounded-lg ${
-                          isDropDown === group.id ? "h-20" : "h-1"
+                        className={` -mt-2 duration-500 rounded-lg ${
+                          isDropDown === group.id ? "h-44" : "h-0"
                         }`}
                       >
                         <div
-                          className={` px-4 mt-2 bg-gray-200 duration-300 rounded-lg ease-in-out ${
+                          className={` px-4 mt-4 duration-300 rounded-lg ease-in-out ${
                             isDropDown === group.id ? "opacity-1" : "opacity-0"
                           }`}
                         >
                           {dataGroups && dataGroups.length > 0 ? (
-                            dataGroups.map((group, index) => {
+                            dataGroups.map((group) => {
                               return (
                                 <div
                                   key={group.id}
-                                  className="flex gap-2 w-full"
+                                  className="flex gap-1 w-full"
                                 >
-                                  <h4 className="font-bold text-base my-1">
-                                    {index + 1}.
-                                  </h4>
-                                  <h4 className={`font-bold text-base my-1 `}>
+                                  <img
+                                    className="w-5 h-5 -ml-3"
+                                    src={Chain}
+                                    alt=""
+                                  />
+                                  <a
+                                    href={group.link}
+                                    className={`font-bold text-base  `}
+                                  >
                                     {group.name}
-                                  </h4>
+                                  </a>
                                 </div>
                               );
                             })
                           ) : (
-                            <h4 className={`font-bold text-red-500 ml-2 mt-2`}>
+                            <h4 className={`font-bold text-red-500 ml-2 mt-4`}>
                               Tidak Ada Group
                             </h4>
                           )}
