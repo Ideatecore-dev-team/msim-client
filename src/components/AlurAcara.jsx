@@ -3,9 +3,9 @@ import WorkIcon from "../../public/images/mascot-icons/Work.png";
 import TimeLine from "../../public/images/Alur Acara Ex.png";
 import "./AlurAcara.css";
 
-function AlurAcara({ parents, talent }) {
+function AlurAcara({ parents, talent, mentor }) {
   const timelineImageSrc =
-    parents?.gambar_alur_acara || talent?.gambar_alur_acara;
+    parents?.gambar_alur_acara || talent?.gambar_alur_acara || mentor?.gambar_alur_acara;
 
   return (
     <div className="alur-section flex pt-14 lg:pt-24 flex-col items-center bg-background">
