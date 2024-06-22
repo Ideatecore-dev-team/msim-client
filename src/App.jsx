@@ -70,8 +70,6 @@ function App() {
       {!shouldHideNavbarAndFooter && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/ourprogram" element={<OurProgram />} />
         <Route path="/ourprogram/talent" element={<Skyshare />} />
         <Route path="/ourprogram/mentor" element={<Mentor />} />
         <Route path="/ourprogram/parents" element={<Parents />} />
@@ -88,6 +86,8 @@ function App() {
           path="/ourprogram/parents/activities"
           element={<ParentsActivity />}
         />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/ourprogram" element={<OurProgram />} />
         <Route path="/article" element={<Article />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/cms" element={<CmsLoginRoute />}>
