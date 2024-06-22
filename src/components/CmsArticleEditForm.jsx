@@ -551,32 +551,33 @@ function CmsArticleEditForm() {
                 </div>
 
                 <div className=" -z-50">
-                  <Editor
-                    style={{ zIndex: -20 }}
-                    initialValue={articleById.content}
-                    value={articleForm.content}
-                    onEditorChange={(content) =>
-                      setArticleForm({ ...articleForm, content })
-                    }
-                    apiKey="gemyn0v2v0dyeaicn1p0fm8bje0jldn312dh4cz45rnzg68q"
-                    init={{
-                      menubar: false,
-                      plugins:
-                        "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
-                      toolbar:
-                        "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
-                      tinycomments_mode: "embedded",
-                      tinycomments_author: "Author name",
-                      mergetags_list: [
-                        { value: "First.Name", title: "First Name" },
-                        { value: "Email", title: "Email" },
-                      ],
-                      ai_request: (request, respondWith) =>
-                        respondWith.string(() =>
-                          Promise.reject("See docs to implement AI Assistant")
-                        ),
-                    }}
-                  />
+                <Editor
+                  style={{ zIndex: -20 }}
+                  initialValue={articleById.content}
+                  value={articleForm.content}
+                  onEditorChange={(content) =>
+                    setArticleForm({ ...articleForm, content })
+                  }
+                  apiKey="gemyn0v2v0dyeaicn1p0fm8bje0jldn312dh4cz45rnzg68q"
+                  init={{
+                    menubar: false,
+                    plugins:
+                      "anchor autolink charmap emoticons image link lists media searchreplace table visualblocks wordcount",
+                    toolbar:
+                      "undo redo | formatselect | bold italic underline strikethrough | link image media table | alignleft aligncenter alignright alignjustify | bullist numlist | emoticons charmap | removeformat",
+                    tinycomments_mode: "embedded",
+                    tinycomments_author: "Author name",
+                    mentions_selector: ".mentions",
+                    mergetags_list: [
+                      { value: "First.Name", title: "First Name" },
+                      { value: "Email", title: "Email" },
+                    ],
+                    ai_request: (request, respondWith) =>
+                      respondWith.string(() =>
+                        Promise.reject("See docs to implement AI Assistant")
+                      ),
+                  }}
+                />
                 </div>
                 <div className=" mt-4">
                   <label className=" font-bold mb-1 flex gap-2" htmlFor="cta">
