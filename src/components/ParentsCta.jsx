@@ -5,6 +5,7 @@ import ButtonLink from "./ButtonLink";
 
 function ParentsCta({ parents }) {
   const data = parents;
+
   return (
     <>
       <div className="cta-title bg-parent-bg bg-cover flex flex-col self-stretch items-center px-6 py-14 lg:py-24 lg:px-0">
@@ -21,8 +22,8 @@ function ParentsCta({ parents }) {
             </p>
             <div className="join-download flex items-start gap-7 flex-col lg:flex-row ">
               <ButtonLink
-                to={data.link_cta}
-                caption="Join #Season6"
+                to={data.link_join_program}
+                caption={data.link_cta}
                 backgroundColor={"bg-primary-1"}
                 textColor={"text-white"}
               >

@@ -21,8 +21,8 @@ function MentorCta({ mentor }) {
             </p>
             <div className="join-download flex items-start gap-7 flex-col lg:flex-row ">
               <ButtonLink
-                to={data.link_cta}
-                caption="Join #Season6"
+                to={data.link_join_program}
+                caption={data.link_cta}
                 backgroundColor={"bg-primary-1"}
                 textColor={"text-white"}
               >
