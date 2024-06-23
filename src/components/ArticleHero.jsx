@@ -214,9 +214,9 @@ function ArticleHero({ onSearch, articles }) {
             </div>
           </div>
           <div className="article-find flex flex-col items-center gap-4">
-            <h1 className="headline-1 text-black">Cari Article</h1>
+            <h1 className="headline-1 text-black">Cari Artikel</h1>
             <p className="paragraph text-neutral-2">
-              Cari article menarik untukmu!
+              Cari artikel menarik untukmu!
             </p>
             <SearchbarArticle onSearch={handleSearchSubmit} />
           </div>

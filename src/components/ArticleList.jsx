@@ -106,14 +106,14 @@ function ArticleList({ searchTerm, articles, sortOrder, selectedCategories }) {
             <BsSearch /> <span className="ml-4">Hasil Pencarian</span>
           </h1>
         ) : (
-          <h1 className="headline-1">Article Terbaru</h1>
+          <h1 className="headline-1">Artikel Terbaru</h1>
         )}
         {filteredArticles.length === 0 && (
           <div className="not-found flex flex-col items-center gap-4">
             <img src={NotFound} alt="not found" />
             <div className="notfound-content flex flex-col items-center gap-2">
               <h4 className="headline-4 text-black">
-                Hmm, Sepertinya article yang kamu cari tidak tersedia
+                Hmm, Sepertinya artikel yang kamu cari tidak tersedia
               </h4>
               <p className="paragraph text-black">
                 Coba masukkan kata kunci lain
