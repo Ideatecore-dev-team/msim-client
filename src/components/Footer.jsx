@@ -31,7 +31,7 @@ function Footer() {
                   msimbusiness@org.com
                 </p>
                 <p className="lg:text-base xs:text-sm font-normal">
-                  Copyright © 2024-2025 MSIM in Collaboration with Ideatecore{" "}
+                  Copyright © 2024-2025 Skyshare Academy in Collaboration with Ideatecore{" "}
                 </p>
               </div>
               <div className="footer-link flex flex-col lg:gap-6 xs:gap-4">

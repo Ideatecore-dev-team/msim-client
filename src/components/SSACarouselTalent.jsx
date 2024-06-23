@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-import "./SSACarouselTalent.css";
+import "./SSACarousel.css";
 
 function SsaCarousel() {
   var settings = {
