@@ -1,7 +1,7 @@
 import React from "react";
 import SSACarousel from "./SSACarouselParents";
 import ButtonLink from "./ButtonLink";
-import "./ParentsActivitiesCarousel.css";
+import "./ActivitiesCarousel.css";
 
 function ParentsActivitiesCarousel() {
     return (

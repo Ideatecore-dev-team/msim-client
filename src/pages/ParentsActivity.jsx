@@ -1,6 +1,6 @@
 import React from "react";
-import ParentsActivitiesHero from "../components/ParentsActivitiesHero";
-import ParentsActivitiesCarousel from "../components/ParentsActivitiesCarousel";
+import ParentsActivitiesHero from "../components/ActivitiesHeroParents";
+import ParentsActivitiesCarousel from "../components/ActivitiesCarouselParents";
 
 function SkyshareActivity() {
   return (

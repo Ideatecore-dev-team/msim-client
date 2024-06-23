@@ -1,8 +1,8 @@
 import React from "react";
 import skyshareApi from "../utilities/skyshareApi";
 import { useState, useEffect } from "react";
-import TalentCta from "../components/TalentCta";
-import Skyshareabout from "../components/TalentAbout";
+import TalentCta from "../components/CtaTalents";
+import Skyshareabout from "../components/AboutTalent";
 import BenefitSkyshare from "../components/BenefitTalent";
 import AlurAcara from "../components/AlurAcara";
 import TimelineSkyshare from "../components/TimelineSkyshare";

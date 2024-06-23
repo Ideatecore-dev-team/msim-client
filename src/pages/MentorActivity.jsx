@@ -1,6 +1,6 @@
 import React from "react";
-import MentorActivitiesCarousel from "../components/MentorActivitiesCarousel";
-import MentorActivitiesHero from "../components/MentorActivitiesHero";
+import MentorActivitiesHero from "../components/ActivitiesHeroMentor";
+import MentorActivitiesCarousel from "../components/ActivitiesCarouselMentor";
 
 function MentorActivity() {
   return (

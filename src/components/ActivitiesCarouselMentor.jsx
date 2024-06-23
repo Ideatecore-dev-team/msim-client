@@ -1,7 +1,7 @@
 import React from "react";
 import SSACarousel from "./SSACarouselMentor";
 import ButtonLink from "./ButtonLink";
-import "./MentorActivitiesCarousel.css";
+import "./ActivitiesCarousel.css";
 
 function MentorActivitiesCarousel() {
   return (

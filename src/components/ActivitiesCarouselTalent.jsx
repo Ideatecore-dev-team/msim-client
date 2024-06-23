@@ -1,7 +1,7 @@
 import React from "react";
 import SSACarousel from "./SSACarouselTalent";
 import ButtonLink from "./ButtonLink";
-import "./TalentActivitiesCarousel.css";
+import "./ActivitiesCarousel.css";
 
 function SkyshareActivitiesCarousel() {
   return (
