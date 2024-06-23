@@ -32,7 +32,7 @@ function SsaCarousel() {
   return (
     <>
       <Slider {...settings}>
-        <div className="activities-card lg:ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-9 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ function SsaCarousel() {
             Lorem ipsum dolor sit ammet, consectetur edipiching elit
           </p>
         </div>
-        <div className="activities-card lg:ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-9 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ function SsaCarousel() {
             Lorem ipsum dolor sit ammet, consectetur edipiching elit
           </p>
         </div>
-        <div className="activities-card lg:ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-9 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -32,7 +32,7 @@ function SsaCarousel() {
   return (
     <>
       <Slider {...settings}>
-        <div className="activities-card lg:ml-7 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-gap10 text-center items-center content-center">
+        <div className="activities-card lg:ml-6 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-gap10 text-center items-center content-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +58,7 @@ function SsaCarousel() {
             sekali sesuai kesepakatan bersama.
           </p>
         </div>
-        <div className="activities-card lg:ml-7 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-6 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +84,7 @@ function SsaCarousel() {
             sekali sesuai kesepakatan bersama.
           </p>
         </div>
-        <div className="activities-card lg:ml-7 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-6 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,7 @@ function SsaCarousel() {
             hardskill dengan waktu minimal setahun sekali.
           </p>
         </div>
-        <div className="activities-card lg:ml-7 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-6 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +135,7 @@ function SsaCarousel() {
             member dengan waktu minimal setahun sekali.
           </p>
         </div>
-        <div className="activities-card lg:ml-7 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-6 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +161,7 @@ function SsaCarousel() {
             dan latar belakang member dengan waktu sebulan sekali.
           </p>
         </div>
-        <div className="activities-card lg:ml-7 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-6 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -187,7 +187,7 @@ function SsaCarousel() {
             kepemimpinan member.
           </p>
         </div>
-        <div className="activities-card lg:ml-7 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-6 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -212,7 +212,7 @@ function SsaCarousel() {
             mengunjungi tempat wisata dengan waktu minimal setahun sekali.
           </p>
         </div>
-        <div className="activities-card lg:ml-7 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-6 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -237,7 +237,7 @@ function SsaCarousel() {
             melatih kecerdasan spiritual dengan waktu minimal setahun sekali.
           </p>
         </div>
-        <div className="activities-card lg:ml-7 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-6 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -263,7 +263,7 @@ function SsaCarousel() {
             sekali.
           </p>
         </div>
-        <div className="activities-card lg:ml-7 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-6 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -289,7 +289,7 @@ function SsaCarousel() {
             seminggu sekali.
           </p>
         </div>
-        <div className="activities-card lg:ml-7 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-6 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -314,7 +314,7 @@ function SsaCarousel() {
             hardskill dengan waktu minimal setahun sekali.
           </p>
         </div>
-        <div className="activities-card lg:ml-7 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-6 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -339,7 +339,7 @@ function SsaCarousel() {
             hardskill dengan waktu minimal setahun sekali.
           </p>
         </div>
-        <div className="activities-card lg:ml-7 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
+        <div className="activities-card lg:ml-6 -ml-9 mt-10 px-4 pb-6 pt-8 lg:px-6 lg:pt-11 lg:pb-6 bg-white gap-4 lg:gap-4 text-center items-center">
           <div className="icon-card flex justify-center items-center bg-primary-1 -mt-14 lg:-mt-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
