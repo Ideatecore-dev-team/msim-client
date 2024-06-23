@@ -2,7 +2,7 @@ import React from "react";
 import logoPlaceholder from "../../public/images/logo placeholder.png";
 import Mascot from "../../public/images/mascot-icons/pose=9.png";
 import SecondaryButton from "./SecondayButton";
-// test conflict
+
 function Footer() {
   return (
     <>
@@ -40,11 +40,6 @@ function Footer() {
                 <SecondaryButton to="/article">Article</SecondaryButton>
                 <SecondaryButton to="/ourprogram">Our Program</SecondaryButton>
                 <SecondaryButton to="/contactus">Contact Us</SecondaryButton>
-
-                {/* <a href="#">Our Program</a>
-                <a href="#">Article</a>
-                <a href="#">Contact Us</a>
-                <a href="#">Join</a> */}
               </div>
               <div className="footer-social flex flex-col items-start lg:gap-6 xs:gap-4">
                 <h4 className="lg:text-lg xs:text-base font-bold">
