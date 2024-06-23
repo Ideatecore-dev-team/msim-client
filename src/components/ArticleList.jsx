@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useRef } from "react";
-import ArrowOrange from "../../public/images/mascot-icons/arrow-orange.png";
+import ArrowOrange from "/images/mascot-icons/arrow-orange.png";
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 import "./ArticleList.css";
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
+import { BsSearch } from "react-icons/bs";
+import NotFound from "/images/mascot-404.png";
 
 function ArticleList({ searchTerm, articles, sortOrder, selectedCategories }) {
   const [visibleArticlesCount, setVisibleArticlesCount] = useState(5);
@@ -99,47 +101,68 @@ function ArticleList({ searchTerm, articles, sortOrder, selectedCategories }) {
         className="article-lists-container flex flex-col items-center gap-7 lg:gap-10"
         ref={articleListContainerRef}
       >
-        <h1 className="headline-1">Article Terbaru</h1>
-        <div className="article-list flex flex-col items-start gap-4 lg:gap-6">
-          {displayedArticles.map((article, index) => (
-            <div
-              key={index}
-              className="article-card flex flex-col lg:flex-row bg-white rounded-2xl pb-8 lg:pr-6 lg:pb-0 gap-4 lg:gap-6 overflow-hidden"
-            >
+        {searchTerm || selectedCategories || sortOrder ? (
+          <h1 className="headline-1 flex gap-2 items-center justify-center">
+            <BsSearch /> <span className="ml-4">Hasil Pencarian</span>
+          </h1>
+        ) : (
+          <h1 className="headline-1">Article Terbaru</h1>
+        )}
+        {filteredArticles.length === 0 && (
+          <div className="not-found flex flex-col items-center gap-4">
+            <img src={NotFound} alt="not found" />
+            <div className="notfound-content flex flex-col items-center gap-2">
+              <h4 className="headline-4 text-black">
+                Hmm, Sepertinya article yang kamu cari tidak tersedia
+              </h4>
+              <p className="paragraph text-black">
+                Coba masukkan kata kunci lain
+              </p>
+            </div>
+          </div>
+        )}
+        {filteredArticles.length > 0 && (
+          <div className="article-list flex flex-col items-start gap-4 lg:gap-6">
+            {displayedArticles.map((article, index) => (
               <div
-                className="article-list-img bg-cover lg:rounded-2xl lg:h-full"
-                style={{ backgroundImage: `url(${article.image_heading})` }}
-              ></div>
-              <div className="article-content w-full lg:w-3/4 flex flex-col py-0 px-6 lg:py-6 lg:px-0 items-start gap-4">
-                <h4 className="headline-4">{article.title}</h4>
-                <div className="article-desc">
-                  <p className="paragraph">
-                    {parse(extractAndLimitContent(article.content, 120))}
-                  </p>
-                </div>
-                <div className="article-cta flex flex-col lg:flex-row items-center mx-auto gap-2 lg:gap-4 w-full">
-                  <p
-                    style={{ backgroundColor: `${article.category_color}` }}
-                    className="px-3 py-1 text-white w-28 text-center rounded-full"
-                  >
-                    {article.category_name}
-                  </p>
-                  <Link
-                    to={`/article/${article.id}`}
-                    className="paragraph underline text-primary-1 flex flex-row items-center justify-center"
-                  >
-                    Baca Selengkapnya
-                    <img
-                      className="size-4 lg:size-6"
-                      src={ArrowOrange}
-                      alt=""
-                    />
-                  </Link>
+                key={index}
+                className="article-card flex flex-col lg:flex-row bg-white rounded-2xl pb-8 lg:pr-6 lg:pb-0 gap-4 lg:gap-6 overflow-hidden"
+              >
+                <div
+                  className="article-list-img bg-cover lg:rounded-2xl lg:h-full"
+                  style={{ backgroundImage: `url(${article.image_heading})` }}
+                ></div>
+                <div className="article-content w-full lg:w-3/4 flex flex-col py-0 px-6 lg:py-6 lg:px-0 items-start gap-4">
+                  <h4 className="headline-4">{article.title}</h4>
+                  <div className="article-desc">
+                    <p className="paragraph">
+                      {parse(extractAndLimitContent(article.content, 120))}
+                    </p>
+                  </div>
+                  <div className="article-cta flex flex-col lg:flex-row items-center mx-auto gap-2 lg:gap-4 w-full">
+                    <p
+                      style={{ backgroundColor: `${article.category_color}` }}
+                      className="px-3 py-1 text-white w-28 text-center rounded-full"
+                    >
+                      {article.category_name}
+                    </p>
+                    <Link
+                      to={`/article/${article.id}`}
+                      className="paragraph underline text-primary-1 flex flex-row items-center justify-center"
+                    >
+                      Baca Selengkapnya
+                      <img
+                        className="size-4 lg:size-6"
+                        src={ArrowOrange}
+                        alt=""
+                      />
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
         {showLoadMore && (
           <button
             onClick={handleLoadMore}

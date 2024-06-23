@@ -7,7 +7,7 @@ function Article() {
   const [searchTerm, setSearchTerm] = useState("");
   const [article, setArticle] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState(null);
-  const [sortOrder, setSortOrder] = useState("newest");
+  const [sortOrder, setSortOrder] = useState(null);
 
   useEffect(() => {
     const getAllArticle = async function () {
@@ -21,6 +21,10 @@ function Article() {
     };
     getAllArticle();
   }, []);
+
+  useEffect(() => {
+    console.log(searchTerm, sortOrder, selectedCategories);
+  });
 
   const handleSearch = (term, selectedCategories, sortOrder) => {
     setSearchTerm(term);
