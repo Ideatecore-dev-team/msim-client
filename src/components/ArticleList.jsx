@@ -7,7 +7,7 @@ import "./ArticleList.css";
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
 import { BsSearch } from "react-icons/bs";
-import NotFound from "/images/mascot-404.png";
+import NotFound from "/images/mascot-icons/mascot-404.png";
 
 function ArticleList({ searchTerm, articles, sortOrder, selectedCategories }) {
   const [visibleArticlesCount, setVisibleArticlesCount] = useState(5);
