@@ -1,6 +1,5 @@
 import React from "react";
 import TimeIcon from "../../public/images/mascot-icons/Time Circle.png";
-import TimeLine from "../../public/images/Timeline Ex.png";
 import "./TimelineSkyshare.css";
 
 function TimelineSkyshare({ parents, talent, mentor }) {

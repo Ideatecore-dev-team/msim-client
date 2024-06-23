@@ -2,9 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import skyshareApi from "../utilities/skyshareApi";
-import Image1 from "../../public/images/Rectangle 33.png";
-import Image2 from "../../public/images/Rectangle 34.png";
-import Image3 from "../../public/images/Rectangle 35.png";
 import ArrowLeft from "../../public/images/mascot-icons/Arrow - Down 3.png";
 
 function ArticlePageOpenned() {

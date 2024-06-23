@@ -54,7 +54,7 @@ function AllActivitiesMentorAcademy({ mentor }) {
           <div className="join-btn mx-auto w-48 py-14 lg:py-24">
             <ButtonLink
               to={data.link_join_program}
-              caption="Join #Season6"
+              caption={data.link_cta}
               backgroundColor={"bg-primary-1"}
               textColor={"text-white"}
             >
