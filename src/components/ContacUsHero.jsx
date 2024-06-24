@@ -8,7 +8,7 @@ function ContactUsHero() {
       <div className="contact-section bg-orange-bg bg-cover flex flex-col sm:content-end items-center gap-gap10 lg:pt-padding170 pt-padding106 pb-14 px-6 lg:py-24">
         <div className="inside-padding flex flex-col w-312 lg:w-nav content-end items-center gap-gap10 lg:gap-6">
           <div className="contact-container flex flex-col items-center lg:gap-6 lg:flex-wrap gap-4 self-stretch">
-            <h1 className="headline-1 text-center text-neutral-2 self-stretch">Punya Pertanyaan Lebih <br /> Lanjut?</h1>
+            <h1 className="headline-1 text-center text-neutral-2 self-stretch">Punya Pertanyaan Lebih <br className=" xs:hidden"/> Lanjut?</h1>
             <p className="paragraph text-center self-stretch text-neutral-2">
               Layanan kami tersedia Senin-Minggu,
               {/* add break line */}
