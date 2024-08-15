@@ -48,7 +48,7 @@ function Footer() {
                 <div className="flex items-start lg:gap-4 xs:gap-2">
                   <div className="logo-box flex items-center justify-center lg:size-16 xs:size-10 rounded-full">
                     {/* SVG diletakkan di dalam logo-box */}
-                    <a href="https://www.instagram.com/idn.msim/">
+                    <a href="https://www.instagram.com/skyshareacademy.id/">
                       <svg
                         className="lg:size-7 xs:size-5"
                         viewBox="0 0 33 32"
