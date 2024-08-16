@@ -21,7 +21,7 @@ function ArticlePageOpenned() {
   console.log(article, "==>");
   return (
     <>
-      <div className="hero flex background border-t-2 border-black flex-col items-center self-stretch">
+      <div className="hero flex background flex-col items-center self-stretch">
         <div className="content h-full pb-20 mt-10">
           <h1 className="headline-1 text-center">{article.title}</h1>
           <div className="flex w-full mt-10 justify-between">
