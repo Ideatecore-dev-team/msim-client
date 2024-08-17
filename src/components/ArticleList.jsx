@@ -126,10 +126,10 @@ function ArticleList({ searchTerm, articles, sortOrder, selectedCategories }) {
             {displayedArticles.map((article, index) => (
               <div
                 key={index}
-                className="article-card flex flex-col lg:flex-row bg-white rounded-2xl pb-8 lg:pr-6 lg:pb-0 gap-4 lg:gap-6 overflow-hidden"
+                className="article-card lg:h-auto flex flex-col lg:flex-row bg-white rounded-2xl pb-8 lg:pr-6 lg:pb-0 gap-4 lg:gap-6 overflow-hidden"
               >
                 <div
-                  className="article-list-img bg-cover lg:rounded-2xl lg:h-full"
+                  className="article-list-img bg-cover lg:rounded-2xl lg:h-auto"
                   style={{ backgroundImage: `url(${article.image_heading})` }}
                 ></div>
                 <div className="article-content w-full lg:w-3/4 flex flex-col py-0 px-6 lg:py-6 lg:px-0 items-start gap-4">
@@ -142,7 +142,7 @@ function ArticleList({ searchTerm, articles, sortOrder, selectedCategories }) {
                   <div className="article-cta flex flex-col lg:flex-row items-center mx-auto gap-2 lg:gap-4 w-full">
                     <p
                       style={{ backgroundColor: `${article.category_color}` }}
-                      className="px-3 py-1 text-white w-28 text-center rounded-full"
+                      className="px-3 py-1 text-white w-auto text-center rounded-full"
                     >
                       {article.category_name}
                     </p>
