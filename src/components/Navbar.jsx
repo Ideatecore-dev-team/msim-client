@@ -20,7 +20,7 @@ function Navbar() {
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex justify-center bg-slate-600">
+      <div className="flex justify-center bg-slate-600 xs:sticky xs:top-0 z-50">
         <div className="sm:w-10/12 w-10/12 lg:w-nav lg:py-4 sm:px-8 sm:py-12 px-8 py-8 justify-around gap-56 lg:gap-0 shadow-lg bg-neutral-white rounded-full absolute mt-5 flex items-center lg:flex-wrap lg:justify-around z-50">
           <div className=" lg:w-logo-msim w-logo-msim flex lg:-ml-44">
             <Link to="/">
