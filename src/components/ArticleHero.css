@@ -29,20 +29,20 @@
 
 @media (max-width: 639px) {
   .article-hero-container {
-    width: 358.33px;
+    width: 312px;
     margin-top: 40px;
     height: 300px;
   }
 
   .filter-container {
-    width: 358.33px;
+    width: 312px;
     height: 40px;
     right: 0;
     top: 0px;
   }
 
   .filter-pop {
-    width: 358.33px;
+    width: 312px;
   }
 
   .article-find {

@@ -51,7 +51,8 @@ function AllActivitiesSkyShare({ talent }) {
               </svg>
             </SecondayButton>
           </div>
-          <div className="join-btn mx-auto w-48 py-14 lg:py-24">
+          <div className="join-btn mx-auto w-auto py-14 lg:py-24">
+          {/* <div className="join-btn mx-auto w-48 py-14 lg:py-24"> */}
             <ButtonLink
               to={data.link_join_program}
               caption={data.link_cta}

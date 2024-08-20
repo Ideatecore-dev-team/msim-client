@@ -23,13 +23,13 @@
 
 .image-container {
   position: absolute;
-  left: 80px;
+  /* left: 80px; */
   top: -104px;
 }
 
 @media (max-width: 639px) {
   .program {
-    width: 340px;
+    width: 312px;
     padding-top: 48px;
   }
   .all-program{

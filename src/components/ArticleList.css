@@ -11,16 +11,16 @@
 
 @media (max-width: 639px) {
   .article-lists-container {
-    width: 360px;
+    width: 312px;
   }
 
   .article-card {
-    width: 358.33px;
+    width: 312px;
     height: 312px;
   }
 
   .article-list-img {
-    width: 356px;
+    width: 312px;
     height: 110px;
     border-radius: 15px 15px 0 0 !important;
   }
