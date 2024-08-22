@@ -129,7 +129,7 @@ function ArticleList({ searchTerm, articles, sortOrder, selectedCategories }) {
                 className="article-card lg:h-auto flex flex-col lg:flex-row bg-white rounded-2xl pb-8 lg:pr-6 lg:pb-0 gap-4 lg:gap-6 overflow-hidden"
               >
                 <div
-                  className="article-list-img bg-cover lg:rounded-2xl lg:h-auto"
+                  className="article-list-img bg-cover lg:rounded-2xl lg:h-auto h-[190px]"
                   style={{ backgroundImage: `url(${article.image_heading})` }}
                 ></div>
                 <div className="article-content w-full lg:w-3/4 flex flex-col py-0 px-6 lg:py-6 lg:px-0 items-start gap-4">

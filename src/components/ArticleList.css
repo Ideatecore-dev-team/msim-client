@@ -16,12 +16,12 @@
 
   .article-card {
     width: 312px;
-    height: 312px;
+    /* height: 312px; */
   }
 
   .article-list-img {
     width: 312px;
-    height: 110px;
+    /* height: 110px; */
     border-radius: 15px 15px 0 0 !important;
   }
 }
