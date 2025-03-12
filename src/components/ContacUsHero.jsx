@@ -1,5 +1,6 @@
 import React from "react";
-import mascot from "/images/mascot-icons/mascot-contact.png"
+// import mascot from "/images/mascot-icons/mascot-contact.png"
+import mascot from "../../public/images/mascot-icons/mascot-contact.png"
 import "./ContacUsHero.css";
 
 function ContactUsHero() {
