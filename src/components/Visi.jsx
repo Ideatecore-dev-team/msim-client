@@ -1,11 +1,10 @@
 import React from "react";
-import "./Visi.css";
 
 function Visi() {
   return (
     <>
       <div className="visi flex flex-col items-center self-stretch pt-14 px-6 lg:px-0 lg:pt-24">
-        <div className="visi-content flex flex-col items-center gap-7 lg:gap-10">
+        <div className="visi-content lg:w-[956px] w-[312px] flex flex-col items-center gap-7 lg:gap-10">
           <h1 className="headline-1 text-center text-black">Visi</h1>
           <p className=" text-sm lg:text-base font-normal text-center">
             Kami memiliki visi untuk menjadi pusat unggulan dalam pembinaan

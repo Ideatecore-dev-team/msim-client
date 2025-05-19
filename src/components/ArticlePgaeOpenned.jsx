@@ -2,9 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import skyshareApi from "../utilities/skyshareApi";
-import Image1 from "../../public/images/Rectangle 33.png";
-import Image2 from "../../public/images/Rectangle 34.png";
-import Image3 from "../../public/images/Rectangle 35.png";
 import ArrowLeft from "../../public/images/mascot-icons/Arrow - Down 3.png";
 
 function ArticlePageOpenned() {
@@ -24,9 +21,9 @@ function ArticlePageOpenned() {
   console.log(article, "==>");
   return (
     <>
-      <div className="hero flex background border-t-2 border-black flex-col items-center self-stretch">
+      <div className="hero flex background flex-col items-center self-stretch">
         <div className="content h-full pb-20 mt-10">
-          <h1 className=" headline-1 text-center">{article.title}</h1>
+          <h1 className="headline-1 text-center">{article.title}</h1>
           <div className="flex w-full mt-10 justify-between">
             <div className="">
               <p className="paragraph">Author:</p>
@@ -42,6 +39,10 @@ function ArticlePageOpenned() {
               </h4>
             </div>
           </div>
+          {article.image_heading && (
+            <img src={article.image_heading} className="mt-4 mx-auto lg:size-[30%]"/>
+          )}
+          <span><br /></span>
           <div dangerouslySetInnerHTML={{ __html: article.content }} />
           <div className="w-full flex justify-center mt-10">
             <a

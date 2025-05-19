@@ -6,12 +6,12 @@ function About() {
   return (
     <>
       <div className="about flex flex-col items-center self-stretch pt-14 lg:pt-24">
-        <div className="flex flex-col about-container justify-center items-center gap-7 lg:gap-6">
+        <div className=" xs:w-[312px] flex flex-col about-container justify-center items-center gap-7 lg:gap-6">
           <h1 className="text-center text-2xl lg:text-4xl text-black font-bold">
             About
           </h1>
-          <div className="about-container flex flex-col lg:flex-row gap-8 lg:gap-20">
-            <div className="about-desc about-contain flex flex-col mx-auto lg:items-start gap-8 lg:gap-4 text-center lg:text-left ">
+          <div className="about-container xs:w-[312px] flex flex-col lg:flex-row gap-8 lg:gap-20">
+            <div className="about-desc xs:w-[312px] about-contain flex flex-col mx-auto lg:items-start gap-8 lg:gap-4 text-center lg:text-left ">
               <h4 className=" text-base lg:text-lg font-bold">
                 Apa sih Skyshare Academy itu?
               </h4>
@@ -27,7 +27,7 @@ function About() {
             <div className="about-picture flex justify-center lg:justify-end relative w-full">
               <div className="mascot-about">
                 <img
-                  className="absolute size-24 lg:size-52 left-12 lg:left-0 bottom-0"
+                  className="absolute size-24 lg:size-52 left-5 bottom-0"
                   src={Mascot1}
                   alt="mascot1"
                 />

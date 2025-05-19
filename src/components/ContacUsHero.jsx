@@ -1,88 +1,69 @@
 import React from "react";
-import PhoneIcon from "../../public/images/mascot-icons/Fill 217.png";
-import MessageIcon from "../../public/images/mascot-icons/Message.png";
-import LocationIcon from "../../public/images/mascot-icons/Fill 278.png";
+// import mascot from "/images/mascot-icons/mascot-contact.png"
+import mascot from "../../public/images/mascot-icons/mascot-contact.png"
 import "./ContacUsHero.css";
 
 function ContactUsHero() {
   return (
     <>
-      <div className="contact-title bg-orange-bg bg-cover py-14 px-6 lg:py-24">
-        <div className="contact-padding flex flex-col justify-end items-center gap-3">
-          <div className="contact-content flex flex-col gap-3 lg:gap-4 text-center">
-            <h1 className="headline-1">Contact US</h1>
-            <div className="flex items-center justify-center gap-2 lg:gap-4">
-              <img className="size-4" src={PhoneIcon} alt="ico" />
-              <p className="paragraph ml-2 text-slate-600">
-                (+62) 856-8043-529
-              </p>
-            </div>
-            <div className="flex items-center justify-center gap-2 lg:gap-4">
-              <img className="size-4" src={MessageIcon} alt="ico" />
-              <p className="paragraph ml-2 text-slate-600">
-                msimbusiness@org.com
-              </p>
-            </div>
-            <div className="flex items-center justify-center gap-2 lg:gap-4">
-              <img className="size-4" src={LocationIcon} alt="ico" />
-              <p className="paragraph ml-2 text-slate-600">
-                Komplek Taman Mangu Indah B14/12 Pondok Aren, Tangerang Selatan
-                15224
-              </p>
-            </div>
-
-            <div className="flex items-center gap-4 justify-center">
-              <a href="#">
-                <div className="size-10 lg:size-16 flex justify-center items-center rounded-full bg-slate-800 hover:bg-slate-700">
-                  <svg
-                    className=" size-5 lg:size-8"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <g clipPath="url(#clip0_2141_13347)">
-                      <path
-                        d="M8 1.44062C10.1375 1.44062 10.3906 1.45 11.2313 1.4875C12.0125 1.52187 12.4344 1.65313 12.7156 1.7625C13.0875 1.90625 13.3563 2.08125 13.6344 2.35938C13.9156 2.64062 14.0875 2.90625 14.2313 3.27813C14.3406 3.55938 14.4719 3.98438 14.5063 4.7625C14.5438 5.60625 14.5531 5.85938 14.5531 7.99375C14.5531 10.1313 14.5438 10.3844 14.5063 11.225C14.4719 12.0063 14.3406 12.4281 14.2313 12.7094C14.0875 13.0813 13.9125 13.35 13.6344 13.6281C13.3531 13.9094 13.0875 14.0813 12.7156 14.225C12.4344 14.3344 12.0094 14.4656 11.2313 14.5C10.3875 14.5375 10.1344 14.5469 8 14.5469C5.8625 14.5469 5.60938 14.5375 4.76875 14.5C3.9875 14.4656 3.56563 14.3344 3.28438 14.225C2.9125 14.0813 2.64375 13.9063 2.36563 13.6281C2.08438 13.3469 1.9125 13.0813 1.76875 12.7094C1.65938 12.4281 1.52813 12.0031 1.49375 11.225C1.45625 10.3813 1.44688 10.1281 1.44688 7.99375C1.44688 5.85625 1.45625 5.60313 1.49375 4.7625C1.52813 3.98125 1.65938 3.55938 1.76875 3.27813C1.9125 2.90625 2.0875 2.6375 2.36563 2.35938C2.64688 2.07812 2.9125 1.90625 3.28438 1.7625C3.56563 1.65313 3.99063 1.52187 4.76875 1.4875C5.60938 1.45 5.8625 1.44062 8 1.44062ZM8 0C5.82813 0 5.55625 0.009375 4.70313 0.046875C3.85313 0.084375 3.26875 0.221875 2.7625 0.41875C2.23438 0.625 1.7875 0.896875 1.34375 1.34375C0.896875 1.7875 0.625 2.23438 0.41875 2.75938C0.221875 3.26875 0.084375 3.85 0.046875 4.7C0.009375 5.55625 0 5.82812 0 8C0 10.1719 0.009375 10.4438 0.046875 11.2969C0.084375 12.1469 0.221875 12.7313 0.41875 13.2375C0.625 13.7656 0.896875 14.2125 1.34375 14.6562C1.7875 15.1 2.23438 15.375 2.75938 15.5781C3.26875 15.775 3.85 15.9125 4.7 15.95C5.55313 15.9875 5.825 15.9969 7.99688 15.9969C10.1688 15.9969 10.4406 15.9875 11.2938 15.95C12.1438 15.9125 12.7281 15.775 13.2344 15.5781C13.7594 15.375 14.2063 15.1 14.65 14.6562C15.0938 14.2125 15.3688 13.7656 15.5719 13.2406C15.7688 12.7313 15.9063 12.15 15.9438 11.3C15.9813 10.4469 15.9906 10.175 15.9906 8.00313C15.9906 5.83125 15.9813 5.55938 15.9438 4.70625C15.9063 3.85625 15.7688 3.27188 15.5719 2.76562C15.375 2.23438 15.1031 1.7875 14.6563 1.34375C14.2125 0.9 13.7656 0.625 13.2406 0.421875C12.7313 0.225 12.15 0.0875 11.3 0.05C10.4438 0.009375 10.1719 0 8 0Z"
-                        fill="white"
-                      />
-                      <path
-                        d="M8 3.89062C5.73125 3.89062 3.89062 5.73125 3.89062 8C3.89062 10.2688 5.73125 12.1094 8 12.1094C10.2688 12.1094 12.1094 10.2688 12.1094 8C12.1094 5.73125 10.2688 3.89062 8 3.89062ZM8 10.6656C6.52813 10.6656 5.33437 9.47188 5.33437 8C5.33437 6.52813 6.52813 5.33437 8 5.33437C9.47188 5.33437 10.6656 6.52813 10.6656 8C10.6656 9.47188 9.47188 10.6656 8 10.6656Z"
-                        fill="white"
-                      />
-                      <path
-                        d="M13.2312 3.72793C13.2312 4.25918 12.8 4.68731 12.2719 4.68731C11.7406 4.68731 11.3125 4.25606 11.3125 3.72793C11.3125 3.19668 11.7438 2.76855 12.2719 2.76855C12.8 2.76855 13.2312 3.19981 13.2312 3.72793Z"
-                        fill="white"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_2141_13347">
-                        <rect width="16" height="16" fill="white" />
-                      </clipPath>
-                    </defs>
+      <div className="contact-section bg-orange-bg bg-cover flex flex-col sm:content-end items-center gap-gap10 lg:pt-padding170 pt-padding106 pb-14 px-6 lg:py-24">
+        <div className="inside-padding flex flex-col w-312 lg:w-nav content-end items-center gap-gap10 lg:gap-6">
+          <div className="contact-container flex flex-col items-center lg:gap-6 lg:flex-wrap gap-4 self-stretch">
+            <h1 className="headline-1 text-center text-neutral-2 self-stretch">Punya Pertanyaan Lebih <br className=" xs:hidden"/> Lanjut?</h1>
+            <p className="paragraph text-center self-stretch text-neutral-2">
+              Layanan kami tersedia Senin-Minggu,
+              {/* add break line */}
+              <br />
+              jam 
+              <span className=" font-bold"> 08.00-20.00</span>
+            </p>
+            <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 relative">
+              <div className="test w-312 h-auto">
+                <a href="https://wa.me/628568043529" className="contact-buttons-white flex flex-col items-center gap-gap7277 relative overflow-hidden">
+                  <svg className="svgAUAH" xmlns="http://www.w3.org/2000/svg" width="72" height="63" viewBox="0 0 72 63" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M71.1732 54.0734L44.8858 42.8291L55.5155 16.2878L28.9995 26.9226L17.74 0.650391L6.47543 26.9226L-20.0406 16.2878L-9.4108 42.8291L-35.6982 54.0734L-9.4108 65.3177L-20.0406 91.8591L6.47543 81.2242L17.74 107.496L28.9995 81.2242L55.5155 91.8591L44.8858 65.3177L71.1732 54.0734Z" fill="#FFD9AC"/>
                   </svg>
-                </div>
-              </a>
-              <a href="#">
-                <div className="size-10 lg:size-16 flex justify-center items-center rounded-full bg-slate-800 hover:bg-slate-700">
-                  <svg
-                    className=" size-5 lg:size-8"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <path
-                      d="M15.8406 4.8002C15.8406 4.8002 15.6844 3.69707 15.2031 3.2127C14.5938 2.5752 13.9125 2.57207 13.6 2.53457C11.3625 2.37207 8.00313 2.37207 8.00313 2.37207H7.99687C7.99687 2.37207 4.6375 2.37207 2.4 2.53457C2.0875 2.57207 1.40625 2.5752 0.796875 3.2127C0.315625 3.69707 0.1625 4.8002 0.1625 4.8002C0.1625 4.8002 0 6.09707 0 7.39082V8.60332C0 9.89707 0.159375 11.1939 0.159375 11.1939C0.159375 11.1939 0.315625 12.2971 0.79375 12.7814C1.40313 13.4189 2.20313 13.3971 2.55938 13.4658C3.84063 13.5877 8 13.6252 8 13.6252C8 13.6252 11.3625 13.6189 13.6 13.4596C13.9125 13.4221 14.5938 13.4189 15.2031 12.7814C15.6844 12.2971 15.8406 11.1939 15.8406 11.1939C15.8406 11.1939 16 9.90019 16 8.60332V7.39082C16 6.09707 15.8406 4.8002 15.8406 4.8002ZM6.34688 10.0752V5.57832L10.6687 7.83457L6.34688 10.0752Z"
-                      fill="white"
-                    />
+                  <div className="wa-and-logo flex items-center gap-gap7277">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                      <path d="M11.6613 3.67969C7.1677 3.67969 3.51068 7.20203 3.50909 11.5309C3.50804 12.9152 3.88409 14.2663 4.59712 15.4562L3.44043 19.5247L7.76242 18.433C8.96464 19.0619 10.3014 19.3899 11.6582 19.389H11.6613C16.155 19.389 19.812 15.8661 19.8136 11.5372C19.8147 9.44041 18.9675 7.46665 17.4279 5.98302C15.8888 4.49887 13.8422 3.68022 11.6613 3.67969ZM11.6613 18.0627H11.6587C10.4429 18.0627 9.25027 17.7479 8.20978 17.1532L7.96154 17.0117L5.39782 17.6592L6.08232 15.2508L5.92123 15.0041C5.2446 13.9722 4.8844 12.7649 4.88497 11.5309C4.88655 7.93249 7.92668 5.00591 11.664 5.00591C13.4735 5.00644 15.1747 5.68619 16.4545 6.91946C17.7342 8.15273 18.4383 9.79269 18.4372 11.5367C18.4356 15.1351 15.396 18.0627 11.6608 18.0627H11.6613ZM15.3781 13.1745C15.1742 13.0768 14.1728 12.602 13.9858 12.536C13.7994 12.471 13.6636 12.4372 13.5279 12.6337C13.3927 12.8302 13.0018 13.2723 12.8835 13.4027C12.7642 13.5337 12.6453 13.5495 12.4415 13.4518C12.2376 13.3536 11.5811 13.1466 10.8036 12.4779C10.1978 11.9582 9.789 11.3159 9.67016 11.1189C9.55132 10.923 9.65748 10.8168 9.75942 10.7191C9.85079 10.632 9.96329 10.4904 10.0647 10.3758C10.1661 10.2612 10.1999 10.1793 10.2686 10.0483C10.3362 9.91787 10.3024 9.80273 10.2511 9.70502C10.1999 9.60625 9.79322 8.64076 9.62262 8.24833C9.45784 7.86594 9.28988 7.91717 9.1647 7.91083C9.04587 7.90555 8.91066 7.90397 8.77386 7.90397C8.63918 7.90397 8.41788 7.95309 8.2309 8.14957C8.04446 8.34604 7.51788 8.82034 7.51788 9.78583C7.51788 10.7518 8.24781 11.6846 8.34974 11.8156C8.45168 11.946 9.78636 13.9282 11.8298 14.7786C12.3157 14.9798 12.695 15.1008 12.9913 15.1916C13.4793 15.3411 13.9235 15.3194 14.2742 15.2693C14.665 15.2127 15.4795 14.795 15.6485 14.337C15.8186 13.8791 15.8186 13.4862 15.7678 13.4043C15.7182 13.3224 15.5819 13.2733 15.3781 13.1745Z" fill="#334151"/>
+                    </svg>
+                    <h3 className="headline-3 text-neutral-2 text-center">Whatsapp</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M18.9707 12.2842L3.05255 12.2842L3.05255 10.9197L18.9707 10.9197L18.9707 12.2842Z" fill="#334151"/>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M18.2887 10.9194C15.08 10.9194 12.458 13.7412 12.458 16.7501L12.458 17.4324L13.8224 17.4324L13.8224 16.7501C13.8224 14.4656 15.8624 12.2839 18.2887 12.2839L18.9709 12.2839L18.9709 10.9194L18.2887 10.9194Z" fill="#334151"/>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M18.2887 12.2842C15.08 12.2842 12.458 9.46241 12.458 6.45347L12.458 5.77125L13.8224 5.77125L13.8224 6.45347C13.8224 8.73805 15.8624 10.9197 18.2887 10.9197L18.9709 10.9197L18.9709 12.2842L18.2887 12.2842Z" fill="#334151"/>
+                    </svg>
+                  </div>
+                  <p className=" paragraph text-neutral-2 text-center">(+62) 856-8043-529</p>       
+                </a>
+              </div>
+              <div className="test w-312 h-auto">
+                <button className="contact-buttons-white flex flex-col items-center gap-gap7277 relative overflow-hidden" onClick={() => window.open("mailto:msimbusiness@org.com", "_blank")}>
+                  <svg className="svgAUAH" xmlns="http://www.w3.org/2000/svg" width="72" height="63" viewBox="0 0 72 63" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M71.1732 54.0734L44.8858 42.8291L55.5155 16.2878L28.9995 26.9226L17.74 0.650391L6.47543 26.9226L-20.0406 16.2878L-9.4108 42.8291L-35.6982 54.0734L-9.4108 65.3177L-20.0406 91.8591L6.47543 81.2242L17.74 107.496L28.9995 81.2242L55.5155 91.8591L44.8858 65.3177L71.1732 54.0734Z" fill="#FFD9AC"/>
                   </svg>
-                </div>
-              </a>
+                  <div className="wa-and-logo flex items-center gap-gap7277">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M5.68273 7.28223L11.0251 11.6235L16.3675 7.28223L17.228 8.34113L11.0251 13.3816L4.82227 8.34113L5.68273 7.28223Z" fill="#001125"/>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M1.21094 2.23779H20.7678V19.9754H1.21094V2.23779ZM2.57537 3.60222V18.611H19.4034V3.60222H2.57537Z" fill="#001125"/>
+                    </svg>
+                    <h3 className="headline-3 text-neutral-2 text-center">Email</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M18.9707 12.2842L3.05255 12.2842L3.05255 10.9197L18.9707 10.9197L18.9707 12.2842Z" fill="#334151"/>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M18.2887 10.9194C15.08 10.9194 12.458 13.7412 12.458 16.7501L12.458 17.4324L13.8224 17.4324L13.8224 16.7501C13.8224 14.4656 15.8624 12.2839 18.2887 12.2839L18.9709 12.2839L18.9709 10.9194L18.2887 10.9194Z" fill="#334151"/>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M18.2887 12.2842C15.08 12.2842 12.458 9.46241 12.458 6.45347L12.458 5.77125L13.8224 5.77125L13.8224 6.45347C13.8224 8.73805 15.8624 10.9197 18.2887 10.9197L18.9709 10.9197L18.9709 12.2842L18.2887 12.2842Z" fill="#334151"/>
+                    </svg>
+                  </div>
+                  <p className=" paragraph text-neutral-2 text-center">msimbusiness@org.com</p>       
+                </button>
+              </div>
+              <img src={mascot} className="hidden lg:block lg:absolute -right-24 bottom-0 w-w200 h-h200"></img>
             </div>
           </div>
         </div>
       </div>
     </>
-  );
+  );  
 }
 
 export default ContactUsHero;

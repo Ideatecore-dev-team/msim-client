@@ -39,6 +39,7 @@ export default {
         "neutral-3": "#66707C",
         "neutral-4": "#99A0A8",
         "neutral-5": "#CCCFD3",
+        "h200": "200px",
         "neutral-white": "#FFFFFF",
         benefitMentor: "#85D7F5",
         background: "#EFEFEF",
@@ -47,19 +48,31 @@ export default {
         nav: "1152px;",
         tagline: "72rem;",
         "cover-size1": "43.5rem",
+        "w200": "200px",
         "cover-size2": "40.5rem",
         "footer-content": "72.816rem",
         "cover-size3": "26rem",
         "logo-msim": "192px",
         "slash-w": "45.5rem;",
         "slash-sm": "28rem",
+        "120":"120px",
+        "312":"312px",
       },
       height: {
         testimoni: "648px",
+        "120":"120px",
       },
       margin: {
         "slash-top": "4.7rem",
       },
+      gap: {
+        "gap10":"10px",
+        "gap7277": "7.277px"
+      },
+      padding: {
+        "padding106":"106px",
+        "padding170":"170px"
+      }
     },
   },
   plugins: [],

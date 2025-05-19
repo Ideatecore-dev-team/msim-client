@@ -2,12 +2,12 @@ import React from "react";
 // import axios from "axios";
 import skyshareApi from "../utilities/skyshareApi";
 import { useEffect, useState } from "react";
-import MentorCta from "../components/MentorCta";
-import Mentorabout from "../components/MentorAbout";
+import MentorCta from "../components/CtaMentor";
+import Mentorabout from "../components/AboutMentor";
 import BenefitMentor from "../components/BenefitMentor";
-import AllActivitiesMentorAcademy from "../components/AllActivityMentorAcademy";
-import AlurAcaraMentorAcademy from "../components/AlurAcaraMentorAcademy";
-import TimelineMentorAcademy from "../components/TimelineMentorAcademy";
+import AllActivitiesMentorAcademy from "../components/AllActivitiesMentor";
+import TimelineSkyshare from "../components/TimelineSkyshare";
+import AlurAcara from "../components/AlurAcara";
 
 function Mentor() {
   const [mentor, setMentor] = useState([]);
@@ -22,15 +22,14 @@ function Mentor() {
     };
     getDataMentor();
   }, []);
-  console.log(mentor, "==>");
   return (
     <>
-      <div className="home">
+      <div>
         <MentorCta mentor={mentor} />
         <Mentorabout />
         <BenefitMentor />
-        <AlurAcaraMentorAcademy mentor={mentor} />
-        <TimelineMentorAcademy mentor={mentor} />
+        <AlurAcara mentor={mentor} />
+        <TimelineSkyshare mentor={mentor}/>
         <AllActivitiesMentorAcademy mentor={mentor} />
       </div>
     </>

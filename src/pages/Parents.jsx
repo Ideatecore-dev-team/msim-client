@@ -3,8 +3,8 @@ import React from "react";
 import skyshareApi from "../utilities/skyshareApi";
 import { useEffect } from "react";
 import { useState } from "react";
-import ParentsCta from "../components/ParentsCta";
-import ParentsAbout from "../components/ParentsAbout";
+import ParentsCta from "../components/CtaParents";
+import ParentsAbout from "../components/AboutParents";
 import BenefitParents from "../components/BenefitParents";
 import AlurAcara from "../components/AlurAcara";
 import TimelineSkyshare from "../components/TimelineSkyshare";
@@ -22,7 +22,7 @@ function Parents() {
     };
     getDataparents();
   }, []);
-  console.log(parents, "==>");
+
   return (
     <>
       <div className="home">
@@ -31,7 +31,7 @@ function Parents() {
         <BenefitParents />
         <AlurAcara parents={parents} />
         <TimelineSkyshare parents={parents} />
-        <AllActivitiesParents />
+        <AllActivitiesParents parents={parents} />
       </div>
     </>
   );

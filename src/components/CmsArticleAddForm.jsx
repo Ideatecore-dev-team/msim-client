@@ -30,13 +30,20 @@ function CmsArticleAddForm() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [isCategorySelected, setIsCategorySelected] = useState(false);
+  const [isCategoryNoSelected, setIsCategoryNoSelected] = useState(true);
+  const [isDeleteFailed, setIsDeleteFailed] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState(false);
   const [categoryId, setCategoryId] = useState("");
   const [categories, setCategories] = useState([]);
   const [categoryName, setCategoryName] = useState("");
   const [articleForm, setArticleForm] = useState({});
-  console.log(categories.id, "==>");
-  console.log(articleForm, "==> image");
+  const [imagePreviewUrl, setImagePreviewUrl] = useState("");
+  const [selectedFileName, setSelectedFileName] = useState("");
+  const [addStatus, setAddStatus] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState({});
+  const Navigate = useNavigate();
 
   const handleArticleData = async function () {
     const formData = new FormData();
@@ -45,17 +52,31 @@ function CmsArticleAddForm() {
     formData.append("content", articleForm.content);
     formData.append("link", articleForm.link);
     formData.append("category_id", articleForm.category_id);
+    setIsDeleting(true);
     try {
       const responseFromServer = await skyshareApi({
         url: "/article/add",
         method: "post",
         data: formData,
       });
-      console.log(responseFromServer.data.data, "===>");
+      setAddStatus(responseFromServer.data.status);
+      if (responseFromServer.data.status === "success") {
+        setIsSaveModalOpen(true);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  const getCategoryByid = async function (id) {
+    try {
+      const response = await skyshareApi.get(`category/${id}`);
+      setSelectedCategory(response.data.data);
     } catch (error) {
       console.log(error);
     }
-    console.log(formData, "data");
   };
 
   const getCategories = async function () {
@@ -69,14 +90,12 @@ function CmsArticleAddForm() {
     getCategories();
   }, []);
 
-  // console.log(categories, "===> categories");
-
   const handleCategoryAdd = async function () {
     const inputDataCategory = {
       name: categoryName,
       color: colorInputHexa,
     };
-    console.log(inputDataCategory, "==> datacategory");
+
     try {
       const response = await skyshareApi({
         url: "/category/add",
@@ -84,7 +103,7 @@ function CmsArticleAddForm() {
         data: inputDataCategory,
       });
       const newCategory = response.data.data;
-      setCategories([...categories, newCategory]); // Update the state with the new category
+      setCategories([...categories, newCategory]);
       setCategoryName("");
       setColorInputHexa("#FFFFFF");
       setColorInputValet("#FFFFFF");
@@ -130,21 +149,27 @@ function CmsArticleAddForm() {
     setIsModalOpen(false);
   };
 
-  const deleteCategory = async function () {
-    try {
-      const response = await skyshareApi.delete(`/category/${categoryId}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const confirmDelete = () => {
-    // setIsModalOpen(true);
-    deleteCategory();
+  async function deleteCategory() {
     setIsModalOpen(false);
-  };
+    if (!categoryId) return;
 
-  const Navigate = useNavigate();
+    const updatedCategories = categories.filter(
+      (category) => category.id !== categoryId
+    );
+    setCategories(updatedCategories);
+
+    setIsDeleting(true);
+    try {
+      await skyshareApi.delete(`/category/${categoryId}`);
+    } catch (error) {
+      setIsDeleteFailed(true);
+      setCategories(categories);
+      console.error(error);
+    } finally {
+      setIsDeleting(false);
+    }
+  }
+
   const closeSaveModal = () => {
     setIsSaveModalOpen(false);
     Navigate("/cms/article");
@@ -152,12 +177,29 @@ function CmsArticleAddForm() {
 
   const closeCancelModal = () => {
     setIsCancelModalOpen(false);
+    Navigate("/cms/article");
   };
 
   const handleDeleteCategory = () => {
     setIsModalOpen(true);
     setDeleteMessage("Yakin untuk menghapus category?");
   };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setArticleForm({
+        ...articleForm,
+        image_heading: file,
+      });
+      setSelectedFileName(file.name);
+      setImagePreviewUrl(URL.createObjectURL(file));
+    }
+  };
+
+  function closeDeleteFailedModal() {
+    setIsDeleteFailed(false);
+  }
 
   return (
     <>
@@ -179,38 +221,42 @@ function CmsArticleAddForm() {
               <div className="bg-neutral-white rounded-xl border-2 mt-4 border-gray-400 px-6 pt-7 pb-4">
                 <div className="border-2 border-dashed flex justify-center items-center border-gray-400 rounded-xl h-60">
                   <div className="">
-                    <div className="flex justify-center">
-                      <img className=" w-7 mb-4" src={File} alt="" />
-                    </div>
-                    <p className="paragraph text-center">Drag & Drop here</p>
-                    <p className="paragraph text-center">or</p>
-                    <div className="flex relative justify-center">
-                      <h4 className=" font-bold text-orange-400 text-base absolute">
-                        Browse
-                      </h4>
-                      <input
-                        id="image_heading"
-                        accept="image/*"
-                        onChange={(e) =>
-                          setArticleForm({
-                            ...articleForm,
-                            image_heading: e.target.files[0],
-                          })
-                        }
-                        className="ml-80 opacity-0 absolute"
-                        type="file"
-                      />
-                    </div>
+                    {imagePreviewUrl && (
+                      <div className="flex justify-center  ">
+                        <img
+                          src={imagePreviewUrl}
+                          alt="Image Preview"
+                          className="rounded-xl border-2 border-gray-400"
+                          style={{ maxWidth: "100%", maxHeight: "220px" }}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
-                <div className="my-4 bg-primary-1 hover:bg-primary-2 flex justify-center rounded-xl">
-                  <button className="bg-primary-1 hover:bg-primary-2 flex justify-center gap-2 py-4">
-                    <p className=" text-white font-bold">Upload File</p>
-                    <img className=" w-6 -rotate-90" src={ArrowLeft} alt="" />
-                  </button>
+                <div className="my-4 bg-primary-1 cursor-pointer hover:bg-primary-2 flex justify-center rounded-xl items-center">
+                  <input
+                    type="file"
+                    id="image_heading"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    className="cursor-pointer z-10 opacity-0 ml-80 rounded-xl flex justify-center gap-2 py-4"
+                  />
+                  <div className="absolute cursor-pointer flex gap-2 items-center ">
+                    <p className=" cursor-pointer text-white font-bold">
+                      Upload File
+                    </p>
+                    <img
+                      className=" cursor-pointer w-6 -rotate-90"
+                      src={ArrowLeft}
+                      alt=""
+                    />
+                  </div>
                 </div>
                 <div className="flex justify-center pb-3">
-                  <h4 className=" text-base">(File PDF)</h4>
+                  <h4 className="text-base">
+                    Minimal Ukuran{" "}
+                    <span className="font-bold">(956 x 350px)</span>
+                  </h4>
                 </div>
               </div>
               <div className="add-content">
@@ -232,16 +278,6 @@ function CmsArticleAddForm() {
                     />
                     <label className="block font-bold mt-4 mb-1" htmlFor="cta">
                       <div className="flex gap-1">
-                        Penulis <span className="text-orange-400">*</span>
-                      </div>
-                    </label>
-                    <input
-                      placeholder="Muhammad Nusa A."
-                      type="text"
-                      className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none"
-                    />
-                    <label className="block font-bold mt-4 mb-1" htmlFor="cta">
-                      <div className="flex gap-1">
                         Kategori <span className="text-orange-400">*</span>
                       </div>
                     </label>
@@ -256,7 +292,21 @@ function CmsArticleAddForm() {
                     >
                       <div className="mt-3.5 flex justify-between">
                         <div className="flex items-center justify-center">
-                          <p className="text-gray-400">--Pilih kategory--</p>
+                          {isCategorySelected && (
+                            <div
+                              style={{
+                                backgroundColor: `${selectedCategory.color}`,
+                              }}
+                              className=" -mt-1 px-3 py-1 rounded-full bg-slate-400"
+                            >
+                              <p className="font-bold text-white">
+                                {selectedCategory.name}
+                              </p>
+                            </div>
+                          )}
+                          {isCategoryNoSelected && (
+                            <p className="text-gray-400">--Pilih kategory--</p>
+                          )}
                         </div>
                         <div className="flex">
                           <button type="button" onClick={handleDropdownToggle}>
@@ -271,7 +321,7 @@ function CmsArticleAddForm() {
                         </div>
                       </div>
                       <div
-                        className={`mt-2 gap-4 flex-wrap bg-neutral-white absolute ${
+                        className={`mt-2 gap-4 flex-wrap pb-10 bg-neutral-white absolute w-3/6 ${
                           isDropdownOpen && ishidenCategori ? "flex" : "hidden"
                         }`}
                       >
@@ -303,7 +353,6 @@ function CmsArticleAddForm() {
                           return (
                             <button
                               name="category_id"
-                              style={{ backgroundColor: category.color }}
                               value={category.id}
                               onClick={(e) => {
                                 console.log(category.id);
@@ -311,8 +360,26 @@ function CmsArticleAddForm() {
                                   ...articleForm,
                                   category_id: e.target.value,
                                 });
+                                setCategoryId(category.id);
+                                getCategoryByid(category.id);
+                                setIsCategorySelected(true);
+                                setIsCategoryNoSelected(false);
+                                setIsDropdownOpen(false);
                               }}
                               type="button"
+                              style={{
+                                backgroundColor:
+                                  categoryId === category.id
+                                    ? "#fff" // Ganti dengan warna yang diinginkan saat tombol dipilih
+                                    : category.color,
+                                border:
+                                  categoryId === category.id
+                                    ? "2px solid red"
+                                    : "none",
+
+                                color:
+                                  categoryId === category.id ? "#000" : "#FFF", // Ganti dengan warna yang diinginkan saat tombol dipilih
+                              }}
                               className="px-3 py-1 text-white font-bold rounded-full"
                             >
                               {category.name}
@@ -432,8 +499,10 @@ function CmsArticleAddForm() {
                     apiKey="gemyn0v2v0dyeaicn1p0fm8bje0jldn312dh4cz45rnzg68q"
                     init={{
                       menubar: false,
+                      resize: false,
+                      height: 400,
                       plugins:
-                        "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
+                        "anchor autolink charmap emoticons image link lists media searchreplace table visualblocks wordcount",
                       toolbar:
                         "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
                       tinycomments_mode: "embedded",
@@ -480,7 +549,6 @@ function CmsArticleAddForm() {
                     <button
                       onClick={(e) => {
                         e.preventDefault(); // Prevent the default form submission
-                        handleSave(e);
                         handleArticleData();
                       }}
                       type="submit"
@@ -497,7 +565,7 @@ function CmsArticleAddForm() {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+        <div className="fixed inset-0 z-10 bg-gray-600 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white w-2/5 h-80 rounded-3xl p-6">
             <div className="flex justify-center">
               <img className=" w-40" src={Mascot} alt="" />
@@ -513,7 +581,7 @@ function CmsArticleAddForm() {
                 Batal
               </button>
               <button
-                onClick={confirmDelete}
+                onClick={deleteCategory}
                 className="bg-red-500 w-1/2 hover:bg-red-400 text-white px-4 py-2 rounded-lg"
               >
                 Hapus
@@ -556,6 +624,54 @@ function CmsArticleAddForm() {
               <img className="w-6 h-6" src={Coution} alt="" />
               <h3 className="headline-3 ">Progress is not saved</h3>
             </div>
+          </div>
+        </div>
+      )}
+
+      {isDeleteFailed && (
+        <div className="fixed inset-0 z-10 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white rounded-3xl p-6 relative">
+            <button
+              onClick={closeDeleteFailedModal}
+              className="absolute top-6 right-6"
+            >
+              <img className="w-5" src={Xbutton} alt="" />
+            </button>
+            <div className="flex justify-center">
+              <img className="w-40" src={Mascot2} alt="" />
+            </div>
+            <div className="flex gap-1 mt-5 items-center">
+              <img className="w-6 h-6" src={Coution} alt="" />
+              <h3 className="headline-3 ">Delete Failed, Category Used</h3>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isDeleting && (
+        <div className="fixed z-10 inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="flex flex-col items-center bg-white p-5 rounded-xl">
+            <svg
+              className="animate-spin h-8 w-8 text-primary-1 mb-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            <p className="text-primary-1">Uploading article...</p>
           </div>
         </div>
       )}

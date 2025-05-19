@@ -32,8 +32,25 @@ function HomeArticle() {
   }, []);
   console.log(articles, "===>");
 
-  const sortArticles = [...articles].sort((a, b) => b.id - a.id);
+  const sortArticles = [...articles]
+    .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+    .slice(0, 3);
   const navigate = useNavigate();
+
+  const extractAndLimitContent = (htmlContent, limit) => {
+    // Replace <div> with <p>
+    htmlContent = htmlContent
+      .replace(/<div>/g, "<p>")
+      .replace(/<\/div>/g, "</p>");
+
+    const firstParagraphMatch = htmlContent.match(/<p>(.*?)<\/p>/s);
+    if (!firstParagraphMatch) return "";
+    let firstParagraph = firstParagraphMatch[1]; // Extract inner content of the first paragraph
+    if (firstParagraph.length > limit) {
+      firstParagraph = firstParagraph.substring(0, limit) + "...";
+    }
+    return `<p>${firstParagraph}</p>`; // Return as a paragraph
+  };
 
   const settings = {
     dots: false,
@@ -89,31 +106,70 @@ function HomeArticle() {
           {isMobile ? (
             <Slider {...settings}>
               {sortArticles.slice(0, 6).map((article) => (
+                // <div
+                //   key={article.id}
+                //   className="card-art bg-white rounded-2xl lg:gap-6 xs:gap-4 overflow-hidden"
+                // >
+                //   <div
+                //     className="card-img bg-cover"
+                //     style={{ backgroundImage: `url(${article.image_heading})` }}
+                //   ></div>
+                //   <div className="card-content flex px-6 flex-col gap-4">
+                //     <p className="font-bold text-base">
+                //     {parse(
+                //         article.title.substring(0, 20) +
+                //           (article.title.length > 20 ? "..." : "")
+                //       )}
+                //       </p>
+                //     <div className="font-normal text-sm">
+                //       {parse(
+                //         article.content.substring(0, 90) +
+                //           (article.content.length > 100 ? "..." : "")
+                //       )}
+                //     </div>
+                //     <div className="card-cta flex lg:flex-row xs:flex-col gap-4 items-center">
+                //         <p 
+                //         style={{backgroundColor : `${article.category_color}`}}
+                //         className={`font-normal lg:text-sm xs:text-xs text-white  flex px-4 py-1 content-center items-center gap-3 rounded-3xl`}>
+                //           {article.category_name}
+                //         </p>
+                //       <a href={"/article/" + article.id} className="link-txt flex items-start gap-1">
+                //         <span className="lg:text-base xs:text-sm">
+                //           Baca Selengkapnya
+                //         </span>
+                //       </a>
+                //     </div>
+                //   </div>
+                // </div>
                 <div
                   key={article.id}
-                  className="card-art bg-white rounded-2xl lg:gap-6 xs:gap-4 overflow-hidden"
+                  className="card-art bg-white rounded-2xl lg:gap-6 gap-4 flex flex-col overflow-hidden"
                 >
                   <div
-                    className="card-img bg-cover"
+                    className="card-img bg-cover h-[110px] self-stretch flex-shrink-0"
                     style={{ backgroundImage: `url(${article.image_heading})` }}
                   ></div>
-                  <div className="card-content flex px-6 flex-col gap-4">
-                    <p className="font-bold text-base">{article.title}</p>
+                  <div className="card-content flex flex-col px-6 gap-4">
+                    <p className="font-bold text-base">
+                      {parse(
+                        article.title.substring(0, 20) +
+                        (article.title.length > 20 ? "..." : "")
+                      )}
+                    </p>
                     <div className="font-normal text-sm">
                       {parse(
-                        article.content.substring(0, 100) +
-                          (article.content.length > 100 ? "..." : "")
+                        article.content.substring(0, 90) +
+                        (article.content.length > 100 ? "..." : "")
                       )}
                     </div>
-                    <div className="card-cta flex lg:flex-row xs:flex-col gap-4 items-center">
-                      <div
-                        className={`text-white  flex px-4 py-1 content-center items-center gap-3 rounded-3xl bg-${article.category_color}-300`}
+                    <div className="card-cta mt-auto flex lg:flex-row xs:flex-col gap-4 items-center pb-[32px]">
+                      <p
+                        style={{ backgroundColor: `${article.category_color}` }}
+                        className="font-normal lg:text-sm xs:text-xs text-white flex px-4 py-1 content-center items-center gap-3 rounded-3xl"
                       >
-                        <p className={`font-normal lg:text-sm xs:text-xs`}>
-                          {article.category_name}
-                        </p>
-                      </div>
-                      <a href="#" className="link-txt flex items-start gap-1">
+                        {article.category_name}
+                      </p>
+                      <a href={"/article/" + article.id} className="link-txt flex items-start gap-1">
                         <span className="lg:text-base xs:text-sm">
                           Baca Selengkapnya
                         </span>
@@ -121,6 +177,7 @@ function HomeArticle() {
                     </div>
                   </div>
                 </div>
+
               ))}
             </Slider>
           ) : (
@@ -128,29 +185,32 @@ function HomeArticle() {
               {sortArticles.slice(0, 6).map((article) => (
                 <div
                   key={article.id}
-                  className="card-art bg-white rounded-2xl lg:gap-6 xs:gap-4 flex flex-col overflow-hidden"
+                  className="card-art bg-white rounded-2xl lg:gap-6 xs:gap-4 flex flex-col overflow-hidden lg:pb-[32px]"
                 >
                   <div
                     className="card-img bg-cover"
                     style={{ backgroundImage: `url(${article.image_heading})` }}
                   ></div>
                   <div className="card-content flex px-6 flex-col gap-4">
-                    <p className="font-bold text-base">{article.title}</p>
+                    <p className="font-bold text-base">
+                    {parse(
+                        article.title.substring(0, 20) +
+                          (article.title.length > 20 ? "..." : "")
+                      )}
+                      </p>
                     <div className="font-normal text-sm">
                       {parse(
-                        article.content.substring(0, 200) +
+                        article.content.substring(0, 160) +
                           (article.content.length > 200 ? "..." : "")
                       )}
                     </div>
                     <div className="card-cta flex lg:flex-row xs:flex-col gap-4 items-center">
-                      <div
-                        className={`text-white  flex px-4 py-1 content-center items-center gap-3 rounded-3xl bg-${article.category_color}-300`}
-                      >
-                        <p className="font-normal lg:text-sm xs:text-xs">
-                          {article.category_name}
-                        </p>
-                      </div>
-                      <a href="#" className="link-txt flex items-start gap-1">
+                      <p 
+                      style={{ backgroundColor: `${article.category_color}` }}
+                      className="font-normal text-white lg:text-sm xs:text-xs flex px-4 py-1 content-center items-center gap-3 rounded-3xl">
+                        {article.category_name}
+                      </p>
+                      <a href={"/article/" + article.id} className="link-txt flex items-start gap-1">
                         <span className="lg:text-base xs:text-sm">
                           Baca Selengkapnya
                         </span>

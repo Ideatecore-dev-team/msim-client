@@ -2,8 +2,8 @@ import React from "react";
 import TimeIcon from "../../public/images/mascot-icons/Time Circle.png";
 import "./TimelineSkyshare.css";
 
-function TimelineSkyshare({ parents, talent }) {
-  const timelineImageSrc = parents?.gambar_timeline || talent?.gambar_timeline;
+function TimelineSkyshare({ parents, talent, mentor }) {
+  const timelineImageSrc = parents?.gambar_timeline || talent?.gambar_timeline || mentor?.gambar_timeline;
 
   return (
     <div className="timeline-section flex pt-14 lg:pt-24 flex-col items-center bg-background">
@@ -13,7 +13,7 @@ function TimelineSkyshare({ parents, talent }) {
           <h2 className="headline-2">Timeline Acara</h2>
         </div>
         {timelineImageSrc ? (
-          <div className="timeline-img-container bg-red-400">
+          <div className="timeline-img-container">
             <img
               className="timeline-img"
               src={timelineImageSrc}

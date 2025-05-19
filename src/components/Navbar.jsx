@@ -20,7 +20,7 @@ function Navbar() {
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex justify-center bg-slate-600">
+      <div className="flex justify-center bg-slate-600 xs:sticky xs:top-0 z-50">
         <div className="sm:w-10/12 w-10/12 lg:w-nav lg:py-4 sm:px-8 sm:py-12 px-8 py-8 justify-around gap-56 lg:gap-0 shadow-lg bg-neutral-white rounded-full absolute mt-5 flex items-center lg:flex-wrap lg:justify-around z-50">
           <div className=" lg:w-logo-msim w-logo-msim flex lg:-ml-44">
             <Link to="/">
@@ -159,18 +159,18 @@ function Navbar() {
           id="drop"
           className="block duration-500 origin-top scale-y-0 absolute bg-white mt-16 rounded-lg padding pt-20 items-center gap-10 w-10/12 lg:hidden z-20"
         >
-          <div className=" drop-down flex flex-col px-16 -mt-10 gap-4">
+          <div className=" drop-down flex flex-col px-16 -mt-10 gap-4 -ml-10">
             <Link
               className="text-slate-500 hover:text-black flex items-center gap-3"
               to="/aboutus"
             >
-              <p className="text-xl">About Us</p>
+              <p className="text-lg lg:text-xl">About Us</p>
             </Link>
             <Link
               className="  text-slate-500 hover:text-black flex items-center gap-3"
               to="/ourprogram"
             >
-              <p className="text-xl">Our Program</p>
+              <p className="text-lg lg:text-xl">Our Program</p>
             </Link>
             <Link
               className=" text-slate-500 hover:text-black flex items-center gap-3"
@@ -203,7 +203,7 @@ function Navbar() {
                   fill="#64748b"
                 />
               </svg>
-              <p className="text-xl">Talent Academy</p>
+              <p className="text-lg lg:text-xl">Talent Academy</p>
             </Link>
 
             <Link
@@ -237,7 +237,7 @@ function Navbar() {
                   fill="#64748b"
                 />
               </svg>
-              <p className="text-xl">Mentor Academy</p>
+              <p className="text-lg lg:text-xl">Mentor Academy</p>
             </Link>
 
             <Link
@@ -271,17 +271,17 @@ function Navbar() {
                   fill="#64748b"
                 />
               </svg>
-              <p className="text-xl">Parents Academy</p>
+              <p className="text-lg lg:text-xl">Parents Academy</p>
             </Link>
 
             <Link className="text-slate-500 hover:text-black" to="/article">
-              <p className="text-xl">Article</p>
+              <p className="text-lg lg:text-xl">Article</p>
             </Link>
 
             <div className="w-full">
               <Button onClick={() => navigate("/contactus")}>
                 <div className="flex gap-2">
-                  <p className="font-bold text-neutral-white">Contact Us</p>
+                  <p className="font-bold text-neutral-white text-lg">Contact Us</p>
                   <svg
                     className="text-neutral-white"
                     xmlns="http://www.w3.org/2000/svg"

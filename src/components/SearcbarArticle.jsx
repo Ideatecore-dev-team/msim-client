@@ -1,23 +1,42 @@
-import React from "react";
-import "./SearchbarArticle.css";
-import SearchIcon from "../../public/images/mascot-icons/search.png";
+import React, { useState } from "react";
+import SearchIcon from "/images/mascot-icons/search.png";
 
-function SearchbarArticle() {
+// eslint-disable-next-line react/prop-types
+function SearchbarArticle({ onSearch }) {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSearch(searchTerm);
+  };
+
   return (
-    <div className="w-full flex justify-center bg-white border-2 rounded-xl border-l-2 border-black">
+    <form
+      onSubmit={handleSubmit}
+      className="search-bar w-full flex justify-between bg-white rounded-lg"
+    >
       <input
-        className="w-full py-4 rounded-l-xl text-black px-4"
         type="text"
         name="article"
         id="article-search"
-        autoFocus="true"
-        placeholder="Search Article"
+        autoFocus={true}
+        placeholder="Masukkan judul artikel"
+        className="w-full outline-none"
+        value={searchTerm}
+        onChange={handleChange}
       />
-      <button className=" bg-primary-1 w-4 hover:bg-primary-2 flex justify-center items-center gap-2 rounded-xl">
-        <p className="paragraph text-white">Search</p>
-        <img className="w-5" src={SearchIcon} alt="" />
+      <button
+        type="submit"
+        className="search-button bg-primary-1 hover:bg-primary-2 flex justify-center items-center gap-2 rounded-lg p-3 lg:px-5 lg:py-4"
+      >
+        <p className="text-base text-white font-bold hidden lg:block">Search</p>
+        <img className="w-5" src={SearchIcon} alt="Search" />
       </button>
-    </div>
+    </form>
   );
 }
 

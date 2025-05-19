@@ -8,9 +8,12 @@ import Ceklist from "../../public/images/mascot-icons/Tick Square.png";
 import Danger from "../../public/images/mascot-icons/Danger Triangle.png";
 import Mascot1 from "../../public/images/mascot-icons/pose=9.png";
 import Mascot2 from "../../public/images/mascot-icons/pose=8.png";
+import Coution from "../../public/images/mascot-icons/Info Square.png";
 
 function CmsAddAdminForm() {
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [imageIcon, setImageIcon] = useState("");
   const [imageMascot, setImageMascot] = useState("");
@@ -26,7 +29,7 @@ function CmsAddAdminForm() {
       email: email,
       password: password,
     };
-
+    setIsLoading(true);
     try {
       const adminRegistToServer = await skyshareApi({
         method: "post",
@@ -45,6 +48,8 @@ function CmsAddAdminForm() {
       setImageIcon(Danger);
       setImageMascot(Mascot1);
       setIsSaveModalOpen(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -76,11 +81,21 @@ function CmsAddAdminForm() {
     }
   };
 
+  const handleCancel = () => {
+    setIsCancelModalOpen(true);
+  };
+
+  const Navigate = useNavigate();
+  const closeCancelModal = () => {
+    setIsCancelModalOpen(false);
+    Navigate("/cms/kelolaakun");
+  };
+
   return (
     <>
       <div className="bg-background flex flex-col pb-44 pt-12 items-center self-stretch h-auto">
         <div className="content flex gap-4">
-          <CmsNavCard />
+          <div className=" w-96"></div>
           <div className="w-full">
             <div>
               <h1 className="headline-1">Add Admin</h1>
@@ -159,7 +174,16 @@ function CmsAddAdminForm() {
                   <div className="w-full px-4 py-2 border-gray-300 border-2 rounded-lg outline-none">
                     Admin
                   </div>
-                  <div className="w-full mt-10 flex justify-end">
+                  <div className="w-full mt-10 flex justify-end gap-5">
+                    <div className="w-56 py-2 flex">
+                      <button
+                        type="button"
+                        onClick={handleCancel}
+                        className="bg-gray-300 w-20 py-2 rounded-md hover:bg-gray-200 text-black font-bold"
+                      >
+                        Batal
+                      </button>
+                    </div>
                     <div className="w-56 py-2 flex">
                       <button
                         type="submit"
@@ -189,6 +213,54 @@ function CmsAddAdminForm() {
               <img className="w-6 h-6" src={imageIcon} alt="Icon" />
               <h3 className="headline-3">{errorMessage}</h3>
             </div>
+          </div>
+        </div>
+      )}
+
+      {isCancelModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white rounded-3xl p-6 relative">
+            <button
+              onClick={closeCancelModal}
+              className="absolute top-6 right-6"
+            >
+              <img className="w-5" src={Xbutton} alt="" />
+            </button>
+            <div className="flex justify-center">
+              <img className="w-40" src={Mascot2} alt="" />
+            </div>
+            <div className="flex gap-1 mt-5 items-center">
+              <img className="w-6 h-6" src={Coution} alt="" />
+              <h3 className="headline-3 ">Progress is not saved</h3>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isLoading && (
+        <div className="fixed z-10 inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="flex flex-col items-center bg-white p-5 rounded-xl">
+            <svg
+              className="animate-spin h-8 w-8 text-primary-1 mb-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            <p className="text-primary-1">Uploading article...</p>
           </div>
         </div>
       )}

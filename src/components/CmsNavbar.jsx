@@ -29,17 +29,13 @@ function CmsNavbar() {
     logout();
     navigate("/cms");
   };
-  console.log(dataAdmin, "==>");
+
   return (
     <div className="bg-neutral-white justify-center items-center flex  py-6">
       <div className=" flex self-stretch items-start w-nav justify-between">
         <div className="">
           <Link to="/">
-            <img 
-            className="w-44" 
-            src={Logo} 
-            alt=""
-            />
+            <img className="w-44" src={Logo} alt="" />
           </Link>
         </div>
         <div className=" flex gap-2 items-center">

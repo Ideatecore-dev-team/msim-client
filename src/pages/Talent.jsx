@@ -1,16 +1,17 @@
 import React from "react";
 import skyshareApi from "../utilities/skyshareApi";
 import { useState, useEffect } from "react";
-import TalentCta from "../components/TalentCta";
-import Skyshareabout from "../components/TalentAbout";
+import TalentCta from "../components/CtaTalents";
+import Skyshareabout from "../components/AboutTalent";
 import BenefitSkyshare from "../components/BenefitTalent";
 import AlurAcara from "../components/AlurAcara";
 import TimelineSkyshare from "../components/TimelineSkyshare";
-import CurrentGroupSkyshare from "../components/CurrentGroupSkyshare";
+import CurrentGroupTalent from "../components/CurrentGroupTalent";
 import AllActivitiesSkyShare from "../components/AllActivitiesTalent";
 
 function Skyshare() {
   const [talent, setTalent] = useState([]);
+
   useEffect(() => {
     const getDataTalent = async function () {
       try {
@@ -22,17 +23,16 @@ function Skyshare() {
     };
     getDataTalent();
   }, []);
-  console.log(talent);
   return (
     <>
       <div className="talent-academy">
-        <TalentCta />
+        <TalentCta talent={talent} />
         <Skyshareabout />
         <BenefitSkyshare />
         <AlurAcara talent={talent} />
         <TimelineSkyshare talent={talent} />
-        <CurrentGroupSkyshare />
-        <AllActivitiesSkyShare />
+        <CurrentGroupTalent />
+        <AllActivitiesSkyShare talent={talent} />
       </div>
     </>
   );

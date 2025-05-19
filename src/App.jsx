@@ -30,6 +30,8 @@ import CmsArticleDashboard from "./pages/CmsArticleDashboard";
 import NotFoundPage from "./pages/NotFoundPage";
 import CmsArticleEdit from "./pages/CmsArticleEdit";
 import CmsArticleAdd from "./pages/CmsArticleAdd";
+import CmsTalentAddSchool from "./pages/CmsTalentAddSchool";
+import CmsTalentAddGroups from "./pages/CmsTalentAddGroups";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -43,8 +45,10 @@ function App() {
     "/cms/talentacademy",
     "/cms/mentoracademy",
     "/cms/parentsacademy",
-    "/cms/talent/editschool",
-    "/cms/talent/editgroup",
+    "/cms/talent/editschool/:id",
+    "/cms/talent/addschool",
+    "/cms/talent/editgroup/:id",
+    "/cms/talent/addgroup",
     "/cms/article",
     "/cms/article/edit/:id",
     "/cms/article/add",
@@ -66,8 +70,6 @@ function App() {
       {!shouldHideNavbarAndFooter && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/ourprogram" element={<OurProgram />} />
         <Route path="/ourprogram/talent" element={<Skyshare />} />
         <Route path="/ourprogram/mentor" element={<Mentor />} />
         <Route path="/ourprogram/parents" element={<Parents />} />
@@ -84,6 +86,8 @@ function App() {
           path="/ourprogram/parents/activities"
           element={<ParentsActivity />}
         />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/ourprogram" element={<OurProgram />} />
         <Route path="/article" element={<Article />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/cms" element={<CmsLoginRoute />}>
@@ -100,13 +104,18 @@ function App() {
           <Route path="/cms/article/edit/:id" element={<CmsArticleEdit />} />
           <Route path="/cms/article/add" element={<CmsArticleAdd />} />
           <Route
-            path="/cms/talent/editschool"
+            path="/cms/talent/editschool/:id"
             element={<CmsTalentEditSchool />}
           />
           <Route
-            path="/cms/talent/editgroup"
+            path="/cms/talent/addschool"
+            element={<CmsTalentAddSchool />}
+          />
+          <Route
+            path="/cms/talent/editgroup/:id"
             element={<CmsTalentEditGroup />}
           />
+          <Route path="/cms/talent/addgroup" element={<CmsTalentAddGroups />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

@@ -12,24 +12,25 @@ function CmsArticleDashboardTable() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dataArticles, setDataarticles] = useState([]);
   const [deleteArticle, setDeleteArticle] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const getDataArticles = async function () {
+      setIsDeleting(true);
       try {
         const responseFromServer = await skyshareApi.get("/article");
         setDataarticles(responseFromServer.data.data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsDeleting(false);
       }
     };
     getDataArticles();
   }, []);
 
-  console.log(dataArticles);
-
   function closeModal() {
     setIsModalOpen(false);
-    setSelectedUser(null);
   }
 
   function deletArticle(article) {
@@ -38,15 +39,18 @@ function CmsArticleDashboardTable() {
   }
 
   async function confirmDelete() {
+    closeModal();
     if (!deleteArticle) return;
+    setIsDeleting(true);
     try {
       await skyshareApi.delete(`/article/${deleteArticle.id}`);
       setDataarticles(
         dataArticles.filter((article) => article.id !== deleteArticle.id)
       );
-      closeModal();
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsDeleting(false);
     }
   }
 
@@ -61,7 +65,7 @@ function CmsArticleDashboardTable() {
             <div className=" ">
               <h1 className="headline-1">Article</h1>
               <p className="paragraph">
-                Kelola artikel untuk website MSiM disini.
+                Kelola artikel untuk website Skyshare Academy disini.
               </p>
             </div>
             <div className=" shadow-md mt-10 border-2 border-black rounded-xl px-3 bg-neutral-white w-full">
@@ -91,7 +95,7 @@ function CmsArticleDashboardTable() {
                     </tr>
                   </thead>
                   <tbody>
-                    {dataArticles.map((article, index) => {
+                    {dataArticles?.map((article, index) => {
                       return (
                         <tr key={article.id}>
                           <td className="pl-3 py-4 text-left font-semibold">
@@ -165,6 +169,34 @@ function CmsArticleDashboardTable() {
                 Hapus
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {isDeleting && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="flex flex-col items-center bg-white p-5 rounded-xl">
+            <svg
+              className="animate-spin h-8 w-8 text-primary-1 mb-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            <p className="text-primary-1">Deleting article...</p>
           </div>
         </div>
       )}
